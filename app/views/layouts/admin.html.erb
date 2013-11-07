@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Glass</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <li>
+					<% if admin_signed_in? %> 
+						<%= link_to "Sign out", destroy_admin_session_path,:method => :delete %> 
+						<%= link_to "Dashboard", admin_root_path %>
+					<% else %> 
+						<%= link_to "sign in", new_admin_session_path %> &nbsp; 
+					<% end %>
+    </li>
+	
+<%= yield %>
+
+</body>
+</html>

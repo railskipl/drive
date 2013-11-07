@@ -1,4 +1,6 @@
 class Admin::PagesController < ApplicationController
+  before_filter :authenticate_admin!, :except => []
+  layout 'admin'
   def index
     	@pages = Page.all
     end

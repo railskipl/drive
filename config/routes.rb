@@ -1,5 +1,19 @@
 Drive::Application.routes.draw do
-  get "pages/index"
+
+  devise_for :users
+
+  devise_for :admins
+
+  match '/pages/:id' => 'pages#show'
+
+  namespace :admin do 
+    match '/dashboard' => "dashboard#index", :as => :root
+    resources :pages
+  end
+
+  root :to => 'home#index'
+  match '/contact' => 'home#contact'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
