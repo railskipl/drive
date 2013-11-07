@@ -11,7 +11,7 @@ Drive::Application.routes.draw do
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root
     resources :pages
-
+    resources :blogs
     resources :seos
   end
 

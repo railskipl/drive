@@ -1,0 +1,17 @@
+<tr>
+    <th><b>Name:</b></th>
+    <th></th>
+</tr>
+
+<% @blogs.each do |blog| %>
+  <tr>
+    <td><%= blog.name %></td>
+    <td><%= link_to 'Edit', edit_admin_blog_path(blog) %></td>
+    <td><a href="/admin/blogs/<%= blog.id %>/delete" onclick="if(confirm('Are you sure you want to delete this page?'))  return true;  else  return false;" >Destroy</a></td><br/>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Blog', new_admin_blog_path %>
