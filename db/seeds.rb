@@ -7,3 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Admin.create(:email => "admin@gmail.com" , :password => "admin123!")
+
+#Seo.create(:meta_title => "Welcome to driveblogs.com", :meta_description => "The driveblogs web application is a comprehensive online cars platform geared towards the cars lovers.", :meta_keyword => "The driveblogs web application is a comprehensive online cars platform geared towards the cars lovers." )

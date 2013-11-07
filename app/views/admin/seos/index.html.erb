@@ -1,0 +1,17 @@
+<h2>Manage site SEO</h2>
+  <table >
+    <tr>
+      <th>Meta Title</th>
+      <th></th>
+  
+    </tr>
+
+  <% @seos.each do |seo| %>
+    <tr>
+      <td><%= seo.meta_title %></td>
+      <td><%= link_to 'Edit', edit_admin_seo_path(seo) %></td>
+      
+    </tr>
+  <% end %>
+  </table>
+

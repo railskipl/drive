@@ -1,0 +1,34 @@
+<h1>Edit</h1>
+
+<%= form_for([:admin, @seo]) do |f| %>
+  <% if @seo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seo.errors.count, "error") %> prohibited this admin seo from being saved:</h2>
+
+      <ul>
+      <% @seo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :meta_title %><br />
+    <%= f.text_field :meta_title, :style=> "width: 350px;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :meta_description %><br />
+    <%= f.text_area :meta_description, :rows=>7, :cols=>20, :style=> "width: 350px;" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :meta_keyword %><br />
+    <%= f.text_area :meta_keyword, :rows=>7, :cols=>20, :style=> "width: 350px;" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
