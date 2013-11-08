@@ -1,4 +1,28 @@
 Drive::Application.routes.draw do
+
+  devise_for :users
+
+  devise_for :admins
+
+
+
+  match '/pages/:id' => 'pages#show'
+
+  namespace :admin do 
+    match '/dashboard' => "dashboard#index", :as => :root
+    resources :pages
+    resources :blogs
+    resources :seos
+    resources :car_makes
+    
+  end
+
+  
+
+  root :to => 'home#index'
+  match '/contact' => 'home#contact'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -55,4 +79,6 @@ Drive::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+
 end

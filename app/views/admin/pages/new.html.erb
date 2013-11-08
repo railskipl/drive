@@ -1,0 +1,21 @@
+<h2> Page</h2>
+
+<%= form_for [:admin, @page] do |f| %>
+
+	<p>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => 'text' %>
+   </p>
+ 
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+
+ 
+  
+   <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<%end%>
