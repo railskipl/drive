@@ -13,6 +13,7 @@ Drive::Application.routes.draw do
     resources :pages
     resources :blogs
     resources :seos
+    resources :car_makes
   end
 
   
