@@ -14,6 +14,7 @@ Drive::Application.routes.draw do
     resources :blogs
     resources :seos
     resources :car_makes
+    resources :credits
   end
 
   
