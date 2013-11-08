@@ -1,13 +1,14 @@
-<table>
-<tr>
-    <th>Name:</th>
+<table class="admintable">
+ <tr class="admintablehd">
+    <td width="25%">Name</td>
+   <td colspan=2 style="text-align: center !important;">Actions</td>
 </tr>
 
 <% @logbook_categories.each do |logbook_category|%>
   <tr>
     <td><%= logbook_category.name %></td>
-    <td><%= link_to 'Edit', edit_admin_logbook_category_path(logbook_category) %></td>
-    <td><%= link_to 'Destroy',admin_logbook_category_path(logbook_category) ,:method => :delete , data: { confirm: 'Are you sure?' } %>
+    <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_logbook_category_path(logbook_category) %></td>
+    <td style="text-align: center !important;"><%= link_to 'Destroy',admin_logbook_category_path(logbook_category) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
     </td>
   </tr>
 <% end %>

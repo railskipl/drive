@@ -1,14 +1,15 @@
-<table>
-<tr>
-    <th><b>Name:</b></th>
-    <th></th>
+<table class="admintable">
+ <tr class="admintablehd">
+    <td width="25%">Name</td>
+   <td colspan=2 style="text-align: center !important;">Actions</td>
 </tr>
+
 
 <% @car_makes.each do |car_make|%>
   <tr>
     <td><%= car_make.name %></td>
-    <td><%= link_to 'Edit', edit_admin_car_make_path(car_make) %></td>
-    <td><%= link_to 'Destroy',admin_car_make_path(car_make) ,:method => :delete , data: { confirm: 'Are you sure?' } %>
+    <td style="text-align: center !important;" ><%= link_to 'Edit', edit_admin_car_make_path(car_make) %></td>
+    <td style="text-align: center !important;"><%= link_to 'Destroy',admin_car_make_path(car_make) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
     </td>
   </tr>
 <% end %>

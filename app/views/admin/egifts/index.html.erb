@@ -1,14 +1,17 @@
-<table>
-<tr>
-    <th>Name:</th>
+<table class="admintable">
+ <tr class="admintablehd">
+    <td width="25%">Name</td>
+     <td width="25%">Photo</td>
+     
+   <td colspan=2 style="text-align: center !important;">Actions</td>
 </tr>
 
 <% @egifts.each do |egift|%>
   <tr>
     <td><%= egift.credit %></td>
-    <td><%= image_tag egift.image.url %></td>
-    <td><%= link_to 'Edit', edit_admin_egift_path(egift) %></td>
-    <td><%= link_to 'Destroy',admin_egift_path(egift) ,:method => :delete , data: { confirm: 'Are you sure?' } %>
+    <td><%= image_tag egift.image.url, :width => "165", :height=>"100" %></td>
+    <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_egift_path(egift) %></td>
+    <td style="text-align: center !important;"><%= link_to 'Destroy',admin_egift_path(egift) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
     </td>
   </tr>
 <% end %>
