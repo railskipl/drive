@@ -1,0 +1,28 @@
+<%= form_for [:admin, @egift] ,:html => { :multipart => true } do |f| %>  
+  <% if @egift.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@egift.errors.count, "error") %> prohibited this car model from being saved:</h2>
+
+      <ul>
+      <% @egift.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label "Credit" %><br />
+    <%= f.text_field :credit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image ,"Egift" %><br />
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131108061122) do
+
+ActiveRecord::Schema.define(:version => 20131108091137) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -43,6 +44,14 @@ ActiveRecord::Schema.define(:version => 20131108061122) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "car_models", :force => true do |t|
+    t.string   "name"
+    t.integer  "car_make_id"
+    t.string   "engine_displacement"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
   create_table "contacts", :force => true do |t|
     t.string   "email"
     t.text     "message"
@@ -51,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20131108061122) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
 
   create_table "credits", :force => true do |t|
     t.integer  "credit"
@@ -89,6 +99,13 @@ ActiveRecord::Schema.define(:version => 20131108061122) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.date     "birthday"
+    t.string   "location"
+    t.boolean  "agree"
+    t.boolean  "status"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

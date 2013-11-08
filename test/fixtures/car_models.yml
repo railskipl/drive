@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  car_make_id: 1
+  engine_displacement: MyString
+
+two:
+  name: MyString
+  car_make_id: 1
+  engine_displacement: MyString
