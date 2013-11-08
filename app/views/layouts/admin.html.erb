@@ -20,6 +20,20 @@
 		
 <li><% if controller.controller_name == 'pages' %> <%= link_to "Pages", admin_pages_path, :class=>"active" %> <% else %> <%= link_to "Pages", admin_pages_path %> <% end %></li>
 
+<li><% if controller.controller_name == 'seos' %> <%= link_to "Seo", admin_seos_path, :class=>"active" %> <% else %> <%= link_to "seo",admin_seos_path %> <% end %></li>
+
+<li><% if controller.controller_name == 'blogs' %> <%= link_to "Blog Topics", admin_blogs_path , :class=>"active" %> <% else %> <%= link_to "Blog Topics", admin_blogs_path %> <% end %></li>
+
+<li><% if controller.controller_name == 'car_makes' %> <%= link_to "Car Make", admin_car_makes_path, :class=>"active" %> <% else %> <%= link_to "Car Mak", admin_car_makes_path %> <% end %></li>
+
+<li><% if controller.controller_name == 'car_models' %> <%= link_to "Car Model", admin_car_models_path, :class=>"active" %> <% else %> <%= link_to "Car Model",  admin_car_models_path%> <% end %></li>
+
+<li><% if controller.controller_name == 'logbook_categories' %> <%= link_to "Logbook Categories", admin_logbook_categories_path , :class=>"active" %> <% else %> <%= link_to "Logbook Categories", admin_logbook_categories_path%> <% end %></li>
+
+
+
+
+
 	    <li>
 					<% if admin_signed_in? %> 
 						<%= link_to "Sign out", destroy_admin_session_path,:method => :delete %> 
