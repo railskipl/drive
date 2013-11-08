@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery
 
   before_filter :meta_defaults
 
   private
+
 
   def meta_defaults
     seo = Seo.first

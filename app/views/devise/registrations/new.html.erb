@@ -11,7 +11,35 @@
 
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
+
+
+<div><%= f.label :firstname %><br />
+  <%= f.text_field :first_name %></div>
+
+  <div><%= f.label :last_name%><br />
+  <%= f.text_field :last_name %></div>
+
+  <div><%= f.label :nickname %><br />
+  <%= f.text_field :nickname %></div>
   
+  <div><%= f.label :birthday %><br />
+  <%= f.date_select :birthday, :order => [:day, :month, :year] %></div>
+
+  
+  <div><%= f.label :location%><br />
+  <%= f.text_field :location%></div>
+
+<%= recaptcha_tags %>
+
+<div><%= f.label :agree ,"I agree to the Term and condition.".html_safe, :style => "float:left;"%><br />
+  <%= f.check_box :agree, {}, true, false %></div>
+
+
+
+
+  <!-- <div><%= f.label :status %><br />
+ <%= f.check_box :status, {}, true, false %></div>
+ -->
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
