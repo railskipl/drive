@@ -28,6 +28,13 @@
 
 <li><% if controller.controller_name == 'car_models' %> <%= link_to "Car Model", admin_car_models_path, :class=>"active" %> <% else %> <%= link_to "Car Model",  admin_car_models_path%> <% end %></li>
 
+<li>
+	<% if controller.controller_name == 'egifts' %> 
+	<%= link_to "Egifts", admin_egifts_path, :class=>"active" %> 
+	<% else %> 
+	<%= link_to "Egifts",  admin_egifts_path%> <% end %>
+</li>
+
 <li><% if controller.controller_name == 'logbook_categories' %> <%= link_to "Logbook Categories", admin_logbook_categories_path , :class=>"active" %> <% else %> <%= link_to "Logbook Categories", admin_logbook_categories_path%> <% end %></li>
 
 
