@@ -1,5 +1,7 @@
 Drive::Application.routes.draw do
 
+
+
   devise_for :users
 
   devise_for :admins
@@ -14,7 +16,12 @@ Drive::Application.routes.draw do
     resources :blogs
     resources :seos
     resources :car_makes
+<<<<<<< HEAD
     
+=======
+    resources :car_models
+    resources :logbook_categories
+>>>>>>> 4501eff62dce59a4d3b94839a51bb3d156bb0944
   end
 
   
