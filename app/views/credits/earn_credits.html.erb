@@ -1,0 +1,10 @@
+<h1> Earn Credits </h1>
+<p>You can earn credits by paying 1 $ = <%= @credit.credit %> credits</p>
+<%=form_tag get_credits_credits_path do |f|%>
+  Give Dollars to earn credits, Enter amount below <br/>
+
+  <%= text_field_tag 'dollars' %> <br/>
+  <%= submit_tag "Enter" %>
+
+
+<%end%>

@@ -4,7 +4,7 @@ class Admin::CreditsController < ApplicationController
 	def index
 		@credit = Credit.first
 	    if @credit.nil?
-	      @credit = Credit.new(:credit => 0)
+	      @credit = Credit.new(:credit => 0, :free_credit => 0)
 	      @credit.save
 	    end
 	end
