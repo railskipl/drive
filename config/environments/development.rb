@@ -34,4 +34,6 @@ Drive::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  RECAPTCHA_PUBLIC_KEY='6Ld57OkSAAAAAAjg5EyI8jXLyjKDtlepOXPhK28p' 
+  RECAPTCHA_PRIVATE_KEY= '6Ld57OkSAAAAAAMwZceXBvPHtPb3FFZB_rnsdJeM' 
 end
