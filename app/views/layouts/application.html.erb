@@ -4,13 +4,18 @@
   <title><%= @meta_title %></title>
   <meta name="keyword" content="<%= @meta_keyword %>" />
   <meta name="description" content="<%= @meta_description %>" />
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+
+ <%= stylesheet_link_tag  "application", :media => "all" %>
+
+  <%= javascript_include_tag "application","jquery.min.js" %>
+
+
+
   <%= csrf_meta_tags %>
   
 </head>
 <body>
-	<%= flash[:alert] %>
+	<%= flash.now[:alert] %>
 
 	<a href="/"><strong>Home</strong></a>
     <a href="/pages/1"><strong>About</strong></a>

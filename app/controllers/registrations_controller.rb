@@ -1,4 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
+    
+    layout 'application'
+
     def create
       if verify_recaptcha
         super
@@ -9,5 +12,6 @@ class RegistrationsController < Devise::RegistrationsController
         flash.delete :recaptcha_error
         render :new
       end
+    
     end
 end

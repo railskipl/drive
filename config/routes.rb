@@ -25,7 +25,7 @@ Drive::Application.routes.draw do
   root :to => 'home#index'
   match '/contact' => 'home#contact'
 
-
+#:controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

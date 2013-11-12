@@ -1,19 +1,36 @@
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+
+
+<script type="text/javascript">
+  $(function() {
+$( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
+});  
+</script>
+
+
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+
+<%= form_for(resource, :as => resource_name,:url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  
+
+ <div><%= f.label :email %><br />
   <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+ <div><%= f.label :password %><br />
+  <%= f.password_field :password%></div>
 
-  <div><%= f.label :password_confirmation %><br />
+   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
 
-<div><%= f.label :firstname %><br />
+ <div><%= f.label :firstname %><br />
   <%= f.text_field :first_name %></div>
 
   <div><%= f.label :last_name%><br />
@@ -22,26 +39,25 @@
   <div><%= f.label :nickname %><br />
   <%= f.text_field :nickname %></div>
   
-  <div><%= f.label :birthday %><br />
-  <%= f.date_select :birthday, :order => [:day, :month, :year] %></div>
+   <div><%= f.label :birthday %><br />
+  <%= f.text_field :birthday %></div>
 
   
-  <div><%= f.label :location%><br />
-  <%= f.text_field :location%></div>
-
-<%= recaptcha_tags %>
-
-<div><%= f.label :agree ,"I agree to the Term and condition.".html_safe, :style => "float:left;"%><br />
-  <%= f.check_box :agree, {}, true, false %></div>
+ <div><%= f.label :location%><br />
+  <%= f.text_field :location %></div>
 
 
+ <%= recaptcha_tags %></br>
+
+<div>
+   <%= f.check_box :agree, :style => "float:left;" %>
+  <%= f.label :agree ,"I agree to the Term and condition.".html_safe, :style => "float:center;"%><br/>
+</div>
 
 
-  <!-- <div><%= f.label :status %><br />
- <%= f.check_box :status, {}, true, false %></div>
- -->
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
+
 
 <%= render "devise/shared/links" %>

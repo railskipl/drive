@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'paperclip'
 gem 'rmagick'
 gem 'recaptcha', :require => 'recaptcha/rails'
+gem 'pry'
+
 
 
 
