@@ -1,8 +1,12 @@
 Drive::Application.routes.draw do
 
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   devise_for :admins
+
+  resources :users,  :only => [:index,:destroy]
+
+  match '/users/:id/toggled_status', :to => "users#toggled_status"
 
 
 

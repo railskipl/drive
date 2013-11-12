@@ -389,7 +389,7 @@ body {  }
 }
 #header .tabs li { margin-left: 1px; }
 #header .tabs a {
-  padding: 5px 15px;
+  padding: 5px 10px;
   background: #fff;
   color: #666666;
   text-decoration: none;
