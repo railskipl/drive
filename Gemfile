@@ -5,13 +5,13 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'paperclip'
 gem 'rmagick'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'pry'
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-
+gem 'pg'
 
 
 
