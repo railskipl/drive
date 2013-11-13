@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/galetahub/simple-captcha.git
+  revision: 3557b78feb5fa2624efce065ff77dd4775a8256f
+  specs:
+    simple_captcha (0.1.5)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -142,5 +148,6 @@ DEPENDENCIES
   recaptcha
   rmagick
   sass-rails (~> 3.2.3)
+  simple_captcha!
   sqlite3
   uglifier (>= 1.0.3)
