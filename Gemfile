@@ -11,7 +11,7 @@ gem 'rmagick'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'pry'
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-gem 'pg'
+
 
 
 
@@ -44,3 +44,4 @@ gem 'devise'
 
 # To use debugger
 # gem 'debugger'
+gem 'pg'
