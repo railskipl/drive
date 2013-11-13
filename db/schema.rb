@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112190717) do
+
+ActiveRecord::Schema.define(:version => 20131112102735) do
+
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -62,8 +64,9 @@ ActiveRecord::Schema.define(:version => 20131112190717) do
 
   create_table "credits", :force => true do |t|
     t.integer  "credit"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "free_credit"
   end
 
   create_table "egifts", :force => true do |t|
@@ -129,6 +132,9 @@ ActiveRecord::Schema.define(:version => 20131112190717) do
     t.string   "location"
     t.boolean  "agree"
     t.boolean  "status"
+    t.integer  "credit",                 :default => 0,  :null => false
+    t.integer  "freecredit",             :default => 0,  :null => false
+    t.integer  "buycredit",              :default => 0,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

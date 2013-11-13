@@ -24,6 +24,13 @@ Drive::Application.routes.draw do
     resources :egifts
   end
 
+  resources :credits do
+    collection do
+      get :earn_credits
+      post :get_credits
+    end
+  end
+
   
 
   root :to => 'home#index'
