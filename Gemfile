@@ -1,15 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.0'
+gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+# gem 'sqlite3'
 gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
-# gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'therubyracer'
 gem 'execjs'
 
@@ -17,15 +17,15 @@ gem 'execjs'
 
 # Gems used only for assets and not required
 # in production environments by default.
-
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.3.1'
-
+  gem 'uglifier', '>= 1.0.3'
+end
 
 gem 'jquery-rails'
 gem 'devise'
