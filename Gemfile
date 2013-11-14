@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
-gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+# gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'therubyracer'
 gem 'execjs'
 
