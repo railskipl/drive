@@ -4,6 +4,14 @@ Drive::Application.routes.draw do
 
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  devise_scope :user do
+  authenticated :user do
+    root :to => 'home#index'
+  end
+  unauthenticated :user do
+    root :to => 'devise/registrations#new'
+  end
+end
 
   devise_for :admins
 
@@ -36,7 +44,9 @@ Drive::Application.routes.draw do
 
   
 
-  root :to => 'home#index'
+ 
+  root :to => "devise/registrations#new"
+
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'
 
