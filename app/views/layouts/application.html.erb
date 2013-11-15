@@ -9,6 +9,8 @@
 
   <%= javascript_include_tag "application" %>
 
+  <%= javascript_include_tag "nicEdit" %>
+
 <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>
 <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
 <%= csrf_meta_tags %>
@@ -35,8 +37,15 @@
     Signed in as <%= current_user.email %>. Not you?
 
     <%= link_to "Settings",  edit_user_registration_path %>
+
     <%= link_to "Sign out", destroy_user_session_path,:method => :delete %> 
-     <%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %>
+
+
+    <%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %>
+    <%= link_to "Carprofiles" , carprofiles_path %>
+
+
+
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>
   <% end %>

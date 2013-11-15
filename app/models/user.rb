@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
                    :freecredit, :buycredit, :credit
   # attr_accessible :title, :body
 
+  has_many :carprofiles
+
  
 
 
@@ -17,7 +19,9 @@ class User < ActiveRecord::Base
     @credit = Credit.first
     if current_user.freecredit == @credit.free_credit
     elsif current_user.current_sign_in_at > current_user.last_sign_in_at
+
    
+
         credit_added = current_user.current_sign_in_at.to_date - current_user.last_sign_in_at.to_date
         if credit_added <= 7
            current_user.freecredit = current_user.freecredit + credit_added

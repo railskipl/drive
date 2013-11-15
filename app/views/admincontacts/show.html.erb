@@ -1,0 +1,28 @@
+
+<% if admin_signed_in? %>
+<p><%= notice %></p>
+
+<p>
+  <b>Car make:</b>
+  <%= @admincontact.carmake %>
+</p>
+
+<p>
+  <b>Car model:</b>
+  <%= @admincontact.carmodel %>
+</p>
+
+<p>
+  <b>Engine Displacement:</b>
+  <%= @admincontact.enginedis %>
+</p>
+
+<p>
+  <b>Email id:</b>
+  <%= @admincontact.emailid %>
+</p>
+
+
+<%= link_to 'Back', admincontacts_path %>
+
+<% end %>

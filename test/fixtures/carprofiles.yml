@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  car_make_id: 1
+  car_model_id: 1
+  manufacturing_year: 2013-11-12
+  year_of_purchase: 2013-11-12
+  whatkindofcar: MyString
+
+two:
+  car_make_id: 1
+  car_model_id: 1
+  manufacturing_year: 2013-11-12
+  year_of_purchase: 2013-11-12
+  whatkindofcar: MyString

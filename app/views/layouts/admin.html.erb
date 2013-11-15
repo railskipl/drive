@@ -28,6 +28,9 @@
 
 <li><% if controller.controller_name == 'car_models' %> <%= link_to "Car Model", admin_car_models_path, :class=>"active" %> <% else %> <%= link_to "Car Model",  admin_car_models_path%> <% end %></li>
 <li><% if controller.controller_name == 'credits' %> <%= link_to "Credit Conversion", admin_credits_path, :class=>"active" %> <% else %> <%= link_to "Credit Conversion",  admin_credits_path %> <% end %></li>
+<li><% if controller.controller_name == 'engines' %> <%= link_to "Engine ", admin_engines_path, :class=>"active" %> <% else %> <%= link_to "Engine",  admin_engines_path %> <% end %></li>
+<li><% if controller.controller_name == 'admincontacts' %> <%= link_to "complaints ", admincontacts_path, :class=>"active" %> <% else %> <%= link_to "complaints",  admincontacts_path %> <% end %></li>
+<li><% if controller.controller_name == 'body_indices' %> <%= link_to "Body index ", admin_body_indices_path, :class=>"active" %> <% else %> <%= link_to "Body index ",  admin_body_indices_path %> <% end %></li>
 <li>
 	<% if controller.controller_name == 'egifts' %> 
 	<%= link_to "Egifts", admin_egifts_path, :class=>"active" %> 

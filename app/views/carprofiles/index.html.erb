@@ -1,0 +1,14 @@
+<h1>Carprofiles</h1>
+<table>
+
+
+<ol>
+  <% @carprofiles.each do |carprofile| %>
+  <li><%= link_to carprofile.car_make.name, carprofile_path(carprofile) %></li>
+  <% end %>
+</ol>
+
+
+<%= link_to "New profile", new_carprofile_path %>
+</table>
+

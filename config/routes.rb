@@ -1,7 +1,8 @@
 Drive::Application.routes.draw do
 
-  resources :comments
+  get "body_indices/index"
 
+  resources :comments
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   devise_scope :user do
@@ -19,8 +20,6 @@ end
 
   match '/users/:id/toggled_status', :to => "users#toggled_status"
 
-
-
   match '/pages/:id' => 'pages#show'
 
   namespace :admin do 
@@ -33,6 +32,8 @@ end
     resources :car_models
     resources :logbook_categories
     resources :egifts
+    resources :engines
+    resources :body_indices
   end
 
   resources :credits do
@@ -41,8 +42,9 @@ end
       post :get_credits
     end
   end
-
-  
+  resources :admincontacts
+  resources :carprofiles 
+  resources :carprofile_photos
 
  
   root :to => "devise/registrations#new"

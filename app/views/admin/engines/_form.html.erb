@@ -1,0 +1,28 @@
+<%= form_for [:admin, @engine]  do |f| %>  
+  <% if @engine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@engine.errors.count, "error") %> prohibited this car model from being saved:</h2>
+
+      <ul>
+      <% @engine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  
+   <div class="field">
+    <%= f.label "Car Model" %><br />
+    <%= f.collection_select :car_model_id, CarModel.all ,:id,:name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Engine Displacement" %><br />
+    <%= f.text_field :engine_displacement %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Car Model" %>
+  </div>
+<% end %>
