@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20131114124051) do
+ActiveRecord::Schema.define(:version => 20131115095347) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -22,10 +21,6 @@ ActiveRecord::Schema.define(:version => 20131114124051) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-
-ActiveRecord::Schema.define(:version => 20131112190717) do
-
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -51,6 +46,13 @@ ActiveRecord::Schema.define(:version => 20131112190717) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "body_indices", :force => true do |t|
+    t.integer  "car_model_id"
+    t.string   "bodyindex"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "car_makes", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -64,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20131112190717) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
-
 
   create_table "carprofile_photos", :force => true do |t|
     t.integer  "carprofile_id"
@@ -92,13 +93,14 @@ ActiveRecord::Schema.define(:version => 20131112190717) do
     t.integer  "user_id"
     t.integer  "engine_id"
     t.integer  "carprofile_photo_id"
+    t.integer  "body_index_id"
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-
   end
 
   create_table "contacts", :force => true do |t|

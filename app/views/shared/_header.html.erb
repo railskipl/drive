@@ -1,0 +1,29 @@
+<div class="header">
+
+
+  <div class="container_20">
+
+    <div class="grid_5">
+      <a href="#"><img src="/assets/logo.png" alt="" border="0"></a> </div>
+    
+    <div class="grid_15">
+      <div class="search_div">
+
+     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%= f.email_field :email,:class=>"search_tf"%>
+        <%= f.password_field :password,:class=>"search_tf" %>
+         <%= f.submit "Log In",:class=>"submit_btn" %>
+          <% end %>
+
+
+
+
+      </div>
+    
+      </div>
+
+  </div>
+
+
+</div>
+
