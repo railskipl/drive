@@ -1,5 +1,7 @@
 Drive::Application.routes.draw do
 
+  get "body_indices/index"
+
   resources :comments
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
@@ -23,6 +25,7 @@ Drive::Application.routes.draw do
     resources :logbook_categories
     resources :egifts
     resources :engines
+    resources :body_indices
   end
 
   resources :credits do
