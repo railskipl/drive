@@ -1,0 +1,28 @@
+<%= form_for [:admin, @body_index]  do |f| %>  
+  <% if @body_index.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@body_index.errors.count, "error") %> prohibited this car model from being saved:</h2>
+
+      <ul>
+      <% @body_index.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  
+   <div class="field">
+    <%= f.label "Car Model" %><br />
+    <%= f.collection_select :car_model_id, CarModel.all ,:id,:name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Body index " %><br />
+    <%= f.text_field :bodyindex %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Body Index" %>
+  </div>
+<% end %>

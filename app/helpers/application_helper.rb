@@ -25,6 +25,23 @@ module ApplicationHelper
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
   end
 
+
+ def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
+
+
+
+
     def build_photo_tag(photo_file, alt_text)
         photo_tag(photo_file, :size =>"20x20", :alt => alt_text)
     end
@@ -36,4 +53,5 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+
 end
