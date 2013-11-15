@@ -1,21 +1,12 @@
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css" />
-
-
-<script type="text/javascript">
-  $(function() {
-$( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
-});  
+<script>
+   $(function() {
+ $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
+ });  
 </script>
-
-
 <h2>Sign up</h2>
 
 
-<%= form_for(resource, :as => resource_name,:url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :as => resource_name,:url => registration_path(resource_name), :html => {:id => "user"}) do |f| %>
   <%= devise_error_messages! %>
 
   
@@ -40,18 +31,18 @@ $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
   <%= f.text_field :nickname %></div>
   
    <div><%= f.label :birthday %><br />
-  <%= f.text_field :birthday %></div>
+  <%= f.text_field :birthday,:id=>"datepicker",size:10 %></div>
 
   
  <div><%= f.label :location%><br />
   <%= f.text_field :location %></div>
 
-
- <%= recaptcha_tags %></br>
+ <div>
+<%= show_simple_captcha %></div>
 
 <div>
-   <%= f.check_box :agree, :style => "float:left;" %>
-  <%= f.label :agree ,"I agree to the Term and condition.".html_safe, :style => "float:center;"%><br/>
+   <%= f.check_box :agree, {},true,false %>
+  <%= f.label :agree ,"I agree to the Term and condition.".html_safe, :style => "float:left;"%><br/>
 </div>
 
 

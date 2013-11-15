@@ -1,17 +1,17 @@
 class RegistrationsController < Devise::RegistrationsController
-    
-    layout 'application'
 
-    def create
-      if verify_recaptcha
-        super
+def create
+      if simple_captcha_valid?
+         super
       else
-        build_resource
-        clean_up_passwords(resource)
-        flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
-        flash.delete :recaptcha_error
-        render :new
+         build_resource
+         clean_up_passwords(resource)
+         flash[:error] = "There was an error with the captcha code below. Please re-enter the code and click submit."
+         render :new
       end
     
     end
+
+
 end
+ 

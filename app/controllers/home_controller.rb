@@ -20,4 +20,13 @@ class HomeController < ApplicationController
 	           @title = "contacts"
 	         end
     end
+
+def search
+q = params[:q]
+@q = User.search(first_name_or_last_name_or_location_cont: q)
+@users=@q.result(:distinct => true)
+
+end
+
+
 end

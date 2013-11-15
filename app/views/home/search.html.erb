@@ -1,0 +1,28 @@
+
+<table class="admintable">
+ <tr class="admintablehd">
+    <td width="25%">Firstname</td>
+   <td>Lastname</td>
+    <td>Email</td>
+   <td>Location</td>
+</tr>
+
+<% @users.each do |user|%>
+  <tr>
+    <td><%= user.first_name %></td>
+     <td><%= user.last_name %></td>
+      <td><%= user.email %></td>
+    <td><%= user.location %></td>
+    
+
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+
+
+
+
+

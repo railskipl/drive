@@ -1,15 +1,26 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
+
 
 gem 'rails', '3.2.14'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+<<<<<<< HEAD
 gem 'sqlite3'
 
+=======
+#gem 'sqlite3'
+gem 'paperclip'
+>>>>>>> ed188b321eb08547bde2d3893ebf88fef94dd4e4
 gem 'rmagick'
-gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'pry'
+gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+
+gem "ransack" 
+
+gem 'therubyracer'
+gem 'execjs'
 
 
 
@@ -44,3 +55,4 @@ gem 'paperclip'
 
 # To use debugger
 # gem 'debugger'
+gem 'pg'
