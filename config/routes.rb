@@ -1,5 +1,8 @@
 Drive::Application.routes.draw do
 
+  resources :comments
+
+
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   devise_for :admins
@@ -35,6 +38,7 @@ Drive::Application.routes.draw do
 
   root :to => 'home#index'
   match '/contact' => 'home#contact'
+  match 'search' => 'home#search'
 
 #:controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation:
