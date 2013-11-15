@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  emailid: MyString
+  carmake: MyString
+  carmodel: MyString
+  enginedis: MyString
+
+two:
+  emailid: MyString
+  carmake: MyString
+  carmodel: MyString
+  enginedis: MyString

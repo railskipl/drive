@@ -1,0 +1,28 @@
+<% if admin_signed_in? %>
+<h1>Admincontacts </h1>
+
+<table class="admintable">
+<tr class="admintablehd">
+    <td width="20%">User email</td>
+       <td width="20%">Car make</td>
+   <td colspan=2 style="text-align: center !important;">Actions</td>
+</tr>
+
+
+
+<% @admincontacts.each do |admincontact|%>
+  <tr>
+    <td><%= admincontact.emailid rescue nil%></td>
+    <td><%= admincontact.carmake rescue nil%></td>
+    <td style="text-align: center !important;" ><%= link_to 'Show', admincontact_path(admincontact) %></td>
+    <td style="text-align: center !important;" ><%= link_to 'Destroy',admincontact_path(admincontact) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% end %>
+
+

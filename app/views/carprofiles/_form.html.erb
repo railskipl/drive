@@ -1,0 +1,92 @@
+<%= form_for @carprofile,:html => { :multipart => true } do |f| %>
+   <% if @carprofile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@carprofile.errors.count, "error") %> prohibited this car make from being saved:</h2>
+
+      <ul>
+      <% @carprofile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+ <div class="field">
+  <%= f.fields_for :carprofile_photos do |builder| %>
+    <%= render "carprofile_photo_fields", :f => builder %><br/>
+
+  <% end %>
+ <p><%= link_to_add_fields "Add Image", f, :carprofile_photos %></p><br/>
+ </div>
+
+  <div class="field">
+    <%= f.label "Car Make" %><br />
+    <%= f.collection_select :car_make_id, CarMake.all ,:id,:name%>
+  </div> 
+
+  <div>
+    <p> If your car make or car model not present please contact <%= link_to "Inform admin", new_admincontact_path %> </p>
+  </div>
+
+  <div class="field">
+    <%= f.label "Car Model"%><br />
+    <%= f.grouped_collection_select :car_model_id, CarMake.all, :car_models,:name, :id, :name%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Manufacturing Year" %><br />
+    <%= f.date_select :manufacturing_year , :order => [:year] ,:start_year => 1970 %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Year of purchase" %><br />
+    <%= f.date_select :year_of_purchase ,:order => [:year], :start_year => 1970%>
+  </div>
+
+  <div class="field">
+    <%= f.label "What kind of this car" %><br />
+    Currently own<%= f.radio_button :whatkindofcar, "currently_own" %>
+    Previous Car<%= f.radio_button :whatkindofcar, "previous_car" %>
+  </div>
+  <br/>
+  <p><strong>/!\ Attention ! Photos will pass moderation.Cars with other people,as well as brand,terrible quality,or indecent photographs will be blocked by the moderator. Do not upload  photos from car magazines or someone else’s car.Please follow Forum Rules.  
+  </strong></p>
+  
+  <div class="field">
+    <%= f.label "Car Description" %><br />
+    <%= f.text_area :car_description ,:rows=>6, :cols=>10,:style=> "width: 300px;"%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Power" %><br />
+    <%= f.text_field :power %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Engine Displacement"%><br />
+    <%= f.collection_select :engine_id, Engine.all, :id, :engine_displacement%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Do you sell this car" %><br />
+    Yes <%= f.radio_button :sellthiscar, "yes" %>
+    No<%= f.radio_button :sellthiscar, "no" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "VIN" %><br />
+    <%= f.text_field :VIN %>
+  </div>
+
+  <div class="field">
+    <%= f.label "License Plate" %><br />
+    <%= f.text_field :license_plate %>
+  </div>
+
+  <%= f.hidden_field :user_id,:value => current_user.id %>
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,7 @@
 Drive::Application.routes.draw do
 
+  get "admincontacts/index"
+
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
   devise_for :admins
@@ -7,8 +9,6 @@ Drive::Application.routes.draw do
   resources :users,  :only => [:index,:destroy]
 
   match '/users/:id/toggled_status', :to => "users#toggled_status"
-
-
 
   match '/pages/:id' => 'pages#show'
 
@@ -22,6 +22,7 @@ Drive::Application.routes.draw do
     resources :car_models
     resources :logbook_categories
     resources :egifts
+    resources :engines
   end
 
   resources :credits do
@@ -30,8 +31,9 @@ Drive::Application.routes.draw do
       post :get_credits
     end
   end
-
-  
+  resources :admincontacts
+  resources :carprofiles 
+  resources :carprofile_photos
 
   root :to => 'home#index'
   match '/contact' => 'home#contact'

@@ -1,0 +1,73 @@
+<p><%= notice %></p>
+
+<p>
+  <b>Car make:</b>
+  <%= @carprofile.car_make.name%>
+</p>
+
+<p>
+	<b>Car photos</b>
+ <% for carprofile in @carprofile.carprofile_photos %>
+  <%= image_tag carprofile.photo.url(:medium) %>
+ <% end %>
+</p>
+
+<p>
+  <b>Car model:</b>
+  <%= @carprofile.car_model.name%>
+</p>
+
+<p>
+  <b>Manufacturing Year of car:</b>
+  <%= @carprofile.manufacturing_year%>
+</p>
+
+<p>
+  <b>Year of Purchase:</b>
+  <%= @carprofile.year_of_purchase%>
+</p>
+
+<p>
+  <b>What kind of car of this:</b>
+  <%= @carprofile.whatkindofcar%>
+</p>
+
+<p>
+  <b>Car Description:</b>
+  <%= @carprofile.car_description%>
+</p>
+
+<p>
+  <b>Power:</b>
+  <%= @carprofile.power%>
+</p>
+
+<p>
+  <b>Engine Displacement:</b>
+  <%= @carprofile.engine.engine_displacement%>
+</p>
+
+<p>
+  <b>License plate:</b>
+  <%= @carprofile.license_plate%>
+</p>
+
+<p>
+  <b>Do you sell this car:</b>
+  <%= @carprofile.sellthiscar%>
+</p>
+
+<p>
+  <b>VIN:</b>
+  <%= @carprofile.VIN%>
+</p>
+
+
+
+
+
+
+
+
+<%= link_to 'Back', carprofiles_path %>
+

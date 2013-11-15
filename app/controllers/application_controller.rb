@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 
   before_filter :meta_defaults
 
+ 
+      
+
+
   private
 
 

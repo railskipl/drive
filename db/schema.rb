@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131112102735) do
+ActiveRecord::Schema.define(:version => 20131114124051) do
+
+  create_table "admincontacts", :force => true do |t|
+    t.string   "emailid"
+    t.string   "carmake"
+    t.string   "carmodel"
+    t.string   "enginedis"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -51,6 +60,34 @@ ActiveRecord::Schema.define(:version => 20131112102735) do
     t.datetime "updated_at",          :null => false
   end
 
+  create_table "carprofile_photos", :force => true do |t|
+    t.integer  "carprofile_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
+
+  create_table "carprofiles", :force => true do |t|
+    t.integer  "car_make_id"
+    t.integer  "car_model_id"
+    t.date     "manufacturing_year"
+    t.date     "year_of_purchase"
+    t.string   "whatkindofcar"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.text     "car_description"
+    t.string   "power"
+    t.string   "sellthiscar"
+    t.string   "license_plate"
+    t.string   "VIN"
+    t.integer  "user_id"
+    t.integer  "engine_id"
+    t.integer  "carprofile_photo_id"
+  end
+
   create_table "contacts", :force => true do |t|
     t.string   "email"
     t.text     "message"
@@ -75,6 +112,13 @@ ActiveRecord::Schema.define(:version => 20131112102735) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "engines", :force => true do |t|
+    t.integer  "car_model_id"
+    t.string   "engine_displacement"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "logbook_categories", :force => true do |t|
