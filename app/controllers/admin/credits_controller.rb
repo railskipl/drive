@@ -1,4 +1,5 @@
 class Admin::CreditsController < ApplicationController
+
   before_filter :authenticate_admin!, :except => []
   layout 'admin'
 	def index
@@ -8,7 +9,7 @@ class Admin::CreditsController < ApplicationController
 	      @credit.save
 	    end
 	end
-
+    
 	def update
 	    @credit = Credit.find(params[:id])
 	    @credit.update_attributes(params[:credit])

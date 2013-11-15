@@ -11,8 +11,7 @@ gem 'rmagick'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'pry'
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-
-
+gem "ransack" 
 
 
 # Gems used only for assets and not required

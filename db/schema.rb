@@ -11,9 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20131112102735) do
-
+ActiveRecord::Schema.define(:version => 20131113100823) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -51,6 +49,13 @@ ActiveRecord::Schema.define(:version => 20131112102735) do
     t.string   "engine_displacement"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "post_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "contacts", :force => true do |t|
