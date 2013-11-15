@@ -13,8 +13,6 @@
 <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
 
 
-
-
   <%= csrf_meta_tags %>
   
 </head>
@@ -29,7 +27,7 @@
   <% if user_signed_in? %>
     Signed in as <%= current_user.email %>. Not you?
     <%= link_to "Settings",  edit_user_registration_path %>
-    <%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %>
+     <%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %>
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
@@ -41,7 +39,16 @@
     <a href="/pages/1"><strong>About</strong></a>
     <a href="/contact"><strong>Contact Us</strong></a>
 
+ <%= form_tag search_path, :method=> :get do %>
+  <%= text_field_tag :q, nil %>
+    <%= submit_tag "Search"%>
+<% end %>
+
+
+
+
 <%= yield %>
+
 
 
 

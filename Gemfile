@@ -11,8 +11,12 @@ gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
+
+gem "ransack" 
+
 gem 'therubyracer'
 gem 'execjs'
+
 
 
 
