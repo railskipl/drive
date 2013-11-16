@@ -133,3 +133,20 @@ color: #CC1B2C;
 }
 
 .red{ color:#A20111 }
+
+
+#flash_notice {
+/*background-color: #D9EDF7;*/
+border-color: #BCE8F1;
+color: white;
+padding: 15px;
+text-align: center;
+}
+
+/*#flash_alert {
+background-color: #F2DEDE;
+border-color: #EED3D7;
+color: white;
+padding: 10px;
+text-align: center;
+}*/

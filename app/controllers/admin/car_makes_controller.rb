@@ -13,7 +13,7 @@ class Admin::CarMakesController < ApplicationController
   def create
     @car_make = CarMake.new(params[:car_make])
     if @car_make.save
-	 	flash[:notice] = "car_make created successfully"
+	 	flash[:notice] = "Car Make Created Successfully"
         redirect_to admin_car_makes_path
     else
         render :new
@@ -27,7 +27,7 @@ class Admin::CarMakesController < ApplicationController
     def update
       @car_make = CarMake.find(params[:id])
       if @car_make.update_attributes(params[:car_make])
-        flash[:notice] = "car_make saved successfully"
+        flash[:notice] = "Car Make Saved Successfully"
         redirect_to admin_car_makes_path
       else
         render :new
@@ -39,7 +39,7 @@ class Admin::CarMakesController < ApplicationController
       @car_make = CarMake.find(params[:id])
      
       if @car_make.destroy
-        flash[:notice] = "car_make deleted successfully"
+        flash[:notice] = "Car Make Deleted Successfully"
         redirect_to admin_car_makes_path
       end
       
