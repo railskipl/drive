@@ -27,10 +27,14 @@
 <%= render 'shared/header' %>
    
 
-	<%= flash[:alert] %>
-    
-<%= flash[:notice] %>
-<%= flash[:error] %>
+<div id="flash_notice"> 
+
+  <%= flash[:notice] %>
+</div>
+<div id="flash_error"> 
+
+  <%= flash[:error] %>
+</div>   
 
 <div id="user_nav">
   <% if user_signed_in? %>

@@ -13,7 +13,7 @@ class Admin::BodyIndicesController < ApplicationController
   	@body_index = BodyIndex.new(params[:body_index])
 
   	if @body_index.save
-  		flash[:notice] = "created successfully"
+  		flash[:notice] = "Created Successfully"
   		redirect_to admin_body_indices_path
   	else 
   		render :new
@@ -23,7 +23,7 @@ class Admin::BodyIndicesController < ApplicationController
   def update
   	@body_index = BodyIndex.find(params[:id])
   	if @body_index.update_attributes(params[:body_index])
-  		flash[:notice] = "updated successfully"
+  		flash[:notice] = "Updated Successfully"
   		redirect_to admin_body_indices_path
   	else
   		render :new
@@ -34,7 +34,7 @@ class Admin::BodyIndicesController < ApplicationController
   def destroy
   	@body_index = BodyIndex.find(params[:id])
   	if @body_index.destroy
-  		flash[:notice] = "deleted successfully"
+  		flash[:notice] = "Deleted Successfully"
   		redirect_to admin_body_indices_path
   	end
   end
