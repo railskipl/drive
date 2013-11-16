@@ -12,12 +12,10 @@
 </head>
 
 <body>
-	<div id="header">
-		<div id="logo">
-			<%= image_tag  "/assets/logo.png" %>&nbsp; <span style="color:#fff; font-size:34px;">Admin Panel</span>
-		</div>
-		<div id="nav">
-				<ul class="tabs">
+  <div id="header">
+   <span style="color:#fff; font-size:32px;"> <%= image_tag  "/assets/logo.png", :width => "185px"  %></span>
+	<div id="nav">
+<ul class="tabs">
 		
 <li><% if controller.controller_name == 'pages' %> <%= link_to "Pages", admin_pages_path, :class=>"active" %> <% else %> <%= link_to "Pages", admin_pages_path %> <% end %></li>
 
@@ -53,7 +51,7 @@
 						<%= link_to "Sign In", new_admin_session_path %> &nbsp; 
 					<% end %>
 			</li>	
-			</ul>
+</ul>
 		
 		</div>
 		</div>
@@ -69,7 +67,7 @@
 	<div id="footer">
       <div id="footer_logo">
             <div id="powered_by">
-            	Powered by <a target="_blank" href="http://www.kunalinfotech.net" style="color:#FFFFFF;">Kunalinfotech Pvt Ltd</a>
+            	Powered by <a target="_blank" href="#" style="color:#FFFFFF;">Drive Blogs</a>
         	</div>
       </div>
     </div>
