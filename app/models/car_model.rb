@@ -4,4 +4,5 @@ class CarModel < ActiveRecord::Base
   has_many :body_indices
   has_many :carprofiles
   has_many :engines
+  has_many :logbooks
 end

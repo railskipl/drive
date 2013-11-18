@@ -1,6 +1,7 @@
 Drive::Application.routes.draw do
 
-  get "body_indices/index"
+  resources :comment_logbooks
+
 
   resources :comments
 
@@ -9,6 +10,8 @@ Drive::Application.routes.draw do
   devise_for :admins
 
   resources :users,  :only => [:index,:destroy]
+
+  post "dynamic_models/:id" => "carprofiles#dynamic_models"
 
   match '/users/:id/toggled_status', :to => "users#toggled_status"
 
@@ -35,6 +38,7 @@ Drive::Application.routes.draw do
     end
   end
   resources :admincontacts
+  resources :logbooks
   resources :carprofiles 
   resources :carprofile_photos
 
