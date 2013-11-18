@@ -3,51 +3,215 @@
  $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
  });  
 </script>
-<h2>Sign up</h2>
+<div class="container_20">
 
+    
+    <div class="car_bg">
+    
+    <div class="grid_11">
+    
+    <div class="signup_heading">SIGN UP</div>
+   <div class="signup_box">
+
+
+<div style="padding:15px">
+<table width="100%"  border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF">
 
 <%= form_for(resource, :as => resource_name,:url => registration_path(resource_name), :html => {:id => "user"}) do |f| %>
   <%= devise_error_messages! %>
+<tr>
+ <td><label>Email<span class="red">*</span></label>
+  <%= f.email_field :email, :autofocus => true,:class=>"signup_tf"  %></td>
 
+
+<td><label>Password  <span class="red">*</span></label>
+  <%= f.password_field :password,:class=>"signup_tf" %></td>
+</tr>
+  
+<tr>
+ <td><label>First Name <span class="red">*</span></label>
+  <%= f.text_field :first_name,:class=>"signup_tf"  %></td>
+ <td><label>Last Name  <span class="red">*</span></label>
+  <%= f.text_field :last_name ,:class=>"signup_tf"  %></td>
+ </tr>
+
+ 
+<tr>
+ <td><label>Nick Name  <span class="red">*</span></label>
+  <%= f.text_field :nickname,:class=>"signup_tf"  %></td>
+
+  <td><label>Birthday  <span class="red">*</span></label>
+  <%= f.text_field :birthday,:id=>"datepicker",size:10 ,:class=>"signup_tf" %></td>
+ </tr>
   
 
- <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<tr>
+ <td><label>Location  <span class="red">*</span></label>
+  <%= f.text_field :location,:class=>"signup_tf"  %></td>
 
- <div><%= f.label :password %><br />
-  <%= f.password_field :password%></div>
+<td rowspan="3" align="left" valign="top">
+<%= show_simple_captcha%></td>
+</tr>
 
-   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-
- <div><%= f.label :firstname %><br />
-  <%= f.text_field :first_name %></div>
-
-  <div><%= f.label :last_name%><br />
-  <%= f.text_field :last_name %></div>
-
-  <div><%= f.label :nickname %><br />
-  <%= f.text_field :nickname %></div>
+<tr>
+<td>
+   <%= f.check_box :agree, {},true,false %> Agree with terms and conditions  <span class="red">*</span> </td>
   
-   <div><%= f.label :birthday %><br />
-  <%= f.text_field :birthday,:id=>"datepicker",size:10 %></div>
+</td>
 
-  
- <div><%= f.label :location%><br />
-  <%= f.text_field :location %></div>
+</tr>
 
- <div>
-<%= show_simple_captcha %></div>
+<tr>
 
-<div>
-   <%= f.check_box :agree, {},true,false %>
-  <%= f.label :agree ,"I agree to the Term and condition.".html_safe, :style => "float:left;"%><br/>
-</div>
-
-
-  <div><%= f.submit "Sign up" %></div>
+  <td><%= f.submit "Sign up",:class=>"submit_btn" %></td>
+</tr>
 <% end %>
 
+<%#= render "devise/shared/links" %>
 
-<%= render "devise/shared/links" %>
+</table>
+
+</div>
+
+   </div>
+  </div>
+  
+  
+ 
+ <div class="grid_11">
+  
+  <div class="cod">
+  <div class="red_heading_cod">CAR OF THE DAY</div>
+  <div class="box">
+    <a href="#"><img src="/assets/car.jpg" alt="" border="0"></a>
+  <div class="car_caption">  100 (C4) 100 Audi by Igor</div>
+  </div>
+  </div>
+  </div>
+
+<div class="grid_9">
+   <div class="red_heading">PERSONAL EXPERIENCE</div>
+  <div class="box2">
+  <strong>Personal stories, advice and support</strong></br>
+  
+  Logbooks from the real car owners - are truth about the experience from the first hands.
+How-to guides with photos, tips and articles on car care and maintenance.  
+
+<div style="margin-top:10px"><strong>Make</strong>  <span class="red">*</span></div>
+<div><select name="" class="pe_tf">
+    <option>Select a Make</option>
+    
+</select></div>
+
+
+
+
+<div style="margin-top:10px"><strong>Topic</strong>  <span class="red">*</span></div>
+<div><select name="" class="pe_tf">
+    <option>Select</option>
+   
+</select></div>
+
+
+<div style="margin:10px 0 0 0"><input type="button" style="margin:0" class="submit_btn" value="Search">
+</div>
+
+</div>
+   
+   </div>
+ </div>
+  </div>
+
+ <div>
+
+<div class="topcar_wrap">
+<div class="container_20">
+<div class="grid_20">
+ 
+ <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+ 
+ <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+ 
+  <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+  <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+  <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+  <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+ 
+  <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+  <ul class="topcar">
+ <li><a href="#">Acura</a></li>
+  <li><a href="#">Alfa Romeo</a></li>
+   <li><a href="#">Aston Martin Audi</a></li>
+    <li><a href="#">Buick</a></li>
+   <li><a href="#">BYD</a></li>
+    <li><a href="#">BMW</a></li>
+ </ul>
+ 
+ 
+ 
+ 
+ </div>
+ 
+ </div>
+
+
+</div>
+
+  
+  

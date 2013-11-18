@@ -6,11 +6,11 @@ class SessionsController < Devise::SessionsController
 
   def create
     self.resource = warden.authenticate!(auth_options)
-      set_flash_message(:notice, :signed_in) if is_navigational_format?
       if resource.status
       	sign_out current_user 
         redirect_to root_url,:notice => "Your account is blocked,please contact admin"
       else
+        set_flash_message(:notice, :signed_in) if is_navigational_format?
   	    sign_in(resource_name, resource)
         resource.credit_points(current_user)
   	    if !session[:return_to].blank?

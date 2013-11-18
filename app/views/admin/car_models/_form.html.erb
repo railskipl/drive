@@ -13,15 +13,15 @@
 
   
   <div class="field">
-    <%= f.label "Car Name" %><br />
+    <%= f.label :name ,"Car Model" %><br />
     <%= f.text_field :name %>
   </div>
    <div class="field">
-    <%= f.label "Car Make" %><br />
+    <%= f.label :car_make_id, "Car Make" %><br />
     <%= f.collection_select :car_make_id, CarMake.all ,:id,:name %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Car Model" %>
+    <%= f.submit %>
   </div>
 <% end %>

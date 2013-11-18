@@ -1,0 +1,52 @@
+ <div id="wrapper">
+
+
+                  <div id="help_top">
+                    
+                  </div>
+    
+
+
+   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <div id="login_area">
+            <label for="username">Email</label>
+                <div id="username_textbox_bg">
+                  <%= f.email_field :email %></p>
+                </div>
+
+        <label for="password">Password</label>
+        <div id="password_textbox_bg">
+                          <%= f.password_field :password %></p>
+                </div>
+
+                <div id="checkbox_area">
+                          <% if devise_mapping.rememberable? -%>
+                    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+                  <% end -%>
+        </div>
+   
+            <div id="submit_area">
+                          <%= f.submit "Sign in" %>
+                        </div>
+
+
+             <% if !flash.empty? %>
+                  <div id="notice"><%= alert %><%= notice %></div>
+                           
+             <% end %>
+        
+           </div>
+  </div>
+<% end %>
+
+<div id="help_forgot_pw">
+    
+
+</div>
+<div class="clearfooter"></div>
+</div>
+
+
+<script type="text/javascript">
+document.getElementById('admin_username').focus();
+ </script>

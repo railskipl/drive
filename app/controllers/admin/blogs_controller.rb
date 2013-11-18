@@ -13,7 +13,7 @@ class Admin::BlogsController < ApplicationController
   def create
     @blog = Blog.new(params[:blog])
     if @blog.save
-	 	flash[:notice] = "blog created successfully"
+	 	flash[:notice] = "Blog Created Successfully"
         redirect_to admin_blogs_path
     else
         render :new
@@ -27,7 +27,7 @@ class Admin::BlogsController < ApplicationController
     def update
       @blog = Blog.find(params[:id])
       if @blog.update_attributes(params[:blog])
-        flash[:notice] = "blog saved successfully"
+        flash[:notice] = "Blog Saved Successfully"
         redirect_to admin_blogs_path
       else
         render :new
@@ -39,7 +39,7 @@ class Admin::BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
      
       if @blog.destroy
-        flash[:notice] = "blog deleted successfully"
+        flash[:notice] = "Blog Deleted Successfully"
         redirect_to admin_blogs_path
       end
       

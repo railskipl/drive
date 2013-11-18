@@ -5,7 +5,7 @@
   <meta name="keyword" content="<%= @meta_keyword %>" />
   <meta name="description" content="<%= @meta_description %>" />
 
- <%= stylesheet_link_tag  "application", :media => "all" %>
+  <%= stylesheet_link_tag  "reset", "text", "style", "1000_20_10_10" %>
 
   <%= javascript_include_tag "application" %>
 
@@ -15,48 +15,60 @@
 
 <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css" %>
 <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
+<%= csrf_meta_tags %>
 
 
-  <%= csrf_meta_tags %>
-  
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
 
-	<%= flash[:alert] %>
-    
-<%= flash[:notice] %>
-<%= flash[:error] %>
+<div class="wraper">
+
+
+<%= render 'shared/header' %>
+   
+
+<div id="flash_notice"> 
+
+  <%= flash[:notice] %>
+</div>
+<div id="flash_error"> 
+
+  <%= flash[:error] %>
+</div>   
 
 <div id="user_nav">
   <% if user_signed_in? %>
     Signed in as <%= current_user.email %>. Not you?
+
     <%= link_to "Settings",  edit_user_registration_path %>
+
+    <%= link_to "Sign out", destroy_user_session_path,:method => :delete %> 
+
 
     <%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %>
     <%= link_to "Carprofiles" , carprofiles_path %>
 
+
     <%= link_to "Logbooks", logbooks_path %>
+
+
+
 
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
   <% end %>
 </div>
-<br/>
-
-	<a href="/"><strong>Home</strong></a>
-    <a href="/pages/1"><strong>About</strong></a>
-    <a href="/contact"><strong>Contact Us</strong></a>
-
- <%= form_tag search_path, :method=> :get do %>
-  <%= text_field_tag :q, nil %>
-    <%= submit_tag "Search"%>
-<% end %>
 
 
 
 
 <%= yield %>
+
+<%= render 'shared/footer' %>
+</div>
+
+
 
 
 

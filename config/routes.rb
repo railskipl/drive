@@ -3,9 +3,18 @@ Drive::Application.routes.draw do
   resources :comment_logbooks
 
 
+
   resources :comments
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  devise_scope :user do
+  authenticated :user do
+    root :to => 'home#index'
+  end
+  unauthenticated :user do
+    root :to => 'devise/registrations#new'
+  end
+end
 
   devise_for :admins
 
@@ -42,7 +51,9 @@ Drive::Application.routes.draw do
   resources :carprofiles 
   resources :carprofile_photos
 
-  root :to => 'home#index'
+ 
+  root :to => "devise/registrations#new"
+
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'
 
