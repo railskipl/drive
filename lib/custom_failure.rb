@@ -3,7 +3,7 @@ class CustomFailure < Devise::FailureApp
     if warden_options[:scope] == :user 
       root_path 
     else 
-    super
+      super
     end 
   end 
 
