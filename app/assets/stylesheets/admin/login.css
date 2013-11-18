@@ -84,7 +84,7 @@ input[type="text"], input[type="password"], textarea, select {outline: none;}
     margin-top : -33px; */
     height : 66px;
     clear : both;
-    background: url(/assets/login/foot.png) repeat-x;
+    background: url(/assets/header_bg.jpg) repeat;
     width:100%;
 }
 #footer_logo {

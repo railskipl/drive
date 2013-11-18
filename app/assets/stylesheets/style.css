@@ -58,14 +58,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e82020', end
 .car_bg{width:100%; height:auto; overflow:hidden}
 
 
-.signup_box{ width:auto; margin:0 0 0 0; background:url(../assets/70alpha.png); border:1px solid #000; color:#fff}
+.signup_box{ width:auto; margin:0 0 0 0; background:url(/assets/70alpha.png); border:1px solid #000; color:#fff}
 .signup_box label{ float:left; width:100%; margin-bottom:2px; color:#FFFFFF}
 
 .signup_box input name{ border:1px solid #000; background:#0033FF}
 
 .signup_heading{ padding:5px 0; width:auto; font-size:14px; font-weight:bold; color:#FFFFFF; border-bottom:1px solid #000; margin:10px 0 0 0}
 
-.cod{width:auto; height:271px; margin:0 0 0 0; background: url(../assets/shadow.png) no-repeat right 15px ;}
+.cod{width:auto; height:271px; margin:0 0 0 0; background: url(/assets/shadow.png) no-repeat right 15px ;}
 
 .box{ width:500px; height:240px; margin:0 0 0 0; background:#fff; color:#333; border:1px solid #000; line-height:normal}
 .box2{ width:auto; height:231px; margin:0 0 0 0; color:#333; line-height:normal; padding:10px 0; line-height:18px}
@@ -74,7 +74,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e82020', end
 
 .red_heading{ padding:5px 10px; width:auto; font-size:14px; font-weight:bold; color:#FFFFFF; background:#cc1b2c; border:1px solid #000; margin:10px 0 0 0}
 
-.car_caption{ background: url(../assets/70alpha.png); color:#FFFFFF; padding:10px 10px; position: relative; top:-38px}
+.car_caption{ background: url(/assets/70alpha.png); color:#FFFFFF; padding:10px 10px; position: relative; top:-38px}
 
 
 .topcar{
@@ -133,3 +133,25 @@ color: #CC1B2C;
 }
 
 .red{ color:#A20111 }
+
+
+#flash_notice {
+/*background-color: #D9EDF7;*/
+border-color: #BCE8F1;
+color: white;
+padding: 15px;
+text-align: center;
+}
+
+/*#flash_alert {
+background-color: #F2DEDE;
+border-color: #EED3D7;
+color: white;
+padding: 10px;
+text-align: center;
+}*/
+
+.simple_captcha_image
+{
+ border: 0 !important;
+}

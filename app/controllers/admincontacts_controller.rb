@@ -1,7 +1,10 @@
 class AdmincontactsController < ApplicationController
-  
+    before_filter :authenticate_admin!, :only => [:index]
+
+   layout :custom_layout
   def index
   	@admincontacts = Admincontact.all
+    render :layout => 'admin'
   end
 
   def new
@@ -33,4 +36,18 @@ class AdmincontactsController < ApplicationController
   	    redirect_to admincontacts_path
     end
   end
+
+  private
+
+   def custom_layout
+    case index
+     when "index"
+      "admin"
+     else
+      "application"
+     end
+    end
+   
+
+
 end

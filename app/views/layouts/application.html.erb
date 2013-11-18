@@ -5,7 +5,7 @@
   <meta name="keyword" content="<%= @meta_keyword %>" />
   <meta name="description" content="<%= @meta_description %>" />
 
- <%= stylesheet_link_tag  "application", :media => "all" %>
+  <%= stylesheet_link_tag "reset", "text", "style", "1000_20_10_10" %>
 
   <%= javascript_include_tag "application" %>
 
@@ -15,7 +15,6 @@
 <%= javascript_include_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" %>
 <%= csrf_meta_tags %>
 
-<%= stylesheet_link_tag "reset", "text", "style", "1000_20_10_10" %>
 
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
@@ -27,10 +26,14 @@
 <%= render 'shared/header' %>
    
 
-	<%= flash[:alert] %>
-    
-<%= flash[:notice] %>
-<%= flash[:error] %>
+<div id="flash_notice"> 
+
+  <%= flash[:notice] %>
+</div>
+<div id="flash_error"> 
+
+  <%= flash[:error] %>
+</div>   
 
 <div id="user_nav">
   <% if user_signed_in? %>
@@ -50,7 +53,7 @@
   <% else %>
   <% end %>
 </div>
-<br/>
+
 
 
 
