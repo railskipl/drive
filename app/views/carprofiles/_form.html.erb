@@ -1,9 +1,5 @@
-    <%= javascript_include_tag "nicEdit" %>
-    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-    <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
-     <script type=”text/javascript”>
-         bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-     </script>
+<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
 <%= form_for @carprofile,:html => { :multipart => true } do |f| %>
    <% if @carprofile.errors.any? %>
@@ -28,7 +24,7 @@
 
   <div class="field">
     <%= f.label "Car Make" %><br />
-    <%= f.collection_select :car_make_id, CarMake.all ,:id,:name%>
+    <%= f.collection_select :car_make_id, CarMake.all ,:id,:name, :prompt => 'Select car'%>
   </div> 
 
   <div>
@@ -37,7 +33,7 @@
 
   <div class="field">
     <%= f.label "Car Model"%><br />
-    <%= f.grouped_collection_select :car_model_id, CarMake.all, :car_models,:name, :id, :name%>
+    <%= f.grouped_collection_select :car_model_id, CarMake.all, :car_models,:name, :id, :name,:prompt => 'Select model'%>
   </div>
 
   <div class="field">

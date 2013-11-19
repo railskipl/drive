@@ -1,0 +1,46 @@
+<%= form_for(@logbook) do |f| %>
+   <% if @logbook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@logbook.errors.count, "error") %> prohibited this car make from being saved:</h2>
+
+      <ul>
+      <% @logbook.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label "LOgbook Category" %><br />
+    <%= f.collection_select :logbook_category_id, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category'%>
+  </div> 
+
+  <div class="field">
+    <%= f.label "Car Make" %><br />
+    <%= f.collection_select :car_make_id, CarMake.all ,:id,:name, :prompt => 'Select car'%>
+  </div> 
+
+  <div class="field">
+    <%= f.label "Car Model"%><br />
+    <%= f.collection_select :car_model_id, CarModel.all,:id, :name,:prompt => 'Select model'%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Body Index"%><br />
+    <%= f.collection_select :body_index_id, BodyIndex.all, :id, :bodyindex%>
+  </div>
+
+  <div class="field">
+    <%= f.label "Logbook Description" %><br />
+    <%= f.text_area :logbook_discription ,:rows=>10, :cols=>200,:style=> "width: 600px;"%>
+  </div>
+
+  <%= f.hidden_field :user_id,:value => current_user.id %>
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

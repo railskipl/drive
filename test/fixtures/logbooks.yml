@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  logbook_category_id: 1
+  car_make_id: 1
+  car_model_id: 1
+  body_index_id: 1
+  logbook_discription: MyText
+
+two:
+  user_id: 1
+  logbook_category_id: 1
+  car_make_id: 1
+  car_model_id: 1
+  body_index_id: 1
+  logbook_discription: MyText

@@ -1,0 +1,24 @@
+<%= form_for(@comment_logbook) do |f| %>
+  <% if @comment_logbook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment_logbook.errors.count, "error") %> prohibited this comment_logbook from being saved:</h2>
+
+      <ul>
+      <% @comment_logbook.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body,:rows=>10, :cols=>200,:style=> "width: 600px;" %>
+  </div>
+  <%= f.hidden_field :logbook_id %>
+  <%= f.hidden_field :user_id,:value => current_user.id %> 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

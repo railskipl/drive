@@ -1,0 +1,11 @@
+
+$('#carprofile_car_model_id').empty();
+<% for car_model in @car_models %>
+ 
+   // alert(<%= car_model.id %>);
+
+      $('#carprofile_car_model_id').append($("<option></option>").attr("value",<%= car_model.id %>).text('<%= car_model.name %>'));
+
+
+<% end %>
+
