@@ -1,3 +1,8 @@
+<div class="middle">
+  <div class="container_20" style="background:#333; margin-bottom:10px">
+  <%= render 'shared/carousel' %>   
+  </div>
+   <div class="grid_20">
 <script>
    $(function() {
  $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
@@ -49,3 +54,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
+</div>

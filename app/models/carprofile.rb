@@ -8,6 +8,8 @@ class Carprofile < ActiveRecord::Base
   belongs_to :car_model
   belongs_to :engine
   has_many :carprofile_photos
+  validates_presence_of :manufacturing_year,:year_of_purchas,:license_plate,:sellthiscar,:car_description,:power,:carprofile_photos_attributes,:whatkindofcar
 
   accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].blank? }, :allow_destroy => true,limit: 10
+  
 end

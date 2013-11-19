@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115095347) do
+ActiveRecord::Schema.define(:version => 20131118110948) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -96,6 +96,14 @@ ActiveRecord::Schema.define(:version => 20131115095347) do
     t.integer  "body_index_id"
   end
 
+  create_table "comment_logbooks", :force => true do |t|
+    t.integer  "logbook_id"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
     t.text     "body"
@@ -142,6 +150,25 @@ ActiveRecord::Schema.define(:version => 20131115095347) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "logbook_comments", :force => true do |t|
+    t.integer  "logbook_id"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "logbooks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "logbook_category_id"
+    t.integer  "car_make_id"
+    t.integer  "car_model_id"
+    t.integer  "body_index_id"
+    t.text     "logbook_discription"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -168,6 +195,14 @@ ActiveRecord::Schema.define(:version => 20131115095347) do
   end
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
+
+  create_table "user_comments", :force => true do |t|
+    t.integer  "logbook_id"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

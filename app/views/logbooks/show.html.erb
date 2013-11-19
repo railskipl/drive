@@ -1,0 +1,35 @@
+<p><%= notice %></p>
+
+<%= link_to 'Back', logbooks_path %> | <%= link_to 'Edit', edit_logbook_path %> | 
+<%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+
+<p>
+  <b>Logbook Category:</b>
+  <%= @logbook.logbook_category.name%>
+</p>
+
+<p>
+  <b>Car Make:</b>
+  <%= @logbook.car_make.name%>
+</p>
+
+<p>
+  <b>Car Model:</b>
+  <%= @logbook.car_model.name%>
+</p>
+
+<p>
+  <b>Car description:</b>
+  <%= @logbook.logbook_discription%>
+</p>
+
+<h3>Comments</h3>
+<% @logbook.comment_logbooks.each do |comment_logbook| %>
+  <div>
+    <strong><%= comment_logbook.body %></strong>
+  </div>
+<% end %>
+<br/>
+<%= render 'comment_logbooks/form' %>
+
+

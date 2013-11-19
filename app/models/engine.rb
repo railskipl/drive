@@ -3,4 +3,5 @@ class Engine < ActiveRecord::Base
 
   belongs_to :car_model
   has_many :carprofiles
+  validates_presence_of :engine_displacement
 end
