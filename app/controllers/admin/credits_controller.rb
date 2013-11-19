@@ -13,7 +13,7 @@ class Admin::CreditsController < ApplicationController
 	def update
 	    @credit = Credit.find(params[:id])
 		if @credit.update_attributes(params[:credit])
-          flash[:notice] = "Logbook Category Saved Successfully"
+          flash[:notice] = "Credit Saved Successfully"
 	      redirect_to admin_credits_path
 	    else
           flash[:notice] = "Fields Cannot Be Empty"
