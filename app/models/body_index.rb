@@ -3,4 +3,6 @@ class BodyIndex < ActiveRecord::Base
 
   belongs_to :car_model
   has_many :logbooks
+  validates_presence_of :bodyindex
+
 end
