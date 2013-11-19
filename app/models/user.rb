@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                    :freecredit, :buycredit, :credit
 
   # attr_accessible :title, :body
-  validates_uniqueness_of :email, :password
+  
 
   has_many :carprofiles
   has_many :logbooks
