@@ -11,19 +11,5 @@
 <li><a href="#">Message</a></li>
 <li><%= link_to "Logbooks", logbooks_path %></li>
 <li><a href="#">My Blogs</a></li>
- <% if controller.controller_name == 'registrations' %> 
-	<li class = "selected"><%= link_to "Settings", edit_user_registration_path %> 
- <% else %> 
-	<li><%= link_to "Settings", edit_user_registration_path %></li>
-<% end %>
-<li><%= link_to "Sign out", destroy_user_session_path,:method => :delete %></li>
-</li>
-
-
-
-
-
-
-
 </ul>
 </div>

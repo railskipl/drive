@@ -15,7 +15,8 @@ gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-
+gem 'aws-s3'
+gem 'aws-sdk'
 gem "ransack" 
 
 gem 'therubyracer'

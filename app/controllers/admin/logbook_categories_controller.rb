@@ -13,7 +13,7 @@ class Admin::LogbookCategoriesController < ApplicationController
   def create
     @logbook_category = LogbookCategory.new(params[:logbook_category])
     if @logbook_category.save
-	 	flash[:notice] = "logbook_category created successfully"
+	 	flash[:notice] = "Logbook Category Created Successfully"
         redirect_to admin_logbook_categories_path
     else
         render :new
@@ -27,7 +27,7 @@ class Admin::LogbookCategoriesController < ApplicationController
     def update
       @logbook_category = LogbookCategory.find(params[:id])
       if @logbook_category.update_attributes(params[:logbook_category])
-        flash[:notice] = "logbook_category saved successfully"
+        flash[:notice] = "Logbook Category Saved Successfully"
         redirect_to admin_logbook_categories_path
       else
         render :new
@@ -39,7 +39,7 @@ class Admin::LogbookCategoriesController < ApplicationController
       @logbook_category = LogbookCategory.find(params[:id])
      
       if @logbook_category.destroy
-        flash[:notice] = "logbook_category deleted successfully"
+        flash[:notice] = "Logbook Category Deleted Successfully"
         redirect_to admin_logbook_categories_path
       end
       
