@@ -12,8 +12,8 @@
 
 <% @body_indices.each do |body_index|%>
   <tr>
-  	<td><%= body_index.car_model.name %></td>
-    <td><%= body_index.bodyindex %></td>
+  	<td><%= body_index.car_model.name rescue nil %></td>
+    <td><%= body_index.bodyindex rescue nil  %></td>
     <td style="text-align: center !important;" ><%= link_to 'Edit', edit_admin_body_index_path(body_index) %></td>
     <td style="text-align: center !important;"><%= link_to 'Destroy',admin_body_index_path(body_index) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
     </td>

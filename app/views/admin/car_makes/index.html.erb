@@ -9,7 +9,7 @@
 
 <% @car_makes.each do |car_make|%>
   <tr>
-    <td><%= car_make.name %></td>
+    <td><%= car_make.name rescue nil %></td>
     <td style="text-align: center !important;" ><%= link_to 'Edit', edit_admin_car_make_path(car_make) %></td>
     <td style="text-align: center !important;"><%= link_to 'Destroy',admin_car_make_path(car_make) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
     </td>

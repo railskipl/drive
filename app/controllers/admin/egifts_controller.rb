@@ -13,7 +13,7 @@ class Admin::EgiftsController < ApplicationController
   def create
     @egift = Egift.new(params[:egift])
     if @egift.save
-	 	flash[:notice] = "egift created successfully"
+	 	flash[:notice] = "Egift Created Successfully"
         redirect_to admin_egifts_path
     else
         render :new
@@ -27,7 +27,7 @@ class Admin::EgiftsController < ApplicationController
     def update
       @egift = Egift.find(params[:id])
       if @egift.update_attributes(params[:egift])
-        flash[:notice] = "egift saved successfully"
+        flash[:notice] = "Egift Saved Successfully"
         redirect_to admin_egifts_path
       else
         render :new
@@ -39,7 +39,7 @@ class Admin::EgiftsController < ApplicationController
       @egift = Egift.find(params[:id])
      
       if @egift.destroy
-        flash[:notice] = "egift deleted successfully"
+        flash[:notice] = "Egift Deleted Successfully"
         redirect_to admin_egifts_path
       end
       
