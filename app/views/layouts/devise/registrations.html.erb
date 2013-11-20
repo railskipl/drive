@@ -23,16 +23,16 @@
 </head>
 <body>
 
+
+
+
+<%= render 'shared/header' %>
 <div class="wraper">
 <% if flash[:notice]%>
 <div id="flash_notice"> 
   <%= flash[:notice] %>
 </div>
 <% end %>
-
-
-<%= render 'shared/header' %>
-
 
   
 <% if user_signed_in? %>
