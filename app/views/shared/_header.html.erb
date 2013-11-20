@@ -11,10 +11,22 @@
         <%= f.email_field :email,:class=>"search_tf"%>
         <%= f.password_field :password,:class=>"search_tf" %>
         <%= f.submit "Log In",:class=>"submit_btn" %>
-       <% end %>
-     <% end %>
+        <% end %>
+        <% else %>
+      
+      <input type="text" class="search_tf">
+      <input type="button" class="submit_btn" value="Search">
+      
+      <ul class="bottom_menu" style="margin-top:6px">
+      <li><%= link_to "Settings", edit_user_registration_path %></li>  
+      <li><a href="#">Help</a></li>   
+      <li><%= link_to "Logout", destroy_user_session_path,:method => :delete %></li>  
+      </ul>
+      <% end %>
+       </div>
+
      </div>
     </div>
   </div>
-</div>
+
 

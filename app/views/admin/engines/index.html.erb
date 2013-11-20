@@ -1,4 +1,6 @@
-<h1>Admin Engines displacement</h1>
+<%= link_to 'New Engine Displacement', new_admin_engine_path %>
+<br/><br/>
+<h1>Engine Displacement</h1>
 
 <table class="admintable">
  <tr class="admintablehd">
@@ -11,15 +13,11 @@
 
 <% @engines.each do |engine|%>
   <tr>
-    <td><%= engine.car_model.name %></td>
-    <td><%= engine.engine_displacement %></td>
+    <td><%= engine.car_model.name rescue nil %></td>
+    <td><%= engine.engine_displacement rescue nil %></td>
     <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_engine_path(engine) %></td>
     <td style="text-align: center !important;"><%= link_to 'Destroy',admin_engine_path(engine) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
     </td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Engine Displacement', new_admin_engine_path %>

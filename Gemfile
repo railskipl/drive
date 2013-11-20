@@ -15,7 +15,8 @@ gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
 gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
-
+gem 'aws-s3'
+gem 'aws-sdk'
 gem "ransack" 
 
 gem 'therubyracer'
@@ -39,6 +40,7 @@ end
 gem 'jquery-rails'
 gem 'devise'
 gem 'paperclip'
+gem 'foreigner'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

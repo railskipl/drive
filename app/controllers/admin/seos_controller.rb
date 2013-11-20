@@ -18,7 +18,7 @@ class Admin::SeosController < ApplicationController
 
      respond_to do |format|
        if @seo.update_attributes(params[:seo])
-         format.html { redirect_to admin_seos_path, notice: 'seo was successfully updated.' }
+         format.html { redirect_to admin_seos_path, notice: 'Seo Was Successfully Updated.' }
          format.json { head :no_content }
        else
          format.html { render action: "edit" }

@@ -28,7 +28,7 @@ class Admin::PagesController < ApplicationController
     def update
         @page = Page.find(params[:id])
         if @page.update_attributes(params[:page])
-            flash[:notice] = "page saved successfully"
+            flash[:notice] = "Page Saved Successfully"
             redirect_to admin_pages_path
         else
             render :new

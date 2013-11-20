@@ -1,7 +1,17 @@
 <h2> Page</h2>
 
 <%= form_for [:admin, @page] do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> prohibited this car model from being saved:</h2>
 
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 	<p>
     <%= f.label :title %>
     <%= f.text_field :title, :class => 'text' %>
@@ -12,7 +22,24 @@
     <%= f.text_area :body %>
   </p>
 
- 
+   <div class="field">
+  <p>
+    <b><%= f.label :meta_title %></b><br />
+    <%= f.text_field :meta_title,:style=> "width: 350px;" %>
+  </p>
+  </div>
+  <div class="field">
+  <p>
+    <b><%= f.label :meta_description %></b><br />
+    <%= f.text_area :meta_description,:rows=>7, :cols=>20,:style=> "width: 350px;" %>
+  </p>
+  </div>
+  <div class="field">
+  <p>
+    <b><%= f.label :meta_keyword %></b><br />
+    <%= f.text_area :meta_keyword,:rows=>7, :cols=>20,:style=> "width: 350px;" %>
+  </p>
+  </div>
   
    <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,15 @@
+<h1>Logbooks</h1>
+
+
+<table>
+
+
+<ol>
+  <% @logbooks.each do |logbook| %>
+  <li><%= link_to logbook.logbook_category.name, logbook_path(logbook) %></li>
+  <% end %>
+</ol>
+
+
+<%= link_to "New logbook", new_logbook_path %>
+</table>

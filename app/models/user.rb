@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
 
   has_many :carprofiles
+  has_many :logbooks
 
  
 
