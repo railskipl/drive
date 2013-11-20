@@ -1,11 +1,19 @@
-<h2>Forgot your password?</h2>
 
+  <div class="middle">
+    <div class="container_20">
+	<div class="grid_10" style="margin:10px auto; float:none; display:block">
+<h2>Forgot your password?</h2>
+ <div class="box">
+	 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
+<div class="row">
+  <%= f.label :email %>
+ </div>
+ <div class="row">
+  <%= f.email_field :email, :autofocus => true %>
+</div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
+  <div><%= f.submit "Send Me Reset Password Instructions" ,:class => "submit_btn_new" %></div>
+<% end %></div>
+</div></div></div>	

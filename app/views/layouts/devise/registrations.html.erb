@@ -5,7 +5,7 @@
   <meta name="keyword" content="<%= @meta_keyword %>" />
   <meta name="description" content="<%= @meta_description %>" />
 
-  <%= stylesheet_link_tag  "reset", "text", "style", "1000_20_10_10","jsCarousel-2.0.0" %>
+  <%= stylesheet_link_tag  "reset", "text", "style", "1000_20_10_10" %>
 
   <%= javascript_include_tag "application" ,"jquery-1.5.2.min","jquery.validate.min","validation","jsCarousel-2.0.0" %>
   
@@ -23,16 +23,18 @@
 </head>
 <body>
 
-  <% if flash[:notice] %>
-
+<div class="wraper">
+<% if flash[:notice]%>
 <div id="flash_notice"> 
   <%= flash[:notice] %>
 </div>
 <% end %>
 
+
 <%= render 'shared/header' %>
 
- 
+
+  
 <% if user_signed_in? %>
    <%= render 'shared/top_menu' %>
 <% end %>
@@ -44,7 +46,7 @@
 <%= render 'shared/top_cars' %>
 
 <%= render 'shared/footer' %>
-
+</div>
 
 
 
