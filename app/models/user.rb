@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
                    :freecredit, :buycredit, :credit
 
   # attr_accessible :title, :body
-  
+
 
   has_many :carprofiles
   has_many :logbooks
