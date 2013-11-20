@@ -11,8 +11,12 @@
         <%= f.email_field :email,:class=>"search_tf"%>
         <%= f.password_field :password,:class=>"search_tf" %>
         <%= f.submit "Log In",:class=>"submit_btn" %>
+        <div style="width:auto; padding:5px 7px; color:#FFFFFF"> 
+          <div style="width:228px; float:left"><%= f.check_box :remember_me %>Remember Me </div>
         <% end %>
-          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        <div style="width:auto; float:left">          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+        </div>
+      </div>
           
         <% else %>
       
