@@ -12,6 +12,8 @@
         <%= f.password_field :password,:class=>"search_tf" %>
         <%= f.submit "Log In",:class=>"submit_btn" %>
         <% end %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+          
         <% else %>
       
       <input type="text" class="search_tf">

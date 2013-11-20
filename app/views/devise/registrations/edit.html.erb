@@ -40,7 +40,7 @@
   <%= f.text_field :nickname %></div>
   
   <div><%= f.label :birthday %><br />
-  <%= f.text_field :birthday,:id=>"datepicker",size:10 %></div>
+  <%= f.date_select(:birthday,order: [:day, :month, :year],:start_year => 1950, :class=>"signup_tf") %></div>
 
   
   <div><%= f.label :location%><br />
