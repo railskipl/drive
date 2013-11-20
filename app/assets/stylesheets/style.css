@@ -445,10 +445,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e82020', end
     border: 1px solid;
     margin: 0 auto;
     padding: 10px 10px 10px 50px;
+    text-align: center;
 }
 #flash_notice {
-    background-color: #BDE5F8;
-    background-image: url("/assets/info.png");
+    background-color: #fff;
+    /*background-image: url("/assets/info.png");*/
     color: #00529B;
 }
 .isa_success {
