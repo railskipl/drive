@@ -43,6 +43,8 @@ private
 
     if  params[:action] == "edit" || params[:action] == "update"
       "application"
+    else
+      "devise/registrations"
     end
    end
 
