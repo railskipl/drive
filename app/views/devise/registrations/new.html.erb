@@ -34,7 +34,7 @@
   <%= f.text_field :nickname,:class=>"signup_tf"  %></td>
 
   <td><label>Birthday  <span class="red">*</span></label>
-  <%= f.date_select(:birthday,order: [:day, :month, :year],:class=>"signup_tf") %></td>
+  <%= f.date_select(:birthday,order: [:day, :month, :year],:start_year => 1950, :class=>"signup_tf") %></td>
  </tr>
   
 
