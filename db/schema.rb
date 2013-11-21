@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121115753) do
+ActiveRecord::Schema.define(:version => 20131121124539) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -149,6 +149,12 @@ ActiveRecord::Schema.define(:version => 20131121115753) do
     t.integer  "free_credit"
   end
 
+  create_table "egift_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "egifts", :force => true do |t|
     t.string   "credit"
     t.datetime "created_at",         :null => false
@@ -157,6 +163,7 @@ ActiveRecord::Schema.define(:version => 20131121115753) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "egift_category_id"
   end
 
   create_table "engines", :force => true do |t|
