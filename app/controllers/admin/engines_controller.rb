@@ -33,4 +33,12 @@ class Admin::EnginesController < ApplicationController
   def edit
   	@engine = Engine.find(params[:id])
   end
+
+  def destroy
+    @engine = Engine.find(params[:id])
+       if @engine.destroy
+        flash[:notice] = "Engine Deleted Successfully"
+        redirect_to admin_engines_path
+      end
+  end
 end

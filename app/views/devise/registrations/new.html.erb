@@ -1,11 +1,4 @@
-<script>
-   $(function() {
- $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
- });  
-</script>
-<div class="container_20">
-
-    
+   
     <div class="car_bg">
     
     <div class="grid_11">
@@ -41,7 +34,7 @@
   <%= f.text_field :nickname,:class=>"signup_tf"  %></td>
 
   <td><label>Birthday  <span class="red">*</span></label>
-  <%= f.text_field :birthday,:id=>"datepicker",size:10 ,:class=>"signup_tf" %></td>
+  <%= f.date_select(:birthday,order: [:day, :month, :year],:start_year => 1950, :class=>"signup_tf") %></td>
  </tr>
   
 
@@ -120,98 +113,5 @@ How-to guides with photos, tips and articles on car care and maintenance.
    
    </div>
  </div>
-  </div>
-
- <div>
-
-<div class="topcar_wrap">
-<div class="container_20">
-<div class="grid_20">
- 
- <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
- 
- <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin Audi</a></li>
-    <li><a href="#">Buick</a></li>
-   <li><a href="#">BYD</a></li>
-    <li><a href="#">BMW</a></li>
- </ul>
- 
- 
- 
- 
- </div>
- 
- </div>
 
 
-</div>
-
-  
-  

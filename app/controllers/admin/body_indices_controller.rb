@@ -9,6 +9,10 @@ class Admin::BodyIndicesController < ApplicationController
   	@body_index = BodyIndex.new
   end
 
+  def edit
+   @body_index = BodyIndex.find(params[:id])  
+  end
+
   def create
   	@body_index = BodyIndex.new(params[:body_index])
 

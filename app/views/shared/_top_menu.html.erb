@@ -1,0 +1,15 @@
+<div class="nav">
+<ul>
+<li><a href="#">Home</a></li>
+ <% if controller.controller_name == 'home' %> 
+	<li class = "selected"><%= link_to "Profile", root_path %> 
+ <% else %> 
+	<li><%= link_to "Profile", root_path %></li>
+<% end %>
+<li><%= link_to "Cars" , carprofiles_path %></li>
+<li><a href="#">Photo Gallery</a></li>
+<li><a href="#">Message</a></li>
+<li><%= link_to "Logbooks", logbooks_path %></li>
+<li><a href="#">My Blogs</a></li>
+</ul>
+</div>

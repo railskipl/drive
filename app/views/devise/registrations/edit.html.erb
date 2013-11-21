@@ -1,11 +1,10 @@
-<script>
-   $(function() {
- $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
- });  
-</script>
+<div class="middle">
+
+   <div class="grid_20">
 
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<h2>Account Settings</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -35,7 +34,7 @@
   <%= f.text_field :nickname %></div>
   
   <div><%= f.label :birthday %><br />
-  <%= f.text_field :birthday,:id=>"datepicker",size:10 %></div>
+  <%= f.date_select(:birthday,order: [:day, :month, :year],:start_year => 1950, :class=>"signup_tf") %></div>
 
   
   <div><%= f.label :location%><br />
@@ -49,3 +48,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
+</div>

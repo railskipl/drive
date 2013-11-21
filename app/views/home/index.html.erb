@@ -1,103 +1,25 @@
-    
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-
-            
-            $('#carouselhAuto').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true, masked: true, itemstodisplay:5, orientation: 'h' });
-
-        });       
-        
-    </script>
-    
-
-<div class="nav">
-<ul>
-<li><a href="#">Home</a></li>
-<li class="selected"><a href="#">Profile</a></li>
-<li><a href="#">My Cars</a></li>
-<li><a href="#">Photo Gallery</a></li>
-<li><a href="#">Message</a></li>
-<li><a href="#">My Log Books</a></li>
-<li><a href="#">My Blogs</a></li>
-</ul>
-</div>
-
-
-<div class="container_20">
-
-		
-		<div class="middle">
-		
-		<div class="container_20" style="background:#333; margin-bottom:10px">
+<div class="middle">
+  <div class="container_20" style="background:#333; margin-bottom:10px">
+	<%= render 'shared/carousel' %>		
+  </div>
 		
 		
-		<div id="carouselhAuto">
-                            <div>
-                                <img alt="" src="assets/car1.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car2.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car3.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car4.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car5.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-								
-								<div>
-                                <img alt="" src="assets/car1.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car2.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car3.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car4.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-                            <div>
-                                <img alt="" src="assets/car5.jpg" /><br />
-                                <span class="thumbnail-text">Car Name here</span></div>
-								
-								
-                            
-                        </div>
-		
-		
-		
-		
-		
-		  </div>
-		
-		
-				<div class="container_20 profile_bg">
-				
-				
-				<div class="grid_4">
-		
-	<div class="profile_image"><img alt="" src="assets/profile.jpg"></div>
+  <div class="container_20 profile_bg">
+	<div class="grid_4">
+      <div class="profile_image"><img alt="" src="assets/profile.jpg"></div>
 	</div>
 	
-					<div class="grid_16">
-		
-	<h1>User Name</h1>
-	<ul class="tab_menu">
-	<li><a href="#">Credit Points</a></li> 
-	<li><a href="#">Subscribers</a></li> 
-	<li><a href="#">Message</a></li> 
-	<li><a href="#">Add to Friend +</a></li>
-	<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
-	</ul>
+	<div class="grid_16">
+	  <h1><%= current_user.nickname %></h1>
+		<ul class="tab_menu">
+		<li><%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %></li> 
+		<li><a href="#">Subscribers</a></li> 
+		<li><a href="#">Message</a></li> 
+		<li><a href="#">Add to Friend +</a></li>
+		<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
+		</ul>
 	</div>
-
-		
-		</div>
+   </div>
 		
 		
 		
@@ -233,94 +155,4 @@
 		</div>
 		
 
-</div>
-
-<div class="topcar_wrap">
-<div class="container_20">
-<div class="grid_20">
- <div class="top_car">Top Cars</div>
- <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
- 
- <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
- 
- 
- 
- </div>
- 
- </div>
-
-
-</div>
 

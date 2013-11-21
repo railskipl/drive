@@ -1,1 +1,6 @@
-<%= render 'form' %>
+<%= form_for [:admin, @car_make]  do |f| %> 
+<%= render 'form' ,:f => f %>
+  <div class="actions">
+    <%= f.submit "Update Car Make" %>
+  </div>
+<% end %>

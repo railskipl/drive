@@ -13,7 +13,8 @@ Drive::Application.routes.draw do
 
   resources :favourites
 
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :passwords => "passwords"}
+
   devise_scope :user do
   authenticated :user do
     root :to => 'home#index'
