@@ -10,7 +10,12 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :egift_category_id ,"Category" %><br />
+    <%= f.collection_select :egift_category_id, EgiftCategory.all ,:id,:name %>
+  </div>
+  (Category Not Listed <%= link_to 'Click Here', new_admin_egift_category_path %>
+)
   
   <div class="field">
     <%= f.label :credit ,"Credit Points" %><br />

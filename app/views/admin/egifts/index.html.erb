@@ -1,9 +1,11 @@
+<br/>
 <%= link_to 'Add Egift', new_admin_egift_path %>
 <br /><br />
 <table class="admintable">
  <tr class="admintablehd">
     <td width="25%">Credit Points</td>
      <td width="25%">Photo</td>
+     <td width="25%">Category</td>
      
    <td colspan=2 style="text-align: center !important;">Actions</td>
 </tr>
@@ -12,6 +14,7 @@
   <tr>
     <td><%= egift.credit %></td>
     <td><%= image_tag egift.image.url, :width => "165", :height=>"100" %></td>
+    <td><%= egift.egift_category.name rescue nil %></td>
     <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_egift_path(egift) %></td>
     <td style="text-align: center !important;"><%= link_to 'Destroy',admin_egift_path(egift) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
     </td>
