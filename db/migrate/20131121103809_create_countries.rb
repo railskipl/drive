@@ -156,7 +156,7 @@ def self.up
          "Portugal",
          "Qatar",
          "Romania",
-         "Russian Federation",
+         "Russian",
          "Rwanda",
          "St Kitts & Nevis",
          "St Lucia",
