@@ -1,0 +1,15 @@
+<h1>UserBlogs</h1>
+
+
+<table>
+
+
+<ol>
+  <% @user_blogs.each do |user_blog| %>
+  <li><%= link_to user_blog.blog.name, user_blog_path(user_blog) %></li>
+  <% end %>
+</ol>
+
+
+<%= link_to "New Blog", new_user_blog_path %>
+</table>

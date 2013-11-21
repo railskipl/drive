@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label "Body Index"%><br />
-    <%= f.collection_select :body_index_id, BodyIndex.all, :id, :bodyindex%>
+    <%= f.collection_select :body_index_id, BodyIndex.all, :id, :bodyindex,:prompt => 'Select model' %>
   </div>
 
   <div class="field">

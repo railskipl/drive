@@ -1,0 +1,26 @@
+<p><%= notice %></p>
+<% if current_user.id == @user_blog.user_id %>
+<%= link_to 'Back', user_blogs_path %> | <%= link_to 'Edit', edit_user_blog_path %> | 
+<%= link_to 'Destroy',user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+<% end %>
+
+<p>
+  <b>Blog:</b>
+  <%= @user_blog.blog.name%>
+</p>
+
+<p>
+  <b>Blog Description:</b>
+  <%= @user_blog.body%>
+</p>
+
+<h3>Comments</h3>
+<% @user_blog.blog_comments.each do |user_blog| %>
+  <div>
+    <strong><%= user_blog.body %></strong>
+  </div>
+<% end %>
+<br/>
+<%= render 'blog_comments/form' %>
+
+
