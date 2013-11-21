@@ -13,9 +13,9 @@
 	  <h1><%= current_user.nickname %></h1>
 		<ul class="tab_menu">
 		<li><%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %></li> 
+		<li><%= link_to "Cars" , carprofiles_path %></li>
 		<li><a href="#">Subscribers</a></li> 
 		<li><a href="#">Message</a></li> 
-		<li><a href="#">Add to Friend +</a></li>
 		<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
 		</ul>
 	</div>

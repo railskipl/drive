@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121045024) do
+ActiveRecord::Schema.define(:version => 20131121115753) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -57,8 +57,9 @@ ActiveRecord::Schema.define(:version => 20131121045024) do
   create_table "body_indices", :force => true do |t|
     t.integer  "car_model_id"
     t.string   "bodyindex"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "manufacturing_year"
   end
 
   create_table "car_makes", :force => true do |t|
@@ -126,6 +127,19 @@ ActiveRecord::Schema.define(:version => 20131121045024) do
     t.string   "subject"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "credit_packages", :force => true do |t|
+    t.string   "name"
+    t.string   "package_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "credits", :force => true do |t|
@@ -237,6 +251,7 @@ ActiveRecord::Schema.define(:version => 20131121045024) do
     t.integer  "freecredit",             :default => 0,  :null => false
     t.integer  "buycredit",              :default => 0,  :null => false
     t.integer  "spend_credit",           :default => 0,  :null => false
+    t.text     "about"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
