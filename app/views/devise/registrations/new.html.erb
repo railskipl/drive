@@ -39,7 +39,7 @@
 
 <tr>
  <td><label>Location  <span class="red">*</span></label>
-  <%= f.collection_select :location,Country.all ,:name ,:name ,:prompt => "Please Select"%></td>
+  <%= f.collection_select :location,Country.all(:order => :id) ,:name ,:name ,:prompt => "Please Select"%></td>
 
 <td rowspan="3" align="left" valign="top">
 <%= show_simple_captcha%></td>

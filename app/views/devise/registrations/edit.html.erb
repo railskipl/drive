@@ -41,7 +41,8 @@
 
   
   <div><%= f.label :location%><br />
-  <%= f.text_field :location%></div>
+  <%= f.collection_select :location,Country.all(:order => :id) ,:name ,:name ,:prompt => "Please Select"%>
+</div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
