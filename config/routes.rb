@@ -47,6 +47,7 @@ end
     resources :egifts
     resources :engines
     resources :body_indices
+    resources :credit_packages
   end
 
   resources :credits do

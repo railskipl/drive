@@ -24,15 +24,14 @@
 <tr>
  <td><label>First Name <span class="red">*</span></label>
   <%= f.text_field :first_name,:class=>"signup_tf"  %></td>
- <td><label>Last Name  <span class="red">*</span></label>
-  <%= f.text_field :last_name ,:class=>"signup_tf"  %></td>
+  <td><label>Nick Name  <span class="red">*</span></label>
+  <%= f.text_field :nickname,:class=>"signup_tf"  %></td>
  </tr>
 
  
 <tr>
- <td><label>Nick Name  <span class="red">*</span></label>
-  <%= f.text_field :nickname,:class=>"signup_tf"  %></td>
-
+ <td><label>Last Name  <span class="red">*</span></label>
+  <%= f.text_field :last_name ,:class=>"signup_tf"  %></td>
   <td><label>Birthday  <span class="red">*</span></label>
   <%= f.date_select(:birthday,order: [:day, :month, :year],:start_year => 1950, :class=>"signup_tf") %></td>
  </tr>
@@ -40,7 +39,7 @@
 
 <tr>
  <td><label>Location  <span class="red">*</span></label>
-  <%= f.text_field :location,:class=>"signup_tf"  %></td>
+  <%= f.collection_select :location,Country.all ,:name ,:name ,:prompt => "Please Select"%></td>
 
 <td rowspan="3" align="left" valign="top">
 <%= show_simple_captcha%></td>
