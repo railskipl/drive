@@ -1,10 +1,17 @@
 Drive::Application.routes.draw do
 
+  get "favourites/index"
+
+  resources :blog_comments
+
+
   resources :comment_logbooks
 
-
+  resources :user_blogs
 
   resources :comments
+
+  resources :favourites
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
   devise_scope :user do
@@ -19,6 +26,7 @@ end
   devise_for :admins
 
   resources :users,  :only => [:index,:destroy]
+
 
   post "dynamic_models/:id" => "carprofiles#dynamic_models"
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131118110948) do
+ActiveRecord::Schema.define(:version => 20131121045024) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20131118110948) do
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+
+  create_table "blog_comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "user_blog_id"
+    t.text     "body"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "blogs", :force => true do |t|
     t.string   "name"
@@ -144,16 +152,17 @@ ActiveRecord::Schema.define(:version => 20131118110948) do
     t.datetime "updated_at",          :null => false
   end
 
-  create_table "logbook_categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "favourites", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "favourite_type"
+    t.integer  "favourite_type_id"
+    t.boolean  "is_read",           :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
-  create_table "logbook_comments", :force => true do |t|
-    t.integer  "logbook_id"
-    t.string   "content"
-    t.integer  "user_id"
+  create_table "logbook_categories", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -196,12 +205,12 @@ ActiveRecord::Schema.define(:version => 20131118110948) do
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
 
-  create_table "user_comments", :force => true do |t|
-    t.integer  "logbook_id"
+  create_table "user_blogs", :force => true do |t|
+    t.integer  "blog_id"
     t.text     "body"
-    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -227,6 +236,7 @@ ActiveRecord::Schema.define(:version => 20131118110948) do
     t.integer  "credit",                 :default => 0,  :null => false
     t.integer  "freecredit",             :default => 0,  :null => false
     t.integer  "buycredit",              :default => 0,  :null => false
+    t.integer  "spend_credit",           :default => 0,  :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
