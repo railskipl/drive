@@ -43,6 +43,8 @@ class CommentLogbooksController < ApplicationController
     @comment_logbook = CommentLogbook.new(params[:comment_logbook])
 
       if @comment_logbook.save
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "logbook_comment", :notifiable_id  => @comment_logbook.logbook_id)
+        @notification.save
         flash[:notice] = 'Comment logbook was successfully created.' 
         redirect_to logbook_path(@comment_logbook.logbook_id)
       end

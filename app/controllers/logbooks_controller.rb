@@ -22,6 +22,24 @@ class LogbooksController < ApplicationController
     @logbook = Logbook.find(params[:id])
   end
 
+  def like_logbook
+
+   @logbook = Logbook.find(params[:id])
+    current_user.like!(@logbook)
+  
+    current_user.spendcredits(current_user)
+    
+    if current_user.credit >= 0
+        current_user.save
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_logbooks", :notifiable_id  => @logbook.id)
+        @notification.save
+    end
+    
+     respond_to do |format|
+     format.js {}
+    end
+  end
+
   def update
   	@logbook = Logbook.find(params[:id])
   	if @logbook.update_attributes(params[:logbook])

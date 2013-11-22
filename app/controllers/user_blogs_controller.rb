@@ -13,6 +13,24 @@ class UserBlogsController < ApplicationController
   	
   end
 
+  def like_blog
+
+   @user_blog = UserBlog.find(params[:id])
+    current_user.like!(@user_blog)
+  
+    current_user.spendcredits(current_user)
+    
+    if current_user.credit >= 0
+        current_user.save
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_blog", :notifiable_id  => @user_blog.id)
+        @notification.save
+    end
+    
+     respond_to do |format|
+     format.js {}
+    end
+  end
+
   def create
   	 @user_blog = UserBlog.new(params[:user_blog])
 	  	if @user_blog.save

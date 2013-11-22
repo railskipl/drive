@@ -8,4 +8,6 @@ class Logbook < ActiveRecord::Base
   belongs_to :logbook_category
   has_many :comment_logbooks
   has_many :favourites
+
+  acts_as_likeable
 end

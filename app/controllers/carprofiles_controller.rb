@@ -38,7 +38,7 @@ class CarprofilesController < ApplicationController
         @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_comment", :notifiable_id  => @car_profile.id)
         @notification.save
     end
-
+    
      respond_to do |format|
      format.js {}
     end
@@ -56,6 +56,6 @@ class CarprofilesController < ApplicationController
 
   def show
   	@carprofile = Carprofile.find(params[:id])
-     @likes= Like.find_by_liker_id_and_likeable_id(current_user.id,@carprofile.id).count
+    @likes= Like.find_by_liker_id_and_likeable_id(current_user.id,@carprofile.id)
   end
 end

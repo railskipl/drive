@@ -7,7 +7,12 @@ Drive::Application.routes.draw do
 
   resources :comment_logbooks
 
-  resources :user_blogs
+  resources :user_blogs do
+    collection do 
+      post :like_blog
+      get :like_count
+    end
+  end
 
   resources :comments
 
@@ -58,7 +63,12 @@ end
     end
   end
   resources :admincontacts
-  resources :logbooks
+  resources :logbooks do 
+    collection do 
+      post :like_logbook
+      get :like_count
+    end
+  end
   resources :carprofiles do
     collection do 
       post :like_car

@@ -3,6 +3,7 @@
 <%= link_to 'Back', logbooks_path %> | <%= link_to 'Edit', edit_logbook_path %> | 
 <%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
 <% end %>
+<%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= "#{Like.sum('count')} likes."%></span>
 <p>
   <b>Logbook Category:</b>
   <%= @logbook.logbook_category.name%>
