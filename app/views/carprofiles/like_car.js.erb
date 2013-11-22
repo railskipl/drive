@@ -1,2 +1,9 @@
 $("#like_car img").attr("src","/assets/like.jpg");
-$("#like_count").html('<%= "#{@likes} like"%>');
+
+$("#like_count").html('<%= "#{@a.inject{|sum,x| sum + x }} likess."%>');
+<% else %>
+$("#like_car img").attr("src","/assets/like.jpg");
+$("#like_count").html('<%= "#{Like.sum('count')
+} likes."%>');
+<% end %>
+
