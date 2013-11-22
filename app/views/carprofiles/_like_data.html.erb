@@ -1,0 +1,16 @@
+<%= javascript_include_tag  "script.js" %>
+<table>
+<tr>
+<td>User</td>
+<td></td>
+<td>Count</td>
+</tr>
+<% @likes.each do |like| %>
+<tr>
+<td><%=User.find(like.liker_id).first_name%></td>
+<td><%=User.find(like.liker_id).last_name%></td>
+
+<td><%=like.count%></td>
+</tr>
+<% end %>
+</table>

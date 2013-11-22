@@ -59,7 +59,12 @@ end
   end
   resources :admincontacts
   resources :logbooks
-  resources :carprofiles 
+  resources :carprofiles do
+    collection do 
+      post :like_car
+      get :like_count
+    end
+  end 
   resources :carprofile_photos
 
  
