@@ -31,6 +31,13 @@
 <li><% if controller.controller_name == 'admincontacts' %> <%= link_to "Feedback ", admincontacts_path, :class=>"active" %> <% else %> <%= link_to "Feedback",  admincontacts_path %> <% end %></li>
 <li><% if controller.controller_name == 'body_indices' %> <%= link_to "Body Index ", admin_body_indices_path, :class=>"active" %> <% else %> <%= link_to "Body Index ",  admin_body_indices_path %> <% end %></li>
 <li>
+	<% if controller.controller_name == 'egift_categories' %> 
+	 <%= link_to 'Egift Categories', admin_egift_categories_path , :class=>"active"%>
+	<% else %> 
+	 <%= link_to 'Egift Categories', admin_egift_categories_path %>
+	 <% end %>
+</li>
+<li>
 	<% if controller.controller_name == 'egifts' %> 
 	<%= link_to "Egifts", admin_egifts_path, :class=>"active" %> 
 	<% else %> 
