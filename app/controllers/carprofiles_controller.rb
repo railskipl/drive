@@ -30,11 +30,13 @@ class CarprofilesController < ApplicationController
 
    @car_profile =Carprofile.find(params[:id])
     current_user.like!(@car_profile)
-       @likes= Like.find_all_by_likeable_id(@car_profile.id) rescue nil
-      @a ||= []
+      @likes= @car_profile.likes(@car_profile.id)
+      
+      @count ||= []
       @likes.each do |like|
-         @a << like.count
+         @count << like.count
       end
+       @counts = @car_profile.sum_counts(@count)
 
     current_user.spendcredits(current_user)
     
