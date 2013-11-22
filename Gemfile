@@ -21,6 +21,7 @@ gem "ransack"
 
 gem 'therubyracer'
 gem 'execjs'
+gem "socialization"
 
 
 

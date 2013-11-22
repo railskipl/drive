@@ -1,18 +1,55 @@
+<script type="text/javascript">
+$(document).ready(function(){
+$("a.topopup").click(function(){
+  $.ajax({
+     type: "GET",
+     url: "/carprofiles/like_count",
+     data: {"id" : $(this).attr("val")},
+     success: function(data){
+   
+     },
+     dataType: "script"
+   });
+})
+});
+</script>
+
 <div class="middle">
   <div class="container_20">
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
-
+   
 <p>
   <b>Car make:</b>
   <%= @carprofile.car_make.name%>
 </p>
 
 <p>
-	<b>Car photos</b>
+  <b>Car photos</b>
  <% for carprofile in @carprofile.carprofile_photos %>
-  <%= image_tag carprofile.photo.url(:medium) %>
- <% end %>
-</p>
+ <%= image_tag carprofile.photo.url(:medium)  %>
+
+ <% end %><br/>
+ <%= link_to (image_tag "like.jpg") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
+  <span id="like_count"><%= "#{@likes}"%></span>
+
+<a href="#" class="topopup" val= "<%=@carprofile.id %>"><button>showlikes</button></a>
+    
+    <div id="toPopup"> 
+      
+        <div class="close"></div>
+        <span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+    <div id="popup_content"> 
+ 
+     <span id="a.topopup" class="like_data"></span>
+      <!--your content start-->
+           
+        </div> <!--your content end-->
+    
+    </div> <!--toPopup end-->
+    
+  <div class="loader"></div>
+    <div id="backgroundPopup"></div>
+<p>
 
 <p>
   <b>Car model:</b>

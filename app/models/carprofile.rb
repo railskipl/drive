@@ -12,4 +12,5 @@ class Carprofile < ActiveRecord::Base
 
   accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].blank? }, :allow_destroy => true,limit: 10
   
+  acts_as_likeable
 end
