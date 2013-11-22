@@ -1,12 +1,20 @@
 Drive::Application.routes.draw do
 
+  get "favourites/index"
+
+  resources :blog_comments
+
+
   resources :comment_logbooks
 
-
+  resources :user_blogs
 
   resources :comments
 
-  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+  resources :favourites
+
+  devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :passwords => "passwords"}
+
   devise_scope :user do
   authenticated :user do
     root :to => 'home#index'
@@ -19,6 +27,7 @@ end
   devise_for :admins
 
   resources :users,  :only => [:index,:destroy]
+
 
   post "dynamic_models/:id" => "carprofiles#dynamic_models"
 
@@ -35,9 +44,11 @@ end
     resources :credits
     resources :car_models
     resources :logbook_categories
+    resources :egift_categories
     resources :egifts
     resources :engines
     resources :body_indices
+    resources :credit_packages
   end
 
   resources :credits do
@@ -48,7 +59,12 @@ end
   end
   resources :admincontacts
   resources :logbooks
-  resources :carprofiles 
+  resources :carprofiles do
+    collection do 
+      post :like_car
+      get :like_count
+    end
+  end 
   resources :carprofile_photos
 
  

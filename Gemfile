@@ -7,10 +7,10 @@ gem 'rails', '3.2.14'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
+
+
+
 gem 'sqlite3'
-
-
-#gem 'sqlite3'
 gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
@@ -21,6 +21,7 @@ gem "ransack"
 
 gem 'therubyracer'
 gem 'execjs'
+gem "socialization"
 
 
 
