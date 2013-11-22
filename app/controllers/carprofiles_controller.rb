@@ -56,6 +56,6 @@ class CarprofilesController < ApplicationController
 
   def show
   	@carprofile = Carprofile.find(params[:id])
-     @likes= Like.find_by_liker_id_and_likeable_id(current_user.id,@carprofile.id).count
+     @likes= Like.find_by_liker_id_and_likeable_id(current_user.id,@carprofile.id).count rescue nil
   end
 end
