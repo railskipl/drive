@@ -13,4 +13,12 @@ class Carprofile < ActiveRecord::Base
   accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].blank? }, :allow_destroy => true,limit: 10
   
   acts_as_likeable
+
+  def likes(id)
+    Like.find_all_by_likeable_id(id) rescue nil
+  end
+
+  def sum_counts(count)
+   count.inject{|sum,x| sum + x }
+  end
 end
