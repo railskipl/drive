@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121045024) do
+ActiveRecord::Schema.define(:version => 20131121111323) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -161,6 +161,18 @@ ActiveRecord::Schema.define(:version => 20131121045024) do
     t.datetime "updated_at",                           :null => false
   end
 
+  create_table "likes", :force => true do |t|
+    t.string   "liker_type"
+    t.integer  "liker_id"
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    t.datetime "created_at"
+    t.integer  "count",         :default => 0, :null => false
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], :name => "fk_likeables"
+  add_index "likes", ["liker_id", "liker_type"], :name => "fk_likes"
+
   create_table "logbook_categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -176,6 +188,15 @@ ActiveRecord::Schema.define(:version => 20131121045024) do
     t.text     "logbook_discription"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "notification_type"
+    t.integer  "notifiable_id"
+    t.boolean  "is_read",           :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "pages", :force => true do |t|

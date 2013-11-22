@@ -15,9 +15,10 @@ class User < ActiveRecord::Base
   has_many :logbooks, dependent: :destroy
   has_many :user_blogs, dependent: :destroy
   has_many :favourites, dependent: :destroy
+  has_many :notifications
 
  
-
+ acts_as_liker
 
   # def credit_points(current_user)
   #   @credit = Credit.first
@@ -47,6 +48,31 @@ class User < ActiveRecord::Base
         current_user.credit = current_user.freecredit + current_user.buycredit
         current_user.save
       end
+    end
+  end
+
+  def spendcredits(current_user)
+
+    if current_user.freecredit > current_user.buycredit 
+      current_user.freecredit = current_user.freecredit - 1
+      current_user.credit = current_user.freecredit + current_user.buycredit
+      current_user.spend_credit = current_user.credit
+       
+       
+    elsif 
+      current_user.buycredit > current_user.freecredit 
+      current_user.buycredit= current_user.buycredit - 1
+      current_user.credit = current_user.freecredit + current_user.buycredit
+      current_user.spend_credit = current_user.credit
+       
+      
+    else
+      current_user.buycredit == current_user.buycredit 
+      current_user.freecredit = current_user.freecredit - 1
+      current_user.credit = current_user.freecredit + current_user.buycredit
+      current_user.spend_credit = current_user.credit
+      
+       #current_user.unlike!(@car_profile)      
     end
   end
 end
