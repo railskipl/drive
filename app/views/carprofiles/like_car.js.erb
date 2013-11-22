@@ -1,9 +1,2 @@
-<% if current_user.likes?(@car_profile) %>
 $("#like_car img").attr("src","/assets/like.jpg");
-$("#like_count").html('<%= "#{Like.sum('count')
-} likes."%>');
-<% else %>
-$("#like_car img").attr("src","/assets/like.jpg");
-$("#like_count").html('<%= "#{Like.sum('count')
-} likes."%>');
-<% end %>
+$("#like_count").html('<%= "#{@likes} like"%>');
