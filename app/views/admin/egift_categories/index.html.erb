@@ -1,0 +1,19 @@
+<%= link_to 'Add Egift Category', new_admin_egift_category_path %>
+<br /><br />
+<table class="admintable">
+ <tr class="admintablehd">
+    <td width="25%">Name</td>
+     
+   <td colspan=2 style="text-align: center !important;">Actions</td>
+</tr>
+
+<% @egift_categories.each do |egift_category|%>
+  <tr>
+    <td><%= egift_category.name %></td>
+    <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_egift_category_path(egift_category) %></td>
+    <td style="text-align: center !important;"><%= link_to 'Destroy',admin_egift_category_path(egift_category) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

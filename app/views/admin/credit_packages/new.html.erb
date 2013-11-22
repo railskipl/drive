@@ -1,0 +1,6 @@
+<%= form_for [:admin, @credit_package]  do |f| %>
+   <%= render '/admin/credit_packages/form' ,:f => f %>
+    <div class="actions">
+    <%= f.submit  "Create Credit Package" %>
+  </div>
+ <% end %>

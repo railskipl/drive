@@ -44,9 +44,11 @@ end
     resources :credits
     resources :car_models
     resources :logbook_categories
+    resources :egift_categories
     resources :egifts
     resources :engines
     resources :body_indices
+    resources :credit_packages
   end
 
   resources :credits do
