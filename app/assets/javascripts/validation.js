@@ -2,9 +2,12 @@
 
 $(document).ready(function() {
   //validation for tasks form
-  
+  $(".submit_btn").click(function(e){
+   $("[generated=true]").remove();
+
+
     $("#user").validate({
-      errorElement:'span',
+      // errorElement:'span',
       rules: {
         "user[email]":{
           required: true
@@ -71,7 +74,7 @@ $(document).ready(function() {
      });
   
      });
-  
+   });
   
 
 //   ////////////////////
