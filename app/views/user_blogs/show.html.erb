@@ -4,10 +4,10 @@
 <%= link_to 'Destroy',user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
 <% end %>
 <p>
-<%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id),:method => "post",:remote => true,:id => "like_blog" %><span id="like_count"><%= "#{Like.sum('count')} likes."%></span>
+<%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id),:method => "post",:remote => true,:id => "like_blog" %><span id="like_count"><%= @counts %></span>
 </p>
-
- written by : <%= current_user.first_name %> 
+ 
+ written by : <%= @user.first_name %> 
 <p>
   <b>Blog:</b>
   <%= @user_blog.blog.name%>

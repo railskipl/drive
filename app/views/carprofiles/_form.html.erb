@@ -1,5 +1,6 @@
-<%= javascript_include_tag "carprofiles" %>
 
+  <%#= javascript_include_tag "carprofiles" %>
+  <%= javascript_include_tag "prototype" %>
 
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
   <div class="middle">
@@ -27,29 +28,22 @@
  <p><%= link_to_add_fields "Add Image", f, :carprofile_photos %></p><br/>
  </div>
 
-  <div class="row">
-    <%= f.label "Car Make" %><br />
-    <%= f.collection_select :car_make_id, CarMake.all ,:id,:name, :prompt => 'Select car'%>
-  </div> 
+ <p><%= select "carprofile",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_model"}, :with => "'update_model='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %>
+   <%= image_tag("/assets/loadingg.gif",
+                    :align => "absmiddle",
+                    :border => 0,
+                    :id => "loader",
+                    :style =>"display: none;" ) %> </p>
 
+  <div id="car_make_id">
+   <%= render "carprofiles/update_model" %> 
+  </div>
+
+  
   <div>
     <p> If your car make or car model not present please contact <%= link_to "Inform admin", new_admincontact_path %> </p>
   </div>
 
-  <div class="row">
-    <%= f.label "Car Model"%><br />
-    <%= f.grouped_collection_select :car_model_id, CarMake.all, :car_models,:name, :id, :name,:prompt => 'Select model'%>
-  </div>
-
-  <div class="row">
-    <%= f.label "Body Index"%><br />
-    <%= f.collection_select :body_index_id, BodyIndex.all, :id, :bodyindex%>
-  </div>
-
-  <div class="row">
-    <%= f.label "Manufacturing Year" %><br />
-    <%= f.date_select :manufacturing_year , :order => [:year] ,:start_year => 1970, :end_year =>Date.today.year %>
-  </div>
 
   <div class="row">
     <%= f.label "Year of purchase" %><br />
@@ -75,11 +69,10 @@
     <%= f.text_field :power %>
   </div>
 
-  <div class="row">
+<div class="row">
     <%= f.label "Engine Displacement"%><br />
-    <%= f.collection_select :engine_id, Engine.all, :id, :engine_displacement%>
-  </div>
-
+    <%= f.collection_select :engine_id, Engine.find(:all, :select => "DISTINCT engine_displacement", :order => "created_at ASC"), :id,:engine_displacement%>
+</div> 
   <div class="row">
     <%= f.label "Do you sell this car" %><br />
     Yes <%= f.radio_button :sellthiscar, "yes" %>

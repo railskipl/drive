@@ -1,3 +1,8 @@
+<style>
+.fgp{ 
+  color:#fff;
+}
+</style> 
 <div class="header">
   <div class="container_20">
     <div class="grid_5">
@@ -15,7 +20,7 @@
           <div style="width:228px; float:left"><%= f.check_box :remember_me %>Remember Me </div>
         <% end %>
         <div style="width:auto; float:left">
-          <%= link_to "Forgot your password?", new_password_path(resource_name), :style => "color:#fff" %><br />
+          <%= link_to "Forgot your password?", new_password_path(resource_name), :class => "fgp" %><br />
         </div>
       </div>
           

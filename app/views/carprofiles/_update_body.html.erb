@@ -1,0 +1,4 @@
+<%= javascript_include_tag "prototype" %>
+
+<%= select "carprofiles", :body_index_id, @body_index.map {|d| [d.bodyindex, d.id]},{:prompt => "Select body" }rescue nil  %> <br/><br/>
+<%= select "carprofiles", :manufacturing_year, @body_index.map {|d| [d.manufacturing_year, d.id]},{:prompt => "Select Manufacturing Year" }rescue nil  %>

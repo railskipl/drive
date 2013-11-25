@@ -1,1 +1,1 @@
- $(".like_data").html('<%= escape_javascript(render :partial => "like_data")%>');
+ $("like_data").update("<%= escape_javascript(render(:partial => "like_data")) %>");

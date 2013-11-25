@@ -1,7 +1,5 @@
 Drive::Application.routes.draw do
 
-  get "favourites/index"
-
   resources :blog_comments
 
 
@@ -33,10 +31,11 @@ end
 
   resources :users,  :only => [:index,:destroy]
 
-
-  post "dynamic_models/:id" => "carprofiles#dynamic_models"
-
   match '/users/:id/toggled_status', :to => "users#toggled_status"
+
+  match "/carprofiles/update_model", :to => "carprofiles#update_model"
+
+  match "/carprofiles/update_body", :to => "carprofiles#update_body"
 
   match '/pages/:id' => 'pages#show'
 

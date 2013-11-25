@@ -1,6 +1,7 @@
 class Like < Socialization::ActiveRecordStores::Like
-	def self.like!(liker, likeable)
 
+	def self.like!(liker, likeable)
+    
       unless likes?(liker, likeable)
        self.create! do |like|
           like.liker = liker
@@ -11,7 +12,7 @@ class Like < Socialization::ActiveRecordStores::Like
        true
        else
        like = Like.find_by_liker_id_and_likeable_id(liker.id,likeable.id)
-        
+        raise like.inspect
         unless liker.credit == 0
           like.count = like.count + 1
 

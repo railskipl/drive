@@ -188,7 +188,6 @@ ActiveRecord::Schema.define(:version => 20131121124539) do
     t.string   "likeable_type"
     t.integer  "likeable_id"
     t.datetime "created_at"
-    t.integer  "count",         :default => 0, :null => false
   end
 
   add_index "likes", ["likeable_id", "likeable_type"], :name => "fk_likeables"

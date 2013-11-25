@@ -30,7 +30,14 @@ class CarprofilesController < ApplicationController
 
    @car_profile =Carprofile.find(params[:id])
     current_user.like!(@car_profile)
-  
+      @likes= @car_profile.likes(@car_profile.id)
+      
+      @count ||= []
+      @likes.each do |like|
+         @count << like.count
+      end
+       @counts = @car_profile.sum_counts(@count)
+
     current_user.spendcredits(current_user)
     
     if current_user.credit >= 0
@@ -56,6 +63,14 @@ class CarprofilesController < ApplicationController
 
   def show
   	@carprofile = Carprofile.find(params[:id])
-    @likes= Like.find_by_liker_id_and_likeable_id(current_user.id,@carprofile.id)
+  end
+
+  def update_model
+    #raise params[:update_model].inspect
+     @car_model = CarModel.find_all_by_car_make_id(params[:update_model]) 
+  end
+
+  def update_body
+    @body_index = BodyIndex.find_all_by_car_model_id(params[:update_body])
   end
 end
