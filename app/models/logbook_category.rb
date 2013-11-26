@@ -3,6 +3,7 @@ class LogbookCategory < ActiveRecord::Base
 
 
   has_many :logbooks
+  has_many :favourites
 
   validates_presence_of :name
 

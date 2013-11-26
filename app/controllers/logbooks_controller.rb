@@ -2,6 +2,7 @@ class LogbooksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def index
   	@logbooks = current_user.logbooks.all
+    #raise @logbooks.inspect
   end
 
   def new
@@ -33,7 +34,7 @@ class LogbooksController < ApplicationController
     
       @count ||= []
       @likes.each do |like|
-         @count << like.count
+         @count << like.count 
       end
       current_user.spendcredits(current_user)
     

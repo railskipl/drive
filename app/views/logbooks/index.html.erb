@@ -6,7 +6,7 @@
 
 <ol>
   <% @logbooks.each do |logbook| %>
-  <li><%= link_to logbook.logbook_category.name, logbook_path(logbook) %></li>
+  <li><%= link_to logbook.logbook_category.name, logbook_path(logbook) rescue nil %></li>
   <% end %>
 </ol>
 

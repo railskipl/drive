@@ -17,7 +17,13 @@ class UserBlogsController < ApplicationController
 
    @user_blog = UserBlog.find(params[:id])
     current_user.like!(@user_blog)
-  
+      @likes = @user_blog.likes(@user_blog.id)
+      
+      @count ||= []
+      @likes.each do |like|
+         @count << like.count
+      end
+       @count = @user_blog.sum_counts(@count)
     current_user.spendcredits(current_user)
     
     if current_user.credit >= 0

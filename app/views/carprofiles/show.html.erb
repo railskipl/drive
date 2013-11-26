@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 $(document).ready(function(){
 $("a.topopup").click(function(){
@@ -57,7 +58,7 @@ $("a.topopup").click(function(){
 
 <p>
   <b>Car model:</b>
-  <%= @carprofile.car_model.name%>
+  <%= @carprofile.car_model.name rescue nil%>
 </p>
 
 <p>
@@ -89,7 +90,7 @@ $("a.topopup").click(function(){
 
 <p>
   <b>Engine Displacement:</b>
-  <%= @carprofile.engine.engine_displacement%>
+  <%= @carprofile.engine.engine_displacement rescue nil%>
 </p>
 
 <p>

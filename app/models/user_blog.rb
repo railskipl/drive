@@ -4,6 +4,7 @@ class UserBlog < ActiveRecord::Base
   belongs_to :blog
   belongs_to :user
   has_many :blog_comments
+  has_many :favourites
 
 
   acts_as_likeable

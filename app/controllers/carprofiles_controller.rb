@@ -2,6 +2,7 @@ class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
   def index
   	@carprofiles = current_user.carprofiles.all
+    #raise @carprofiles.inspect
   end
 
   def new

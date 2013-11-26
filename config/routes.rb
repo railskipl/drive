@@ -1,7 +1,10 @@
 Drive::Application.routes.draw do
 
   resources :blog_comments
+  
+  match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
 
+  match "logbooks/:id/user_blog"  => 'favourites#user_blog'
 
   resources :comment_logbooks
 

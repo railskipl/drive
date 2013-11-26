@@ -1,8 +1,27 @@
+<script type="text/javascript">
+$(document).ready(function(){
+$("a.topopup").click(function(){
+  $.ajax({
+     type: "GET",
+     url: "/logbooks/like_count",
+     data: {"id" : $(this).attr("val")},
+     success: function(data){
+   
+     },
+     dataType: "script"
+   });
+})
+});
+</script>
+
+
 <p><%= notice %></p>
 <% if current_user.id == @logbook.user_id %>
 <%= link_to 'Back', logbooks_path %> | <%= link_to 'Edit', edit_logbook_path %> | 
 <%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
 <% end %>
+<%#= raise params[:id].inspect %>
+<%= link_to "Favourite",{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%>
 
 <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>
 <p>
