@@ -1,7 +1,7 @@
 <%= form_for [@admincontact]  do |f| %>  
   <% if @admincontact.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admincontact.errors.count, "error") %> prohibited this car model from being saved:</h2>
+      <h2><%= pluralize(@admincontact.errors.count, "error") %> prohibited this from being saved:</h2>
 
       <ul>
       <% @admincontact.errors.full_messages.each do |msg| %>
@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label "Please enter your email id" %><br />
-    <%= f.text_field :emailid %>
+    <%= f.text_field :emailid ,:value => current_user.email,:readonly => true %>
   </div>
 
   <div class="actions">

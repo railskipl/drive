@@ -31,11 +31,15 @@ class LogbooksController < ApplicationController
    
     @likes= Like.find_all_by_likeable_id(@logbook.id)
     @likes = @logbook.likes(@logbook.id)
-    
+   
       @count ||= []
       @likes.each do |like|
          @count << like.count 
       end
+      
+      @count = @logbook.sum_counts(@count)
+
+
       current_user.spendcredits(current_user)
     
     if current_user.credit >= 0
@@ -64,9 +68,16 @@ class LogbooksController < ApplicationController
   end
 
   def show
+
   	@logbook = Logbook.find(params[:id])
     @comment_logbook = @logbook.comment_logbooks.build
-    
+    @likes = @logbook.likes(@logbook.id)
+      
+      @count ||= []
+      @likes.each do |like|
+         @count << like.count
+      end
+
   end
 
   def destroy
