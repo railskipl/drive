@@ -62,9 +62,18 @@ class CarprofilesController < ApplicationController
   	@carprofile = Carprofile.find(params[:id])
   end
 
+ 
   def show
-  	@carprofile = Carprofile.find(params[:id])
-  end
+          @carprofile = Carprofile.find(params[:id])
+     @likes= @carprofile.likes(@carprofile.id)
+      
+      @count ||= []
+      @likes.each do |like|
+         @count << like.count
+      end
+        @counts = @carprofile.sum_counts(@count)
+     end
+
 
   def update_model
     #raise params[:update_model].inspect

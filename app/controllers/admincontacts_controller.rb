@@ -1,5 +1,6 @@
 class AdmincontactsController < ApplicationController
     before_filter :authenticate_admin!, :only => [:index]
+    before_filter :authenticate_user! ,:only => [:new]
 
    layout :custom_layout
   def index
@@ -17,7 +18,8 @@ class AdmincontactsController < ApplicationController
        flash[:notice] = "Your message has been sended successfully"
        redirect_to new_carprofile_path
    else
-   	   render :new
+   	    flash[:notice] = 'Please fill all the fields'
+    redirect_to new_admincontact_path
    end
   end
 
