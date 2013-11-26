@@ -40,6 +40,10 @@ end
 
   match "/carprofiles/update_body", :to => "carprofiles#update_body"
 
+  match "/logbooks/update_model", :to => "logbooks#update_model"
+
+  match "/logbooks/update_body", :to => "logbooks#update_body"
+
   match '/pages/:id' => 'pages#show'
 
   namespace :admin do 
