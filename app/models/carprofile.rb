@@ -9,7 +9,7 @@ class Carprofile < ActiveRecord::Base
   belongs_to :car_model
   belongs_to :engine
   has_many :carprofile_photos
-  validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar
+  validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar,:car_make_id, :car_model_id, :manufacturing_year
 
   accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].blank? }, :allow_destroy => true,limit: 10
   
