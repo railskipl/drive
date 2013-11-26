@@ -1,0 +1,118 @@
+
+<div class="middle">
+
+				<div class="container_20">
+				
+				
+				<div class="grid_20 title">
+		
+	<h4>Send a Gift</h4>
+	
+	
+	
+	
+		
+		
+		</div>
+		
+		
+		<div class="grid_20">
+		
+	
+		<div class="clearfix" id="w">
+    <ul id="sidemenu">
+      <li style="border-top:1px solid #E7E7E7">
+        <a class="open" href="#home-content">All Gifts</a>
+      </li>
+      <% @category.each do |category| %>
+      <li>
+        <a href="#about-content<%= category.id %>"><%= category.name %></a>
+      </li>
+      <% end %>
+    </ul>
+    
+    <div id="content">
+        <div class="contentblock" id="home-content">
+		
+		
+          <div id="mainwrapper">
+		<% @egifts.each do |egift| %>
+		<div id="box-1" class="box1">
+			<a href="#inline1" id="various1">
+			
+			 <%= image_tag egift.image.url %></a>
+				<span class="caption simple-caption">
+					<p><%= link_to "Send" ,new_send_gift_path(egift,:carprofile_id => params[:carprofile_id]) %></p>
+				</span>
+		</div>
+		<% end %>
+		
+		
+		
+	</div>
+     </div>
+        
+         <% @category.each do |c| %>
+        <div class="contentblock hidden" id="about-content<%= c.id %>">
+         <div id="mainwrapper">
+         	<% c.egifts.each do |g| %>
+         			<div id="box-1" class="box1">
+			<%= image_tag g.image.url %>
+				<span class="caption simple-caption">
+					<p><%= link_to "Send" ,new_send_gift_path(g, :carprofile_id => params[:carprofile_id]) %></p>
+				</span>
+		  </div>
+         	<%end %>
+	
+		
+	
+
+
+		
+	</div>
+      
+        </div>
+<% end %>
+
+
+    </div>
+  </div>
+	
+	
+	
+	
+		
+		
+		</div>
+		
+		
+		
+				
+		
+				
+		
+		</div>
+
+<script type="text/javascript">
+$(function(){
+  $('#sidemenu a').on('click', function(e){
+    e.preventDefault();
+
+    if($(this).hasClass('open')) {
+      // do nothing because the link is already open
+    } else {
+      var oldcontent = $('#sidemenu a.open').attr('href');
+      var newcontent = $(this).attr('href');
+      
+      $(oldcontent).fadeOut('fast', function(){
+        $(newcontent).fadeIn().removeClass('hidden');
+        $(oldcontent).addClass('hidden');
+      });
+      
+     
+      $('#sidemenu a').removeClass('open');
+      $(this).addClass('open');
+    }
+  });
+});
+</script>

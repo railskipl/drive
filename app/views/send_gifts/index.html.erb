@@ -1,0 +1,27 @@
+<h1>Listing send_gifts</h1>
+
+<table>
+  <tr>
+    <th>Egift</th>
+    <th>Message</th>
+    <th>Carprofile</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @send_gifts.each do |send_gift| %>
+  <tr>
+    <td><%= send_gift.egift_id %></td>
+    <td><%= send_gift.message %></td>
+    <td><%= send_gift.carprofile_id %></td>
+    <td><%= link_to 'Show', send_gift %></td>
+    <td><%= link_to 'Edit', edit_send_gift_path(send_gift) %></td>
+    <td><%= link_to 'Destroy', send_gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Send gift', new_send_gift_path %>
