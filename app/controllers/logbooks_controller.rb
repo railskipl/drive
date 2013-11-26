@@ -88,4 +88,13 @@ class LogbooksController < ApplicationController
     	redirect_to logbooks_path
     end
   end
+
+  def update_model
+    #raise params[:update_model].inspect
+     @car_model = CarModel.find_all_by_car_make_id(params[:update_model]) 
+  end
+
+  def update_body
+    @body_index = BodyIndex.find_all_by_car_model_id(params[:update_body])
+  end
 end
