@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 $(document).ready(function(){
 $("a.topopup").click(function(){
@@ -26,11 +27,15 @@ $("a.topopup").click(function(){
 <p>
   <b>Car photos</b>
  <% for carprofile in @carprofile.carprofile_photos %>
+
  <%= image_tag carprofile.photo.url(:medium)  %>
 
- <% end %><br/>
+<% end %><br/>
  <%= link_to (image_tag "like.jpg") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
   <span id="like_count"><%= @counts %></span>
+</p>
+ 
+  
 
 <a href="#" class="topopup" val= "<%=@carprofile.id %>"><button>showlikes</button></a>
     
@@ -53,7 +58,7 @@ $("a.topopup").click(function(){
 
 <p>
   <b>Car model:</b>
-  <%= @carprofile.car_model.name%>
+  <%= @carprofile.car_model.name rescue nil%>
 </p>
 
 <p>
@@ -85,7 +90,7 @@ $("a.topopup").click(function(){
 
 <p>
   <b>Engine Displacement:</b>
-  <%= @carprofile.engine.engine_displacement%>
+  <%= @carprofile.engine.engine_displacement rescue nil%>
 </p>
 
 <p>

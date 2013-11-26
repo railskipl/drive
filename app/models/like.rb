@@ -1,11 +1,14 @@
 class Like < Socialization::ActiveRecordStores::Like
-	def self.like!(liker, likeable)
 
+	def self.like!(liker, likeable)
+    
       unless likes?(liker, likeable)
        self.create! do |like|
           like.liker = liker
            like.likeable = likeable
-           like.count = 1
+            unless liker.credit == 0
+              like.count = 1
+            end
         end
        call_after_create_hooks(liker, likeable)
        true

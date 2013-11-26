@@ -15,9 +15,9 @@ class User < ActiveRecord::Base
   has_many :logbooks, dependent: :destroy
   has_many :user_blogs, dependent: :destroy
   has_many :favourites, dependent: :destroy
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
 
- 
+
  acts_as_liker
 
   # def credit_points(current_user)

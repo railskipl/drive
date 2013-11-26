@@ -42,6 +42,8 @@ class BlogCommentsController < ApplicationController
   def create
     @blog_comment = BlogComment.new(params[:blog_comment])
     if @blog_comment.save
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "blog_comment", :notifiable_id  => @blog_comment.user_blog_id)
+        @notification.save
         flash[:notice] = 'comment was successfully created.' 
         redirect_to user_blog_path(@blog_comment.user_blog_id)
     end

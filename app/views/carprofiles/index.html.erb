@@ -13,7 +13,7 @@
 		 <% @carprofiles.each do |carprofile| %>
 		  <tr>
 			<td><%= link_to carprofile.car_make.name, carprofile_path(carprofile) %></td>
-			<td><%= carprofile.car_model.name %></td>
+			<td><%= carprofile.car_model.name  rescue nil %></td>
 		  </tr>
 		 <% end %>
 

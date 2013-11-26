@@ -2,6 +2,7 @@ class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
   def index
   	@carprofiles = current_user.carprofiles.all
+    #raise @carprofiles.inspect
   end
 
   def new
@@ -45,7 +46,7 @@ class CarprofilesController < ApplicationController
         @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_comment", :notifiable_id  => @car_profile.id)
         @notification.save
     end
-
+    
      respond_to do |format|
      format.js {}
     end
@@ -61,8 +62,9 @@ class CarprofilesController < ApplicationController
   	@carprofile = Carprofile.find(params[:id])
   end
 
+ 
   def show
-  	@carprofile = Carprofile.find(params[:id])
+          @carprofile = Carprofile.find(params[:id])
      @likes= @carprofile.likes(@carprofile.id)
       
       @count ||= []
@@ -71,4 +73,14 @@ class CarprofilesController < ApplicationController
       end
         @counts = @carprofile.sum_counts(@count)
      end
+
+
+  def update_model
+    #raise params[:update_model].inspect
+     @car_model = CarModel.find_all_by_car_make_id(params[:update_model]) 
+  end
+
+  def update_body
+    @body_index = BodyIndex.find_all_by_car_model_id(params[:update_body])
+  end
 end

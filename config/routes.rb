@@ -1,13 +1,19 @@
 Drive::Application.routes.draw do
 
-  get "favourites/index"
-
   resources :blog_comments
+  
+  match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
 
+  match "logbooks/:id/user_blog"  => 'favourites#user_blog'
 
   resources :comment_logbooks
 
-  resources :user_blogs
+  resources :user_blogs do
+    collection do 
+      post :like_blog
+      get :like_count
+    end
+  end
 
   resources :comments
 
@@ -28,10 +34,11 @@ end
 
   resources :users,  :only => [:index,:destroy]
 
-
-  post "dynamic_models/:id" => "carprofiles#dynamic_models"
-
   match '/users/:id/toggled_status', :to => "users#toggled_status"
+
+  match "/carprofiles/update_model", :to => "carprofiles#update_model"
+
+  match "/carprofiles/update_body", :to => "carprofiles#update_body"
 
   match '/pages/:id' => 'pages#show'
 
@@ -58,7 +65,12 @@ end
     end
   end
   resources :admincontacts
-  resources :logbooks
+  resources :logbooks do 
+    collection do 
+      post :like_logbook
+      get :like_count
+    end
+  end
   resources :carprofiles do
     collection do 
       post :like_car

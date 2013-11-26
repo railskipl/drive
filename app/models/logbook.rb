@@ -8,4 +8,17 @@ class Logbook < ActiveRecord::Base
   belongs_to :logbook_category
   has_many :comment_logbooks
   has_many :favourites
+
+
+  acts_as_likeable
+
+  def likes(id)
+
+    Like.find_all_by_likeable_id_and_likeable_type(id,self.class)
+  end
+
+  def sum_counts(count)
+  	
+   count.inject{|sum,x| sum + x }
+  end
 end

@@ -1,0 +1,8 @@
+<% if current_user.likes?(@logbook) %>
+$("#like_logbook img").attr("src","/assets/like.jpg");
+$("#like_count").html('<%= "#{@counts} likes."%>');
+<% else %>
+$("#like_logbook img").attr("src","/assets/like.jpg");
+$("#like_count").html('<%= "#{Like.sum('count');
+} likes."%>');
+<% end %>

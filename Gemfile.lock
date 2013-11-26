@@ -95,6 +95,8 @@ GEM
     polyamorous (0.6.4)
       activerecord (>= 3.0)
     polyglot (0.3.3)
+    prototype-rails (3.1.0)
+      rails (~> 3.1)
     pry (0.9.12.3)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -175,6 +177,7 @@ DEPENDENCIES
   jquery-rails
   paperclip
   pg
+  prototype-rails
   pry
   rails (= 3.2.14)
   ransack

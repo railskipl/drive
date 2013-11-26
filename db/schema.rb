@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121124539) do
+ActiveRecord::Schema.define(:version => 20131125122732) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -180,6 +180,8 @@ ActiveRecord::Schema.define(:version => 20131121124539) do
     t.boolean  "is_read",           :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.integer  "user_blog_id"
+    t.integer  "logbook_id"
   end
 
   create_table "likes", :force => true do |t|
