@@ -71,7 +71,7 @@
 
 <div class="row">
     <%= f.label "Engine Displacement"%><br />
-    <%= f.collection_select :engine_id, Engine.find(:all, :select => "DISTINCT engine_displacement", :order => "created_at ASC"), :id,:engine_displacement%>
+    <%= f.collection_select :engine_id, Engine.select("DISTINCT(engine_displacement)") , :id,:engine_displacement%>
 </div> 
   <div class="row">
     <%= f.label "Do you sell this car" %><br />
