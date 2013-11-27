@@ -3,7 +3,6 @@ class CarModel < ActiveRecord::Base
   belongs_to :car_make
   has_many :body_indices, dependent: :destroy
   has_many :carprofiles, dependent: :destroy
-  has_many :engines, dependent: :destroy
 
   has_many :logbooks, dependent: :destroy
 
