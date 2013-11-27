@@ -18,8 +18,10 @@ class CarprofilesController < ApplicationController
   end
 
   def create
+
   	@carprofile = Carprofile.new(params[:carprofile])
-  	if @carprofile.save
+  	raise @carprofile.inspect
+    if @carprofile.save
 	 	flash[:notice] = "car profile created successfully"
         redirect_to carprofiles_path
     else

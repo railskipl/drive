@@ -2,14 +2,15 @@
 <% if current_user.id == @user_blog.user_id %>
 <%= link_to 'Back', user_blogs_path %> | <%= link_to 'Edit', edit_user_blog_path %> | 
 <%= link_to 'Destroy',user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-<% end %>|
+<% end %>
 <%= link_to "Favourite",{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }%>
 
 <p>
 <%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id),:method => "post",:remote => true,:id => "like_blog" %><span id="like_count"><%= @counts %></span>
 </p>
- 
- written by : <%= @user.first_name %> 
+
+written by : <%= @user_blog.user.first_name rescue nil%> <%= @user_blog.user.last_name rescue nil%><br/> 
+Written on :<%= @user_blog.created_at.to_date rescue nil%>
 <p>
   <b>Blog:</b>
   <%= @user_blog.blog.name%>

@@ -1,16 +1,18 @@
 <h1>Favourites</h1>
 
+
+<%#= raise @favourites.inspect %>
 <p>
   <% @favourites.each do |n| %>
 
-    <%  user = User.find(n.user_id)%>
+    <%#  user = User.find(n.user_id)%>
     <%if n.favourite_type == "favourite_logbook"%>
        <%#= raise @favourites.inspect %>
       <%= link_to n.logbook.logbook_category.name rescue nil %> ,your favourite logbook <br/>
     <%end%>
 
     <%if n.favourite_type == "favourite_blog"%>
-      <%= n.user_blog.blog.name rescue nil %> ,your favourite blog <br/>
+      <%= link_to n.user_blog.blog.name rescue nil %> ,your favourite blog <br/>
     <%end%>
     
   <%end%>

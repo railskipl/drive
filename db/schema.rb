@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(:version => 20131125122732) do
   create_table "carprofiles", :force => true do |t|
     t.integer  "car_make_id"
     t.integer  "car_model_id"
-    t.date     "manufacturing_year"
-    t.date     "year_of_purchase"
+    t.string   "manufacturing_year"
+    t.string   "year_of_purchase"
     t.string   "whatkindofcar"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false

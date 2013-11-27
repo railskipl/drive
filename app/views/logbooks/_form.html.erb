@@ -18,7 +18,7 @@
     <%= f.collection_select :logbook_category_id, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category' %>
   </div> <br/>
 
-  <p><%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "update_model"}, :with => "'update_model='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %>
+  <p><%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %>
    <%= image_tag("/assets/loadingg.gif",
                     :align => "absmiddle",
                     :border => 0,
@@ -26,7 +26,7 @@
                     :style =>"display: none;" ) %> </p>
 
   <div id="car_make_id">
-   <%= render "logbooks/update_model" %> 
+   <%= render "logbooks/updatemodel" %> 
   </div>
 
 
