@@ -1,4 +1,315 @@
 
+
+<div class="container_20">
+
+    
+    <div class="middle">
+    
+    <div class="container_20" style="background:#333; margin-bottom:10px">
+    
+      <%= render 'shared/carousel' %>   
+
+    
+    
+    
+      </div>
+    
+    
+        <div class="container_20 profile_bg">
+        
+        
+        <div class="grid_3">
+    
+  <div class="profile_image"><img alt="" src="/assets/profile.jpg"></div>
+  
+  
+  <ul class="tab_menu2">
+          
+    <li><a href="#">Subscribers</a></li>
+    <li> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
+    <span id="like_count"><%= @counts %></span></li>
+     <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
+</li>
+    <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
+    <li><a href="#">Add to Spotlight +</a></li>
+    <li><a href="#"><img alt="" src="/assets/star2.png"></a></li>
+   
+  </ul>
+  
+  <div>
+  
+  
+  
+  </div>
+  </div>
+  
+          <div class="grid_7">
+          
+          <h1>User Name <img src="/assets/online.png" alt=""></h1>
+    
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Car Make</td>
+    <td class="profile_col2"><%= @carprofile.car_make.name%></td>
+  </tr>
+   <tr>
+    <td align="left" valign="top" class="profile_col1">Car Model</td>
+    <td class="profile_col2"><%= @carprofile.car_model.name%></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Manufacturing Year</td>
+    <td class="profile_col2"><%= @carprofile.manufacturing_year %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Year of Purchase</td>
+    <td class="profile_col2"><%= @carprofile.year_of_purchase %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">What kind of car of this</td>
+    <td class="profile_col2"><%= @carprofile.whatkindofcar %></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Power</td>
+    <td class="profile_col2">  <%= @carprofile.power%></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Engine Displacement</td>
+    <td class="profile_col2"><%= @carprofile.engine.engine_displacement rescue nil%>
+</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">License plate</td>
+    <td class="profile_col2">  <%= @carprofile.license_plate%>
+ </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Do you sell this car</td>
+    <td class="profile_col2">  <%= @carprofile.sellthiscar %>
+</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" class="profile_col1">VIN</td>
+    <td class="profile_col2">  <%= @carprofile.VIN%>
+</td>
+  </tr>
+</table>
+
+  
+  
+  
+  </div>
+  
+  
+  
+  <div class="grid_10">
+    
+  <div><strong>Car Description</strong></div>
+  
+  <div class="car_description">
+  
+    <p>  <%= @carprofile.car_description.html_safe %></p>
+  </div>
+  </div>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <div class="container_20">
+        
+        
+        <div class="grid_20 aboutme">
+    
+  
+  <h4>My Cars</h4>
+  
+  <div id="mainwrapper">
+    <% for carprofile in @carprofile.carprofile_photos %>
+
+ <%= image_tag carprofile.photo.url(:medium)  %>
+
+<% end %>
+    <div id="box-1" class="box1">
+      <a href="#inline1" id="various1">
+      
+       <img id="image-1" src="/assets/car_profile.jpg"/></a>
+        <span class="caption simple-caption">
+          <p><a href="#inline1" id="various1">Simple Caption</a></p>
+        </span>
+    </div>
+    
+
+
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/car_profile.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/3.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/4.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/5.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/6.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/2.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/2.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/2.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/2.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/2.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    <div id="box-1" class="box1">
+      <img id="image-1" src="/assets/2.jpg"/>
+        <span class="caption simple-caption">
+          <p><a href="#">Simple Caption</a></p>
+        </span>
+    </div>
+    
+    
+    
+    
+    
+    
+
+    
+  </div>
+  
+  </div>
+  <div class="grid_20 aboutme">
+  <h4>My Blogs</h4>
+  
+  <div class="blog_div">
+
+    <a href="#" class="redlink">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
+       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida   Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
+        <br>
+        <a href="#" class="bluelink">Read More
+    </a>
+    </div>
+    
+    <div class="blog_div">
+
+    <a href="#" class="redlink">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
+       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. consectetur enim. lit.  Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. consectetur enim. lit.  Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
+        <br>
+        <a href="#" class="bluelink">Read More
+    </a>
+    </div>
+    
+    </div>
+    
+    <div class="grid_20 aboutme">
+    
+       <h4>Comments</h4>
+        <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
+        <textarea class="comment_tf2" rows="4" name="textarea"></textarea>
+        <div style="float:right; margin:10px 0; text-align:left; width:100%">
+          <input type="button" value="Done" style="margin-left:100px" class="submit_btn" name="button">
+        </div>
+        <div class="blog_div">
+          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
+          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravidaelit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
+        </div>
+        <div class="blog_div">
+          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
+          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
+        </div>
+        <div class="blog_div">
+          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
+          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
+        </div>
+        <div class="blog_div">
+          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
+          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
+        </div>
+     
+</div>
+  
+  
+  
+          
+
+    
+    </div>
+    
+
+
+  
+    
+    </div>
+    
+
+</div>
+
+
+
+
 <script type="text/javascript">
 $(document).ready(function(){
 $("a.topopup").click(function(){
@@ -15,31 +326,14 @@ $("a.topopup").click(function(){
 });
 </script>
 
-<div class="middle">
-  <div class="container_20">
-    <div class="grid_10" style="margin:10px auto; float:none; display:block">
-   
-<p>
-  <b>Car make:</b>
-  <%= @carprofile.car_make.name%>
-</p>
 
-<p>
-  <b>Car photos</b>
- <% for carprofile in @carprofile.carprofile_photos %>
 
- <%= image_tag carprofile.photo.url(:medium)  %>
+ 
 
-<% end %><br/>
- <%= link_to (image_tag "like.jpg") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
-  <span id="like_count"><%= @counts %></span>
-</p>
- <p>
-<%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %>
-<p>
+
+
   
 
-<a href="#" class="topopup" val= "<%=@carprofile.id %>"><button>showlikes</button></a>
     
     <div id="toPopup"> 
       
@@ -56,65 +350,14 @@ $("a.topopup").click(function(){
     
   <div class="loader"></div>
     <div id="backgroundPopup"></div>
-<p>
 
-<p>
-  <b>Car model:</b>
-  <%= @carprofile.car_model.name rescue nil%>
-</p>
 
-<p>
-  <b>Manufacturing Year of car:</b>
-  <%= @carprofile.manufacturing_year%>
-</p>
 
-<p>
-  <b>Year of Purchase:</b>
-  <%= @carprofile.year_of_purchase%>
-</p>
 
-<p>
-  <b>What kind of car of this:</b>
-  <%= @carprofile.whatkindofcar%>
-</p>
 
-<p>
-  <b>Car Description:</b>
+
   
   
-  <%= @carprofile.car_description.html_safe %>
-</p>
-
-<p>
-  <b>Power:</b>
-  <%= @carprofile.power%>
-</p>
-
-<p>
-  <b>Engine Displacement:</b>
-  <%= @carprofile.engine.engine_displacement rescue nil%>
-</p>
-
-<p>
-  <b>License plate:</b>
-  <%= @carprofile.license_plate%>
-</p>
-
-<p>
-  <b>Do you sell this car:</b>
-  <%= @carprofile.sellthiscar%>
-</p>
-
-<p>
-  <b>VIN:</b>
-  <%= @carprofile.VIN%>
-</p>
-
-
-</div>
-</div>
-</div>
-
 
 
 

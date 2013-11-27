@@ -61,7 +61,21 @@ class CarprofilesController < ApplicationController
   def edit
   	@carprofile = Carprofile.find(params[:id])
   end
+  
+  def update
+    @carprofile = Carprofile.find(params[:id])
+      respond_to do |format|
+      if @carprofile.update_attributes(params[:carprofile])
+        format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @carprofile.errors, status: :unprocessable_entity }
+      end
+    end
 
+
+  end
  
   def show
           @carprofile = Carprofile.find(params[:id])
