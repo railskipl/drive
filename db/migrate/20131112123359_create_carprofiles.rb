@@ -3,8 +3,8 @@ class CreateCarprofiles < ActiveRecord::Migration
     create_table :carprofiles do |t|
       t.integer :car_make_id
       t.integer :car_model_id
-      t.date :manufacturing_year
-      t.date :year_of_purchase
+      t.string :manufacturing_year
+      t.string :year_of_purchase
       t.string :whatkindofcar
 
       t.timestamps
