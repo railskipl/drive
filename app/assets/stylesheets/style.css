@@ -543,3 +543,214 @@ span.arrow {
 div#popup_content {
     margin: 4px 7px;
 }
+
+/*26-nov*/
+
+.flashmessage{padding:10px; background:#FFCCCC; color:#000000; position: absolute; left:30%; right:30% }
+
+.white_link{ color:#FFFFFF; text-decoration:none}
+.white_link:hover{ text-decoration: underline}
+
+
+/* side navigation */
+#sidemenu {
+  margin: 0;
+  padding: 0;
+  width: 150px;
+  float: left;
+  background: #E7E7E7;
+  border-left: 1px solid #E7E7E7;
+}
+
+
+#sidemenu li { display: block; text-align: left; border-top: 1px solid #fff;  }
+
+#sidemenu li a { 
+  display: block;
+  padding: 5px 10px;
+  color: #555;
+  text-decoration: none;
+  border-bottom: 1px solid #d1d1d1;
+
+}
+#sidemenu li a:hover {
+  background: #f2f2f2;
+}
+
+#sidemenu li a strong { 
+  display: block;
+  
+}
+
+#sidemenu li a.open {
+  width: auto;
+  background: #fff;
+}
+
+
+#w {
+  display: block;
+  width: auto;
+  margin: 10px auto;
+  background: none;
+}
+
+
+#content {
+  display: block;
+  padding: 10px;
+  margin-left: 150px;
+  min-height: 300px;
+  border:1px solid #e7e7e7; overflow:hidden
+}
+
+
+.contentblock {
+  display: block;
+  padding:0;
+}
+
+.contentblock.hidden {
+  display: none;
+}
+
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+ 
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+
+/*image caption*/
+
+
+
+caption {
+    /*coordinated marking to match cell's padding*/
+    margin-bottom:.5em;
+    /*centered so it doesn't blend in to other content*/
+    text-align:center;
+}
+
+#mainwrapper {
+    font: 10pt normal Arial, sans-serif;
+    height: auto;
+    margin:0;
+    text-align: center;
+    width: auto;
+}
+
+/* Image Box Style */
+#mainwrapper .box1 {
+    border: 5px solid #fff;
+    cursor: pointer;
+    height: 100px;
+    float: left;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    width: 140px;
+    box-shadow: 0 0 0 1px #ccc;
+}
+#mainwrapper .box1 img {
+    position: absolute;
+    left: 0;
+        -webkit-transition: all 300ms ease-out;
+        -moz-transition: all 300ms ease-out;
+        -o-transition: all 300ms ease-out;
+        -ms-transition: all 300ms ease-out; 
+    transition: all 300ms ease-out;
+}
+
+/* Caption Common Style */
+#mainwrapper .box1 .caption {
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    color: #fff;
+    z-index: 100;
+        -webkit-transition: all 300ms ease-out;
+        -moz-transition: all 300ms ease-out;
+        -o-transition: all 300ms ease-out;
+        -ms-transition: all 300ms ease-out; 
+        transition: all 300ms ease-out;
+    left: 0;
+}
+
+
+/** Caption 1: Simple **/
+#mainwrapper .box1 .simple-caption {
+    height: 30px;
+    width: 140px;
+    display: block;
+    bottom: -30px;
+    line-height: 25pt;
+    text-align: center;
+}
+
+
+/** Caption 3: Fade **/
+#mainwrapper .box1 .fade-caption, #mainwrapper .box1 .scale-caption  {
+    opacity: 0;
+    width: 170px;
+    height: 170px;
+    text-align: left;
+    padding: 15px;
+}
+
+
+
+
+
+
+
+/** Simple Caption :hover Behaviour **/
+#mainwrapper .box1:hover .simple-caption {
+    -moz-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+
+
+/** Fade Caption :hover Behaviour **/
+#mainwrapper .box1:hover .fade-caption, #mainwrapper .box1:hover .scale-caption  {
+    opacity: 1;
+}
+
+
+
+
+
+
+/** Scale Caption :hover Behaviour **/
+#mainwrapper .box1:hover #image-6 {
+    -moz-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+}
+
+#mainwrapper .box1:hover .scale-caption h3, #mainwrapper .box1:hover .scale-caption p {
+    -moz-transform: translateX(200px);
+    -o-transform: translateX(200px);
+    -webkit-transform: translateX(200px);
+    transform: translateX(200px);
+}
+
+
+.fancybox_title {
+    background: -moz-linear-gradient(center top , #FFFFFF 0%, #EEEEEE 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-radius: 10px 10px 0 0;
+    color: #777777;
+    font-weight: bold;
+    height: auto;
+    padding: 10px;
+    width: 630px;
+    border-bottom:1px solid #dadada
+}
+
+.car_profile_image{ border:1px solid #e6e6e6; width:auto; text-align:center; float:left}
+
+.gift{ width:auto; height:auto; position: absolute; margin:0 0 0 272px}

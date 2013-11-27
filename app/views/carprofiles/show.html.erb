@@ -34,7 +34,9 @@ $("a.topopup").click(function(){
  <%= link_to (image_tag "like.jpg") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
   <span id="like_count"><%= @counts %></span>
 </p>
- 
+ <p>
+<%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %>
+<p>
   
 
 <a href="#" class="topopup" val= "<%=@carprofile.id %>"><button>showlikes</button></a>

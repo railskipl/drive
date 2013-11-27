@@ -1,7 +1,5 @@
 class Engine < ActiveRecord::Base
-  attr_accessible :car_make_id, :car_model_id, :engine_displacement
-
-  belongs_to :car_model
+  attr_accessible :engine_displacement
   has_many :carprofiles
   validates_presence_of :engine_displacement
 end

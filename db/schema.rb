@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125122732) do
+ActiveRecord::Schema.define(:version => 20131126094940) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -230,6 +230,16 @@ ActiveRecord::Schema.define(:version => 20131125122732) do
     t.string   "meta_title"
     t.text     "meta_description"
     t.text     "meta_keyword"
+  end
+
+  create_table "send_gifts", :force => true do |t|
+    t.integer  "egift_id"
+    t.text     "message"
+    t.integer  "carprofile_id"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "seos", :force => true do |t|

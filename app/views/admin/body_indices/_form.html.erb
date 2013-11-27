@@ -25,7 +25,7 @@
   
   <div class="field">
     <%= f.label :manufacturing_year, "Manufacturing Year" %><br />
-<%= f.select :manufacturing_year, 1900..2013 ,:selected => 2013 %>  </div>
+<%= f.select :manufacturing_year, 1900..Time.now.year   ,:selected => Time.now.year %>  </div>
   
 
   <div class="actions">

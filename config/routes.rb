@@ -1,5 +1,6 @@
 Drive::Application.routes.draw do
 
+
   resources :blog_comments
   
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
@@ -18,6 +19,12 @@ Drive::Application.routes.draw do
   resources :comments
 
   resources :favourites
+
+   resources :egifts ,:only => [:index] do
+    member do
+     resources :send_gifts
+    end
+  end
 
   devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions", :passwords => "passwords"}
 

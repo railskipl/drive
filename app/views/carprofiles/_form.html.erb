@@ -47,7 +47,7 @@
 
   <div class="row">
     <%= f.label "Year of purchase" %><br />
-    <%= f.date_select :year_of_purchase ,:order => [:year], :start_year => 1970 , :end_year => Date.today.year%>
+    <%= f.select :year_of_purchase, 1900..Time.now.year   ,:selected => Time.now.year %>
   </div>
 
   <div class="row">
