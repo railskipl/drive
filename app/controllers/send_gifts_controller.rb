@@ -2,7 +2,8 @@ class SendGiftsController < ApplicationController
   # GET /send_gifts
   # GET /send_gifts.json
   def index
-    @send_gifts = SendGift.all
+       @send_gifts = current_user.sent_egifts
+    @received_gifts = current_user.received_egifts
 
     respond_to do |format|
       format.html # index.html.erb
