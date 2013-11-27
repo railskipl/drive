@@ -19,15 +19,21 @@
         
         
         <div class="grid_3">
-    
-  <div class="profile_image"><img alt="" src="/assets/profile.jpg"></div>
+        <div class="profile_image">
+        <div class="gift">
+       
+          <%= image_tag @egift.first.egift.image ,:width => 45 rescue nil%></div>
+       
+          <%= image_tag @carprofile.carprofile_photos.first.photo.url(:profile)  %>
+         
+        </div>
   
   
   <ul class="tab_menu2">
           
     <li><a href="#">Subscribers</a></li>
-    <li> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
-    <span id="like_count"><%= @counts %></span></li>
+    <li> <span id="like_count" class="count2"><%= @counts %></span> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
+   </li>
      <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
 </li>
     <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
@@ -131,104 +137,19 @@
   <div id="mainwrapper">
     <% for carprofile in @carprofile.carprofile_photos %>
 
- <%= image_tag carprofile.photo.url(:medium)  %>
 
-<% end %>
+
     <div id="box-1" class="box1">
       <a href="#inline1" id="various1">
       
-       <img id="image-1" src="/assets/car_profile.jpg"/></a>
+     <%= image_tag carprofile.photo.url(:thumb)  %>
         <span class="caption simple-caption">
           <p><a href="#inline1" id="various1">Simple Caption</a></p>
         </span>
     </div>
     
+<% end %>
 
-
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/car_profile.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/3.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/4.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/5.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/6.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/2.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/2.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/2.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/2.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/2.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    <div id="box-1" class="box1">
-      <img id="image-1" src="/assets/2.jpg"/>
-        <span class="caption simple-caption">
-          <p><a href="#">Simple Caption</a></p>
-        </span>
-    </div>
-    
-    
-    
     
     
     

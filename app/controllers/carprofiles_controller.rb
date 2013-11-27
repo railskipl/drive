@@ -79,7 +79,8 @@ class CarprofilesController < ApplicationController
   end
  
   def show
-          @carprofile = Carprofile.find(params[:id])
+      @carprofile = Carprofile.find(params[:id])
+      @egift = @carprofile.send_gifts
      @likes= @carprofile.likes(@carprofile.id)
       
       @count ||= []

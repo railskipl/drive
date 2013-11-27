@@ -8,6 +8,7 @@ class Carprofile < ActiveRecord::Base
   belongs_to :car_make
   belongs_to :car_model
   belongs_to :engine
+  has_many :send_gifts
   has_many :carprofile_photos
 
   validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar,:manufacturing_year,:car_make_id,:car_model_id,:body_index_id
