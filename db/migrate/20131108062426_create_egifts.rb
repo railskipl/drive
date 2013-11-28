@@ -1,7 +1,7 @@
 class CreateEgifts < ActiveRecord::Migration
   def change
     create_table :egifts do |t|
-      t.string :credit
+      t.integer :credit
 
       t.timestamps
     end
