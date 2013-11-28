@@ -50,7 +50,7 @@ class SendGiftsController < ApplicationController
        if @send_gift.save
          current_user.spend_credit_egift(current_user, @send_gift.egift.credit)
          current_user.save
-         format.html { redirect_to @send_gift, notice: 'Send gift was successfully created.' }
+         format.html { redirect_to carprofile_path(@send_gift.carprofile_id), notice: 'Send gift was successfully created.' }
          format.json { render json: @send_gift, status: :created, location: @send_gift }
        else
         format.html { render action: "new" }

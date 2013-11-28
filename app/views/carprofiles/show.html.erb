@@ -24,7 +24,7 @@
        
           <%= image_tag @egift.first.egift.image ,:width => 45 rescue nil%></div>
        
-          <%= image_tag @carprofile.carprofile_photos.first.photo.url(:profile)  %>
+          <%= image_tag @carprofile.carprofile_photos.first.photo.url(:profile) rescue nil %>
          
         </div>
   
@@ -51,7 +51,7 @@
   
           <div class="grid_7">
           
-          <h1>User Name <img src="/assets/online.png" alt=""></h1>
+          <h1><%= @carprofile.car_model.name rescue nil %><img src="/assets/online.png" alt=""></h1>
     
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
