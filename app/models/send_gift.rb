@@ -8,15 +8,15 @@ class SendGift < ActiveRecord::Base
 
 
   def self.public_gift
-  	find_all_by_visibility_id(1)
+  	find_all_by_visibility_id(1,:order => "created_at desc")
   end
 
   def self.personal
-  	find_all_by_visibility_id(2)
+  	find_all_by_visibility_id(2,:order => "created_at desc")
   end
 
   def self.anonymous
-  	find_all_by_visibility_id(3)
+  	find_all_by_visibility_id(3,:order => "created_at desc")
   end
 
 
