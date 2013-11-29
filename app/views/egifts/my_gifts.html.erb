@@ -1,22 +1,33 @@
 <h1>Listing Gifts</h1>
 
-<table>
-  <tr>
-    <th>Egift</th>
-    <th>Message</th>
-    <th>Car Model</th>
-    <th>Sender</th>
-  </tr>
 
-<% @send_gifts.each do |send_gift| %>
-  <tr>
-    <td><%= image_tag send_gift.egift.image.url %></td>
-    <td><%= send_gift.message %></td>
-    <td><%= send_gift.carprofile.car_model.name %></td>
-    <td><%= send_gift.sender.nickname %></td>
-  </tr>
-<% end %>
-</table>
+<p>
+  <b>Received Gifts :</b><br/>
+  <% @public.each do |g|%>
+  Sender :<%= g.sender.email %><br/>
+  Message :<%= g.message %><br/>
+  Gift : <%= image_tag g.egift.image.url %><br/>
+  <% end %>
+  
+<hr/>
+  <% @anon.each do |g|%>
+    Sender : Anonymous <br/>
+    <% if current_user.id == g.receiver.id %>
+     Message :<%= g.message %><br/>
+    <% end %>
+  Gift : <%= image_tag g.egift.image.url %><br/>
+  <% end %>
+
+  <hr/>
+  <% @personal.each do |g|%>
+    Sender : <%= g.sender.email %> <br/>
+    <% if current_user.id == g.receiver.id %>
+     Message :<%= g.message %><br/>
+    <% end %>
+  Gift : <%= image_tag g.egift.image.url %><br/>
+  <% end %>
+
+</p>
 
 <br />
 

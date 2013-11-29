@@ -2,6 +2,7 @@ class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
   def index
   	@carprofiles = current_user.carprofiles.all
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     #raise @carprofiles.inspect
   end
 
@@ -81,8 +82,13 @@ class CarprofilesController < ApplicationController
   def show
       @carprofile = Carprofile.find(params[:id])
       @egift = @carprofile.send_gifts
-     @likes= @carprofile.likes(@carprofile.id)
+      @public = @egift.public_gift
+      @personal = @egift.anonymous
+      @anon = @egift.anonymous
       
+      @likes= @carprofile.likes(@carprofile.id)
+      @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
       @count ||= []
       @likes.each do |like|
          @count << like.count
@@ -99,4 +105,29 @@ class CarprofilesController < ApplicationController
   def update_body
     @body_index = BodyIndex.find_all_by_car_model_id(params[:update_body])
   end
+
+def subscribe_car
+  @car_subscribe = Carprofile.find(params[:id])
+  # binding.pry 
+   Subscriber.subscribe!(current_user,@car_subscribe)
+    # @subscribers= @car_subscribe.subscribes(@car_subscribe.id)
+    respond_to do |format|
+     format.js {}
+    end
+ end
+
+def subscribe_count
+@car_subscribe= Carprofile.find(params[:id])
+
+#binding.pry
+ @subscribers =  Subscriber.find_all_by_subscribable_id(@car_subscribe.id)
+end
+
+def spotlight
+@car_profile = Carprofile.find_by_id(params[:id])
+# binding.pry
+@status = Carprofile.spotlight(@car_profile)
+end
+
+  
 end

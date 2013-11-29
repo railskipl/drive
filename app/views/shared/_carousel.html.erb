@@ -39,6 +39,18 @@
                             <div>
                                 <img alt="" src="/assets/car5.jpg" /><br />
                                 <span class="thumbnail-text">Car Name here</span></div>
+
+
+                          <div>
+                       <% @spotlighted_cars.each do |car|%>
+                        <% car.carprofile_photos.each do |photo_url|%>
+    
+                      <%= image_tag photo_url.photo.url(:medium)%><br />
+               <span class="thumbnail-text"><%= car.car_make.name %></span>
+                <% end %>
+                   <% end %>      
+                       </div>
+                                
 								
 								
                             

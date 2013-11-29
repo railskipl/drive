@@ -40,8 +40,14 @@ end
 
   devise_for :admins
 
-  resources :users,  :only => [:index,:destroy]
+  resources :users,  :only => [:index,:destroy,:show,:subscribe_profile] do
+  collection    do
+      post :subscribe_profile
+    end
+  end
+  
 
+ 
   match '/users/:id/toggled_status', :to => "users#toggled_status"
 
   match "/carprofiles/update_model", :to => "carprofiles#update_model"
@@ -87,12 +93,19 @@ end
     collection do 
       post :like_car
       get :like_count
+      post :subscribe_car
+      get  :subscribe_count
+      post :spotlight
     end
   end 
   resources :carprofile_photos
 
  
   root :to => "devise/registrations#new"
+   match 'subscribe_count' => 'home#subscribe_count'
+
+   
+
 
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'

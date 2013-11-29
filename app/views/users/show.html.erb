@@ -6,19 +6,16 @@
 		
   <div class="container_20 profile_bg">
 	<div class="grid_4">
-      <div class="profile_image"><img alt="" src="assets/profile.jpg"></div>
+      <div class="profile_image"><img alt="" src="/assets/profile.jpg"></div>
 	</div>
 	
 	<div class="grid_16">
-	  <h1><%= current_user.nickname %></h1>
+	  <h1><%= @user.first_name%></h1>
 		<ul class="tab_menu">
-		<li><%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %></li> 
-		<li><%= link_to "Cars" , carprofiles_path %></li>
-		<li><%= link_to "Subscribers",:action=>"subscribe_count",:id=>current_user.id%>
-      </li> 
+		<li><%= link_to "Cars",carprofiles_path %></li>
+      <li><%= link_to "Subscribe",subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
 		<li><a href="#">Message</a></li> 
-		<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
-		<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
+		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>
 		</ul>
 	</div>
    </div>
@@ -91,7 +88,7 @@
 		
 <h4>Comments</h4>
 
-<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
+<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
 <textarea rows="4" class="comment_tf"></textarea>
 
 <div style="float:right; margin:10px 0; text-align:right; width:100%"><input type="button" style="margin:0" class="submit_btn" value="Search"></div>
@@ -99,7 +96,7 @@
 
 <div class="blog_div">
 		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
 		
 		<div class="blog_right">
 		<a class="redlink" href="#">John Smith </a><br>
@@ -112,7 +109,7 @@
 		
 		<div class="blog_div">
 		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
 		
 		<div class="blog_right">
 		<a class="redlink" href="#">John Smith </a><br>
@@ -124,7 +121,7 @@
 		
 		<div class="blog_div">
 		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
 		
 		<div class="blog_right">
 		<a class="redlink" href="#">John Smith </a><br>
@@ -136,7 +133,7 @@
 		
 		<div class="blog_div">
 		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
 		
 		<div class="blog_right">
 		<a class="redlink" href="#">John Smith </a><br>

@@ -1,0 +1,12 @@
+<table>
+<tr>
+<td>User</td>
+<td></td>
+</tr>
+<% @subscribers.each do |subscribe| %>
+<tr>
+<td><%=User.find(subscribe.subscriber_id).first_name %></td>
+<td><%=User.find(subscribe.subscriber_id).last_name %></td>
+</tr>
+<% end %>
+</table>

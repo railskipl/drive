@@ -31,3 +31,11 @@ production:
 #  pool: 5
 #  username: postgres
 #  password: root
+# development:  
+#  adapter: postgresql
+#  encoding: unicode
+#  database: drivespot
+#  host: localhost
+#  pool: 5
+#  username: postgres
+#  password: root

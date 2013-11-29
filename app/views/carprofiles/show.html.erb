@@ -35,16 +35,15 @@
     <li> <span id="like_count" class="count2"><%= @counts %></span> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
    </li>
      <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
-</li>
+  </li>
     <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
-    <li><a href="#">Add to Spotlight +</a></li>
+    <li><%= link_to "Add to Spotlight +",spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
     <li><a href="#"><img alt="" src="/assets/star2.png"></a></li>
    
   </ul>
   
   <div>
-  
-  
+ 
   
   </div>
   </div>
@@ -156,8 +155,57 @@
 
     
   </div>
+
   
   </div>
+
+
+<div class="grid_20 aboutme">
+    
+  
+  <h4>Egifts</h4>
+  
+  <div id="mainwrapper" style="float:left;text-align:left">
+   
+      <p>
+  <b>Received Gifts :</b><br/>
+  <% @public.each do |g|%>
+  Sender :<%= g.sender.email %><br/>
+  Message :<%= g.message %><br/>
+  Gift : <%= image_tag g.egift.image.url %><br/>
+  <% end %>
+  <br/>
+
+  <% @anon.each do |g|%>
+
+    Sender : Anonymous <br/>
+    <% if current_user.id == g.receiver.id %>
+     Message :<%= g.message %><br/>
+    <% end %>
+  Gift : <%= image_tag g.egift.image.url %><br/>
+  <% end %>
+
+<br/>
+  
+  <% @personal.each do |g|%>
+
+ <% if current_user == g.receiver || current_user == g.sender %>
+
+    Sender : <%= g.sender.email %> <br/>
+    <% if current_user.id == g.receiver.id %>
+     Message :<%= g.message %><br/>
+    <% end %>
+  Gift : <%= image_tag g.egift.image.url %><br/>
+  <% end %>
+<% end %>
+</p>
+
+    
+  </div>
+
+  
+  </div>
+
   <div class="grid_20 aboutme">
   <h4>My Blogs</h4>
   
