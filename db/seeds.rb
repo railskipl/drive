@@ -9,3 +9,9 @@ puts "Creating Admin Account"
 Admin.find_or_create_by_email(:email => "admin@gmail.com" , :password => "admin123!")
 puts "Creating Seo Account"
 Seo.find_or_create_by_meta_title(:meta_title => "Welcome to driveblogs.com", :meta_description => "The driveblogs web application is a comprehensive online cars platform geared towards the cars lovers.", :meta_keyword => "The driveblogs web application is a comprehensive online cars platform geared towards the cars lovers." )
+
+puts "creating visiblity"
+
+Visibility.create(:profile_type => "public")
+Visibility.create(:profile_type => "personal")
+Visibility.create(:profile_type => "anonymous")

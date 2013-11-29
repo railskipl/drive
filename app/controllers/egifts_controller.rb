@@ -6,5 +6,8 @@ class EgiftsController < ApplicationController
   end
   def my_gifts
   	@send_gifts = current_user.received_egifts
+  	 @public = @send_gifts.public_gift
+     @personal = @send_gifts.anonymous
+     @anon = @send_gifts.anonymous
   end
 end
