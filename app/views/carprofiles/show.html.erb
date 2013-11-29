@@ -20,12 +20,12 @@ $("a.topopup").click(function(){
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
    
 <p>
-  <b>Car make:</b>
+  <b>Car Make:</b>
   <%= @carprofile.car_make.name%>
 </p>
 
 <p>
-  <b>Car photos</b>
+  <b>Car Photos</b>
  <% for carprofile in @carprofile.carprofile_photos %>
 
  <%= image_tag carprofile.photo.url(:medium)  %>
@@ -59,13 +59,18 @@ $("a.topopup").click(function(){
 <p>
 
 <p>
-  <b>Car model:</b>
+  <b>Car Model:</b>
   <%= @carprofile.car_model.name rescue nil%>
 </p>
 
 <p>
   <b>Manufacturing Year of car:</b>
-  <%= @carprofile.manufacturing_year%>
+  <%= @carprofile.body_index.manufacturing_year%>
+</p>
+
+<p>
+  <b>Body Index:</b>
+  <%= @carprofile.body_index.bodyindex%>
 </p>
 
 <p>
@@ -106,7 +111,7 @@ $("a.topopup").click(function(){
 </p>
 
 <p>
-  <b>VIN:</b>
+  <b>VIN Code:</b>
   <%= @carprofile.VIN%>
 </p>
 

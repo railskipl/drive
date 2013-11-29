@@ -1,9 +1,10 @@
 class CommentLogbooksController < ApplicationController
+  before_filter :authenticate_user!, :except => []
   # GET /comment_logbooks
   # GET /comment_logbooks.json
   def index
-    @comment_logbooks = CommentLogbook.all
-
+    @comment_logbooks = current_user.comment_logbooks.all
+  
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comment_logbooks }
@@ -13,6 +14,8 @@ class CommentLogbooksController < ApplicationController
   # GET /comment_logbooks/1
   # GET /comment_logbooks/1.json
   def show
+        @logbook = Logbook.find(params[:id])
+
     @comment_logbook = CommentLogbook.find(params[:id])
 
     respond_to do |format|
@@ -73,7 +76,7 @@ class CommentLogbooksController < ApplicationController
     @comment_logbook.destroy
 
     respond_to do |format|
-      format.html { redirect_to comment_logbooks_url }
+      format.html { redirect_to logbook_path(@comment_logbook.logbook_id) }
       format.json { head :no_content }
     end
   end

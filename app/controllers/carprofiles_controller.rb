@@ -1,4 +1,5 @@
 class CarprofilesController < ApplicationController
+  
   before_filter :authenticate_user!, :except => []
   def index
   	@carprofiles = current_user.carprofiles.all
@@ -20,7 +21,7 @@ class CarprofilesController < ApplicationController
   def create
 
   	@carprofile = Carprofile.new(params[:carprofile])
-  	raise @carprofile.inspect
+  	
     if @carprofile.save
 	 	flash[:notice] = "car profile created successfully"
         redirect_to carprofiles_path

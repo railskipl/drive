@@ -1,5 +1,5 @@
 <%= javascript_include_tag "prototype" %>
-
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 <%= form_for(@logbook) do |f| %>
    <% if @logbook.errors.any? %>
     <div id="error_explanation">

@@ -1,7 +1,7 @@
 
   <%#= javascript_include_tag "carprofiles" %>
   <%= javascript_include_tag "prototype" %>
-
+  <%= javascript_include_tag "nested" %>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
   <div class="middle">
     <div class="container_20">
@@ -27,7 +27,10 @@
   <% end %>
  <p><%= link_to_add_fields "Add Image", f, :carprofile_photos %></p><br/>
  </div>
+<p><strong>/!\ Attention ! Photos will pass moderation.Cars with other people,as well as brand,terrible quality,or indecent photographs will be blocked by the moderator. Do not upload  photos from car magazines or someone else’s car.Please follow Forum Rules.  
+  </strong></p>
 
+ 
  <p><%= select "carprofile",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_model"}, :with => "'update_model='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %>
    <%= image_tag("/assets/loadingg.gif",
                     :align => "absmiddle",
@@ -46,22 +49,21 @@
 
 
   <div class="row">
-    <%= f.label "Year of purchase" %><br />
+    *<%= f.label "Year of purchase" %><br />
     <%= f.select :year_of_purchase, 1900..Time.now.year   ,:selected => Time.now.year %>
   </div>
 
   <div class="row">
-    <%= f.label "What kind of this car" %><br />
-    Currently own<%= f.radio_button :whatkindofcar, "currently_own" %>
-    Previous Car<%= f.radio_button :whatkindofcar, "previous_car" %>
+    *<%= f.label "What kind of this car" %><br />
+    Currently own<%= f.radio_button :whatkindofcar, "Currently own" %>
+    Previous Car<%= f.radio_button :whatkindofcar, "Previous Car" %>
   </div>
   <br/>
-  <p><strong>/!\ Attention ! Photos will pass moderation.Cars with other people,as well as brand,terrible quality,or indecent photographs will be blocked by the moderator. Do not upload  photos from car magazines or someone else’s car.Please follow Forum Rules.  
-  </strong></p>
+  
   
   <div class="row">
-    <%= f.label "Car Description" %><br />
-    <%= f.text_area :car_description ,:rows=>10, :cols=>200,:style=> "width: 600px;"%>
+    *<%= f.label "Car Description" %><br />
+    <%= f.text_area :car_description ,:maxlength => 250,:autocomplete => :off,:rows=>10 ,:cols=>200,:style=> "width: 600px;"%>
   </div>
 
   <div class="row">
@@ -70,8 +72,8 @@
   </div>
 
 <div class="row">
-    <%= f.label "Engine Displacement"%><br />
-    <%= f.collection_select :engine_id, Engine.select("DISTINCT(engine_displacement)") , :id,:engine_displacement, :prompt => "Select engine"%>
+    *<%= f.label "Engine Displacement"%><br />
+    <%= f.collection_select :engine_id, Engine.select("DISTINCT(engine_displacement)") , :id,:engine_displacement, :prompt => "Select Engine"%>
 </div> 
   <div class="row">
     <%= f.label "Do you sell this car" %><br />
@@ -80,13 +82,13 @@
   </div>
 
   <div class="row">
-    <%= f.label "VIN" %><br />
-    <%= f.text_field :VIN %>
+    <%= f.label "License Plate" %><br />
+    <%= f.text_field :license_plate %>
   </div>
 
   <div class="row">
-    <%= f.label "License Plate" %><br />
-    <%= f.text_field :license_plate %>
+    <%= f.label "VIN Code" %><br />
+    <%= f.text_field :VIN %>
   </div>
 
   <%= f.hidden_field :user_id,:value => current_user.id %>
