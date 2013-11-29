@@ -82,11 +82,10 @@ class CarprofilesController < ApplicationController
   def show
       @carprofile = Carprofile.find(params[:id])
       @egift = @carprofile.send_gifts
+      raise @egift.inspect
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
-
-      raise @public.inspect
       
       @likes= @carprofile.likes(@carprofile.id)
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
