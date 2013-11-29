@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20131127092407) do
     t.string   "manufacturing_year"
     t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -157,9 +157,9 @@ ActiveRecord::Schema.define(:version => 20131127092407) do
   end
 
   create_table "egifts", :force => true do |t|
-    t.string   "credit"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "credit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -308,9 +308,5 @@ ActiveRecord::Schema.define(:version => 20131127092407) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  add_foreign_key "blog_comments", "user_blogs", :name => "blog_comments_user_blog_id_fk"
-
-  add_foreign_key "comment_logbooks", "logbooks", :name => "comment_logbooks_logbook_id_fk"
 
 end
