@@ -82,7 +82,6 @@ class CarprofilesController < ApplicationController
   def show
       @carprofile = Carprofile.find(params[:id])
       @egift = @carprofile.send_gifts
-      raise @egift.inspect
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
