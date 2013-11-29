@@ -80,6 +80,42 @@ class User < ActiveRecord::Base
        #current_user.unlike!(@car_profile)      
     end
   end
+
+  def spend_credit_egift(current_user, credit)
+        if current_user.freecredit > current_user.buycredit 
+         if current_user.credit >= credit
+          current_user.freecredit = current_user.freecredit - credit
+          current_user.credit = current_user.freecredit + current_user.buycredit
+           current_user.spend_credit = current_user.credit
+        else
+        return 
+       end
+       
+    elsif 
+      current_user.buycredit > current_user.freecredit 
+        if current_user.credit >= credit
+          current_user.freecredit = current_user.freecredit - credit
+          current_user.credit = current_user.freecredit + current_user.buycredit
+           current_user.spend_credit = current_user.credit
+        else
+        return 
+       end
+       
+      
+    else
+      current_user.buycredit == current_user.buycredit 
+     if current_user.credit >= credit
+         current_user.freecredit = current_user.freecredit - credit
+         current_user.credit = current_user.freecredit + current_user.buycredit
+         current_user.spend_credit = current_user.credit
+        else
+         return
+       end
+      
+       #current_user.unlike!(@car_profile)      
+    end
+  end
+
 end
 
 

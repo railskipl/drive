@@ -1,0 +1,22 @@
+<h1>Listing Gifts</h1>
+
+<table>
+  <tr>
+    <th>Egift</th>
+    <th>Message</th>
+    <th>Car Model</th>
+    <th>Sender</th>
+  </tr>
+
+<% @send_gifts.each do |send_gift| %>
+  <tr>
+    <td><%= image_tag send_gift.egift.image.url %></td>
+    <td><%= send_gift.message %></td>
+    <td><%= send_gift.carprofile.car_model.name %></td>
+    <td><%= send_gift.sender.nickname %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

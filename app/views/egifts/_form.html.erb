@@ -1,0 +1,35 @@
+<style>
+.field{
+color: black;
+
+}
+</style>
+
+<%= form_for([egift,@send_gift]) do |f| %>
+  <% if @send_gift.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@send_gift.errors.count, "error") %> prohibited this send_gift from being saved:</h2>
+
+      <ul>
+      <% @send_gift.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :message %><br />
+    <%= f.text_area :message, :rows => 5 ,:cols => 60 %>
+  </div>
+    <%= f.hidden_field :egift_id ,:value => egift.id %>
+   <%= f.hidden_field :sender_id ,:value => current_user.id %><br/>
+    <%= f.hidden_field :carprofile_id ,:value => params[:carprofile_id] %>
+
+    <% a =  Carprofile.find(params[:carprofile_id]).user_id  rescue nil%>
+     <%= f.hidden_field :receiver_id ,:value => a %>
+  <div class="actions">
+    <%= f.submit "Send" %>
+  </div>
+<% end %>

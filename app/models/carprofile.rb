@@ -8,6 +8,7 @@ class Carprofile < ActiveRecord::Base
   belongs_to :car_make
   belongs_to :car_model
   belongs_to :engine
+  has_many :send_gifts
   has_many :carprofile_photos
 
   validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar,:manufacturing_year,:car_make_id,:car_model_id,:body_index_id
@@ -23,4 +24,12 @@ class Carprofile < ActiveRecord::Base
   def sum_counts(count)
    count.inject{|sum,x| sum + x }
   end
+
+def self.spotlight(car_profile)
+  car_profile.update_attribute("spotlighted",!car_profile.spotlighted)
+  return car_profile.spotlighted
+ end
+
+
+  
 end

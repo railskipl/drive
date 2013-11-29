@@ -21,7 +21,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', end
 
 .comment_tf{ background:#FFFFFF; border:1px solid #c4c4c4; border-radius:3px; margin:0; padding:5px 5px; width:415px}
 
-
+.comment_tf2{ background:#FFFFFF; border:1px solid #c4c4c4; border-radius:3px; margin:0; padding:5px 5px; width:865px}
 
 
 .submit_btn {
@@ -753,4 +753,22 @@ caption {
 
 .car_profile_image{ border:1px solid #e6e6e6; width:auto; text-align:center; float:left}
 
-.gift{ width:auto; height:auto; position: absolute; margin:0 0 0 272px}
+.gift{ width:auto; height:auto; position: absolute; margin:0 0 0 85px}
+
+/*27 nov */
+
+.profile_col1{ border-bottom:1px solid #E6E6E6; padding:5px 0}
+.profile_col2{ border-bottom:1px solid #E6E6E6; padding:5px 0; font-weight:bold}
+
+.car_description{ width:auto; height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:10px 0 0 0 }
+
+.count2
+{float: right; 
+margin-top:5px; 
+margin-left:103px;
+background: none repeat scroll 0% 0% white; 
+color: red; 
+padding: 0 1px; 
+border: 1px solid #83000d;
+font-weight:bold; position:absolute;
+font-size:11px}

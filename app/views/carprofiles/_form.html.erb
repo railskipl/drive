@@ -73,7 +73,8 @@
 
 <div class="row">
     *<%= f.label "Engine Displacement"%><br />
-    <%= f.collection_select :engine_id, Engine.select("DISTINCT(engine_displacement)") , :id,:engine_displacement, :prompt => "Select Engine"%>
+    <%= f.collection_select :engine_id, Engine.all, :id, :engine_displacement%>
+    <%#= f.collection_select :engine_id, Engine.select("DISTINCT(engine_displacement)") , :id,:engine_displacement, :prompt => "Select Engine"%>
 </div> 
   <div class="row">
     <%= f.label "Do you sell this car" %><br />

@@ -1,3 +1,21 @@
+ <%= stylesheet_link_tag "jquery.fancybox" %>
+
+ <%= javascript_include_tag "jquery.fancybox.pack" %>
+ <script type="text/javascript">
+ jQuery.noConflict();
+		jQuery(document).ready(function() {
+		<% @egifts.each do |egift| %>
+			jQuery("#various<%= egift.id%>").fancybox({
+				'titlePosition'		: 'inside',
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none'
+			});
+			<% end %>
+			
+
+					});
+	</script>
+
 
 <div class="middle">
 
@@ -38,13 +56,29 @@
           <div id="mainwrapper">
 		<% @egifts.each do |egift| %>
 		<div id="box-1" class="box1">
-			<a href="#inline1" id="various1">
+			<a href="#inline<%= egift.id %>" id="various<%= egift.id %>">
 			
 			 <%= image_tag egift.image.url %></a>
 				<span class="caption simple-caption">
-					<p><%= link_to "Send" ,new_send_gift_path(egift,:carprofile_id => params[:carprofile_id]) %></p>
+					<p><%#= link_to "Send" ,new_send_gift_path(egift,:carprofile_id => params[:carprofile_id]) %></p>
 				</span>
 		</div>
+			<div style="display: none ">
+		
+		<div id="inline<%= egift.id %>" style="width:650px; height:auto ; overflow:auto; text-align:left">
+		<div>
+
+		<div class="fancybox_title">Send a Gift</div>
+
+		<div  style="padding:50px 10px">
+				<%= render 'form' ,:egift => egift %>
+		
+
+		</div>
+     </div>
+   </div>
+</div>
+
 		<% end %>
 		
 		
@@ -57,11 +91,29 @@
          <div id="mainwrapper">
          	<% c.egifts.each do |g| %>
          			<div id="box-1" class="box1">
-			<%= image_tag g.image.url %>
+         	<a href="#inline<%= g.id %>" id="various<%= g.id %>">
+
+			<%= image_tag g.image.url %></a>
 				<span class="caption simple-caption">
-					<p><%= link_to "Send" ,new_send_gift_path(g, :carprofile_id => params[:carprofile_id]) %></p>
+					<p><%#= link_to "Send" ,new_send_gift_path(g, :carprofile_id => params[:carprofile_id]) %></p>
 				</span>
 		  </div>
+
+		  	<div style="display: none  ">
+		<%= g.id %>
+		<div id="inline<%= g.id %>" style="width:650px; height:auto ; overflow:auto; text-align:left">
+		<div>
+
+		<div class="fancybox_title">Send a Gift</div>
+
+		<div  style="padding:50px 10px">
+				<%= render 'form' ,:egift => g %>
+		
+
+		</div>
+     </div>
+   </div>
+</div>
          	<%end %>
 	
 		
@@ -94,24 +146,24 @@
 		</div>
 
 <script type="text/javascript">
-$(function(){
-  $('#sidemenu a').on('click', function(e){
+jQuery(function(){
+  jQuery('#sidemenu a').on('click', function(e){
     e.preventDefault();
 
-    if($(this).hasClass('open')) {
+    if(jQuery(this).hasClass('open')) {
       // do nothing because the link is already open
     } else {
-      var oldcontent = $('#sidemenu a.open').attr('href');
-      var newcontent = $(this).attr('href');
+      var oldcontent = jQuery('#sidemenu a.open').attr('href');
+      var newcontent = jQuery(this).attr('href');
       
-      $(oldcontent).fadeOut('fast', function(){
-        $(newcontent).fadeIn().removeClass('hidden');
-        $(oldcontent).addClass('hidden');
+      jQuery(oldcontent).fadeOut('fast', function(){
+        jQuery(newcontent).fadeIn().removeClass('hidden');
+        jQuery(oldcontent).addClass('hidden');
       });
       
      
-      $('#sidemenu a').removeClass('open');
-      $(this).addClass('open');
+      jQuery('#sidemenu a').removeClass('open');
+      jQuery(this).addClass('open');
     }
   });
 });

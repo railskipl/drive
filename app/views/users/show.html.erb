@@ -1,0 +1,161 @@
+<div class="middle">
+  <div class="container_20" style="background:#333; margin-bottom:10px">
+	<%= render 'shared/carousel' %>		
+  </div>
+		
+		
+  <div class="container_20 profile_bg">
+	<div class="grid_4">
+      <div class="profile_image"><img alt="" src="/assets/profile.jpg"></div>
+	</div>
+	
+	<div class="grid_16">
+	  <h1><%= @user.first_name%></h1>
+		<ul class="tab_menu">
+		<li><%= link_to "Cars",carprofiles_path %></li>
+      <li><%= link_to "Subscribe",subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
+		<li><a href="#">Message</a></li> 
+		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>
+		</ul>
+	</div>
+   </div>
+		
+		
+		
+		
+		
+		
+		
+		<div class="container_20">
+				
+				
+				<div class="grid_9 aboutme">
+		
+	<h4>About Me</h4>
+	<p>
+		<% if current_user.about.nil? || current_user.about.blank? %>
+		No Description Yet! (For about me click settings)
+		<% else %>
+		<%= current_user.about %>
+		<% end %>
+	</p>
+	<h4>My Blogs</h4>
+	
+	
+	<div class="blog_div">
+
+		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
+       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
+        <br>
+        <a class="bluelink" href="#">Read More
+		</a>
+		</div>
+		
+		
+		<div class="blog_div">
+
+		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
+       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
+        <br>
+        <a class="bluelink" href="#">Read More
+		</a>
+		</div>
+		
+		
+		<div class="blog_div">
+
+		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
+       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
+        <br>
+        <a class="bluelink" href="#">Read More
+		</a>
+		</div>
+		
+		
+		<div class="blog_div">
+
+		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
+       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
+        <br>
+        <a class="bluelink" href="#">Read More
+		</a>
+		</div>
+		
+	
+	</div>
+	
+					<div class="grid_11 aboutme">
+		
+<h4>Comments</h4>
+
+<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
+<textarea rows="4" class="comment_tf"></textarea>
+
+<div style="float:right; margin:10px 0; text-align:right; width:100%"><input type="button" style="margin:0" class="submit_btn" value="Search"></div>
+
+
+<div class="blog_div">
+		
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
+		
+		<div class="blog_right">
+		<a class="redlink" href="#">John Smith </a><br>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
+		
+		</div>
+		
+		</div>
+		
+		
+		<div class="blog_div">
+		
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
+		
+		<div class="blog_right">
+		<a class="redlink" href="#">John Smith </a><br>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
+		
+		</div>
+		
+		</div>
+		
+		<div class="blog_div">
+		
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
+		
+		<div class="blog_right">
+		<a class="redlink" href="#">John Smith </a><br>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
+		
+		</div>
+		
+		</div>
+		
+		<div class="blog_div">
+		
+		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
+		
+		<div class="blog_right">
+		<a class="redlink" href="#">John Smith </a><br>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
+		
+		</div>
+		
+		</div>
+		
+
+
+
+	</div>
+
+		
+		</div>
+		
+
+
+  
+		
+		</div>
+		
+
+
