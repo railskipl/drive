@@ -83,7 +83,7 @@ class CarprofilesController < ApplicationController
       @carprofile = Carprofile.find(params[:id])
       @egift = @carprofile.send_gifts
       @public = @egift.public_gift
-      @personal = @egift.anonymous
+      @personal = @egift.personal
       @anon = @egift.anonymous
       
       @likes= @carprofile.likes(@carprofile.id)
