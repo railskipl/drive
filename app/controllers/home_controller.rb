@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+
   def index
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
   def contact
@@ -28,5 +30,11 @@ q = params[:q]
 
 end
 
+def subscribe_count
+  @subscribe_profile = User.find(params[:id])
+
+#binding.pry
+ @subscribers =  Subscriber.find_all_by_subscribable_id(@subscribe_profile.id)
+end
 
 end

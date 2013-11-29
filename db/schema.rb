@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131126094940) do
+ActiveRecord::Schema.define(:version => 20131127092407) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -89,11 +89,11 @@ ActiveRecord::Schema.define(:version => 20131126094940) do
   create_table "carprofiles", :force => true do |t|
     t.integer  "car_make_id"
     t.integer  "car_model_id"
-    t.date     "manufacturing_year"
-    t.date     "year_of_purchase"
+    t.string   "manufacturing_year"
+    t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20131126094940) do
     t.integer  "engine_id"
     t.integer  "carprofile_photo_id"
     t.integer  "body_index_id"
+    t.boolean  "spotlighted",         :default => false
   end
 
   create_table "comment_logbooks", :force => true do |t|
@@ -259,6 +260,17 @@ ActiveRecord::Schema.define(:version => 20131126094940) do
 
   add_index "simple_captcha_data", ["key"], :name => "idx_key"
 
+  create_table "subscribers", :force => true do |t|
+    t.string   "subscriber_type"
+    t.integer  "subscriber_id"
+    t.string   "subscribable_type"
+    t.integer  "subscribable_id"
+    t.datetime "created_at"
+  end
+
+  add_index "subscribers", ["subscribable_id", "subscribable_type"], :name => "sk_subscribable"
+  add_index "subscribers", ["subscriber_id", "subscriber_type"], :name => "sk_subscribers"
+
   create_table "user_blogs", :force => true do |t|
     t.integer  "blog_id"
     t.text     "body"
@@ -296,5 +308,9 @@ ActiveRecord::Schema.define(:version => 20131126094940) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  add_foreign_key "blog_comments", "user_blogs", :name => "blog_comments_user_blog_id_fk"
+
+  add_foreign_key "comment_logbooks", "logbooks", :name => "comment_logbooks_logbook_id_fk"
 
 end

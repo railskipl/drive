@@ -35,16 +35,15 @@
     <li> <span id="like_count" class="count2"><%= @counts %></span> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
    </li>
      <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
-</li>
+  </li>
     <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
-    <li><a href="#">Add to Spotlight +</a></li>
+    <li><%= link_to "Add to Spotlight +",spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
     <li><a href="#"><img alt="" src="/assets/star2.png"></a></li>
    
   </ul>
   
   <div>
-  
-  
+ 
   
   </div>
   </div>
