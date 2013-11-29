@@ -43,15 +43,24 @@ class SendGiftsController < ApplicationController
   def create
     @send_gift = SendGift.new(params[:send_gift])
 
+
+    if current_user.credit >= 0 and current_user.credit >= @send_gift.egift.credit.to_i
+
     respond_to do |format|
-      if @send_gift.save
-        format.html { redirect_to @send_gift, notice: 'Send gift was successfully created.' }
-        format.json { render json: @send_gift, status: :created, location: @send_gift }
-      else
+       if @send_gift.save
+         current_user.spend_credit_egift(current_user, @send_gift.egift.credit)
+         current_user.save
+         format.html { redirect_to carprofile_path(@send_gift.carprofile_id), notice: 'Send gift was successfully created.' }
+         format.json { render json: @send_gift, status: :created, location: @send_gift }
+       else
         format.html { render action: "new" }
         format.json { render json: @send_gift.errors, status: :unprocessable_entity }
-      end
-    end
+       end
+     end
+    else
+      redirect_to carprofile_path(@send_gift.carprofile_id), notice: 'You do not have enough credit!' 
+    end 
+   
   end
 
   # PUT /send_gifts/1
