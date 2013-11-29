@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
 def show
     @user = User.find(params[:id])
+    @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     render :layout => "application"
 end
