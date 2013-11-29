@@ -8,6 +8,6 @@ class EgiftsController < ApplicationController
   	@send_gifts = current_user.received_egifts
   	 @public = @send_gifts.public_gift
      @personal = @send_gifts.anonymous
-     @anon = @send_gifts.anonymous
+     @anon = @send_gifts.personal
   end
 end
