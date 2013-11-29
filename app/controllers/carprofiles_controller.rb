@@ -85,6 +85,8 @@ class CarprofilesController < ApplicationController
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
+
+      raise @public.inspect
       
       @likes= @carprofile.likes(@carprofile.id)
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
