@@ -24,6 +24,7 @@ gem 'execjs'
 gem "socialization"
 gem 'prototype-rails'
 
+gem 'pg'
 
 
 
@@ -58,4 +59,4 @@ gem 'foreigner'
 
 # To use debugger
 # gem 'debugger'
-gem 'pg'
+#gem 'pg'

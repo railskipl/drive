@@ -1,8 +1,3 @@
-<style>
-.fgp{ 
-  color:#fff;
-}
-</style> 
 <div class="header">
   <div class="container_20">
     <div class="grid_5">
@@ -19,18 +14,24 @@
         <div style="width:auto; padding:5px 7px; color:#FFFFFF"> 
           <div style="width:228px; float:left"><%= f.check_box :remember_me %>Remember Me </div>
         <% end %>
+
         <div style="width:auto; float:left">
-          <%= link_to "Forgot your password?", new_password_path(resource_name), :class => "fgp" %><br />
+
+          <%= link_to "Forgot your password?", new_password_path(resource_name), :style => "color:#fff" %><br />
         </div>
+
+          <%#= link_to "Forgot your password?", new_password_path(resource_name), :class => "fgp" %><br />
+      
+
       </div>
-          
+
         <% else %>
-
-
- <%= form_tag search_path, :method=> :get do %>
+      
+     <%= form_tag search_path, :method=> :get do %>
   <%= text_field_tag :q, nil,:class=>"search_tf"%>
     <%= submit_tag "Search",:class=>"submit_btn" %>
    <% end %>
+      
       
       <ul class="bottom_menu" style="margin-top:6px">
       <li><%= link_to "Settings", edit_user_registration_path %></li>  
@@ -44,5 +45,4 @@
     </div>
 
   </div>
-
 

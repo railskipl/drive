@@ -71,7 +71,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e82020', end
 
 .cod{width:auto; height:271px; margin:0 0 0 0; background: url(/assets/shadow.png) no-repeat right 15px ;}
 
-.box{ width:500px; height:240px; margin:0 0 0 0; background:#fff; color:#333; border:1px solid #000; line-height:normal}
+.cod_box{ width:500px; height:240px; margin:0 0 0 0; background:#fff; color:#333; border:1px solid #000; line-height:normal}
 .box2{ width:auto; height:231px; margin:0 0 0 0; color:#333; line-height:normal; padding:10px 0; line-height:18px}
 
 .red_heading_cod{ padding:5px 10px; width:auto; font-size:14px; font-weight:bold; color:#FFFFFF; background:#cc1b2c; border:1px solid #000; border-bottom:none; margin:10px 0 0 0; width:480px}
@@ -360,7 +360,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .message_search{ background:url(../assets/search.png) no-repeat 5px center; margin-top:10px; padding:5px 20px}
 
-.message{ width:auto; height:auto; margin:10px 0; overflow:hidden; border-bottom:1px solid #E6E6E6; padding-bottom:10px}
+.message{ width:auto; height:auto; margin:10px 0; overflow:hidden; border-bottom:1px solid #E6E6E6; padding-bottom:10px;
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(255,255,255,1) 80%, rgba(249,249,249,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(80%,rgba(255,255,255,1)), color-stop(100%,rgba(249,249,249,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(255,255,255,1) 80%,rgba(249,249,249,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(255,255,255,1) 80%,rgba(249,249,249,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(255,255,255,1) 80%,rgba(249,249,249,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(255,255,255,1) 80%,rgba(249,249,249,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9',GradientType=0 ); /* IE6-9 */}
 
 .message .tf{ float:left; margin:10px 10px 0 0}
 
@@ -772,3 +780,5 @@ padding: 0 1px;
 border: 1px solid #83000d;
 font-weight:bold; position:absolute;
 font-size:11px}
+
+.giftimage{ padding:5px; border:1px solid #E7E7E7}

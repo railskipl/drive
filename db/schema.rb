@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127092407) do
+ActiveRecord::Schema.define(:version => 20131129054902) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -157,7 +157,8 @@ ActiveRecord::Schema.define(:version => 20131127092407) do
   end
 
   create_table "egifts", :force => true do |t|
-    t.string   "credit"
+
+    t.integer  "credit"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
@@ -241,6 +242,7 @@ ActiveRecord::Schema.define(:version => 20131127092407) do
     t.integer  "receiver_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "visibility_id"
   end
 
   create_table "seos", :force => true do |t|
@@ -308,5 +310,11 @@ ActiveRecord::Schema.define(:version => 20131127092407) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "visibilities", :force => true do |t|
+    t.string   "profile_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
 end
