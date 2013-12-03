@@ -31,10 +31,8 @@ q = params[:q]
 end
 
 def subscribe_count
-  @subscribe_profile = User.find(params[:id])
-
-#binding.pry
- @subscribers =  Subscriber.find_all_by_subscribable_id(@subscribe_profile.id)
+  @user = User.find(params[:id])
+  @subscribers =  Subscriber.subscribers(@user,User)
 end
 
 end

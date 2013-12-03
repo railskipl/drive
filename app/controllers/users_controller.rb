@@ -29,10 +29,12 @@ def show
 end
 
 def subscribe_profile
-  @subscribe_profile = User.find(params[:id])
-  # binding.pry 
-   Subscriber.subscribe!(current_user,@subscribe_profile)
-    # @subscribers= @car_subscribe.subscribes(@car_subscribe.id)
+   @user = User.find(params[:id])
+  if Subscriber.subscribes?(current_user,@user)
+    Subscriber.unsubscribe!(current_user,@user)
+  else
+    Subscriber.subscribe!(current_user,@user)
+  end
     respond_to do |format|
      format.js {}
     end
