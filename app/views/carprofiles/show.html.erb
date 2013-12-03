@@ -38,7 +38,7 @@
   </li>
     <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
 
-    <% if current_user.id == @carprofile.user_id %>  
+    <% unless current_user.id == @carprofile.user_id %>  
     <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
     <% end %>
     
