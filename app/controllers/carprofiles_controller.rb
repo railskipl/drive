@@ -1,7 +1,8 @@
 class CarprofilesController < ApplicationController
+  
   before_filter :authenticate_user!, :except => []
   before_filter :correct_user, :only => [:edit]
-   START_DATEEE = SendGift.first.created_at.to_date
+   START_DATEEE = SendGift.first.created_at.to_date rescue ""
   def index
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -21,9 +22,10 @@ class CarprofilesController < ApplicationController
   end
 
   def create
-  	@carprofile = Carprofile.new(params[:carprofile])
 
-  	if @carprofile.save
+  	@carprofile = Carprofile.new(params[:carprofile])
+    #raise @carprofile.inspect
+    if @carprofile.save
 	 	flash[:notice] = "car profile created successfully"
         redirect_to carprofiles_path
     else
@@ -68,6 +70,8 @@ class CarprofilesController < ApplicationController
   
   def update
     @carprofile = Carprofile.find(params[:id])
+   
+
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
         format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
@@ -83,7 +87,6 @@ class CarprofilesController < ApplicationController
 
   def entry_index_to_display
     @egift = @carprofile.send_gifts
-
     today = Date.today
     interval = (today - START_DATEEE).to_i
     index = (interval/7.0).floor

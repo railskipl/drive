@@ -72,7 +72,7 @@ class BlogCommentsController < ApplicationController
     @blog_comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to blog_comments_url }
+      format.html { redirect_to user_blog_path(@blog_comment.user_blog_id) }
       format.json { head :no_content }
     end
   end

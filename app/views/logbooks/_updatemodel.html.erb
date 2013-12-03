@@ -1,0 +1,14 @@
+<%= javascript_include_tag "prototype" %>
+
+<%= select "logbook", :car_model_id,   @car_model.map {|s| [s.name, s.id]},{:prompt => "Select model"}  ,:onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatebody"}, :with => "'updatebody='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}"  rescue nil %>
+<%= image_tag("/assets/loadingg.gif",
+                    :align => "absmiddle",
+                    :border => 0,
+                    :id => "loader",
+                    :style =>"display: none;" ) %><br/>
+
+</br>
+
+<div id = "car_model_id">
+   <%= render "logbooks/updatebody" %></br>
+</div>
