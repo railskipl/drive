@@ -1,5 +1,6 @@
 class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
+   START_DATEEE = SendGift.first.created_at.to_date
   def index
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -78,16 +79,28 @@ class CarprofilesController < ApplicationController
 
 
   end
+
+  def entry_index_to_display
+    @egift = @carprofile.send_gifts
+
+    today = Date.today
+    interval = (today - START_DATEEE).to_i
+    index = (interval/7.0).floor
+    index % @egift.count
+  end
  
   def show
       @carprofile = Carprofile.find(params[:id])
       @egift = @carprofile.send_gifts
+      offset = entry_index_to_display rescue ""
+      @record = @egift.limit(1).offset(offset).first
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
       
       @likes= @carprofile.likes(@carprofile.id)
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+     
 
       @count ||= []
       @likes.each do |like|
@@ -107,27 +120,26 @@ class CarprofilesController < ApplicationController
   end
 
 def subscribe_car
-  @car_subscribe = Carprofile.find(params[:id])
-  # binding.pry 
-   Subscriber.subscribe!(current_user,@car_subscribe)
-    # @subscribers= @car_subscribe.subscribes(@car_subscribe.id)
-    respond_to do |format|
+  @carprofile = Carprofile.find(params[:id])
+  if Subscriber.subscribes?(current_user,@carprofile)
+    Subscriber.unsubscribe!(current_user,@carprofile)
+  else
+    Subscriber.subscribe!(current_user,@carprofile)
+  end
+   respond_to do |format|
      format.js {}
     end
- end
+ 
+end
 
-def subscribe_count
-@car_subscribe= Carprofile.find(params[:id])
-
-#binding.pry
- @subscribers =  Subscriber.find_all_by_subscribable_id(@car_subscribe.id)
+def subscar_count
+ @carprofile = Carprofile.find(params[:id])
+ @subscribers =  Subscriber.subscribers(@carprofile,User)
 end
 
 def spotlight
 @car_profile = Carprofile.find_by_id(params[:id])
-# binding.pry
-@status = Carprofile.spotlight(@car_profile)
+Carprofile.spotlight(@car_profile)
 end
 
-  
 end

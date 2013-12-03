@@ -12,19 +12,16 @@
 	<div class="grid_16">
 	  <h1><%= @user.first_name%></h1>
 		<ul class="tab_menu">
-		<li><%= link_to "Cars",carprofiles_path %></li>
-      <li><%= link_to "Subscribe",subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
+		<!-- <li><%#= link_to "Cars",carprofiles_path %></li> -->
+       <% unless current_user.id == @user.id %>
+       
+       <li><%= link_to (Subscriber.subscribes?(current_user,@user) ? "Unsubscribe": "Subscribe"),subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
+       <% end %>
 		<li><a href="#">Message</a></li> 
 		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>
 		</ul>
 	</div>
    </div>
-		
-		
-		
-		
-		
-		
 		
 		<div class="container_20">
 				
@@ -96,12 +93,20 @@
 
 <div class="blog_div">
 		
-		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
+		<div class="small_thumb"><% @cars.each do |car|%>
+                        <% car.carprofile_photos.each do |photo_url|%>
+    
+                      <%= image_tag photo_url.photo.url,:size => "100x80"%><br />
+                <% end %>
+                   <% end %></div>  
 		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
+		<div class="blog_right" style="float:left">
+		<% @cars.each do |carprofile| %>
 		
+			<%= link_to carprofile.car_make.name, carprofile_path(carprofile),:class=>"redlink"%><br/>
+			<%= carprofile.car_description.html_safe %>
+		 <% end %>
+	
 		</div>
 		
 		</div>

@@ -1,16 +1,12 @@
 
 
+</script>
+
+
 <div class="container_20">
-
-    
     <div class="middle">
-    
     <div class="container_20" style="background:#333; margin-bottom:10px">
-    
-      <%= render 'shared/carousel' %>   
-
-    
-    
+      <%= render 'shared/carousel' %>
     
       </div>
     
@@ -22,24 +18,34 @@
         <div class="profile_image">
         <div class="gift">
        
-          <%= image_tag @egift.first.egift.image ,:width => 45 rescue nil%></div>
-       
+          <%= image_tag @record.egift.image ,:width => 45 rescue nil %></div>
+          
           <%= image_tag @carprofile.carprofile_photos.first.photo.url(:profile) rescue nil %>
          
         </div>
   
   
   <ul class="tab_menu2">
-          
-    <li><a href="#">Subscribers</a></li>
+
+
+    <% if current_user.id == @carprofile.user_id %>     
+    <li><%= link_to "Subscribers",:action=>"subscar_count",:id=>@carprofile.id %>
+      <% end %>
+    </li>
     <li> <span id="like_count" class="count2"><%= @counts %></span> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
    </li>
      <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
   </li>
     <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
-    <li><%= link_to "Add to Spotlight +",spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
+
+    <% if current_user.id == @carprofile.user_id %>  
+    <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
+    <% end %>
+    
     <li><a href="#"><img alt="" src="/assets/star2.png"></a></li>
-   
+<% unless current_user.id == @carprofile.user_id %>
+    <li><%= link_to (Subscriber.subscribes?(current_user,@carprofile) ? "Unsubscribe": "Subscribe"),subscribe_car_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote => true,:id=>"subscribe_car"%></li><% end %>
+
   </ul>
   
   <div>

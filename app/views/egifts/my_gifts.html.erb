@@ -21,7 +21,12 @@
   <tr>
     <td align="left" valign="top"><strong>Message</strong></td>
     <td align="left" valign="top"><%= g.message %></td>
+  </tr>
+<tr>
+    <td align="left" valign="top"><strong>Car</strong></td>
+    <td align="left" valign="top"><%= g.carprofile.car_model.name %></td>
     </tr>
+  
   <tr>
     <td align="left" valign="top"><strong>Gift</strong></td>
     <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
@@ -46,6 +51,10 @@
   <tr>
     <td align="left" valign="top"><strong>Message</strong></td>
     <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+    <tr>
+    <td align="left" valign="top"><strong>Car</strong></td>
+    <td align="left" valign="top"><%= g.carprofile.car_model.name %></td>
     </tr>
   <tr>
     <td align="left" valign="top"><strong>Gift</strong></td>
@@ -73,6 +82,10 @@
     <td align="left" valign="top"><strong>Message</strong></td>
     <td align="left" valign="top"><%= g.message %></td>
     </tr>
+    <tr>
+    <td align="left" valign="top"><strong>Car</strong></td>
+    <td align="left" valign="top"><%= g.carprofile.car_model.name %></td>
+    </tr>
   <tr>
     <td align="left" valign="top"><strong>Gift</strong></td>
     <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
@@ -83,4 +96,6 @@
   </div>
   <% end %>
   
-  
+  </div>
+</div>
+</div>
