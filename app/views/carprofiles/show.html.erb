@@ -65,7 +65,6 @@
     <td align="left" valign="top" class="profile_col1">Manufacturing Year</td>
     <td class="profile_col2"><%= @carprofile.manufacturing_year %></td>
   </tr>
-
   <tr>
     <td align="left" valign="top" class="profile_col1">Body Index</td>
     <td class="profile_col2"><%= @carprofile.body_index.bodyindex %></td>
@@ -87,17 +86,17 @@
     <td class="profile_col2"><%= @carprofile.engine.engine_displacement rescue nil%>
 </td>
   </tr>
-  
-  </tr>
+
   <tr>
     <td align="left" valign="top" class="profile_col1">Do you sell this car</td>
     <td class="profile_col2">  <%= @carprofile.sellthiscar %>
 </td>
   </tr>
-  <tr>
+    <tr>
     <td align="left" valign="top" class="profile_col1">License plate</td>
     <td class="profile_col2">  <%= @carprofile.license_plate%>
  </td>
+  </tr>
   <tr>
     <td align="left" valign="top" class="profile_col1">VIN Code</td>
     <td class="profile_col2">  <%= @carprofile.VIN%>
@@ -251,4 +250,24 @@ $("a.topopup").click(function(){
 })
 });
 </script>
+
+
+    
+    <div id="toPopup"> 
+      
+        <div class="close"></div>
+        <span class="ecs_tooltip">Press Esc to close <span class="arrow"></span></span>
+    <div id="popup_content"> 
+ 
+     <span id="a.topopup" class="like_data"></span>
+      <!--your content start-->
+           
+        </div> <!--your content end-->
+    
+    </div> <!--toPopup end-->
+    
+  <div class="loader"></div>
+    <div id="backgroundPopup"></div>
+
+
 

@@ -68,7 +68,7 @@ class CarprofilesController < ApplicationController
   
   def update
     @carprofile = Carprofile.find(params[:id])
-      #raise @carprofile.inspect
+   
 
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
