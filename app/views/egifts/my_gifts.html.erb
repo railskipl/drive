@@ -1,22 +1,86 @@
-<h1>Listing Gifts</h1>
 
-<table>
-  <tr>
-    <th>Egift</th>
-    <th>Message</th>
-    <th>Car Model</th>
-    <th>Sender</th>
-  </tr>
+<div class="middle">
+      <div class="container_20" style="background:#333; margin-bottom:10px">
+  <%= render 'shared/carousel' %>   
+  </div>
+    <div class="container_20">
+        
+        
+      <div class="grid_20">
+    
+   <h4>Public :</h4>
+    <% @public.each do |g|%>
 
-<% @send_gifts.each do |send_gift| %>
+  <div class="message">
+
+ <table width="100%" border="0" cellspacing="5" cellpadding="5">
   <tr>
-    <td><%= image_tag send_gift.egift.image.url %></td>
-    <td><%= send_gift.message %></td>
-    <td><%= send_gift.carprofile.car_model.name %></td>
-    <td><%= send_gift.sender.nickname %></td>
-  </tr>
-<% end %>
+    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
+    <td align="left" valign="top" ><%= g.sender.email %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Message</strong></td>
+    <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Gift</strong></td>
+    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
+    </tr>
 </table>
 
-<br />
+  
+  </div>
+  <% end %>
+  <br><br>
+  
+  <h4>Anonymous :</h4>
 
+     <% @anon.each do |g|%>
+
+  <div class="message">
+ <table width="100%" border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
+    <td align="left" valign="top" ><%= g.sender.email %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Message</strong></td>
+    <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Gift</strong></td>
+    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
+    </tr>
+</table>
+
+  
+  </div>
+  <% end %>
+
+ <br><br>
+  
+  <h4>Personal :</h4>
+
+     <% @personal.each do |g|%>
+
+  <div class="message">
+ <table width="100%" border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
+    <td align="left" valign="top" ><%= g.sender.email %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Message</strong></td>
+    <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Gift</strong></td>
+    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
+    </tr>
+</table>
+
+  
+  </div>
+  <% end %>
+  
+  
