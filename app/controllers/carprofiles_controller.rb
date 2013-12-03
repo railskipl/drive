@@ -1,5 +1,6 @@
 class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
+   START_DATEEE = SendGift.first.created_at.to_date
   def index
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -78,10 +79,21 @@ class CarprofilesController < ApplicationController
 
 
   end
+
+  def entry_index_to_display
+    @egift = @carprofile.send_gifts
+
+    today = Date.today
+    interval = (today - START_DATEEE).to_i
+    index = (interval/7.0).floor
+    index % @egift.count
+  end
  
   def show
       @carprofile = Carprofile.find(params[:id])
       @egift = @carprofile.send_gifts
+      offset = entry_index_to_display rescue ""
+      @record = @egift.limit(1).offset(offset).first
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
