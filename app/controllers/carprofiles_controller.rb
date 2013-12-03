@@ -69,6 +69,7 @@ class CarprofilesController < ApplicationController
   end
   
   def update
+    raise params.inspect
     @carprofile = Carprofile.find(params[:id])
    
   raise @carprofile.inspect
