@@ -69,10 +69,9 @@ class CarprofilesController < ApplicationController
   end
   
   def update
-    raise params["carprofile"].inspect
     @carprofile = Carprofile.find(params[:id])
    
-  raise @carprofile.inspect
+
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
         format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
