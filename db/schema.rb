@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131129054902) do
+ActiveRecord::Schema.define(:version => 20131203120419) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20131129054902) do
     t.string   "manufacturing_year"
     t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20131129054902) do
     t.integer  "carprofile_photo_id"
     t.integer  "body_index_id"
     t.boolean  "spotlighted",         :default => false
+    t.string   "engine_dis"
   end
 
   create_table "comment_logbooks", :force => true do |t|
@@ -158,8 +159,8 @@ ActiveRecord::Schema.define(:version => 20131129054902) do
 
   create_table "egifts", :force => true do |t|
     t.integer  "credit"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
