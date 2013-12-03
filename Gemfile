@@ -24,7 +24,7 @@ gem 'execjs'
 gem "socialization"
 gem 'prototype-rails'
 
-
+gem 'pg'
 
 
 
