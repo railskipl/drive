@@ -1,5 +1,5 @@
-<% if Subscriber.subscribe!(current_user,@car_subscribe) %>
-$("#subscribe_car").html('<%= "subscribe"%>');
+<% if Subscriber.subscribes?(current_user,@carprofile)%>
+$("#subscribe_car").html("Unsubscribe");
 <% else %>
-$("#subscribe_car").html('<%= "unsubscribe"%>');
+$("#subscribe_car").html("Subscribe");
 <% end %>

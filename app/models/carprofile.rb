@@ -29,7 +29,11 @@ def self.spotlight(car_profile)
   car_profile.update_attribute("spotlighted",!car_profile.spotlighted)
   return car_profile.spotlighted
  end
-
+ 
+  def self.remove_subscribables(subscriber)
+          self.where(:subscriber_type => subscriber.class.name.classify).
+               where(:subscriber_id => subscriber.id).destroy_all
+        end
 
   
 end

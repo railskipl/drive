@@ -94,7 +94,7 @@ end
       post :like_car
       get :like_count
       post :subscribe_car
-      get  :subscribe_count
+      post  :unsubscribe_car
       post :spotlight
     end
   end 
@@ -104,7 +104,7 @@ end
   root :to => "devise/registrations#new"
    match 'subscribe_count' => 'home#subscribe_count'
 
-   
+  match 'subscar_count' =>'carprofiles#subscar_count'
 
 
   match '/contact' => 'home#contact'
