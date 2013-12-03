@@ -1,5 +1,6 @@
 class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
+  before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date
   def index
   	@carprofiles = current_user.carprofiles.all
@@ -141,5 +142,17 @@ def spotlight
 @car_profile = Carprofile.find_by_id(params[:id])
 Carprofile.spotlight(@car_profile)
 end
+
+
+private
+ 
+ def correct_user
+   @carprofile = Carprofile.find(params[:id])
+   @user = current_user
+   if @carprofile.user == current_user 
+   else 
+    redirect_to carprofile_path(@carprofile) ,:notice => "Access Denied"
+   end
+ end
 
 end
