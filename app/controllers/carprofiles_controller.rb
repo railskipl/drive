@@ -2,7 +2,7 @@ class CarprofilesController < ApplicationController
   
   before_filter :authenticate_user!, :except => []
   before_filter :correct_user, :only => [:edit]
-   START_DATEEE = SendGift.first.created_at.to_date rescue 
+   START_DATEEE = SendGift.first.created_at.to_date rescue ""
   def index
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
