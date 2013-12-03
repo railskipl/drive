@@ -83,7 +83,6 @@ class CarprofilesController < ApplicationController
 
   def entry_index_to_display
     @egift = @carprofile.send_gifts
-
     today = Date.today
     interval = (today - START_DATEEE).to_i
     index = (interval/7.0).floor
