@@ -9,7 +9,6 @@
     <th></th>
     <th></th>
   </tr>
-
 <% @comment_logbooks.each do |comment_logbook| %>
   <tr>
     <td><%= comment_logbook.logbook_id %></td>
@@ -25,3 +24,4 @@
 <br />
 
 <%= link_to 'New Comment logbook', new_comment_logbook_path %>
+

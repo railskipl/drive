@@ -72,6 +72,10 @@
     <td class="profile_col2"><%= @carprofile.manufacturing_year %></td>
   </tr>
   <tr>
+    <td align="left" valign="top" class="profile_col1">Body Index</td>
+    <td class="profile_col2"><%= @carprofile.body_index.bodyindex %></td>
+  </tr>
+  <tr>
     <td align="left" valign="top" class="profile_col1">Year of Purchase</td>
     <td class="profile_col2"><%= @carprofile.year_of_purchase %></td>
   </tr>
@@ -88,18 +92,19 @@
     <td class="profile_col2"><%= @carprofile.engine.engine_displacement rescue nil%>
 </td>
   </tr>
-  <tr>
-    <td align="left" valign="top" class="profile_col1">License plate</td>
-    <td class="profile_col2">  <%= @carprofile.license_plate%>
- </td>
-  </tr>
+
   <tr>
     <td align="left" valign="top" class="profile_col1">Do you sell this car</td>
     <td class="profile_col2">  <%= @carprofile.sellthiscar %>
 </td>
   </tr>
+    <tr>
+    <td align="left" valign="top" class="profile_col1">License plate</td>
+    <td class="profile_col2">  <%= @carprofile.license_plate%>
+ </td>
+  </tr>
   <tr>
-    <td align="left" valign="top" class="profile_col1">VIN</td>
+    <td align="left" valign="top" class="profile_col1">VIN Code</td>
     <td class="profile_col2">  <%= @carprofile.VIN%>
 </td>
   </tr>
@@ -346,13 +351,6 @@ $("a.topopup").click(function(){
 </script>
 
 
-
- 
-
-
-
-  
-
     
     <div id="toPopup"> 
       
@@ -369,15 +367,6 @@ $("a.topopup").click(function(){
     
   <div class="loader"></div>
     <div id="backgroundPopup"></div>
-
-
-
-
-
-
-  
-  
-
 
 
 

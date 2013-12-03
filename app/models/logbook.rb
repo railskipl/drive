@@ -7,7 +7,7 @@ class Logbook < ActiveRecord::Base
   belongs_to :user
   belongs_to :logbook_category
   has_many :comment_logbooks, dependent: :destroy 
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
 
 validates_presence_of :car_make_id,:car_model_id,:body_index_id,:logbook_category_id,:logbook_discription
   acts_as_likeable

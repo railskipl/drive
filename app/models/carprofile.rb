@@ -4,7 +4,7 @@ class Carprofile < ActiveRecord::Base
                   :carprofile_photos_attributes, :body_index_id
 
   belongs_to :user
-
+  belongs_to :body_index
   belongs_to :car_make
   belongs_to :car_model
   belongs_to :engine

@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20131129054902) do
   end
 
   create_table "egifts", :force => true do |t|
+
     t.integer  "credit"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
