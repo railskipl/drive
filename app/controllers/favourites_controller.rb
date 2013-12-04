@@ -19,4 +19,14 @@ class FavouritesController < ApplicationController
    @favourite.save
    redirect_to user_blog_path(@user_blog)
   end	
+
+  def destroy
+    raise "hi"
+    @favourite = Favourite.find(params[:id])
+
+      @favourite.destroy
+      flash[:notice] = "you have done unfavourite"
+      redirect_to favourites_path
+    
+  end
 end

@@ -1,0 +1,3 @@
+<%= javascript_include_tag "prototype" %>
+
+<%= select "logbook", :body_index_id, @body_index.map {|d| [d.bodyindex, d.id]},{:prompt => "Select body" }rescue nil  %> <br/><br/>

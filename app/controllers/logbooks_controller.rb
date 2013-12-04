@@ -68,8 +68,8 @@ class LogbooksController < ApplicationController
   end
 
   def show
-
-  	@logbook = Logbook.find(params[:id])
+  
+    @logbook = Logbook.find(params[:id])
     @comment_logbook = @logbook.comment_logbooks.build
     @likes = @logbook.likes(@logbook.id)
       
@@ -89,12 +89,12 @@ class LogbooksController < ApplicationController
     end
   end
 
-  def update_model
+  def updatemodel
     #raise params[:update_model].inspect
-     @car_model = CarModel.find_all_by_car_make_id(params[:update_model]) 
+     @car_model = CarModel.find_all_by_car_make_id(params[:updatemodel]) 
   end
 
-  def update_body
-    @body_index = BodyIndex.find_all_by_car_model_id(params[:update_body])
+  def updatebody
+    @body_index = BodyIndex.find_all_by_car_model_id(params[:updatebody])
   end
 end
