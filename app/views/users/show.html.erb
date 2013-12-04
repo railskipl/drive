@@ -6,7 +6,9 @@
 		
   <div class="container_20 profile_bg">
 	<div class="grid_4">
-      <div class="profile_image"><img alt="" src="/assets/profile.jpg"></div>
+      <div class="profile_image"><!-- <img alt="" src="/assets/profile.jpg"> -->
+      	<%= image_tag @user.pic.url(:thumb) %>
+      </div>
 	</div>
 	
 	<div class="grid_16">

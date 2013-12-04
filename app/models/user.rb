@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,:first_name,:last_name,:nickname,:birthday,:location,:agree,:status,
-                   :freecredit, :buycredit, :credit,:about
+                   :freecredit, :buycredit, :credit,:about,:pic
 
   # attr_accessible :title, :body
 
@@ -23,6 +23,16 @@ class User < ActiveRecord::Base
 
 
  acts_as_liker
+
+has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", :profile => "130x126"},
+                   :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :path => "public/attachments/car/:id/:style/:basename.:extension",
+                    
+                    :convert_options => {
+                          :thumb => "-compose Copy -gravity center -extent 140x100",
+                          :medium => "-compose Copy -gravity center -extent 350x350",
+                          
+                      }
 
   # def credit_points(current_user)
   #   @credit = Credit.first

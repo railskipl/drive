@@ -85,6 +85,7 @@ class CarprofilesController < ApplicationController
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
+      @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -129,5 +130,18 @@ def spotlight
 @car_profile = Carprofile.find_by_id(params[:id])
 Carprofile.spotlight(@car_profile)
 end
+
+def post_comment
+    @carprofile = Carprofile.find_by_id(params[:car_profile_id])
+    if params[:body].present?
+      @comment = Comment.add_comment(params[:body],current_user,@carprofile)
+      if @comment.save
+        @success = "Comment Saved Successfully !!!"
+      end
+    else
+       @error = "Please Enter Text In Body !!!"
+    end
+    @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
+  end
 
 end

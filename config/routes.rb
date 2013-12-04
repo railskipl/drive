@@ -94,8 +94,8 @@ end
       post :like_car
       get :like_count
       post :subscribe_car
-      post  :unsubscribe_car
       post :spotlight
+      post :post_comment
     end
   end 
   resources :carprofile_photos
