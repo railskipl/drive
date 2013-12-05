@@ -1,0 +1,33 @@
+<%= stylesheet_link_tag  "token-input-facebook", "token-input" %>
+<%= javascript_include_tag "jquery.tokeninput","messages" %>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+  <%= f.text_field :user_tokens,:class => "pe_tf" %>
+</div>
+  <div class="row">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject ,:class => "pe_tf" ,:style => "width:392px;" %>
+  </div>
+  <div class="row">
+    <%= f.label :body %><br />
+    <%= f.text_area :body ,:class => "pe_tf" ,:style => "width:950px;" ,:rows => "10"%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit :class => "submit_btn" %>
+  </div>
+<% end %>
+<br/>

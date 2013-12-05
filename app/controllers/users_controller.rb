@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
 	layout 'admin'
-   before_filter :authenticate_admin!, :except => [:show,:subscribe_profile]
+   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile]
 
   def index
-  	@users = User.all
+    @users = User.all
+  end
+
+  def user_emails
+  @users = User.order(:email)
+    respond_to do |format|
+    format.json { render json: @users.json_tokens(params[:q])}
+    end
   end
 
   def destroy

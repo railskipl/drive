@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20131203120419) do
 
+
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
     t.string   "carmake"
@@ -217,6 +218,19 @@ ActiveRecord::Schema.define(:version => 20131203120419) do
     t.text     "logbook_discription"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.boolean  "is_read",                 :default => false
+    t.boolean  "is_deleted_by_sender",    :default => false
+    t.boolean  "is_deleted_by_recipient", :default => false
+    t.boolean  "is_trashed_by_recipient", :default => false
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
   end
 
   create_table "notifications", :force => true do |t|
