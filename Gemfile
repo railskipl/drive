@@ -59,4 +59,4 @@ gem 'foreigner'
 
 # To use debugger
 # gem 'debugger'
-#gem 'pg'
+gem 'pg'

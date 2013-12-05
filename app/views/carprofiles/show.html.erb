@@ -287,11 +287,27 @@
     <div class="grid_20 aboutme">
     
        <h4>Comments</h4>
-        <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
-        <textarea class="comment_tf2" rows="4" name="textarea"></textarea>
-        <div style="float:right; margin:10px 0; text-align:left; width:100%">
-          <input type="button" value="Done" style="margin-left:100px" class="submit_btn" name="button">
+        <div class="small_thumb"><%= image_tag current_user.pic.url(:thumb),:height => "77",:width => "77",:style=>"float:left;"%></div>
+
+        <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
+            <%= hidden_field_tag :car_profile_id,@carprofile.id %>
+            <p>
+              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" %>
+            </p>
+            <%= submit_tag "Done", :style=>"margin-left:100px",:class=>"submit_btn"%>
+        <% end %>
+
+     <div id="comment_load">
+          <%if @comments.empty? %>
+              <div class="blog_div">
+                <div class="blog_right"><br>
+                  NO COMMENT FOUND </div>
+              </div>
+          <% else %>
+              <%= render "car_profile_comments"%>
+          <% end %>
         </div>
+
         <div class="blog_div">
           <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
           <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>

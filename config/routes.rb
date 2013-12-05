@@ -1,6 +1,19 @@
 Drive::Application.routes.draw do
 
 
+  resources :messages do
+    collection do
+      get :trash_messages
+      get :sent_messages
+    end
+    
+    member do
+     post :trash
+     post :destroy_recipient
+    end
+  end
+
+
   resources :blog_comments
   
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
@@ -43,6 +56,7 @@ end
   resources :users,  :only => [:index,:destroy,:show,:subscribe_profile] do
   collection    do
       post :subscribe_profile
+      get  :user_emails
     end
   end
   
@@ -94,8 +108,8 @@ end
       post :like_car
       get :like_count
       post :subscribe_car
-      post  :unsubscribe_car
       post :spotlight
+      post :post_comment
     end
   end 
   resources :carprofile_photos
