@@ -18,8 +18,19 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy
   has_many :comment_logbooks, dependent: :destroy
 
-    has_many :sent_egifts, :class_name => 'SendGift', :foreign_key => 'sender_id', :dependent => :destroy
+  has_many :sent_egifts, :class_name => 'SendGift', :foreign_key => 'sender_id', :dependent => :destroy
   has_many :received_egifts, :class_name => 'SendGift', :foreign_key => 'receiver_id', :dependent => :destroy
+
+  has_many :sent_messages, :class_name => 'Message', :foreign_key => 'sender_id', :dependent => :destroy
+  has_many :recipient_messages, :class_name => 'Message', :foreign_key => 'recipient_id', :dependent => :destroy
+
+  def self.json_tokens(query)
+    users = where("email like ?", "%#{query}%")
+    if users.empty?
+    else
+     users
+    end
+  end
 
 
 
