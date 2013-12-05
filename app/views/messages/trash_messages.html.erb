@@ -56,7 +56,7 @@
     <div style="margin:0 0 5px 0">Subject: 
       <%= link_to message.subject , message , :class => "bluelink" %>
     </div>
-    <div><%= message.body %></div>
+    <div><%= message.body.html_safe %></div>
     </div>
     
     
