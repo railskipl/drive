@@ -1,0 +1,6 @@
+<% if @success %>
+$("#body").val("");
+$('#comment_load').html("<%= escape_javascript (render :partial => 'car_profile_comments') %>");
+<% else %>
+alert("<%= @error %>");
+<% end %>
