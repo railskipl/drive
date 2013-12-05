@@ -1,15 +1,16 @@
 class Logbook < ActiveRecord::Base
-  attr_accessible :body_index_id, :car_make_id, :car_model_id, :logbook_category_id, :logbook_discription, :user_id
+  attr_accessible :body_index_id, :car_make_id, :car_model_id, :logbook_category_id, :logbook_discription, :user_id,:carprofile_id
 
   belongs_to :car_make
   belongs_to :car_model
   belongs_to :body_index
   belongs_to :user
+  belongs_to :carprofile
   belongs_to :logbook_category
   has_many :comment_logbooks, dependent: :destroy 
   has_many :favourites, dependent: :destroy
 
-validates_presence_of :car_make_id,:car_model_id,:body_index_id,:logbook_category_id,:logbook_discription
+validates_presence_of :logbook_category_id,:logbook_discription,:carprofile_id
   acts_as_likeable
 
   def likes(id)

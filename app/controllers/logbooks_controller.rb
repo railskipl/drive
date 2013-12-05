@@ -7,20 +7,27 @@ class LogbooksController < ApplicationController
 
   def new
   	@logbook = Logbook.new
+    @carprofile = current_user.carprofiles
   end
 
   def create
-  	@logbook = Logbook.create(params[:logbook])
-  	if @logbook.save
-  		flash[:notice] = "Logbook created successfully"
-  		redirect_to logbooks_path
-  	else
-  		render :new
-  	end
+    @logbook = Logbook.create(params[:logbook])
+    if @logbook.logbook_discription == "<br>"
+      flash[:notice] = "please fill all fields"
+      redirect_to new_logbook_path
+    else 
+      if @logbook.save!
+        flash[:notice] = "Logbook created successfully"
+        redirect_to logbooks_path
+      else
+        render :new
+      end
+    end
   end
 
   def edit
     @logbook = Logbook.find(params[:id])
+    @carprofile = current_user.carprofiles
   end
 
   def like_logbook
