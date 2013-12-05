@@ -37,6 +37,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -60,7 +61,7 @@ class MessagesController < ApplicationController
     end
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to sent_messages_messages_path, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
