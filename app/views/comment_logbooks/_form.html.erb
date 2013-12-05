@@ -20,6 +20,7 @@
   </div>
   <%= f.hidden_field :logbook_id %>
   <%= f.hidden_field :user_id,:value => current_user.id %> 
+  <%= f.hidden_field :logbook_user_id,:value => @logbook.user_id %>
   <div class="actions">
     <%= f.submit %>
   </div>

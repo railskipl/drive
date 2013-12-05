@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205113502) do
+ActiveRecord::Schema.define(:version => 20131205114200) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -218,6 +218,7 @@ ActiveRecord::Schema.define(:version => 20131205113502) do
     t.text     "logbook_discription"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "carprofile_id"
   end
 
   create_table "messages", :force => true do |t|
