@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205073353) do
+ActiveRecord::Schema.define(:version => 20131203120419) do
+
+
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -116,11 +118,15 @@ ActiveRecord::Schema.define(:version => 20131205073353) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "commentable_id"
     t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "commentable_type"
+    t.integer  "user_id"
   end
+
+  add_index "comments", ["commentable_id", "user_id"], :name => "index_comments_on_commentable_id_and_user_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -319,6 +325,10 @@ ActiveRecord::Schema.define(:version => 20131205073353) do
     t.integer  "buycredit",              :default => 0,  :null => false
     t.integer  "spend_credit",           :default => 0,  :null => false
     t.text     "about"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
