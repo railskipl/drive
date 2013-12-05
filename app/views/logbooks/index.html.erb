@@ -4,11 +4,20 @@
 <table>
 <%= link_to "New logbook", new_logbook_path %><br/><br/>
 
-<ol>
-  <% @logbooks.each do |logbook| %>
-  <li><%= link_to logbook.logbook_category.name, logbook_path(logbook) rescue nil %></li>
+  <td>
+   <% @logbooks.each do |logbook| %>
+   <%#= raise @logbooks.id.inspect %>
+  <li><%= link_to logbook.logbook_category.name, logbook_path(logbook) rescue nil %><br/>by <%= link_to logbook.user.first_name, root_path %><br/><%= logbook.logbook_discription.html_safe rescue nil %><hr/>
+  	<%= link_to "Comment",logbook_path(logbook) %>
+           &nbsp;<% if logbook.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(logbook.created_at)} ago"%>
+           <% else %>
+           <%= logbook.created_at.strftime("%b %d, %Y") %>
+           <% end %><hr/>
+  </li><br/>
+  
   <% end %>
-</ol>
+  </td>
 
 
 
