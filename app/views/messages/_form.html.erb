@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag  "token-input-facebook", "token-input" %>
 <%= javascript_include_tag "jquery.tokeninput","messages" %>
-  
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -27,7 +28,6 @@
 
   <div class="actions">
     <%= f.submit :class => "submit_btn" %>
-<%= button_tag "Clear", type: :reset, :class => "submit_btn" %>  
-</div>
+  </div>
 <% end %>
 <br/>
