@@ -223,7 +223,9 @@ background: #333; /*background of tabs for hover state, plus tab with "selected"
 .profile_image{ border:1px solid #e6e6e6; width:auto; text-align:center}
 .profile_name{ background:#e6e6e6; font-weight:bold; padding:5px 0}
 
-.blog_div{ width: auto; margin:10px 0 10px 0 ; border-bottom:1px dotted #b7b7b7; padding:0 0 10px 0; float:left}
+.blog_div{ width: 900px; margin:10px 0 10px 0 ; border-bottom:1px dotted #b7b7b7; padding:0 0 10px 0; float:left}
+
+.blog_div2{ width: auto; margin:10px 0 10px 0 ; border-bottom:1px dotted #b7b7b7; padding:0 0 10px 0; float:left}
 
 .redlink{ color:#cc1b2c; text-decoration:none;}
 .redlink:hover{ text-decoration:underline}

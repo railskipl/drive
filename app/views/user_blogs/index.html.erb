@@ -8,7 +8,7 @@
   <% @user_blogs.each do |user_blog| %>
   <li><%= link_to user_blog.blog.name, user_blog_path(user_blog) %><br/>   	
   by <%=link_to user_blog.user.first_name , root_path%><br/>
-  <%= user_blog.body.html_safe rescue nil%></li><br/>
+  <%= truncate(user_blog.body, :length => 500).html_safe  rescue nil%></li><br/>
  <hr/>
     <%= link_to "Comment",user_blog_path(user_blog) %>
            &nbsp;<% if user_blog.created_at > Time.now.beginning_of_day %> 
