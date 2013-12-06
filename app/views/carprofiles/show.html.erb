@@ -262,25 +262,20 @@
   </div>
 
   <div class="grid_20 aboutme">
-  <h4>My Blogs</h4>
+  <h4>My Logbooks</h4>
   
+  <% if @logbooks.each do |logbook| %>
   <div class="blog_div">
-
-    <a href="#" class="redlink">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
-       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida   Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
-        <br>
-        <a href="#" class="bluelink">Read More
-    </a>
-    </div>
+    <% if logbook.carprofile_id == carprofile.id %>
+      <a href="<%= logbook_path(logbook)%>" class="redlink"><%=  logbook.logbook_category.name%></a><br>
+         <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> <br/>
+         <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More
+      </a>
+      <%end%> 
+  </div>
+  <%end%>
     
-    <div class="blog_div">
-
-    <a href="#" class="redlink">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
-       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. consectetur enim. lit.  Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. consectetur enim. lit.  Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
-        <br>
-        <a href="#" class="bluelink">Read More
-    </a>
-    </div>
+    
     
     </div>
     
@@ -308,26 +303,10 @@
           <% end %>
         </div>
 
-        <div class="blog_div">
-          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
-          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravidaelit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
-        </div>
-        <div class="blog_div">
-          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
-          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
-        </div>
-        <div class="blog_div">
-          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
-          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
-        </div>
-        <div class="blog_div">
-          <div class="small_thumb"><img style="float:left" alt="" src="/assets/small_thumb.png"></div>
-          <div class="blog_right"> <a href="#" class="redlink">John Smith </a><br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida </div>
-        </div>
+        
+        
+        
+        
      
 </div>
   
@@ -384,5 +363,5 @@ $("a.topopup").click(function(){
   <div class="loader"></div>
     <div id="backgroundPopup"></div>
 
-
+<%end%>
 

@@ -14,7 +14,7 @@ $("a.topopup").click(function(){
 });
 </script>
 <h2><%=link_to @logbook.logbook_category.name, logbook_path(@logbook)%></h2>
-by <%= @logbook.user.first_name rescue nil%>
+by <%=link_to @logbook.user.first_name, root_path rescue nil%>
 
 
 <p><%= notice %></p>

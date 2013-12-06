@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @user_blogs = current_user.user_blogs.all
   end
 
   def contact

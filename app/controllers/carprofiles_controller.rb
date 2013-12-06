@@ -94,6 +94,8 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
+      @logbooks = Logbook.all
+      @logbook = @carprofile.logbooks
       @egift = @carprofile.send_gifts
       offset = entry_index_to_display rescue ""
       @record = @egift.limit(1).offset(offset).first
