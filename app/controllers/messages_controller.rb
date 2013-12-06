@@ -135,4 +135,18 @@ class MessagesController < ApplicationController
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
+  def sent_all_to_trash_recipient
+   message =  Message.where(:id => params[:message_ids])
+   message.each do |r|
+    if r.is_trashed_by_recipient == true
+      r.is_trashed_by_recipient = false
+      r.save
+    else
+      r.is_trashed_by_recipient = true
+      r.save
+    end
+   end
+   redirect_to messages_url
+   end
+  
 end
