@@ -5,6 +5,7 @@ Drive::Application.routes.draw do
     collection do
       get :trash_messages
       get :sent_messages
+      put :sent_all_to_trash_recipient
     end
     
     member do

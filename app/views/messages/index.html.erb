@@ -39,13 +39,13 @@
     <div class="grid_16">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
-    
+      <%= form_tag sent_all_to_trash_recipient_messages_path, :method => :put do %>
 <% @a = @messages.reject {|i| i.is_trashed_by_recipient == true} %>
 <% @a.each do |message| %>
     <div class="message"> 
     
     <div class="tf">
-    <input name="" type="checkbox" value="">
+    <%= check_box_tag "message_ids[]", message.id %>
     
     
     </div>
@@ -79,19 +79,11 @@
 
     
     <div class="message">
-    <div style="float:left">
 
-    <select name="" class="pe_tf">
-      <option>Action</option>
-      <option>Delete</option>
-    
-    </select>
-    </div>
-    
-    <div style="float:right"> <input type="button" value="Un-Selected All" class="submit_btn"> </div>
+    <div style="float:right">  <%= submit_tag "Move To Trash", :class=> "submit_btn"  %>  </div>
     
     </div>
-    
+    <% end %>
     
     <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
