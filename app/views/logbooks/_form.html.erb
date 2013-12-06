@@ -18,17 +18,11 @@
     <%= f.collection_select :logbook_category_id, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category' %>
   </div> <br/>
 
-  <p><%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %>
-   <%= image_tag("/assets/loadingg.gif",
-                    :align => "absmiddle",
-                    :border => 0,
-                    :id => "loader",
-                    :style =>"display: none;" ) %> </p>
-
-  <div id="car_make_id">
-   <%= render "logbooks/updatemodel" %> 
-  </div>
-
+  <p> <% @carprofile.each do |carprofile| %>
+ 
+    <%= f.radio_button :carprofile_id , carprofile.id rescue nil%> <%= carprofile.car_model.name %>
+    <% end %>
+  </p>
 
   <div class="field">
     <%= f.label "Logbook Description" %><br />

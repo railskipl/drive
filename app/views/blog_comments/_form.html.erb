@@ -1,4 +1,3 @@
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
 <%= form_for(@blog_comment) do |f| %>
   <% if @blog_comment.errors.any? %>
@@ -14,12 +13,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body,:rows=>10, :cols=>200,:style=> "width: 600px;" %>
+    <textarea class="comment_tf2" rows="4" name="blog_comment[body]"></textarea>
   </div>
   <%= f.hidden_field :user_blog_id %>
   <%= f.hidden_field :user_id,:value => current_user.id %>
-  <div class="actions">
-    <%= f.submit %>
+  <div style="float:right; margin:10px 0; text-align:left; width:100%">
+          <input type="submit" value="Done" style="margin-left:0px" class="submit_btn" name="button">
   </div>
 <% end %>

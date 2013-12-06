@@ -44,11 +44,14 @@ class CommentLogbooksController < ApplicationController
   # POST /comment_logbooks.json
   def create
     @comment_logbook = CommentLogbook.new(params[:comment_logbook])
-
+    #raise params[:comment_logbook].inspect
       if @comment_logbook.save
         @notification = Notification.new(:user_id => current_user.id, :notification_type => "logbook_comment", :notifiable_id  => @comment_logbook.logbook_id)
         @notification.save
         flash[:notice] = 'Comment logbook was successfully created.' 
+        redirect_to logbook_path(@comment_logbook.logbook_id)
+      else
+        flash[:notice] = 'Comment can not be blank.'
         redirect_to logbook_path(@comment_logbook.logbook_id)
       end
   end

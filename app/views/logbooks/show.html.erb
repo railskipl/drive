@@ -13,61 +13,40 @@ $("a.topopup").click(function(){
 })
 });
 </script>
+<h2><%=link_to @logbook.logbook_category.name, logbook_path(@logbook)%></h2>
+by <%= @logbook.user.first_name rescue nil%>
 
 
 <p><%= notice %></p>
 <% if current_user.id == @logbook.user_id %>
-<%= link_to 'Back', logbooks_path %> | <%= link_to 'Edit', edit_logbook_path %> | 
+<%= link_to 'Back', logbooks_path %>&nbsp;&nbsp;<%= link_to 'Edit', edit_logbook_path %>&nbsp;&nbsp;
 <%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-<% end %>
-
-<%= link_to "Favourite",{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%>
-
-<%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span><br/>
-
-written by : <%= @logbook.user.first_name rescue nil%> <%= @logbook.user.last_name rescue nil%><br/> 
-Written on :<%= @logbook.created_at.to_date rescue nil%><br/>
-<p>
-  <b>Logbook Category:</b>
-  <%= @logbook.logbook_category.name%>
-</p>
+<% end %>&nbsp;&nbsp;
+<%= link_to "Favourite",{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%><br/><br/>
 
 <p>
-  <b>Car Make:</b>
-  <%= @logbook.car_make.name%>
+  <%= @logbook.logbook_discription.html_safe rescue nil%>
 </p>
 
-<p>
-  <b>Car Model:</b>
-  <%= @logbook.car_model.name%>
-</p>
+<hr/>
+<%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;<%= link_to "Comment",logbook_path(@logbook) %>&nbsp;&nbsp;&nbsp;<%= @logbook.created_at.strftime("%b %d, %Y") rescue nil%><br/><br/>
 
-<p>
-  <b>Body Index:</b>
-  <%= @logbook.body_index.bodyindex%>
-</p>
+<h5>Comments</h5>
 
-<p>
-  <b>Car description:</b>
-  <%= @logbook.logbook_discription.html_safe%>
-</p>
-<%#=  raise @comment_logbook.user_id.inspect %>
-<h3>Comments</h3>
+<%= render 'comment_logbooks/form' %>
 
 <% @logbook.comment_logbooks.each do |comment_logbook| %>
-<%#raise comment_logbook.user_id.inspect %>
-<%#raise current_user.id.inspect%>
+
  <% unless comment_logbook.id.nil? %>
   <div>
-  <strong><%= comment_logbook.body.to_s.html_safe %>
-    
+  <strong><%= comment_logbook.body.to_s.html_safe rescue nil%>
+    <% if comment_logbook.logbook_user_id == comment_logbook.user_id %>
      <%= link_to 'Destroy', comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%> 
+     <%end%>
   
   </strong>
     
   </div>
 <% end %>
 <%end%>
-<br/>
-<%= render 'comment_logbooks/form' %>
-
+<br/><br/><br/>

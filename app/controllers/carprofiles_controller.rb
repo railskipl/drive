@@ -70,7 +70,6 @@ class CarprofilesController < ApplicationController
   
   def update
     @carprofile = Carprofile.find(params[:id])
-   
 
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])

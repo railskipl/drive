@@ -11,9 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203120419) do
-
-
+ActiveRecord::Schema.define(:version => 20131205114200) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -113,8 +111,9 @@ ActiveRecord::Schema.define(:version => 20131203120419) do
     t.integer  "logbook_id"
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "logbook_user_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -219,6 +218,7 @@ ActiveRecord::Schema.define(:version => 20131203120419) do
     t.text     "logbook_discription"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.integer  "carprofile_id"
   end
 
   create_table "messages", :force => true do |t|
