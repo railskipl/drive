@@ -8,11 +8,11 @@
     <%#  user = User.find(n.user_id)%>
     <%if n.favourite_type == "favourite_logbook"%>
        <%#= raise @favourites.inspect %>
-      <%= link_to n.logbook.logbook_category.name,logbook_path(n.logbook_id) %>,your favourite logbook <br/>
+      <%= link_to n.logbook.logbook_category.name,logbook_path(n.logbook_id) rescue nil %>,your favourite logbook <br/>
     <%end%>
      
     <%if n.favourite_type == "favourite_blog"  %>
-      <%= link_to n.user_blog.blog.name ,user_blog_path(n.user_blog_id) %> ,your favourite blog <br/>
+      <%= link_to n.user_blog.blog.name ,user_blog_path(n.user_blog_id) rescue nil %> ,your favourite blog <br/>
     <%end%>
     
   <%end%>
