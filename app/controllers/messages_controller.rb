@@ -136,11 +136,11 @@ class MessagesController < ApplicationController
     if @message.is_trashed_by_recipient == true
       @message.is_trashed_by_recipient = false
       @message.save
-      redirect_to messages_url
+      redirect_to trash_messages_messages_url
     else
       @message.is_trashed_by_recipient = true
       @message.save
-      redirect_to trash_messages_messages_url
+      redirect_to messages_url
     end
   end
 
@@ -153,7 +153,7 @@ class MessagesController < ApplicationController
     # @message.destroy
 
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to trash_messages_messages_url }
       format.json { head :no_content }
     end
   end
