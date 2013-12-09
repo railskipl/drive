@@ -1,38 +1,54 @@
-<script type="text/javascript">
-$(document).ready(function(){
-$("a.topopup").click(function(){
-  $.ajax({
-     type: "GET",
-     url: "/logbooks/like_count",
-     data: {"id" : $(this).attr("val")},
-     success: function(data){
+<div class="container_20">
+
+    
+    <div class="middle">
+    
+    <div class="container_20" style="background:#333; margin-bottom:10px">
+    
+    <%= render 'shared/carousel' %>
+    
+        <div class="container_20">
+        
+        
+        <div class="grid_20 title">
+    
+  <div style="width:40%; float:left">
+    <h4> Logbook Show Page </h4>
+  </div>
+  
+
+    
+    </div>
+    
+    
+    
+    <div class="grid_20">
+    
+  <h2><%=link_to @logbook.title, logbook_path(@logbook) rescue nil%></h2>
+
+ 
+  by <%=link_to @logbook.user.first_name, root_path rescue nil%><br/><br/>
+
+   <td>
+  <% if current_user.id == @logbook.user_id %>
+  
+    <%= link_to 'Edit', edit_logbook_path %>
+    <%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+  
+  <%end%>
+  <%= link_to "Favourite",{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%><br/>
+
+  <p>
+    <%= @logbook.logbook_discription.html_safe rescue nil%>
+  </p>
+  <tr>
    
-     },
-     dataType: "script"
-   });
-})
-});
-</script>
-<h2><%=link_to @logbook.logbook_category.name, logbook_path(@logbook)%></h2>
-by <%=link_to @logbook.user.first_name, root_path rescue nil%>
+  <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;<%= link_to "Comment",logbook_path(@logbook) %>&nbsp;&nbsp;&nbsp;<%= @logbook.created_at.strftime("%b %d, %Y") rescue nil%>
+ 
+ <br/><br/><hr/>
 
-
-<p><%= notice %></p>
-<% if current_user.id == @logbook.user_id %>
-<%= link_to 'Back', logbooks_path %>&nbsp;&nbsp;<%= link_to 'Edit', edit_logbook_path %>&nbsp;&nbsp;
-<%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-<% end %>&nbsp;&nbsp;
-<%= link_to "Favourite",{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%><br/><br/>
-
-<p>
-  <%= @logbook.logbook_discription.html_safe rescue nil%>
-</p>
-
-<hr/>
-<%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;<%= link_to "Comment",logbook_path(@logbook) %>&nbsp;&nbsp;&nbsp;<%= @logbook.created_at.strftime("%b %d, %Y") rescue nil%><br/><br/>
-
-<h5>Comments</h5>
-
+<h4>Comments</h4>
+<div class="row">
 <%= render 'comment_logbooks/form' %>
 
 <% @logbook.comment_logbooks.each do |comment_logbook| %>
@@ -40,7 +56,7 @@ by <%=link_to @logbook.user.first_name, root_path rescue nil%>
  <% unless comment_logbook.id.nil? %>
   <div>
   <strong><%= comment_logbook.body.to_s.html_safe rescue nil%>
-    <% if comment_logbook.logbook_user_id == comment_logbook.user_id %>
+    <% if comment_logbook.user_id == current_user.id  %>
      <%= link_to 'Destroy', comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%> 
      <%end%>
   
@@ -49,4 +65,28 @@ by <%=link_to @logbook.user.first_name, root_path rescue nil%>
   </div>
 <% end %>
 <%end%>
-<br/><br/><br/>
+<br/>
+
+</div>
+    
+    
+    
+    
+    
+    
+    
+        
+    
+        
+    
+    </div>
+    
+
+
+  
+    
+    </div>
+    
+
+</div>
+
