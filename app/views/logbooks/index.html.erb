@@ -37,12 +37,7 @@
     <div><input name="" type="text" class="pe_tf message_search"></div>
   <% @logbooks.each do |logbook| %>
     <div class="message"> 
-    
-    <div class="tf">
-    <input name="" type="checkbox" value="">
-    
-    
-    </div>
+ 
     
     <img src="<%=logbook.carprofile.carprofile_photos.first.photo.url(:thumb) rescue nil%>" alt="">
   
