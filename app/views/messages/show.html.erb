@@ -1,5 +1,9 @@
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
+<p>
+  <b>To:</b>
+  <%= @message.recipient.email %>
+</p>
 <p>
   <b>Subject:</b>
   <%= @message.subject %>
@@ -10,6 +14,9 @@
   <%= @message.body %>
 </p>
 
-
-
-
+<% if current_user == @message.message.sender && current_user == @message.recipient %>
+<%= link_to "Reply", reply_message_path(@message) %>
+<% elsif  current_user == @message.recipient	%>
+<%= link_to "Reply*", reply_message_path(@message) %>
+<% else %>
+<% end %>

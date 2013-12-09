@@ -39,7 +39,7 @@
     <div class="grid_16">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
-          <%= form_tag sent_all_to_trash_recipient_messages_path, :method => :put do %>
+          <%= form_tag move_all_to_trash_recipient_messages_path, :method => :put do %>
 
 <% @a = @messages.reject {|i| i.is_trashed_by_recipient == false} %>
 <% @a.each do |message| %>

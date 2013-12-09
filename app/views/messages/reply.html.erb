@@ -1,0 +1,21 @@
+Subject :<%= @messagee.subject %> <br/>
+Body :<%= @messagee.body %> <br/>
+Reply : <%= @messagee.sender.email %>
+
+<%= form_for(@message) do |f| %>
+    <%= f.hidden_field :subject, :value =>  @messagee.subject_name(@messagee.subject) %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+    <%= hidden_field_tag :message_id,  @messagee.id  %>
+
+  <%= hidden_field_tag :recipient,  @messagee.sender.id  %>
+
+  <%= hidden_field_tag :reply,  "reply"  %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
