@@ -52,7 +52,7 @@
     <img src="assets/thumb_profile.jpg" alt="">
     
     <div class="mail_content">
-    <div><a href="#" class="bluelink bold"><%= message.sender.email %></a></div>
+    <div><%= message.sender.email %></div>
     <div style="margin:0 0 5px 0">Subject: 
       <% if message.is_read %>
       <%= link_to message.subject , message , :class => "bluelink" %>
