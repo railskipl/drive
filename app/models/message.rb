@@ -20,7 +20,6 @@ class Message < ActiveRecord::Base
     end
 
     def msg(id)
-    raise id.inspect
       self.message_id = id
     end
 
