@@ -16,6 +16,8 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
     if @message.sender == current_user
        respond_to do |format|
             format.html # show.html.erb
@@ -205,6 +207,8 @@ class MessagesController < ApplicationController
 def reply
  @messagee = Message.find(params[:id])
  @message = Message.new
+ @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
 end
 
 end
