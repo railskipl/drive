@@ -2,7 +2,7 @@ class FavouritesController < ApplicationController
   def index
   	#@user_blog = UserBlog.find(params[:id])
   	@favourites = current_user.favourites
-
+    
   end
 
   def user_logbook
