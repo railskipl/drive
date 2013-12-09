@@ -39,28 +39,41 @@
     <div class="grid_16" style="margin-bottom:10px;">
   
 
-<p id="notice"><%= notice %></p>
-<p>
-  <b>To:</b>
-  <%= @message.recipient.email %>
-</p>
-<p>
-  <b>Subject:</b>
-  <%= @message.subject %>
-</p>
+Subject :<%= @messagee.subject %> <br/>
+Body :<%= @messagee.body %> <br/>
+Reply : <%= @messagee.sender.email %>
 
-<p>
-  <b>Body:</b>
-  <%= @message.body.html_safe %>
-</p>
+<%= form_for(@message) do |f| %>
+    <%= f.hidden_field :subject, :value =>  @messagee.subject_name(@messagee.subject) %>
 
-<% if current_user == @message.message.sender && current_user == @message.recipient %>
-<%= link_to "Reply", reply_message_path(@message) %>
-<% elsif  current_user == @message.recipient	%>
-<%= link_to "Reply*", reply_message_path(@message) %>
-<% else %>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body,:onblur =>"checkTextField(this);" %>
+  </div>
+    <%= hidden_field_tag :message_id,  @messagee.id  %>
+
+  <%= hidden_field_tag :recipient,  @messagee.sender.id  %>
+
+  <%= hidden_field_tag :reply,  "reply"  %>
+  <div class="actions">
+    <%= f.submit "Reply"  %>
+  </div>
 <% end %>
-    
+
+<script>
+window.onload = function() {
+  document.getElementById("message_body").focus();
+};
+
+function checkTextField(field)
+{
+var n = document.getElementById("message_body").value
+  if (n.length < 1){
+confirm("Send message without body");
+}
+
+}
+</script>
 
     
 

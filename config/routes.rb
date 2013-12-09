@@ -5,12 +5,15 @@ Drive::Application.routes.draw do
     collection do
       get :trash_messages
       get :sent_messages
-      put :sent_all_to_trash_recipient
+      put :move_all_to_trash_recipient
+      put :delete_all_by_sender
     end
     
     member do
      post :trash
      post :destroy_recipient
+     post :destroy_sender
+     get :reply
     end
   end
 

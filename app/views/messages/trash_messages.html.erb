@@ -14,7 +14,7 @@
         
         <div class="grid_20 title">
     
-  <div style="width:40%; float:left"><h4>Mail</h4></div>
+  <div style="width:40%; float:left"><h4>Message</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><%= link_to 'Compose+', new_message_path ,:class => "compose" %></div>
   
   
@@ -39,7 +39,7 @@
     <div class="grid_16">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
-          <%= form_tag sent_all_to_trash_recipient_messages_path, :method => :put do %>
+          <%= form_tag move_all_to_trash_recipient_messages_path, :method => :put do %>
 
 <% @a = @messages.reject {|i| i.is_trashed_by_recipient == false} %>
 <% @a.each do |message| %>
@@ -54,7 +54,7 @@
     <img src="assets/thumb_profile.jpg" alt="">
     
     <div class="mail_content">
-    <div><a href="#" class="bluelink bold"><%= message.sender.email %></a></div>
+    <div><%= message.sender.email %></div>
     <div style="margin:0 0 5px 0">Subject: 
       <%= link_to message.subject , message , :class => "bluelink" %>
     </div>
@@ -87,7 +87,7 @@
     
     
 <% end %>
-    <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+<!--     <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
   <li><a href="#">1</a></li>
   <li><a href="#">2</a></li>
@@ -96,7 +96,7 @@
   <li><a href="#" class="next">Previous</a></li>
   <li><a href="#" class="last">Next</a></li>
 </ul>
-    
+     -->
     
     
     </div>
