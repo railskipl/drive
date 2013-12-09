@@ -39,12 +39,15 @@
     <div class="grid_16">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
-    
-<% @sent_messages.each do |message| %>
+<%= form_tag delete_all_by_sender_messages_path, :method => :put do %>
+
+    <% @a = @sent_messages.reject {|i| i.is_deleted_by_sender == true } %>
+
+<% @a.each do |message| %>
     <div class="message"> 
     
     <div class="tf">
-    <input name="" type="checkbox" value="">
+       <%= check_box_tag "message_ids[]", message.id %>
     
     
     </div>
@@ -59,7 +62,11 @@
     </div>
     
     
-
+    
+    <ul class="action">
+   
+    <li><%= link_to image_tag("/assets/delete.png"), destroy_sender_message_path(message),method: :post, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
     
     
     
@@ -68,25 +75,17 @@
 
 <% end %>
 
-  
+
 
     
     <div class="message">
-    <div style="float:left">
 
-    <select name="" class="pe_tf">
-      <option>Action</option>
-      <option>Delete</option>
-    
-    </select>
-    </div>
-    
-    <div style="float:right"> <input type="button" value="Un-Selected All" class="submit_btn"> </div>
+    <div style="float:right"><%= submit_tag "Delete All", :class=> "submit_btn"  %> </div>
     
     </div>
+    <% end %>
     
-    
-    <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+    <!-- <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
   <li><a href="#">1</a></li>
   <li><a href="#">2</a></li>
@@ -96,7 +95,7 @@
   <li><a href="#" class="last">Next</a></li>
 </ul>
     
-    
+     -->
     
     </div>
         

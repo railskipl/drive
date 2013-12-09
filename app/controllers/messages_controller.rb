@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
         if @message.is_deleted_by_recipient == true 
            redirect_to messages_url  
         else
+          Message.update(@message.id, :is_read => true)
           respond_to do |format|
             format.html # show.html.erb
             format.json { render json: @message }
@@ -52,16 +53,40 @@ class MessagesController < ApplicationController
 
   # POST /messages
   # POST /messages.json
-  def create
+  # def create
+  #   @msg = Message.new(params[:message])
+  #   recipients_array = params[:message][:user_tokens].split(",").collect {|s| s.to_i}
+  #   recipients_array.each do |r|
+  #    @message = Message.create(:subject => @msg.subject, :body => @msg.body,
+  #     :sender_id => current_user.id, :recipient_id => r )
+  #   end
+  #   respond_to do |format|
+  #     if @message.save
+  #       format.html { redirect_to sent_messages_messages_path, notice: 'Message was successfully created.' }
+  #       format.json { render json: @message, status: :created, location: @message }
+  #     else
+  #       format.html { render action: "new" }
+  #       format.json { render json: @message.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
+    def create
+   if params["reply"] == "reply"
+    @message = Message.new(params[:message])
+    Message.create(:subject => @message.subject , :body => @message.body,:message_id => params[:message_id].to_i, :sender_id => current_user.id, :recipient_id => params[:recipient].to_i)
+    redirect_to messages_url
+   else
     @msg = Message.new(params[:message])
     recipients_array = params[:message][:user_tokens].split(",").collect {|s| s.to_i}
     recipients_array.each do |r|
      @message = Message.create(:subject => @msg.subject, :body => @msg.body,
       :sender_id => current_user.id, :recipient_id => r )
+     @message.msg(@message.id)
     end
     respond_to do |format|
       if @message.save
-        format.html { redirect_to sent_messages_messages_path, notice: 'Message was successfully created.' }
+        format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else
         format.html { render action: "new" }
@@ -69,6 +94,8 @@ class MessagesController < ApplicationController
       end
     end
   end
+ end
+
 
   # PUT /messages/1
   # PUT /messages/1.json
@@ -124,6 +151,21 @@ class MessagesController < ApplicationController
     end
   end
 
+
+    def destroy_sender
+    @message = Message.find(params[:id])
+    if @message.is_deleted_by_sender== false
+      @message.is_deleted_by_sender = true
+      @message.save
+    end
+    # @message.destroy
+
+    respond_to do |format|
+      format.html { redirect_to sent_messages_messages_url }
+      format.json { head :no_content }
+    end
+  end
+
   def trash_messages
     @messages = current_user.recipient_messages
     @messages.delete_if {|i| i.is_deleted_by_recipient == true } 
@@ -135,7 +177,7 @@ class MessagesController < ApplicationController
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
-  def sent_all_to_trash_recipient
+  def move_all_to_trash_recipient
    message =  Message.where(:id => params[:message_ids])
    message.each do |r|
     if r.is_trashed_by_recipient == true
@@ -148,5 +190,21 @@ class MessagesController < ApplicationController
    end
    redirect_to messages_url
    end
-  
+
+     def delete_all_by_sender
+   message =  Message.where(:id => params[:message_ids])
+   message.each do |r|
+      r.is_deleted_by_sender = true
+      r.save
+    end
+   redirect_to sent_messages_messages_url
+   
+   end 
+
+   
+def reply
+ @messagee = Message.find(params[:id])
+ @message = Message.new
+end
+
 end
