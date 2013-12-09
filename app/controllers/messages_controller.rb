@@ -195,10 +195,10 @@ class MessagesController < ApplicationController
       r.save
     end
    end
-   redirect_to messages_url
+   redirect_to(:back)
    end
 
-     def delete_all_by_sender
+  def delete_all_by_sender
    message =  Message.where(:id => params[:message_ids])
    message.each do |r|
       r.is_deleted_by_sender = true
@@ -206,14 +206,13 @@ class MessagesController < ApplicationController
     end
    redirect_to sent_messages_messages_url
    
-   end 
+  end 
 
    
-def reply
- @messagee = Message.find(params[:id])
- @message = Message.new
- @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
-
-end
+ def reply
+   @messagee = Message.find(params[:id])
+   @message = Message.new
+   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+ end
 
 end
