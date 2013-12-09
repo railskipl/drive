@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_user.recipient_messages
+    @messages = current_user.recipient_messages.order("created_at desc")
     @messages.delete_if {|i| i.is_deleted_by_recipient == true } 
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     respond_to do |format|
@@ -73,29 +73,33 @@ class MessagesController < ApplicationController
   #   end
   # end
 
-    def create
+  def create
    if params["reply"] == "reply"
     @message = Message.new(params[:message])
     Message.create(:subject => @message.subject , :body => @message.body,:message_id => params[:message_id].to_i, :sender_id => current_user.id, :recipient_id => params[:recipient].to_i)
     redirect_to messages_url
    else
+    if params[:message][:user_tokens].empty?
+      redirect_to new_message_url ,:notice => "Please enter recipient"
+    else
     @msg = Message.new(params[:message])
     recipients_array = params[:message][:user_tokens].split(",").collect {|s| s.to_i}
-    recipients_array.each do |r|
-     @message = Message.create(:subject => @msg.subject, :body => @msg.body,
-      :sender_id => current_user.id, :recipient_id => r )
-     @message.msg(@message.id)
-    end
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
+      recipients_array.each do |r|
+       @message = Message.create(:subject => @msg.subject, :body => @msg.body,
+        :sender_id => current_user.id, :recipient_id => r )
+       @message.msg(@message.id)
+      end
+      respond_to do |format|
+        if @message.save
+          format.html { redirect_to @message, notice: 'Message was successfully created.' }
+          format.json { render json: @message, status: :created, location: @message }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @message.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
+   end
  end
 
 
@@ -132,11 +136,12 @@ class MessagesController < ApplicationController
     if @message.is_trashed_by_recipient == true
       @message.is_trashed_by_recipient = false
       @message.save
+      redirect_to messages_url
     else
       @message.is_trashed_by_recipient = true
       @message.save
+      redirect_to trash_messages_messages_url
     end
-    redirect_to messages_url
   end
 
     def destroy_recipient
