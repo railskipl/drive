@@ -2,12 +2,16 @@ class LogbooksController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
   def index
   	@logbooks = current_user.logbooks.all
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @logbook_categories =  LogbookCategory.all
+    @carprofile = current_user.carprofiles
     #raise @logbooks.inspect
   end
 
   def new
   	@logbook = Logbook.new
     @carprofile = current_user.carprofiles
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
   def create
@@ -28,6 +32,7 @@ class LogbooksController < ApplicationController
   def edit
     @logbook = Logbook.find(params[:id])
     @carprofile = current_user.carprofiles
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
   def like_logbook
@@ -78,6 +83,7 @@ class LogbooksController < ApplicationController
   
     @logbook = Logbook.find(params[:id])
     @comment_logbook = @logbook.comment_logbooks.build
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @likes = @logbook.likes(@logbook.id)
       
       @count ||= []
