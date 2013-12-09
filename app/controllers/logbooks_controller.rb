@@ -75,6 +75,8 @@ class LogbooksController < ApplicationController
   end
   def update
   	@logbook = Logbook.find(params[:id])
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @carprofile = current_user.carprofiles
   	if @logbook.update_attributes(params[:logbook])
   		flash[:notice] = "Logbook updated successfully"
   		redirect_to logbooks_path
