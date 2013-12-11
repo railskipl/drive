@@ -162,6 +162,7 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
     xml-simple (1.1.2)
 
 PLATFORMS
@@ -187,3 +188,4 @@ DEPENDENCIES
   socialization
   therubyracer
   uglifier (>= 1.0.3)
+  will_paginate (~> 3.0.4)

@@ -53,7 +53,7 @@
     <div class="message"> 
     
     
-    <img src="assets/thumb_profile.jpg" alt="">
+    <img src="/assets/thumb_profile.jpg" alt="">
     
     <div class="mail_content" style="width:442px">
     <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
@@ -76,8 +76,8 @@
     <%end%>
   <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
-   <%= will_paginate @user_blogs %>
-  </ul>
+      <%= will_paginate @user_blogs %>
+ </ul>
     
     
     
@@ -100,7 +100,7 @@
        
       <div class="blog_div" style="width:100%">
     
-    <div class="thumb"><img alt="" src="assets/thumb_car.jpg"></div>
+    <div class="thumb"><img alt="" src="/assets/thumb_car.jpg"></div>
     
     <div class="blog_right">
     <a class="bluelink bold" href="#"><%= blog_comment.user_blog.user.first_name rescue nil %></a><br>

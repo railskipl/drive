@@ -2,7 +2,8 @@ class FavouritesController < ApplicationController
   def index
   	#@user_blog = UserBlog.find(params[:id])
   	@favourites = current_user.favourites
-    
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
   end
 
   def user_logbook

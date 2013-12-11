@@ -61,14 +61,14 @@
     <td><span class="red">*</span>Title:</td>
   </tr>
   <tr>
-    <td><input type="text" class="pe_tf" name="logbook[title]"></td>
+    <td><%= f.text_field :title,:class =>"pe_tf" %></td>
   </tr>
   <tr>
     <td><span class="red">*</span> Post:</td>
   </tr>
   
   <tr>
-    <td><textarea name="logbook[logbook_discription]" rows="12" class="pe_tf" style="width:960px"></textarea></td>
+    <td><%= f.text_area :logbook_discription, :class =>"pe_tf",:rows =>"12", :style => "width:960px" %></td>
   </tr>
   <tr>
     <td><span class="red">*</span> Privacy: </td>
