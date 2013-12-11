@@ -7,7 +7,7 @@
   <div class="container_20 profile_bg">
 	<div class="grid_4">
       <div class="profile_image"><!-- <img alt="" src="/assets/profile.jpg"> -->
-      	<%= image_tag @user.pic.url(:thumb) %>
+      <%= @user.pic?  ? (image_tag @user.pic.url(:thumb)) : (image_tag 'profile.jpg')%>
       </div>
 	</div>
 	
@@ -18,6 +18,16 @@
        <% unless current_user.id == @user.id %>
        
        <li><%= link_to (Subscriber.subscribes?(current_user,@user) ? "Unsubscribe": "Subscribe"),subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
+      <li>
+        <% if Block.status(@user,current_user) %>
+        <%= link_to "UnBlock",unblock_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
+        <% else %>
+        <%= link_to "Block",block_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
+        <% end %>      	
+
+      </li> 
+
+
        <% end %>
 		<li><a href="#">Message</a></li> 
 		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>

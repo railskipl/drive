@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	layout 'admin'
-   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile]
+   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:block_user,:unblock_user,:blocked_users,:change_status]
 
   def index
     @users = User.all
@@ -47,7 +47,29 @@ def subscribe_profile
     end
  end
 
+def block_user
+  @user = User.find(params[:id])
+  Block.spam(@user,current_user)
+ end
 
+ def unblock_user
+   @user = User.find(params[:id])
+   Block.remove_spam(@user,current_user)
+ end
 
+ def blocked_users
+   @blocked_users = Block.list_of_blocked_users(current_user)
+   render :layout => 'application'
+ end
+
+def change_status
+   if params[:status]== "INACTIVE"
+    # write code logic for deducting points
+     current_user.update_attribute("visibility_status",false)
+    else
+     current_user.update_attribute("visibility_status",true)
+   end
+   render :json => {:status => current_user.visibility_status}.to_json
+  end
 
 end

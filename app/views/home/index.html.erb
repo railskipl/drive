@@ -7,12 +7,14 @@
   <div class="container_20 profile_bg">
 	<div class="grid_4">
       <div class="profile_image"><!-- <img alt="" src="assets/profile.jpg"> -->
-      		<%= image_tag current_user.pic.url(:thumb) %>
+      	<%= current_user.pic?  ? (image_tag current_user.pic.url(:thumb)) : (image_tag 'profile.jpg')%>
       </div>
 	</div>
 	
 	<div class="grid_16">
-	  <h1><%= current_user.nickname %></h1>
+	 <h1><%= current_user.nickname %>&nbsp;
+	  	<%= image_tag (current_user.visibility_status ? "online.png" : "offline.gif"), :id => "visible_mode" %>
+	  </h1>
 		<ul class="tab_menu">
 		<li><%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %></li> 
 		<li><%= link_to "Cars" , carprofiles_path %></li>
@@ -21,16 +23,11 @@
 		<li><a href="#">Message</a></li> 
 		<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
 		<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
+		<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status($(\":selected\").text());"%></li>	    
 		</ul>
 	</div>
    </div>
-		
-		
-		
-		
-		
-		
-		
+	
 		<div class="container_20">
 				
 				
