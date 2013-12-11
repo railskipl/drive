@@ -37,15 +37,15 @@
         <div class="mail_content">
 		<%= pluralize(@user.requested_friends.count, "requested friend") %>
 		<% @user.requested_friends.each do |requester| %>
-      <%if @user.pic.blank? %>
+      <%if requester.pic.blank? %>
       <img src="/assets/thumb_profile.jpg" alt="">
       <% else %>
-      <%= image_tag @user.pic.url(:thumb) %>
+      <%= image_tag requester.pic.url(:thumb) %>
       <% end %>
 
-		  <%= requester.email%>
+		  <%= requester.nickname%>
 		  <%= link_to "Accept",accept_friendship_path(:id => requester.id) ,:method => :post %> /
-		  <%= link_to "Decline",decline_friendship_path(:id => requester.id),:method => :post,:confirm =>	"Really decline friendship with #{requester.email}?" %>
+		  <%= link_to "Decline",decline_friendship_path(:id => requester.id),:method => :post,:confirm =>	"Really decline friendship with #{requester.nickname}?" %>
         </div>
       </div>
       <% end %>
@@ -59,10 +59,10 @@
         <div class="mail_content">
 		<%= pluralize(@user.pending_friends.count, "pending friend") %>
 
-    <%if @user.pic.blank? %>
+    <%if pending_friend.pic.blank? %>
     <img src="/assets/thumb_profile.jpg" alt="">
     <% else %>
-    <%= image_tag @user.pic.url(:thumb) %>
+    <%= image_tag pending_friend.pic.url(:thumb) %>
     <% end %>
 		<%= pending_friend.nickname  %>
 		<%= link_to "Cancel Request",cancel_friendship_path(:id => pending_friend.id) ,
