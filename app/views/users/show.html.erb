@@ -2,167 +2,112 @@
   <div class="container_20" style="background:#333; margin-bottom:10px">
 	<%= render 'shared/carousel' %>		
   </div>
+
+  	<div class="container_20">
+				
+				<div class="grid_20 title" style="margin-bottom:10px">
 		
-		
-  <div class="container_20 profile_bg">
-	<div class="grid_4">
-      <div class="profile_image"><!-- <img alt="" src="/assets/profile.jpg"> -->
-      	<%= image_tag @user.pic.url(:thumb) %>
-      </div>
+	<div style="width:40%; float:left"><h4><%= @user.first_name %> <%= @user.last_name %></h4></div>
+	<div style="width:40%; float:right; text-align:right; margin-top:5px">
+	<% unless current_user.id == @user.id %>
+		<%= link_to "Send Message",new_message_path(:id => params[:id]) , :class =>"compose" %>
+	<% end %>
+	
+<% if signed_in? and @user != @logged_in_user %>
+   <% unless Friendship.exists?( @logged_in_user, @user) %>
+ 	<%= link_to "Add To Friends",friendships_path(:id => @user.id) ,:method => :post,:class =>"compose" ,:confirm => "Add #{@user.nickname}?"  %>
+  <% end %>
+  <div style="margin:10px 0"><%= friendship_status( @logged_in_user, @user) %></div>
+<% end %>
+
+
+
+
+
 	</div>
 	
-	<div class="grid_16">
-	  <h1><%= @user.first_name%></h1>
-		<ul class="tab_menu">
-		<!-- <li><%#= link_to "Cars",carprofiles_path %></li> -->
-       <% unless current_user.id == @user.id %>
-       
-       <li><%= link_to (Subscriber.subscribes?(current_user,@user) ? "Unsubscribe": "Subscribe"),subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
+	
+	
+		
+		
+		</div>
+		
+		<div class="grid_4">
+		
+		<div class="profile_image"><img src="/assets/profile.jpg" alt=""></div>
+		<div class="profile_image profile_name"> <img src="/assets/online.png" alt=""> 
+		 <%= @user.nickname %>
+		</div>
+    	<ul class="profile_menu">
+		
+		<li><%= link_to friendships_path do %>
+			Friends
+			<span class="light_gray">(<%= @user.friends.count %>)
+			<% if @user.requested_friends && current_user == @user %>
+			 New*
+			<% end %>
+			</span>
+			<% end %>
+		</li>
+		<% unless current_user.id == @user.id %>
+         <li><%= link_to (Subscriber.subscribes?(current_user,@user) ? "Unsubscribe": "Subscribe"),subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
        <% end %>
-		<li><a href="#">Message</a></li> 
-		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>
+       <% unless current_user != @user %>
+       <li><a href="#">Credit Points <span class="light_gray">(<%= @user.credit %>)</span></a></li>
+       <% end %>
+		<!-- <li><a href="#">Favorites <span class="light_gray">(5)</span></a></li>
+		<li><a href="#">My Guest <span class="light_gray">(1)</span></a></li>
+		<li><a href="#">Comment <span class="light_gray">(3)</span></a></li>
+		<li><a href="#">Top Cars <span class="light_gray">(7)</span></a></li>
+		<li><a href="#">New Cars <span class="light_gray">(5)</span></a></li> -->
+		<li><a href="#">Egift
+			<span class="light_gray">(<%= @user.received_egifts.count %>)</span>
+		</a>
+		</li>
 		</ul>
-	</div>
-   </div>
+  		</div>
 		
-		<div class="container_20">
+		
+		<div class="grid_16">
+		
+		Loremi pilsLoreLoremi pilsLoremi pilsiimi pilsii Loremi pilsLoremi pilsiLoremi pilsiLoremi pilsii
+
+		
+		</div>
+		
 				
+		
 				
-				<div class="grid_9 aboutme">
 		
-	<h4>About Me</h4>
-	<p>
-		<% if current_user.about.nil? || current_user.about.blank? %>
-		No Description Yet! (For about me click settings)
-		<% else %>
-		<%= current_user.about %>
-		<% end %>
-	</p>
-	<h4>My Blogs</h4>
+		</div>
+		
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
-	
-	<div class="blog_div">
-
-		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
-       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
-        <br>
-        <a class="bluelink" href="#">Read More
-		</a>
-		</div>
-		
-		
-		<div class="blog_div">
-
-		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
-       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
-        <br>
-        <a class="bluelink" href="#">Read More
-		</a>
-		</div>
-		
-		
-		<div class="blog_div">
-
-		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
-       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
-        <br>
-        <a class="bluelink" href="#">Read More
-		</a>
-		</div>
-		
-		
-		<div class="blog_div">
-
-		<a class="redlink" href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit</a>        <br>
-       Nulla gravida consectetur enim. consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida consectetur enim. lit. Nulla gravida 
-        <br>
-        <a class="bluelink" href="#">Read More
-		</a>
-		</div>
-		
-	
-	</div>
-	
-					<div class="grid_11 aboutme">
-		
-<h4>Comments</h4>
-
-<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
-<textarea rows="4" class="comment_tf"></textarea>
-
-<div style="float:right; margin:10px 0; text-align:right; width:100%"><input type="button" style="margin:0" class="submit_btn" value="Search"></div>
-
-
-<div class="blog_div">
-		
-		<div class="small_thumb"><% @cars.each do |car|%>
-                        <% car.carprofile_photos.each do |photo_url|%>
-    
-                      <%= image_tag photo_url.photo.url,:size => "100x80"%><br />
-                <% end %>
-                   <% end %></div>  
-		
-		<div class="blog_right" style="float:left">
-		<% @cars.each do |carprofile| %>
-		
-			<%= link_to carprofile.car_make.name, carprofile_path(carprofile),:class=>"redlink"%><br/>
-			<%= carprofile.car_description.html_safe %>
-		 <% end %>
-	
-		</div>
-		
-		</div>
-		
-		
-		<div class="blog_div">
-		
-		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
-		
-		<div class="blog_div">
-		
-		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
-		
-		<div class="blog_div">
-		
-		<div class="small_thumb"><img src="/assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
 		
 
-
-
-	</div>
-
-		
-		</div>
-		
 
 
   
 		
-		</div>
 		
 
 

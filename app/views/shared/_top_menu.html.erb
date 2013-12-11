@@ -1,6 +1,6 @@
 <div class="nav">
 <ul>
-<li><a href="#">Home</a></li>
+<li><%= link_to "Home", user_path(current_user) %></li>
  <% if controller.controller_name == 'home' %> 
 	<li class = "selected"><%= link_to "Profile", root_path %> 
  <% else %> 

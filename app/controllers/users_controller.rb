@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	layout 'admin'
-   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile]
+   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request]
+    helper :friendships
 
   def index
     @users = User.all
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
 def show
     @user = User.find(params[:id])
+    @logged_in_user = current_user 
     @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     render :layout => "application"
@@ -47,6 +49,13 @@ def subscribe_profile
     end
  end
 
+  def friend_request
+     @user = User.find(params[:id])
+     unless current_user == @user
+       redirect_to root_url, :notice => "Access Denied"
+     end
+      render :layout => "application"
+  end
 
 
 

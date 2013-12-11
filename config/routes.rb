@@ -18,6 +18,15 @@ Drive::Application.routes.draw do
   end
 
 
+ resources :friendships do
+  member do
+     post :accept
+     post :decline
+     post :delete
+     post :cancel
+  end
+ end
+
   resources :blog_comments
   
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
@@ -58,10 +67,13 @@ end
   devise_for :admins
 
   resources :users,  :only => [:index,:destroy,:show,:subscribe_profile] do
-  collection    do
+   collection    do
       post :subscribe_profile
       get  :user_emails
-    end
+   end
+   member do
+      get :friend_request
+   end
   end
   
 

@@ -24,6 +24,26 @@ class User < ActiveRecord::Base
   has_many :sent_messages, :class_name => 'Message', :foreign_key => 'sender_id', :dependent => :destroy
   has_many :recipient_messages, :class_name => 'Message', :foreign_key => 'recipient_id', :dependent => :destroy
 
+  has_many :friendships
+ 
+  has_many :friends,
+           :through => :friendships,
+           :conditions => "flag = 'accepted'",
+           :order => :id
+ 
+  has_many :requested_friends,
+           :through => :friendships,
+           :source => :friend,
+           :conditions => "flag = 'requested'",
+           :order => :created_at
+
+  has_many :pending_friends,
+           :through => :friendships,
+           :source => :friend,
+           :conditions => "flag = 'pending'",
+           :order => :created_at
+
+
   def self.json_tokens(query)
     users = where("email like ?", "%#{query}%")
     if users.empty?
@@ -38,7 +58,7 @@ class User < ActiveRecord::Base
 
 has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", :profile => "130x126"},
                    :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml",
-                    :path => "public/attachments/car/:id/:style/:basename.:extension",
+                    :path => "public/attachments/user/:id/:style/:basename.:extension",
                     
                     :convert_options => {
                           :thumb => "-compose Copy -gravity center -extent 140x100",
@@ -136,6 +156,9 @@ has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", 
        #current_user.unlike!(@car_profile)      
     end
   end
+
+
+
 
 end
 
