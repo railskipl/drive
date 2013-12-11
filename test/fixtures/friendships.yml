@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  friend_id: 1
+  status: MyString
+  accepted_at: 2013-12-10 15:24:49
+
+two:
+  user_id: 1
+  friend_id: 1
+  status: MyString
+  accepted_at: 2013-12-10 15:24:49

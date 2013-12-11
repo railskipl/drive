@@ -1,14 +1,15 @@
 <div class="nav">
 <ul>
-<li><a href="#">Home</a></li>
  <% if controller.controller_name == 'home' %> 
-	<li class = "selected"><%= link_to "Profile", root_path %> 
+	<li class = "selected"><%= link_to "Home", root_path %> 
  <% else %> 
-	<li><%= link_to "Profile", root_path %></li>
+	<li><%= link_to "Home", root_path %></li>
 <% end %>
+<li><%= link_to "Profile", user_path(current_user) %></li>
 <li><%= link_to "Messages", messages_path %></li>
 <li><%= link_to "Logbooks", logbooks_path %></li>
 <li><%= link_to "My Blogs" , user_blogs_path %></a></li>
 <li><%= link_to "My Favourites" , favourites_path %></a></li>
+<li><%= link_to "Blocked user" ,blocked_users_users_path %></a></li>
 </ul>
 </div>

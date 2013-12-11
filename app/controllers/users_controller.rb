@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 	layout 'admin'
-   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile]
+
+
+   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status]
+   helper :friendships
+
 
   def index
     @users = User.all
@@ -30,6 +34,7 @@ class UsersController < ApplicationController
 
 def show
     @user = User.find(params[:id])
+    @logged_in_user = current_user 
     @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     render :layout => "application"
@@ -48,6 +53,38 @@ def subscribe_profile
  end
 
 
+  def friend_request
+     @user = User.find(params[:id])
+     unless current_user == @user
+       redirect_to root_url, :notice => "Access Denied"
+     end
+      render :layout => "application"
+  end
 
+def block_user
+  @user = User.find(params[:id])
+  Block.spam(@user,current_user)
+ end
+
+ def unblock_user
+   @user = User.find(params[:id])
+   Block.remove_spam(@user,current_user)
+ end
+
+
+ def blocked_users
+   @blocked_users = Block.list_of_blocked_users(current_user)
+   render :layout => 'application'
+ end
+
+def change_status
+   if params[:status]== "INACTIVE"
+    # write code logic for deducting points
+     current_user.update_attribute("visibility_status",false)
+    else
+     current_user.update_attribute("visibility_status",true)
+   end
+   render :json => {:status => current_user.visibility_status}.to_json
+  end
 
 end

@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210132810) do
+
+ActiveRecord::Schema.define(:version => 20131210104547) do
+
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -39,6 +41,17 @@ ActiveRecord::Schema.define(:version => 20131210132810) do
 
   add_index "admins", ["email"], :name => "index_admins_on_email", :unique => true
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
+
+  create_table "blocks", :force => true do |t|
+    t.integer  "blocker_id"
+    t.integer  "blockable_id"
+    t.string   "blocker_type"
+    t.string   "blockable_type"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "blocks", ["blocker_id", "blockable_id", "blocker_type", "blockable_type"], :name => "IUSR_BLOCK"
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "user_id"
@@ -191,6 +204,16 @@ ActiveRecord::Schema.define(:version => 20131210132810) do
     t.integer  "logbook_id"
   end
 
+  create_table "friendships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.string   "status"
+    t.datetime "accepted_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "flag"
+  end
+
   create_table "likes", :force => true do |t|
     t.string   "liker_type"
     t.integer  "liker_id"
@@ -304,18 +327,18 @@ ActiveRecord::Schema.define(:version => 20131210132810) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",   :null => false
+    t.string   "encrypted_password",     :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.integer  "sign_in_count",          :default => 0,    :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nickname"
@@ -323,15 +346,16 @@ ActiveRecord::Schema.define(:version => 20131210132810) do
     t.string   "location"
     t.boolean  "agree"
     t.boolean  "status"
-    t.integer  "credit",                 :default => 0,  :null => false
-    t.integer  "freecredit",             :default => 0,  :null => false
-    t.integer  "buycredit",              :default => 0,  :null => false
-    t.integer  "spend_credit",           :default => 0,  :null => false
+    t.integer  "credit",                 :default => 0,    :null => false
+    t.integer  "freecredit",             :default => 0,    :null => false
+    t.integer  "buycredit",              :default => 0,    :null => false
+    t.integer  "spend_credit",           :default => 0,    :null => false
     t.text     "about"
     t.string   "pic_file_name"
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
+    t.boolean  "visibility_status",      :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

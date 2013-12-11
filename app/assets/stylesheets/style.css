@@ -207,7 +207,7 @@ background: #333; /*background of tabs for hover state, plus tab with "selected"
     width: 100%;
 }
 .profile_menu li a {
-    color: #333333;
+    color: #333333 !important;
     display: block;
     padding: 3px 10px;
     text-decoration: none;
@@ -461,12 +461,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e82020', end
     margin: 0 auto;
     padding: 10px 10px 10px 50px;
     text-align: center;
-}
-#flash_notice {
     background-color: #fff;
     /*background-image: url("/assets/info.png");*/
     color: #00529B;
 }
+
 .isa_success {
     background-color: #DFF2BF;
     background-image: url("../assets/success.png");
