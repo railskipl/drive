@@ -42,7 +42,7 @@
       <%if friend.pic.blank? %>
     <a href="<%= user_path(friend)%>"><img src="/assets/thumb_profile.jpg" alt="">
     <% else %>
-    <%= link_to image_tag friend.pic.url(:thumb) ,ser_path(friend) %>
+    <%= link_to image_tag friend.pic.url(:thumb) ,ser_path(friend) rescue nil%>
     <% end %>
     
     <div class="mail_content">
