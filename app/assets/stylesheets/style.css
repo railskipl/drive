@@ -407,6 +407,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     color: #CC1B2C; background:#000
 }
 
+.action li a:hover, .action li a:active {
+    color: #000; background:#e6e6e6
+}
+
+
 .box{ width:auto; height:auto; padding:20px; border-radius:10px; border:1px solid #CCCCCC; margin:20px 0; box-shadow:0 0 5px #ccc; background: #ffffff; /* Old browsers */
 background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
@@ -783,3 +788,7 @@ font-weight:bold; position:absolute;
 font-size:11px}
 
 .giftimage{ padding:5px; border:1px solid #E7E7E7}
+
+.vticker{ margin:0; padding:0; height:300px!important; }
+.vticker ul{ margin:0; padding:0; list-style-type:none }
+.vticker ul li{ margin:0; padding:0; overflow:hidden}

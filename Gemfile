@@ -18,7 +18,7 @@ gem 'simple_captcha', :git => 'git://github.com/galetahub/simple-captcha.git'
 gem 'aws-s3'
 gem 'aws-sdk'
 gem "ransack" 
-
+gem "will_paginate", "~> 3.0.4" 
 gem 'therubyracer'
 gem 'execjs'
 gem "socialization"

@@ -3,7 +3,7 @@
 
 <%= form_for(@user_blog) do |f| %>
    <% if @user_blog.errors.any? %>
-    <div id="error_explanation">
+     <div id="error_explanation">
       <h2><%= pluralize(@user_blog.errors.count, "error") %> prohibited this car make from being saved:</h2>
 
       <ul>
@@ -11,13 +11,18 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
+    </div> 
   <% end %>
   
-  <div class="field">
+  <!-- <div class="field">
     <%= f.label "Blog Category" %><br />
     <%= f.collection_select :blog_id, Blog.all ,:id,:name, :prompt => 'Select Blog'%>
   </div> 
+
+  <div class="field">
+    <%= f.label "Title" %><br />
+    <%= f.text_field :title%>
+  </div>  
 
   <div class="field">
     <%= f.label "Blog Description" %><br />
@@ -30,5 +35,85 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+ -->
+<%# end %>
 
-<% end %>
+<div class="middle">
+    
+    <div class="container_20" style="background:#333; margin-bottom:10px">
+    
+    
+     <%= render 'shared/carousel' %>
+    
+    
+        <div class="container_20">
+        
+        
+        <div class="grid_20 title">
+    
+  <div style="width:40%; float:left">
+    <h4>Add Blog</h4>
+  </div>
+  
+  </div>
+  
+  
+  <div style="float:left; width:100%; margin:20px 0">
+  
+  <table width="100%" cellspacing="5" cellpadding="5" border="0">
+  <tbody><tr>
+    <td><span class="red">*</span> Topic:</td>
+  </tr>
+  <tr>
+  <td>
+    <%= f.collection_select :blog_id, Blog.all ,:id,:name, :prompt => 'Select Blog' %>
+  </td>
+  </tr>
+  <tr>
+    <td><span class="red">*</span>Title:</td>
+  </tr>
+  <tr>
+    <td><%= f.text_field :title, :class=>"pe_tf"%></td>
+  </tr>
+  <tr>
+    <td><span class="red">*</span> Post:</td>
+  </tr>
+  
+  <tr>
+    <td><%= f.text_area :body ,:class => "pe_tf" ,:style=> "width:960px",:rows=>"12"%></td>
+  </tr>
+  <tr>
+    <td><span class="red">*</span> Privacy: </td>
+  </tr>
+  <tr>
+    <td><select class="pe_dd" name="select">
+      <option>Select</option>
+    </select> <span style="color:#999999">Control who can see this logbook.</span></td>
+  </tr>
+  <tr>
+    <td><span class="red">*</span> Comment Privacy: </td>
+  </tr>
+  <%= f.hidden_field :user_id,:value => current_user.id %>
+  <tr>
+    <td><select class="pe_dd" name="select2">
+      <option>Select</option>
+    </select>
+      <span style="color:#999999">Control who can comment on this logbook.</span></td>
+  </tr>
+  <tr>
+    <td>
+      <input type="submit" style="margin:0" class="submit_btn" value="Publish" name="submit">
+   <!--   <input type="submit" style="margin:0" class="submit_btn" value="Save as Draft" name="Submit">
+      <input type="submit" style="margin:0" class="submit_btn" value="Preview" name="Submit">   </td> -->
+  </tr>
+</tbody></table>
+  
+  </div>
+  
+  
+  
+    </div>
+  </div>
+</div>
+
+<%end%>
