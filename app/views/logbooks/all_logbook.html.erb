@@ -8,24 +8,29 @@
   <div style="width:40%; float:left"><h4>My Logbook</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%= new_logbook_path %>" class="compose">Add Logbook +</a></div>
   
-  </div>
+  
+  
+  
+    
+    
+    </div>
     
     <div class="grid_4">
     
     
     
       <ul class="message_menu">
-    <li><%= link_to "All Logbook", logbooks_all_logbook_path rescue nil%></li>
-    <li class="selected"><%= link_to "My Logbooks", logbooks_path rescue nil%></li>
+    <li><%= link_to "All Logbook",logbooks_all_logbook_path %></li>
+
+    <li><%= link_to "My Logbooks", logbooks_path %></li>
     <li><a href="#">Friend's Logbook</a></li>
     </ul>
     
     <strong class="bluelink">Topic</strong>
     <ul class="message_menu">
       <% @logbook_categories.each do |logbook| %>
-
-        <li><%= link_to logbook.name, search_logbook_categories_path(:name => logbook.name ) %></li>
-      <% end %>
+        <li><%= link_to logbook.name, search_logbook_categories_path(:name => logbook.name ) %></a></li>
+      <%end%>
     </ul>
     
     
@@ -35,22 +40,27 @@
     <div class="grid_12">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
-  <% @logbooks.each do |logbook| %>
+  <% @logbook.each do |logbooks| %>
     <div class="message"> 
- 
     
-    <img src="<%=logbook.carprofile.carprofile_photos.first.photo.url(:thumb) rescue nil%>" alt="">
+    <div class="tf">
+    
+    
+    
+    </div>
+    
+    <img src="<%=logbooks.carprofile.carprofile_photos.first.photo.url(:thumb)%>" alt="">
   
     <div class="mail_content" style="width:475px">
-    <div><a href="<%=logbook_path(logbook)%>" class="bluelink bold"><%=logbook.title rescue nil%></a></div>
-    <div style="margin:0 0 5px 0">by <a class="bluelink" href="#"><%=logbook.user.first_name rescue nil%></a></div>
-    <div><%= truncate(logbook.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
+    <div><a href="<%=logbook_path(logbooks)%>" class="bluelink bold"><%=logbooks.title%></a></div>
+    <div style="margin:0 0 5px 0">by <a class="bluelink" href="#"><%=logbooks.user.first_name rescue nil%></a></div>
+    <div><%= truncate(logbooks.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
-    <div class="likediv"> <a href="<%=logbook_path(logbook)%>" class="likelink">Comment</a>  
-      <% if logbook.created_at > Time.now.beginning_of_day %> 
-           <%="#{time_ago_in_words(logbook.created_at)} ago"%>
+    <div class="likediv">  <a href="#" class="likelink">Comment</a>  
+      <% if logbooks.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(logbooks.created_at)} ago"%>
            <% else %>
-           <%= logbook.created_at.strftime("%b %d, %Y") %>
+           <%= logbooks.created_at.strftime("%b %d, %Y") %>
       <% end %></div>
     </div>
 
@@ -62,7 +72,7 @@
     
     
   <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
-   <%= will_paginate @logbooks %>
+    <%= will_paginate @logbook %>
   </ul>
     
     
