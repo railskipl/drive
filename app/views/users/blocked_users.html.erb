@@ -1,0 +1,20 @@
+<% if @blocked_users.empty? %>
+<h2>You didnt block any users yet !!!</h2>
+<% else %>
+<table>
+<tr>
+<td>NAME</td>
+<td>EMAIL</td>
+<td>LOCATION</td>
+</tr>
+<% @blocked_users.each do |user| %> 
+<% blocked_user = User.find(user.blockable_id) %>
+</tr>
+<td><%= link_to blocked_user.first_name, user_path(blocked_user) %></td>
+<td><%= blocked_user.email %></td>
+<td><%= blocked_user.location %></td>
+</tr>
+<% end %>
+</table>
+
+<% end %>

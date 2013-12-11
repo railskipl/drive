@@ -66,11 +66,15 @@ end
 
   devise_for :admins
 
-  resources :users,  :only => [:index,:destroy,:show,:subscribe_profile] do
-   collection    do
+  resources :users,  :only => [:index,:destroy,:show,:subscribe_profile,:block_user,:unblock_user,:blocked_users,:change_status] do
+  collection    do
       post :subscribe_profile
       get  :user_emails
-   end
+      post :block_user
+      post :unblock_user
+      get  :blocked_users
+      post :change_status
+    end
    member do
       get :friend_request
    end

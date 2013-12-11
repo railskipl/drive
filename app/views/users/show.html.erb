@@ -3,9 +3,10 @@
 	<%= render 'shared/carousel' %>		
   </div>
 
+
   	<div class="container_20">
-				
-				<div class="grid_20 title" style="margin-bottom:10px">
+
+	<div class="grid_20 title" style="margin-bottom:10px">
 		
 	<div style="width:40%; float:left"><h4><%= @user.first_name %> <%= @user.last_name %></h4></div>
 	<div style="width:40%; float:right; text-align:right; margin-top:5px">
@@ -34,7 +35,9 @@
 		
 		<div class="grid_4">
 		
-		<div class="profile_image"><img src="/assets/profile.jpg" alt=""></div>
+		<div class="profile_image">
+		<%= @user.pic?  ? (image_tag @user.pic.url(:thumb)) : (image_tag 'profile.jpg')%>
+		</div>
 		<div class="profile_image profile_name"> <img src="/assets/online.png" alt=""> 
 		 <%= @user.nickname %>
 		</div>
@@ -55,6 +58,21 @@
        <% unless current_user != @user %>
        <li><a href="#">Credit Points <span class="light_gray">(<%= @user.credit %>)</span></a></li>
        <% end %>
+      <% unless current_user.id == @user.id %>
+       
+   
+      <li>
+        <% if Block.status(@user,current_user) %>
+        <%= link_to "UnBlock",unblock_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
+        <% else %>
+        <%= link_to "Block",block_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
+        <% end %>      	
+
+      </li> 
+
+
+       <% end %>
+		
 		<!-- <li><a href="#">Favorites <span class="light_gray">(5)</span></a></li>
 		<li><a href="#">My Guest <span class="light_gray">(1)</span></a></li>
 		<li><a href="#">Comment <span class="light_gray">(3)</span></a></li>

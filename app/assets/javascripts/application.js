@@ -12,6 +12,44 @@
 //
 //= require jquery
 //= require jquery_ujs
+function user_status(status){
+	if(status == "ACTIVE"){
+      	ajax_call(status)
+	}
+	else{
+
+		var result=confirm("Your 10 point will be deducted.Are you sure to Continue?");
+		if (result==true)
+		  {
+		   ajax_call(status) 
+		  }
+		else
+		  {
+		  $("#visibility_status").val("ACTIVE");
+		  }
+
+	}
+}
+
+function ajax_call(status){
+	$.ajax({
+			  type: "POST",
+			  url: "/users/change_status",
+			  data: {"status":status},
+			  success: function(data){
+                 if(data.status==false){
+                   $("#visibility_status").val("INACTIVE");
+                   $("#visible_mode").attr("src","/assets/offline.gif");
+                 }
+                 else
+                 {
+                    $("#visibility_status").val("ACTIVE");
+                    $("#visible_mode").attr("src","/assets/online.png");
+                 }
+			   },
+			  dataType: "json"
+		});
+}
 
 
 
