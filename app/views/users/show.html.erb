@@ -46,7 +46,7 @@
 		<li><%= link_to friendships_path do %>
 			Friends
 			<span class="light_gray">(<%= @user.friends.count %>)
-			<% if @user.requested_friends && current_user == @user %>
+			<% if !@user.requested_friends.empty? && current_user == @user %>
 			 New*
 			<% end %>
 			</span>
