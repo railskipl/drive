@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20131210104547) do
+
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -103,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20131210104547) do
     t.string   "manufacturing_year"
     t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -175,8 +177,8 @@ ActiveRecord::Schema.define(:version => 20131210104547) do
 
   create_table "egifts", :force => true do |t|
     t.integer  "credit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -321,6 +323,7 @@ ActiveRecord::Schema.define(:version => 20131210104547) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.string   "title"
   end
 
   create_table "users", :force => true do |t|

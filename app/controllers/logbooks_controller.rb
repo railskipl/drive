@@ -1,11 +1,22 @@
 class LogbooksController < ApplicationController
+  require 'will_paginate/array'
   before_filter :authenticate_user!, :except => [:show]
-  def index
-  	@logbooks = current_user.logbooks.all
+   def index
+    @logbooks = current_user.logbooks.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
+    #@logbooks = @logbooks.paginate(page: params[:page], per_page: 5) 
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @logbook_categories =  LogbookCategory.all
-    @carprofile = current_user.carprofiles
+    @carprofile = Carprofile.all
+     
     #raise @logbooks.inspect
+  end
+
+  def all_logbook
+    @logbook = Logbook.find(:all , :order => "created_at DESC") 
+    @logbook = @logbook.paginate(page: params[:page], per_page: 5)
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @carprofile = current_user.carprofiles
+    @logbook_categories =  LogbookCategory.all
   end
 
   def new

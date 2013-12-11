@@ -39,6 +39,7 @@ Drive::Application.routes.draw do
     collection do 
       post :like_blog
       get :like_count
+      get :all_blogs
     end
   end
 
@@ -92,6 +93,8 @@ end
 
   match "/logbooks/updatebody", :to => "logbooks#updatebody"
 
+  match "/logbooks/all_logbook", :to => "logbooks#all_logbook"
+
   match '/pages/:id' => 'pages#show'
 
   namespace :admin do 
@@ -134,6 +137,13 @@ end
   end 
   resources :carprofile_photos
 
+ resources :logbook_categories do 
+    get :search, :on => :collection
+  end
+
+  resources :blogs do 
+    get :search_blog, :on => :collection
+  end
  
   root :to => "devise/registrations#new"
    match 'subscribe_count' => 'home#subscribe_count'
