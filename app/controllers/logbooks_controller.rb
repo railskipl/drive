@@ -7,6 +7,7 @@ class LogbooksController < ApplicationController
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @logbook_categories =  LogbookCategory.all
     @carprofile = Carprofile.all
+    
      
     #raise @logbooks.inspect
   end
@@ -129,8 +130,12 @@ class LogbooksController < ApplicationController
   end
 
   def logbooksearch
+        @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
     q = params[:q]
-    @logbooks=   Logbook.search(title_cont: q).result
-    @logbook_categories =  LogbookCategory.search(name_cont: q).result
+    @logbooks =   Logbook.search(title_cont: q).result
+    @logbook_categories =  LogbookCategory.all
+    #@logbook_categories =  LogbookCategory.search(name_cont: q).result
+    @logbooks = @logbooks.paginate(page: params[:page], per_page: 5)
   end
 end

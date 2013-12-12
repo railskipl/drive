@@ -101,6 +101,8 @@ end
 
   match 'logbooksearch' => 'logbooks#logbooksearch'
 
+  match 'blogsearch' => 'user_blogs#blogsearch'
+
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root
     resources :pages
