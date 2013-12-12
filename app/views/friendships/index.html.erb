@@ -39,11 +39,15 @@
     <div class="message"> 
     
   
-    <img src="/assets/thumb_profile.jpg" alt="">
+      <%if friend.pic.blank? %>
+    <a href="<%= user_path(friend)%>"><img src="/assets/thumb_profile.jpg" alt="">
+    <% else %>
+    <%= link_to image_tag friend.pic.url(:thumb) ,ser_path(friend) rescue nil%>
+    <% end %>
     
     <div class="mail_content">
     
-    <div style="margin:0 0 5px 0"><%= friend.nickname %></div>
+    <div style="margin:0 0 5px 0"><%= link_to friend.nickname, user_path(friend) %></div>
      <%= link_to "Remove Friend",delete_friendship_path(:id => friend.id) ,:method => :post,:confirm => "Really delete friendship with #{friend.email}?" %>
     </div>
     
