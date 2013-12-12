@@ -1,11 +1,13 @@
+ <%= stylesheet_link_tag  "table_style" %>
+
 <% if @blocked_users.empty? %>
 <h2>You didnt block any users yet !!!</h2>
 <% else %>
 <table>
 <tr>
-<td>NAME</td>
-<td>EMAIL</td>
-<td>LOCATION</td>
+<td>Name</td>
+<td>Email</td>
+<td>Location</td>
 </tr>
 <% @blocked_users.each do |user| %> 
 <% blocked_user = User.find(user.blockable_id) %>

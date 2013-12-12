@@ -101,4 +101,13 @@ class UserBlogsController < ApplicationController
   		redirect_to user_blogs_path
   	end
   end
+
+  def blogsearch
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @blogs = Blog.all
+    @blog_comments = BlogComment.order("created_at desc").limit(100)
+    q = params[:q]
+    @user_blogs =  UserBlog.search(title_cont: q).result
+    @user_blogs = @user_blogs.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
+  end
 end

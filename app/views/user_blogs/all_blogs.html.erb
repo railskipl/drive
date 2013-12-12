@@ -45,7 +45,11 @@
     
     <div class="grid_11">
     
-    <div><input name="" type="text" class="pe_tf message_search"></div>
+    <div><br/><%= form_tag blogsearch_path, :method=> :get do %>
+          <%= text_field_tag :q, nil,:class=>"search_tf"%>
+          <%= submit_tag "Search",:class=>"submit_btn"%>
+          <% end %>
+    </div>
     
      <%if @user_blogs.empty?%>
      <%= "No blogs found"%>
