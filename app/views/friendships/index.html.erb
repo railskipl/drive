@@ -1,10 +1,7 @@
-
-    
-    <div class="middle">
+<div class="middle">
     
     <div class="container_20" style="background:#333; margin-bottom:10px">
     
-      <%#= render 'shared/carousel' %> 
     
     </div>
     
@@ -15,7 +12,11 @@
         <div class="grid_20 title">
     
   <div style="width:40%; float:left"><h4>Friends</h4></div>
-   
+  <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="#" class="compose">Create a List </a></div>
+  
+  
+  
+    
     
     </div>
     
@@ -30,38 +31,55 @@
     </ul>
     
     
+    
       </div>
-
     
     <div class="grid_16">
+     
     
-    <% current_user.friends.each do |friend|%>
+    <div><input name="" type="text" class="pe_tf message_search"></div>
+     <% current_user.friends.each do |friend|%>
     <div class="message"> 
     
-  
-      <%if friend.pic.blank? %>
-    <a href="<%= user_path(friend)%>"><img src="/assets/thumb_profile.jpg" alt="">
-    <% else %>
-    <%= link_to image_tag friend.pic.url(:thumb) ,ser_path(friend) rescue nil%>
+    <div class="tf">
+    <!-- <input name="" type="checkbox" value=""> -->
+    
+    
+    </div>
+    <%if friend.pic.blank? %>
+    <a href="<%= user_path(friend)%>"><img src="assets/thumb_profile.jpg" alt="">
+    <%else%>
+    <%= link_to image_tag(friend.pic.url(:thumb)), user_path(friend)%>
     <% end %>
-    
     <div class="mail_content">
-    
-    <div style="margin:0 0 5px 0"><%= link_to friend.nickname, user_path(friend) %></div>
-     <%= link_to "Remove Friend",delete_friendship_path(:id => friend.id) ,:method => :post,:confirm => "Really delete friendship with #{friend.email}?" %>
-    </div>
-    
-
-    
-    </div>
-    
-	<% end %>
-
-  
-
+    <div><a href="#" class="bluelink bold"><b><%= link_to friend.first_name, user_path(friend) %></b></a></div>
     
     
     </div>
+    
+    
+    
+    <ul class="action">
+    
+    
+    <li><li><%= link_to (image_tag "delete.png"),delete_friendship_path(:id => friend.id) ,:method => :post,:confirm => "Are you sure, you want to remove #{friend.email}?" %></li></li>
+    
+    </ul>
+    
+    
+    
+    </div>
+    <%end%>
+    
+    
+    <!-- <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+      <%#= will_paginate @friends %>
+    </ul> -->
+    
+    
+    
+    </div>
+        
     
         
     
@@ -73,6 +91,15 @@
     
     </div>
     
+
+</div>
+
+
+
+
+
+
+
 
 
 

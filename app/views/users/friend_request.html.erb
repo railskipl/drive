@@ -35,40 +35,41 @@
 	  <% unless @user.requested_friends.empty?  %>
 	  <div class="message"> 
         <div class="mail_content">
-		<%= pluralize(@user.requested_friends.count, "requested friend") %>
+		<%= pluralize(@user.requested_friends.count, "requested friend") %><br/>
 		<% @user.requested_friends.each do |requester| %>
       <%if requester.pic.blank? %>
       <img src="/assets/thumb_profile.jpg" alt="">
       <% else %>
-      <%= image_tag requester.pic.url(:thumb) %>
+      <%= image_tag requester.pic.url(:thumb) rescue nil%>
       <% end %>
 
-		  <%= requester.nickname%>
-		  <%= link_to "Accept",accept_friendship_path(:id => requester.id) ,:method => :post %> /
-		  <%= link_to "Decline",decline_friendship_path(:id => requester.id),:method => :post,:confirm =>	"Really decline friendship with #{requester.nickname}?" %>
+		  <b><%= requester.first_name%></b><br/>
+		  <%= link_to (image_tag "accept.png"),accept_friendship_path(:id => requester.id) ,:method => :post %>&nbsp;&nbsp;
+		  <%= link_to (image_tag "reject.png"),decline_friendship_path(:id => requester.id),:method => :post,:confirm =>	"Are you sure, you want to decline #{requester.nickname}?" %>
         </div>
       </div>
       <% end %>
      <% end %>
     <% else %>
 	  <% unless @user.pending_friends.empty?  %>
-        <% @user.pending_friends.each do |pending_friend| %>
+    <%= pluralize(@user.pending_friends.count, "pending friend") %><br/>
 
+        <% @user.pending_friends.each do |pending_friend| %>
 	   <div class="message"> 
 
         <div class="mail_content">
-		<%= pluralize(@user.pending_friends.count, "pending friend") %>
+		
 
     <%if pending_friend.pic.blank? %>
     <img src="/assets/thumb_profile.jpg" alt="">
     <% else %>
     <%= image_tag pending_friend.pic.url(:thumb) %>
     <% end %>
-		<%= pending_friend.nickname  %>
+		<%= pending_friend.first_name  %>
 		<%= link_to "Cancel Request",cancel_friendship_path(:id => pending_friend.id) ,
 		:confirm =>	"Cancel friendship request?" ,:method => :post%>
 		 </div>
-       </div>
+       </div>    
 	   <% end %>
 	  <% end %>
   <% end %>  

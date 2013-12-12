@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
 	include UsersHelper
-
+    
 before_filter  :setup_friends,:except => :index
 
 def index
