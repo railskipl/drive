@@ -35,8 +35,10 @@
     
     
     <ul class="message_menu">
+     
+      
       <% @blogs.each do |blog|%>
-    <li ><%=link_to blog.name, search_blog_blogs_path(:name => blog.name ) rescue nil%></a></li>
+    <li ><%=link_to blog.name, search_blog_blogs_path(:name => blog.name ) rescue nil%></li>
     <%end%>
     </ul>
     
@@ -47,7 +49,9 @@
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
     
-    
+     <%if @user_blogs.empty? %>
+     <%= "No blog found"%>
+     <%else%>
     <% @user_blogs.each do |user_blog| %>
     
     <div class="message"> 
@@ -74,6 +78,7 @@
 
     </div>
     <%end%>
+      <%end%>
   <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
    <%= will_paginate @user_blogs %>

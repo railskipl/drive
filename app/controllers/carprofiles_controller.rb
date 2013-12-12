@@ -7,6 +7,7 @@ class CarprofilesController < ApplicationController
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     #raise @carprofiles.inspect
+   
   end
 
   def new

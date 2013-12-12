@@ -97,6 +97,8 @@ end
 
   match '/pages/:id' => 'pages#show'
 
+  match 'logbooksearch' => 'logbooks#logbooksearch'
+
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root
     resources :pages

@@ -127,4 +127,10 @@ class LogbooksController < ApplicationController
   def updatebody
     @body_index = BodyIndex.find_all_by_car_model_id(params[:updatebody])
   end
+
+  def logbooksearch
+    q = params[:q]
+    @logbooks=   Logbook.search(title_cont: q).result
+    @logbook_categories =  LogbookCategory.search(name_cont: q).result
+  end
 end
