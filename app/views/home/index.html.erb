@@ -23,7 +23,7 @@
 		<li><a href="#">Message</a></li> 
 		<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
 		<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
-		<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status($(\":selected\").text());"%></li>	    
+		<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status($(\":selected\").text());", :class=>"pe_tf"%></li>	    
 		</ul>
 	</div>
    </div>
