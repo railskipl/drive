@@ -1,12 +1,16 @@
+ <%= stylesheet_link_tag  "table_style" %>
+
 <table>
 <tr>
-<td>User</td>
-<td></td>
+<td>First Name</td>
+<td>Last Name</td>
+<td>Email</td>
 </tr>
 <% @subscribers.each do |subscribe| %>
 <tr>
 <td><%=subscribe.first_name %></td>
 <td><%=subscribe.last_name %></td>
+<td><%=subscribe.email %></td>
 </tr>
 <% end %>
 </table>
