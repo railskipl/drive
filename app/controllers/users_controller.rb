@@ -32,13 +32,13 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
-def show
+  def show
     @user = User.find(params[:id])
     @logged_in_user = current_user 
     @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     render :layout => "application"
-end
+  end
 
 def subscribe_profile
    @user = User.find(params[:id])

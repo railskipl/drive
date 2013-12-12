@@ -34,7 +34,7 @@
   <%= f.text_field :nickname %></div>
 
   <div><%= f.label :about ,"About Me" %><br />
-  <%= f.text_area :about ,:rows =>5%></div>
+  <%= f.text_area :about ,:rows =>5 ,:maxlength => 2000%></div>
   
   <div><%= f.label :birthday %><br />
   <%= f.date_select(:birthday,order: [:day, :month, :year],:start_year => 1950, :class=>"signup_tf") %></div>

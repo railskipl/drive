@@ -10,7 +10,7 @@ gem 'rails', '3.2.14'
 
 
 
-gem 'sqlite3'
+ #gem 'sqlite3'
 gem 'paperclip'
 gem 'rmagick'
 gem 'pry'

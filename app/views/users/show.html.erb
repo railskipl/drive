@@ -16,7 +16,7 @@
 	
 <% if signed_in? and @user != @logged_in_user %>
    <% unless Friendship.exists?( @logged_in_user, @user) %>
- 	<%= link_to "Add To Friends",friendships_path(:id => @user.id) ,:method => :post,:class =>"compose" ,:confirm => "Add #{@user.nickname}?"  %>
+ 	<%= link_to "Add To Friends",friendships_path(:id => @user.id) ,:method => :post,:class =>"compose" %>
   <% end %>
   <div style="margin:10px 0"><%= friendship_status( @logged_in_user, @user) %></div>
 <% end %>
