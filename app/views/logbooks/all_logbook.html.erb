@@ -40,10 +40,13 @@
     <div class="grid_12">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
-  <% @logbook.each do |logbooks| %>
-    <div class="message"> 
+    <% if @logbook.empty? %>
+    <%= "nothing to show" %>
+    <%else%>
+      <% @logbook.each do |logbooks| %>
+      <div class="message"> 
     
-    <div class="tf">
+      <div class="tf">
     
     
     
@@ -53,7 +56,7 @@
   
     <div class="mail_content" style="width:475px">
     <div><a href="<%=logbook_path(logbooks)%>" class="bluelink bold"><%=logbooks.title%></a></div>
-    <div style="margin:0 0 5px 0">by <a class="bluelink" href="#"><%=logbooks.user.first_name rescue nil%></a></div>
+    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= root_path%>"><%=logbooks.user.first_name rescue nil%></a></div>
     <div><%= truncate(logbooks.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
     <div class="likediv">  <a href="#" class="likelink">Comment</a>  
@@ -67,6 +70,7 @@
     
     
    </div>
+  <%end%>
   <%end%>
     
     

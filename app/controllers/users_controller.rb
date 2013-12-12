@@ -61,7 +61,7 @@ def subscribe_profile
       render :layout => "application"
   end
 
-def block_user
+ def block_user
   @user = User.find(params[:id])
   Block.spam(@user,current_user)
  end
@@ -78,7 +78,9 @@ def block_user
  end
 
 def change_status
+
    if params[:status]== "INACTIVE"
+
     # write code logic for deducting points
      current_user.update_attribute("visibility_status",false)
     else

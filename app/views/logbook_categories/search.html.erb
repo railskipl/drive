@@ -44,6 +44,9 @@
     <div class="grid_12">
     
     <div><input name="" type="text" class="pe_tf message_search"></div>
+     <%if @logbooks.empty? %>
+      <%= "No logbook found" %>
+     <%else%>
   <% @logbooks.each do |logbook| %>
     <div class="message"> 
     
@@ -72,7 +75,7 @@
     
    </div>
   <%end%>
-    
+    <%end%>
     
     
   <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
