@@ -21,6 +21,14 @@ class FavouritesController < ApplicationController
    redirect_to user_blog_path(@user_blog)
   end	
 
+  def mycarprofile
+    
+   @carprofile = Carprofile.find(params[:id])
+   @favourite = Favourite.new(:user_id => current_user.id, :favourite_type => "favourite_carprofile", :favourite_type_id => @carprofile.id, :carprofile_id => @carprofile.id)
+   @favourite.save
+   redirect_to carprofile_path(@carprofile)
+  end 
+
   def destroy
 
     @favourite = Favourite.find(params[:id])

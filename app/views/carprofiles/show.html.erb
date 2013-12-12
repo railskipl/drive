@@ -42,7 +42,7 @@
     <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
     <% end %>
     
-    <li><a href="#"><img alt="" src="/assets/star2.png"></a></li>
+    <li><%= link_to "favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
 <% unless current_user.id == @carprofile.user_id %>
     <li><%= link_to (Subscriber.subscribes?(current_user,@carprofile) ? "Unsubscribe": "Subscribe"),subscribe_car_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote => true,:id=>"subscribe_car"%></li><% end %>
 

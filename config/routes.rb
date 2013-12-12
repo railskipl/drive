@@ -31,7 +31,9 @@ Drive::Application.routes.draw do
   
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
 
-  match "logbooks/:id/user_blog"  => 'favourites#user_blog'
+  match "user_blogs/:id/user_blog"  => 'favourites#user_blog'
+
+  match "carprofiles/:id/mycarprofile"  => 'favourites#mycarprofile'
 
   resources :comment_logbooks
 
