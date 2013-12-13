@@ -20,10 +20,6 @@
     <li><a href="<%= myfriend_path %>">Friend's Logbook</a></li>
     </ul>
 
-    <%# @friends.each do |fri|%>
-      <%#raise fri.logbooks.inspect%>
-      <%#= fri.logbooks%>
-    <%#end%>
     
     <strong class="bluelink">Topic</strong>
     <ul class="message_menu">
@@ -47,8 +43,8 @@
 
     
     <% @friends.each do |fri|%>
-    <% if fri.logbooks.empty? %>
-     <%= "No logbook found" %>
+     <% if fri.logbooks.empty? %>
+     <%#= "No logbook found" %>
      <%else%>
      
       <% fri.logbooks.each do |log|%>

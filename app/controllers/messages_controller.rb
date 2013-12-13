@@ -91,7 +91,7 @@ class MessagesController < ApplicationController
       end
       respond_to do |format|
         if @message.save
-          format.html { redirect_to @message, notice: 'Message was successfully created.' }
+          format.html { redirect_to @message, notice: 'Message send successfully.' }
           format.json { render json: @message, status: :created, location: @message }
         else
           format.html { render action: "new" }
@@ -180,7 +180,7 @@ class MessagesController < ApplicationController
   end
 
   def sent_messages
-    @sent_messages = current_user.sent_messages rescue nil
+    @sent_messages = current_user.sent_messages.order("created_at desc") rescue nil
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 

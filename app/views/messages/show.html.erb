@@ -57,7 +57,8 @@
 <% if current_user == @message.message.sender && current_user == @message.recipient %>
 <%= link_to "Reply", reply_message_path(@message) %>
 <% elsif  current_user == @message.recipient	%>
-<%= link_to "Reply*", reply_message_path(@message) %>
+<a class="submit_btn" style="margin:0" href="<%= reply_message_path(@message)%>">Reply *</a>
+
 <% else %>
 <% end %>
     
