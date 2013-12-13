@@ -3,7 +3,8 @@
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
       <h1>Listing Cars</h1>
       <div class ="box">
-        <h5><%= link_to "Add A New Car", new_carprofile_path %></h5>
+        <h5><a class="submit_btn" style="margin:0" href="<%= new_carprofile_path%>">Add A New Car</a></h5>
+   
         <table>
 	      <tr>
 		    <th>Car Make</th>
@@ -12,7 +13,7 @@
 
 		 <% @carprofiles.each do |carprofile| %>
 		  <tr>
-			<td><%= link_to carprofile.car_make.name, carprofile_path(carprofile) %></td>
+			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
 			<td><%= carprofile.car_model.name  rescue nil %></td>
 		  </tr>
 		 <% end %>

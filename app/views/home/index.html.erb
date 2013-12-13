@@ -12,11 +12,11 @@
 	</div>
 	
 	<div class="grid_16">
-	 <h1><%= current_user.first_name %>&nbsp;
+	 <h1><%= current_user.first_name %>&nbsp;<%= current_user.last_name %>&nbsp;
 	  	<%= image_tag (current_user.visibility_status ? "online.png" : "offline.gif"), :id => "visible_mode" %>
 	  </h1>
 		<ul class="tab_menu">
-		<li><%= link_to "Earn credits(#{current_user.credit.to_i})", earn_credits_credits_path %></li> 
+		<li><%= link_to "Buy credits(#{current_user.credit.to_i})", earn_credits_credits_path %></li> 
 		<li><%= link_to "Cars" , carprofiles_path %></li>
 		<li><%= link_to "Subscribers",:action=>"subscribe_count",:id=>current_user.id%>
       </li> 
@@ -46,7 +46,7 @@
 	
 	<% @user_blogs.each do |user_blog| %>
 	<div class="blog_div2">
-        <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.blog.name rescue nil%></a><br>
+        <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>
         <%= truncate(user_blog.body, :length => 200).html_safe  rescue nil %><br/>
         <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More
 		</a>

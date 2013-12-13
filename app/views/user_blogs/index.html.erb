@@ -9,7 +9,7 @@
         });
         </script>
         
-        <div class="grid_20 title">
+        <div class="grid_20 title" style="margin-top:10px">
     
   <div style="width:40%; float:left"><h4>Blogs</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%=new_user_blog_path%>" class="compose">Add New Blogs +</a></div>
@@ -27,7 +27,7 @@
       <ul class="message_menu">
     <li class="selected"><%= link_to "All Blogs", all_blogs_user_blogs_path %></li>
     <li><%= link_to "My Blogs", user_blogs_path %></li>
-    <li><a href="#">Friend's Blog</a></li>
+    <li><a href="<%= myfriend_blog_path%>">Friend's Blog</a></li>
     </ul>
     
     
@@ -48,8 +48,8 @@
     <div class="grid_11">
     
     <div><br/><%= form_tag blogsearch_path, :method=> :get do %>
-          <%= text_field_tag :q, nil,:class=>"search_tf"%>
-          <%= submit_tag "Search",:class=>"submit_btn"%>
+          <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
+          <%= submit_tag "Search",:class=>"submit_btn2"%>
           <% end %>
     </div>
     
@@ -59,9 +59,15 @@
     <% @user_blogs.each do |user_blog| %>
     
     <div class="message"> 
+      <%#= raise current_user.pic.blank?.inspect%>
+    <%if current_user.pic.blank? %>
+    
+    <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
+    <%else%>
+    <div class="thumb"><%= link_to image_tag(current_user.pic.url(:thumb),:height => "50",:width => "50")%></div>
+    <% end %>
     
     
-    <img src="assets/thumb_profile.jpg" alt="">
     
     <div class="mail_content" style="width:442px">
     <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
@@ -109,7 +115,12 @@
        
       <div class="blog_div" style="width:100%">
     
-    <div class="thumb"><img alt="" src="assets/thumb_car.jpg"></div>
+     <%if User.find_by_id(blog_comment.user_id).pic.blank? %>
+      
+      <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
+    <%else%>
+      <div class="thumb"><%=link_to image_tag(User.find_by_id(blog_comment.user_id).pic.url(:thumb) ,:width => 50, :height => 40) %></div>
+    <% end %>
     
     <div class="blog_right">
     <a class="bluelink bold" href="#"><%= blog_comment.user_blog.user.first_name rescue nil %></a><br>

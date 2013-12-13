@@ -6,6 +6,7 @@ class UserBlogsController < ApplicationController
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     @blogs  = Blog.all
+  
     #raise @blog_comments.inspect
   end
 
@@ -15,6 +16,14 @@ class UserBlogsController < ApplicationController
     @blogs  = Blog.all
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  end
+
+  def myfriend_blog
+    @friends = current_user.friends
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @blog_comments = BlogComment.order("created_at desc").limit(100)
+    @blogs  = Blog.all
+
   end
 
   def new
