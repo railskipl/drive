@@ -7,9 +7,7 @@ class LogbooksController < ApplicationController
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @logbook_categories =  LogbookCategory.all
     @carprofile = Carprofile.all
-    
-     
-    #raise @logbooks.inspect
+    @friends = current_user.friends
   end
 
   def all_logbook
@@ -18,6 +16,14 @@ class LogbooksController < ApplicationController
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @carprofile = current_user.carprofiles
     @logbook_categories =  LogbookCategory.all
+  end
+
+  def myfriend
+    @friends = current_user.friends.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @carprofile = current_user.carprofiles
+    @logbook_categories =  LogbookCategory.all
+
   end
 
   def new

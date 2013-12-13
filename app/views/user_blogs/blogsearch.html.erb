@@ -9,7 +9,7 @@
         });
         </script>
         
-        <div class="grid_20 title">
+        <div class="grid_20 title" style="margin-top:10px">
     
   <div style="width:40%; float:left"><h4>Blogs</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%=new_user_blog_path%>" class="compose">Add New Blogs +</a></div>
@@ -51,7 +51,9 @@
           <% end %>
     </div>
     
-    
+    <%if @user_blogs.empty? %>
+     <%= "No blogs found"%>
+    <%else%>
     <% @user_blogs.each do |user_blog| %>
     
     <div class="message"> 
@@ -78,6 +80,7 @@
 
     </div>
     <%end%>
+     <%end%>
   <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
       <%= will_paginate @user_blogs %>

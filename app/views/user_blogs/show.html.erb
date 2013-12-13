@@ -24,11 +24,10 @@
     
     <div class="grid_20">
     
-  <h2><%= link_to @user_blog.title , user_blog_path(@user_blog)  rescue nil%></h2>
-
+  <h2><a class="bluelink" href="<%= user_blog_path(@user_blog) %>"><%= @user_blog.title rescue nil%></h2>
  
-  by <%=link_to @user_blog.user.first_name  , root_path rescue nil%><br/><br/>
-
+  by <a class="bluelink" href="<%= root_path %>"><%= @user_blog.user.first_name rescue nil%></a><br/><br/>
+     
    <td>
   <% if current_user.id == @user_blog.user_id %>
   
@@ -36,14 +35,17 @@
     <%= link_to 'Destroy',user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
   
   <%end%>
-  <%= link_to "Favourite",{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }%><br/>
+  <%= link_to (image_tag "star2.png"),{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }%><br/>
 
   <p>
     <%= @user_blog.body.html_safe rescue nil%>
   </p>
   <tr>
    
- <%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id),:method => "post",:remote => true,:id => "like_blog" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;<%= link_to "Comment",user_blog_path(@user_blog) %>&nbsp;&nbsp;&nbsp;<%= @user_blog.created_at.strftime("%b %d, %Y") rescue nil%>
+ <%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id),:method => "post",:remote => true,:id => "like_blog" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
+ 
+ <a class="bluelink" href="<%= user_blog_path(@user_blog) %>">Comment</a>&nbsp;&nbsp;&nbsp;
+ <%= @user_blog.created_at.strftime("%b %d, %Y") rescue nil%>
  
  <br/><br/><hr/>
 
@@ -53,11 +55,11 @@
  <% unless user_blog.id.nil? %>
   <div>
     
-    <strong><%= user_blog.body.to_s.html_safe rescue nil%> 
+    <%= user_blog.body.to_s.html_safe rescue nil%>&nbsp;&nbsp;&nbsp; 
       <% if user_blog.user_id == current_user.id %>
-      <%= link_to 'Destroy', user_blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to (image_tag "001_05.png"), user_blog, method: :delete, data: { confirm: 'Are you sure?' } %>
       <%end%>
-    </strong>
+    
     
   </div>
 <% end %>

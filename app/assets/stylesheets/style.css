@@ -43,6 +43,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', end
     text-decoration: none;
 	margin:0 0 0 10px; line-height:normal
 }
+
+
+
+.submit_btn2 {
+    background: #cb1b2b; /* Old browsers */
+    background: -moz-linear-gradient(top, #cb1b2b 0%, #a20111 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cb1b2b), color-stop(100%,#a20111)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #cb1b2b 0%,#a20111 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #cb1b2b 0%,#a20111 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #cb1b2b 0%,#a20111 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #cb1b2b 0%,#a20111 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb1b2b', endColorstr='#a20111',GradientType=0 ); /* IE6-9 */
+    border: 1px solid #000;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 4px 10px;
+    text-decoration: none;
+    margin:0 0 0 10px; line-height:normal
+}
 .submit_btn:hover {
  background: #e82020; /* Old browsers */
 background: -moz-linear-gradient(top, #e82020 0%, #ba0101 100%); /* FF3.6+ */
@@ -792,3 +814,8 @@ font-size:11px}
 .vticker{ margin:0; padding:0; height:300px!important; }
 .vticker ul{ margin:0; padding:0; list-style-type:none }
 .vticker ul li{ margin:0; padding:0; overflow:hidden}
+
+.likediv{ margin:10px 0; font-size:11px}
+
+.likelink{ color:#00487a; text-decoration:none; padding-right:5px}
+.likelink:hover{ text-decoration:none; color:#333}

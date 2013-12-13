@@ -12,7 +12,7 @@
         <div class="grid_20 title">
     
   <div style="width:40%; float:left"><h4>Friends</h4></div>
-  <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="#" class="compose">Create a List </a></div>
+  <!-- <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="#" class="compose">Create a List </a></div> -->
   
   
   
@@ -37,7 +37,7 @@
     <div class="grid_16">
      
     
-    <div><input name="" type="text" class="pe_tf message_search"></div>
+    <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
      <% current_user.friends.each do |friend|%>
     <div class="message"> 
     
@@ -49,7 +49,7 @@
     <%if friend.pic.blank? %>
     <a href="<%= user_path(friend)%>"><img src="assets/thumb_profile.jpg" alt="">
     <%else%>
-    <%= link_to image_tag(friend.pic.url(:thumb)), user_path(friend)%>
+    <%= link_to image_tag(friend.pic.url(:thumb),:width => 50, :height => 40), user_path(friend)%>
     <% end %>
     <div class="mail_content">
     <div><a href="#" class="bluelink bold"><b><%= link_to friend.first_name, user_path(friend) %></b></a></div>

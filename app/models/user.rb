@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :comment_logbooks, dependent: :destroy
-
+  has_many :blog_comments ,dependent: :destroy
   has_many :sent_egifts, :class_name => 'SendGift', :foreign_key => 'sender_id', :dependent => :destroy
   has_many :received_egifts, :class_name => 'SendGift', :foreign_key => 'receiver_id', :dependent => :destroy
 

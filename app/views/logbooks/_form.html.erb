@@ -40,7 +40,7 @@
   <% @carprofile.each do |carprofile| %>
   <div style="float:left">
   
-  <%= f.radio_button :carprofile_id , carprofile.id rescue nil%><%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb) rescue nil%>
+  <%= f.radio_button :carprofile_id , carprofile.id rescue nil%><%= image_tag(carprofile.carprofile_photos.first.photo.url(:thumb),:width => 50, :height => 40) rescue nil%>
   
   </div>
   <%end%>

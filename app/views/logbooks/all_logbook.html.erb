@@ -3,7 +3,7 @@
     <div class="container_20" style="background:#333; margin-bottom:10px">
     <%= render 'shared/carousel' %>
     
-    <div class="grid_20 title">
+    <div class="grid_20 title" style="margin-top:10px" >
     
   <div style="width:40%; float:left"><h4>My Logbook</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%= new_logbook_path %>" class="compose">Add Logbook +</a></div>
@@ -40,8 +40,8 @@
     <div class="grid_12">
     
     <div><br/> <%= form_tag logbooksearch_path, :method=> :get do %>
-          <%= text_field_tag :q, nil,:class=>"search_tf"%>
-           <%= submit_tag "Search",:class=>"submit_btn" %>
+          <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
+           <%= submit_tag "Search",:class=>"submit_btn2" %>
           <% end %>
     </div>
     <% if @logbook.empty? %>
@@ -55,8 +55,8 @@
     
     
     </div>
+    <div class = "thumb"><%=link_to image_tag(logbooks.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
     
-    <img src="<%=logbooks.carprofile.carprofile_photos.first.photo.url(:thumb)%>" alt="">
   
     <div class="mail_content" style="width:475px">
     <div><a href="<%=logbook_path(logbooks)%>" class="bluelink bold"><%=logbooks.title%></a></div>

@@ -3,7 +3,7 @@
     <div class="container_20" style="background:#333; margin-bottom:10px">
     <%= render 'shared/carousel' %>
     
-    <div class="grid_20 title">
+    <div class="grid_20 title" style="margin-top:10px">
     
   <div style="width:40%; float:left"><h4>My Logbook</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%= new_logbook_path %>" class="compose">Add Logbook +</a></div>
@@ -17,7 +17,7 @@
       <ul class="message_menu">
     <li><%= link_to "All Logbook", logbooks_all_logbook_path rescue nil%></li>
     <li class="selected"><%= link_to "My Logbooks", logbooks_path rescue nil%></li>
-    <li><a href="#">Friend's Logbook</a></li>
+    <li><a href="<%= myfriend_blog_path%>">Friend's Logbook</a></li>
     </ul>
     
     <strong class="bluelink">Topic</strong>
@@ -47,7 +47,7 @@
     <div class="message"> 
  
     
-    <img src="<%=logbook.carprofile.carprofile_photos.first.photo.url(:thumb) rescue nil%>" alt="">
+    <div class = "thumb"><%=link_to image_tag(logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
   
     <div class="mail_content" style="width:475px">
     <div><a href="<%=logbook_path(logbook)%>" class="bluelink bold"><%=logbook.title rescue nil%></a></div>

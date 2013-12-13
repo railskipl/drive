@@ -24,32 +24,35 @@
     
     <div class="grid_20">
     
-  <h2><%=link_to @logbook.title, logbook_path(@logbook) rescue nil%></h2>
+  <h2><a class="bluelink" href="<%= logbook_path(@logbook) %>"><%= @logbook.title rescue nil%></h2>
 
  
-  by <%=link_to @logbook.user.first_name, root_path rescue nil%><br/><br/>
+  by <a class="bluelink" href="<%= root_path %>"><%= @logbook.user.first_name rescue nil%></a><br/><br/>
 
    <td>
   <% if current_user.id == @logbook.user_id %>
   
     <%= link_to 'Edit', edit_logbook_path %>
-    <%= link_to 'Destroy',logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+    <%= link_to (image_tag "001_05.png"),logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
   
   <%end%>
-  <%= link_to "Favourite",{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%><br/>
+  <%= link_to (image_tag "star2.png"),{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%><br/>
 
   <p>
     <%= @logbook.logbook_discription.html_safe rescue nil%>
   </p>
   <tr>
    
-  <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;<%= link_to "Comment",logbook_path(@logbook) %>&nbsp;&nbsp;&nbsp;<%= @logbook.created_at.strftime("%b %d, %Y") rescue nil%>
+  <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
+  <a class="bluelink" href="<%= logbook_path(@logbook) %>">Comment</a>&nbsp;&nbsp;&nbsp;
+
+    <%= @logbook.created_at.strftime("%b %d, %Y") rescue nil%>
  
  <br/><br/><hr/>
 
 <h4>Comments</h4>
 <div class="row">
-<%= render 'comment_logbooks/form' %>
+
 
 <% @logbook.comment_logbooks.each do |comment_logbook| %>
 
@@ -57,7 +60,7 @@
   <div>
   <strong><%= comment_logbook.body.to_s.html_safe rescue nil%>
     <% if comment_logbook.user_id == current_user.id  %>
-     <%= link_to 'Destroy', comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%> 
+     <%= link_to (image_tag "001_05.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%> 
      <%end%>
   
   </strong>
@@ -65,6 +68,7 @@
   </div>
 <% end %>
 <%end%>
+<%= render 'comment_logbooks/form' %>
 <br/>
 
 </div>
