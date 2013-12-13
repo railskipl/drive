@@ -62,7 +62,7 @@
       <%#= raise current_user.pic.blank?.inspect%>
     <%if current_user.pic.blank? %>
     
-    <div class="thumb"><a href="#"><img src="assets/thumb_profile.jpg" alt=""></div>
+    <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
     <%else%>
     <div class="thumb"><%= link_to image_tag(current_user.pic.url(:thumb),:height => "50",:width => "50")%></div>
     <% end %>

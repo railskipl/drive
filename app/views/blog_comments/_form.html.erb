@@ -12,12 +12,38 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="comment_div">
+      <div class="comment_arrow"></div>
+      <div class="comment_content">
+        <%if current_user.pic.url(:thumb).blank?%>
+        <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
+          <%else%>
+        <img alt="" src="<%=current_user.pic.url(:thumb)%>" style="float:left" style="float:left" height="40" width="50">
+        <%end%>
+          <div class="comment_right">
+             <textarea name="blog_comment[body]" type="text" class="pe_tf" style="width:888px"></textarea>
+            <!-- <div><input name="comment_logbook[body]" type="text" class="pe_tf" style="width:888px"></div> -->
+            <div style="margin:10px 0; float:right"><input type="submit" value="Comment" style="margin-left:0px" class="submit_btn" name="button">
+            </div>
+            
+            <%= f.hidden_field :user_blog_id %>
+            <%= f.hidden_field :user_id,:value => current_user.id %>
+           <%#= f.hidden_field :logbook_user_id,:value => @logbook.user_id %>
+    
+          </div>
+          
+          
+        </div>
+
+  <!-- <div class="field">
     <textarea class="comment_tf2" rows="4" name="blog_comment[body]"></textarea>
   </div>
   <%= f.hidden_field :user_blog_id %>
   <%= f.hidden_field :user_id,:value => current_user.id %>
   <div style="float:right; margin:10px 0; text-align:left; width:100%">
           <input type="submit" value="Done" style="margin-left:0px" class="submit_btn" name="button">
-  </div>
+  </div> -->
 <% end %>
+
+
+

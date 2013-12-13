@@ -819,3 +819,13 @@ font-size:11px}
 
 .likelink{ color:#00487a; text-decoration:none; padding-right:5px}
 .likelink:hover{ text-decoration:none; color:#333}
+
+.reply{ background:url(../assets/reply.png) no-repeat 10px 5px; padding-left:30px}
+    .reply:hover{ background:url(../assets/reply2.png) no-repeat 10px 5px; padding-left:30px;}
+    
+    
+    
+    .comment_div{ width:auto; height:auto; overflow:hidden; margin-bottom:10px}
+    .comment_arrow{ background:url(../assets/top_arrow.png) no-repeat 10px 0; width:auto; height:8px}
+    .comment_content{ background:#F3F3F3 ; width:auto; padding:10px; overflow:hidden; border-bottom:1px solid #fff}
+    .comment_right{ width:auto; height:auto; margin:0 0 0 60px}

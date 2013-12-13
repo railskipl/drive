@@ -29,13 +29,7 @@
   by <a class="bluelink" href="<%= root_path %>"><%= @user_blog.user.first_name rescue nil%></a><br/><br/>
      
    <td>
-  <% if current_user.id == @user_blog.user_id %>
-  
-    <%= link_to 'Edit', edit_user_blog_path %>
-    <%= link_to 'Destroy',user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-  
-  <%end%>
-  <%= link_to (image_tag "star2.png"),{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }%><br/>
+ 
 
   <p>
     <%= @user_blog.body.html_safe rescue nil%>
@@ -43,29 +37,56 @@
   <tr>
    
  <%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id),:method => "post",:remote => true,:id => "like_blog" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
+ <% if current_user.id == @user_blog.user_id %>
+  
+    <%= link_to (image_tag "image.jpg" ,:height => "20", :width => "20"), edit_user_blog_path %>&nbsp;&nbsp;&nbsp;
+    <%= link_to (image_tag "delete.png"),user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+  
+  <%end%>&nbsp;&nbsp;&nbsp;
+  <%= link_to (image_tag "star2.png"),{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }%>
  
- <a class="bluelink" href="<%= user_blog_path(@user_blog) %>">Comment</a>&nbsp;&nbsp;&nbsp;
- <%= @user_blog.created_at.strftime("%b %d, %Y") rescue nil%>
+ <div style="float:right"><%= @user_blog.created_at.strftime("%b %d, %Y") rescue nil%></div>
  
  <br/><br/><hr/>
 
 <h4>Comments</h4>
-<div class="row">
+
 <% @user_blog.blog_comments.each do |user_blog| %>
- <% unless user_blog.id.nil? %>
-  <div>
+    <%#raise User.find_by_id(user_blog.user_id).pic.url(:thumb).inspect %>
+  <% unless user_blog.id.nil? %>
+<div class="comment_content">
+  <%#= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%>
+        <img alt="" src="<%= User.find_by_id(user_blog.user_id).pic.url(:thumb)%>" style="float:left" height="40" width="50">
+          <div class="comment_right">
+            <%#raise comment_logbook.user.id.inspect%>
+            <% if user_blog.user_id == current_user.id  %>
+             <div style="float:right" ><%= link_to (image_tag "delete.png"), user_blog, method: :delete, data: { confirm: 'Are you sure?' }%></div>
+             <%end%>
+            <a href="#" class="close"></a>
+            <div style="margin:0 0 5px 0">By <a class="bluelink" href="<%= user_path(user_blog.user.id)%>" ><%=user_blog.user.first_name%></a></div>
+            <div><%= user_blog.body.to_s.html_safe rescue nil%>
+            </div>
+            
+            <ul class="action">
+            <% if user_blog.created_at > Time.now.beginning_of_day %>
+               <%="#{time_ago_in_words(user_blog.created_at)} ago"%>
+               <% else %>
+              <!-- <li><a href="#">Like</a></li> -->
+              <!-- <li><a href="#">Comment</a></li> -->
+              <li><%= user_blog.created_at.strftime("%b %d, %Y") %></li>
+            <% end %>
+          </ul>
     
-    <%= user_blog.body.to_s.html_safe rescue nil%>&nbsp;&nbsp;&nbsp; 
-      <% if user_blog.user_id == current_user.id %>
-      <%= link_to (image_tag "001_05.png"), user_blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%end%>
-    
-    
-  </div>
-<% end %>
-<%end%>
-<%= render 'blog_comments/form' %>
-<br/>
+          </div>
+          
+          
+        </div>
+         <%end%>
+          <%end%>
+
+         <%= render 'blog_comments/form' %>
+
+
 
 </div>
     </div>

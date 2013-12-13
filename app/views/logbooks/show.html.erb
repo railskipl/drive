@@ -27,16 +27,10 @@
   <h2><a class="bluelink" href="<%= logbook_path(@logbook) %>"><%= @logbook.title rescue nil%></h2>
 
  
-  by <a class="bluelink" href="<%= root_path %>"><%= @logbook.user.first_name rescue nil%></a><br/><br/>
-
+  by <a class="bluelink" href="<%=user_path(@logbook.user.id)%>"><%= @logbook.user.first_name rescue nil%></a><br/><br/>
+  <%#raise @logbook.user.id.inspect%>
    <td>
-  <% if current_user.id == @logbook.user_id %>
   
-    <%= link_to 'Edit', edit_logbook_path %>
-    <%= link_to (image_tag "001_05.png"),logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-  
-  <%end%>
-  <%= link_to (image_tag "star2.png"),{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%><br/>
 
   <p>
     <%= @logbook.logbook_discription.html_safe rescue nil%>
@@ -44,43 +38,60 @@
   <tr>
    
   <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
-  <a class="bluelink" href="<%= logbook_path(@logbook) %>">Comment</a>&nbsp;&nbsp;&nbsp;
 
-    <%= @logbook.created_at.strftime("%b %d, %Y") rescue nil%>
+   
  
+   <% if current_user.id == @logbook.user_id %>
+  
+    <%= link_to (image_tag "image.jpg" ,:height => "20", :width => "20"), edit_logbook_path %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= link_to (image_tag "delete.png"),logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>&nbsp;&nbsp;&nbsp;&nbsp;
+  
+  <%end%>
+  <%= link_to (image_tag "star2.png",:height => "20", :width => "20"),{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%>&nbsp;&nbsp;&nbsp;
+  
+  <div style="float:right"><%= @logbook.created_at.strftime("%b %d, %Y")rescue nil%></div><br/>
  <br/><br/><hr/>
 
+
+
 <h4>Comments</h4>
-<div class="row">
 
 
 <% @logbook.comment_logbooks.each do |comment_logbook| %>
+  <% unless comment_logbook.id.nil? %>
+<div class="comment_content">
+  <%#= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%>
+        <img alt="" src="<%= User.find_by_id(comment_logbook.user_id).pic.url(:thumb)%>" style="float:left" height="40" width="50">
+          <div class="comment_right">
+            <%#raise comment_logbook.user.id.inspect%>
+            <% if comment_logbook.user_id == current_user.id  %>
+             <div style="float:right" ><%= link_to (image_tag "delete.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%></div>
+             <%end%>
+            <a href="#" class="close"></a>
+            <div style="margin:0 0 5px 0">By <a class="bluelink" href="<%=user_path(comment_logbook.user.id)%>" ><%=comment_logbook.user.first_name%></a></div>
+            <div><%= comment_logbook.body.to_s.html_safe rescue nil%>
+            </div>
+            
+            <ul class="action">
+              <% if comment_logbook.created_at > Time.now.beginning_of_day %>
+               <%="#{time_ago_in_words(comment_logbook.created_at)} ago"%>
+               <% else %>
+          <!-- <li><a href="#">Like</a></li> -->
+          <!-- <li><a href="#">Comment</a></li> -->
+          <li><%= comment_logbook.created_at.strftime("%b %d, %Y") %></li>
+          <% end %>
+          </ul>
+    
+          </div>
+          
+          
+        </div>
 
- <% unless comment_logbook.id.nil? %>
-  <div>
-  <strong><%= comment_logbook.body.to_s.html_safe rescue nil%>
-    <% if comment_logbook.user_id == current_user.id  %>
-     <%= link_to (image_tag "001_05.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%> 
-     <%end%>
-  
-  </strong>
-    
-  </div>
-<% end %>
-<%end%>
-<%= render 'comment_logbooks/form' %>
-<br/>
+        <%end%>
+         <%end%>
+         <%= render 'comment_logbooks/form' %>
 
-</div>
-    
-    
-    
-    
-    
-    
-    
-        
-    
+
         
     
     </div>

@@ -107,6 +107,7 @@ class LogbooksController < ApplicationController
   
     @logbook = Logbook.find(params[:id])
     @comment_logbook = @logbook.comment_logbooks.build
+   
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @likes = @logbook.likes(@logbook.id)
       

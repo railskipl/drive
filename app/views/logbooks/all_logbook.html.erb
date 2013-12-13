@@ -23,7 +23,7 @@
     <li><%= link_to "All Logbook",logbooks_all_logbook_path %></li>
 
     <li><%= link_to "My Logbooks", logbooks_path %></li>
-    <li><a href="#">Friend's Logbook</a></li>
+    <li><a href="<%= myfriend_path%>">Friend's Logbook</a></li>
     </ul>
     
     <strong class="bluelink">Topic</strong>
@@ -60,7 +60,7 @@
   
     <div class="mail_content" style="width:475px">
     <div><a href="<%=logbook_path(logbooks)%>" class="bluelink bold"><%=logbooks.title%></a></div>
-    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= root_path%>"><%=logbooks.user.first_name rescue nil%></a></div>
+    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= user_path(logbooks.user.id)%>"><%=logbooks.user.first_name rescue nil%></a></div>
     <div><%= truncate(logbooks.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
     <div class="likediv">  <a href="#" class="likelink">Comment</a>  
