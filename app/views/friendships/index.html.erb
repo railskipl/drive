@@ -52,7 +52,7 @@
     <%= link_to image_tag(friend.pic.url(:thumb),:width => 50, :height => 40), user_path(friend)%>
     <% end %>
     <div class="mail_content">
-    <div><a href="#" class="bluelink bold"><b><%= link_to friend.first_name, user_path(friend) %></b></a></div>
+    <div><a href="#" class="bluelink bold"><b><%=friend.first_name %> <%= friend.last_name%></b></a></div>
     
     
     </div>

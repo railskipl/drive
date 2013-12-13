@@ -27,8 +27,9 @@
   <h2><a class="bluelink" href="<%= logbook_path(@logbook) %>"><%= @logbook.title rescue nil%></h2>
 
  
-  by <a class="bluelink" href="<%=user_path(@logbook.user.id)%>"><%= @logbook.user.first_name rescue nil%></a><br/><br/>
-  <%#raise @logbook.user.id.inspect%>
+  by <a class="bluelink" href="<%= user_path %>"><%= @logbook.user.first_name rescue nil%></a><br/><br/>
+
+
    <td>
   
 
@@ -90,6 +91,7 @@
         <%end%>
          <%end%>
          <%= render 'comment_logbooks/form' %>
+
 
 
         
