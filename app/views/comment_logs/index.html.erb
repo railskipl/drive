@@ -1,0 +1,58 @@
+<div class="middle">
+		
+		<div class="container_20" style="background:#333; margin-bottom:10px">
+		
+		 <%= render 'shared/carousel' %>
+		
+				
+		  <div class="grid_20">
+		
+	<h4 class="title">Comments</h4>
+	</div>
+		
+		
+    <div class="grid_10">
+	          <strong>My Comments</strong>
+	    <ul class="comment_list2">
+
+		<% @blog_comments.each do |blog_comment| %>
+
+			<% if blog_comment.user_id == current_user.id %>
+		       <li><%= link_to truncate(blog_comment.body, :length => 75).html_safe,user_blog_path(blog_comment.user_blog_id) rescue nil%></li>
+		    <%end%>
+	    <%end %>
+
+        <% @comment_logbooks.each do |comment_logbook| %>
+
+	       <% if comment_logbook.user_id == current_user.id %>
+	           <li><%= link_to truncate(comment_logbook.body,:length => 75).html_safe,logbook_path(comment_logbook.logbook_id)rescue nil%></li>
+	        <%end%>
+	    <%end %>
+	 </ul>
+	</div>
+	
+	<div class="grid_10">
+	  <strong>Responses and Comment to me</strong>
+		
+	    <ul class="comment_list">
+	       <% @blog_comments = @blog_comments.delete_if {|i| i.user_id == current_user.id } %>
+	           <% @blog_comments.each do |blog_comment| %>
+	              <% if blog_comment.user_blog_user_id == current_user.id %>
+                    <li><%= link_to truncate(blog_comment.body, :length => 75).html_safe,user_blog_path(blog_comment.user_blog_id)rescue nil%></li>
+	              <%end%>
+	           <%end%>
+
+	        <% @comment_logbooks = @comment_logbooks.delete_if {|i| i.user_id == current_user.id } %>
+	           <% @comment_logbooks.each do |comment_logbook| %>
+	              <% if comment_logbook.logbook_user_id == current_user.id %>
+	                  <li><%= link_to truncate(comment_logbook.body,:length => 75).html_safe,logbook_path(comment_logbook.logbook_id)rescue nil%></li>
+	                <%end%>
+	           <%end%>
+	    </ul>
+	</div>
+	   </div>
+	</div>
+</div>
+
+
+

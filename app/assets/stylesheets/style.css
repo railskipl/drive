@@ -821,11 +821,58 @@ font-size:11px}
 .likelink:hover{ text-decoration:none; color:#333}
 
 .reply{ background:url(../assets/reply.png) no-repeat 10px 5px; padding-left:30px}
-    .reply:hover{ background:url(../assets/reply2.png) no-repeat 10px 5px; padding-left:30px;}
+.reply:hover{ background:url(../assets/reply2.png) no-repeat 10px 5px; padding-left:30px;}
     
-    
-    
-    .comment_div{ width:auto; height:auto; overflow:hidden; margin-bottom:10px}
-    .comment_arrow{ background:url(../assets/top_arrow.png) no-repeat 10px 0; width:auto; height:8px}
-    .comment_content{ background:#F3F3F3 ; width:auto; padding:10px; overflow:hidden; border-bottom:1px solid #fff}
-    .comment_right{ width:auto; height:auto; margin:0 0 0 60px}
+.comment_div{ width:auto; height:auto; overflow:hidden; margin-bottom:10px}
+.comment_arrow{ background:url(../assets/top_arrow.png) no-repeat 10px 0; width:auto; height:8px}
+.comment_content{ background:#F3F3F3 ; width:auto; padding:10px; overflow:hidden; border-bottom:1px solid #fff}
+.comment_right{ width:auto; height:auto; margin:0 0 0 60px}
+
+.comment_list{
+list-style-type: none;
+margin:10px 0;
+padding: 0;
+width: auto; float:left; margin-right:15px
+}
+
+.comment_list li a{
+color: #00487A;
+display: block;
+width: 100%;
+padding: 2px 0 2px 20px;
+text-decoration:none; background:url(../assets/curv_arrow.png) no-repeat 0 7px
+}
+
+
+.comment_list li a:visited{
+color: #000;
+}
+
+.comment_list li a:hover, .comment_list li a:active{
+color: #000;
+}
+
+
+.comment_list2{
+list-style-type: none;
+margin:10px 0;
+padding: 0;
+width: auto; float:left; margin-right:15px
+}
+
+.comment_list2 li a{
+color: #00487A;
+display: block;
+width: 100%;
+padding: 2px 0 2px 0;
+text-decoration:none;
+}
+
+
+.comment_list2 li a:visited{
+color: #000;
+}
+
+.comment_list2 li a:hover, .comment_list2 li a:active{
+color: #000;
+}
