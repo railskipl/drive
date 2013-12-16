@@ -38,7 +38,7 @@
     
     <div class="grid_16">
     
-    <div><input name="" type="text" class="pe_tf message_search"></div>
+    <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
 <%= form_tag delete_all_by_sender_messages_path, :method => :put do %>
 
     <% @a = @sent_messages.reject {|i| i.is_deleted_by_sender == true } %>

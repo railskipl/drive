@@ -103,6 +103,10 @@ end
 
   match 'blogsearch' => 'user_blogs#blogsearch'
 
+  match "myfriend"  => 'logbooks#myfriend'
+
+  match "myfriend_blog"  => 'user_blogs#myfriend_blog'
+
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root
     resources :pages

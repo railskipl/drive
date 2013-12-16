@@ -3,6 +3,7 @@
 
 
 <p>
+
   <% @favourites.each do |n| %>
      
     <%#  user = User.find(n.user_id)%>
@@ -10,16 +11,23 @@
        <%#= raise @favourites.inspect %>
       <%= link_to n.logbook.title,logbook_path(n.logbook_id) rescue nil %>,your favourite logbook <br/>
     <%end%>
+
+  <%end%>
+
+  <% @favourites.each do |n| %>
      
     <%if n.favourite_type == "favourite_blog"  %>
       <%= link_to n.user_blog.title ,user_blog_path(n.user_blog_id) rescue nil %> ,your favourite blog <br/>
     <%end%>
 
+  <%end%>
+
+  <% @favourites.each do |n| %>
     <%if n.favourite_type == "favourite_carprofile"  %>
       <%= link_to n.carprofile.car_model.name ,carprofile_path(n.carprofile_id) rescue nil %> ,your favourite carprofile <br/>
     <%end%>
-    
-  <%end%>
 
+  <%end%>
+    
 </p>
 

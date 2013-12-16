@@ -3,34 +3,30 @@
     <div class="container_20" style="background:#333; margin-bottom:10px">
     <%= render 'shared/carousel' %>
     
-    <div class="grid_20 title" style="margin-top:10px" >
+    <div class="grid_20 title" style="margin-top:10px">
     
   <div style="width:40%; float:left"><h4>My Logbook</h4></div>
   <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%= new_logbook_path %>" class="compose">Add Logbook +</a></div>
   
-  
-  
-  
-    
-    
-    </div>
-    
+  </div>
+
     <div class="grid_4">
     
     
     
       <ul class="message_menu">
-    <li><%= link_to "All Logbook",logbooks_all_logbook_path %></li>
-
-    <li><%= link_to "My Logbooks", logbooks_path %></li>
-    <li><a href="<%= myfriend_path%>">Friend's Logbook</a></li>
+    <li><%= link_to "All Logbook", logbooks_all_logbook_path rescue nil%></li>
+    <li><%= link_to "My Logbooks", logbooks_path rescue nil%></li>
+    <li><a href="<%= myfriend_path %>">Friend's Logbook</a></li>
     </ul>
+
     
     <strong class="bluelink">Topic</strong>
     <ul class="message_menu">
       <% @logbook_categories.each do |logbook| %>
-        <li><%= link_to logbook.name, search_logbook_categories_path(:name => logbook.name ) %></a></li>
-      <%end%>
+
+        <li><%= link_to logbook.name, search_logbook_categories_path(:name => logbook.name ) %></li>
+      <% end %>
     </ul>
     
     
@@ -44,43 +40,40 @@
            <%= submit_tag "Search",:class=>"submit_btn2" %>
           <% end %>
     </div>
-    <% if @logbook.empty? %>
-    <%= "nothing to show" %>
-    <%else%>
-      <% @logbook.each do |logbooks| %>
-      <div class="message"> 
+
     
-      <div class="tf">
-    
-    
-    
-    </div>
-    <div class = "thumb"><%=link_to image_tag(logbooks.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+    <% @friends.each do |fri|%>
+     <% if fri.logbooks.empty? %>
+     <%#= "No logbook found" %>
+     <%else%>
+     
+      <% fri.logbooks.each do |log|%>
+    <div class="message"> 
+ 
+    <div class = "thumb"><%=link_to image_tag(log.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
     
   
     <div class="mail_content" style="width:475px">
-    <div><a href="<%=logbook_path(logbooks)%>" class="bluelink bold"><%=logbooks.title%></a></div>
-    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= user_path(logbooks.user.id)%>"><%=logbooks.user.first_name rescue nil%></a></div>
-    <div><%= truncate(logbooks.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
+    <div><a href="<%=logbook_path(log)%>" class="bluelink bold"><%=log.title rescue nil%></a></div>
+    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%=user_path(log.user.id)%>"><%=log.user.first_name rescue nil%></a></div>
+    <div><%= truncate(log.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
-    <div class="likediv">  <a href="#" class="likelink">Comment</a>  
-      <% if logbooks.created_at > Time.now.beginning_of_day %> 
-           <%="#{time_ago_in_words(logbooks.created_at)} ago"%>
+    <div class="likediv"> <a href="<%=logbook_path(log)%>" class="likelink">Comment</a>  
+      <% if log.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(log.created_at)} ago"%>
            <% else %>
-           <%= logbooks.created_at.strftime("%b %d, %Y") %>
+           <%= log.created_at.strftime("%b %d, %Y") %>
       <% end %></div>
     </div>
 
     
-    
    </div>
   <%end%>
-  <%end%>
-    
-    
+     <%end%>
+      <%end%>
     
   <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
-    <%= will_paginate @logbook %>
+   <%= will_paginate @friends %>
   </ul>
     
     

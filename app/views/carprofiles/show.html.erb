@@ -152,7 +152,7 @@
     <div id="box-1" class="box1">
       <a href="#inline1" id="various1">
       
-     <%= image_tag carprofile.photo.url(:thumb)  %>
+     <%= image_tag(carprofile.photo.url(:thumb))  %>
         <span class="caption simple-caption">
           <p><a href="#inline1" id="various1">Simple Caption</a></p>
         </span>
@@ -282,7 +282,7 @@
     <div class="grid_20 aboutme">
     
        <h4>Comments</h4>
-        <div class="small_thumb"><%= image_tag current_user.pic.url(:thumb),:height => "77",:width => "77",:style=>"float:left;"%></div>
+        <div class="small_thumb"><%= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%></div>
 
         <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
             <%= hidden_field_tag :car_profile_id,@carprofile.id %>
