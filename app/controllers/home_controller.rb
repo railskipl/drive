@@ -36,11 +36,6 @@ q = params[:q]
 @users=@q.result(:distinct => true)
 end
 
-
-
-
-
-
 def subscribe_count
   @user = User.find(params[:id])
   @subscribers =  Subscriber.subscribers(@user,User)

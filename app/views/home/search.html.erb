@@ -10,21 +10,34 @@
 <tr>
 <th>Firstname</th>
 <th>Lastname</th>
+<th>Email</th>
 <th>Location</th>
 </tr>
 <% @users.each do |user|%>
   <tr>
-    <td><%= link_to user.first_name,:controller=>"users",:action=>"show",:id=>user.id %></td>
-     <td><%= user.last_name %></td>
-      <td><%= user.email %></td>
+    <% status = Block.find_by_blockable_id_and_blocker_id(current_user.id,user.id).present? %>
+    <% if status %>
+     <td><%= link_to user.first_name, "#",:id=>user.id ,:onclick => "alert('You are being Blocked !!!');"%></td>
+    <% else %>
+     <td><%= link_to user.first_name, user_path(user),:id=>user.id %></td>
+    <% end %>    
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
     <td><%= user.location %></td>
-  
+    <%# end %>
   </tr>
 <% end %>
 </table>
 </div>
 
 </div>
+
+
+
+
+
+
+
 
 
 
