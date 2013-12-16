@@ -1,13 +1,18 @@
  <%= stylesheet_link_tag  "table_style" %>
+<div class="middle">
+	<div class="grid_20 title">
+		<h4 style="margin-top:10px;">Message</h4>
+		</div>
 
+	<div class="grid_20" style="margin:10px;">	
 <% if @blocked_users.empty? %>
 <h2>You didnt block any users yet !!!</h2>
 <% else %>
-<table>
+<table width="100%">
 <tr>
-<td>Name</td>
-<td>Email</td>
-<td>Location</td>
+<th>Name</th>
+<th>Email</th>
+<th>Location</th>
 </tr>
 <% @blocked_users.each do |user| %> 
 <% blocked_user = User.find(user.blockable_id) %>
@@ -18,5 +23,6 @@
 </tr>
 <% end %>
 </table>
-
+</div>
 <% end %>
+</div>

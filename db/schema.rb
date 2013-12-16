@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212101357) do
+ActiveRecord::Schema.define(:version => 20131213163025) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -326,18 +326,18 @@ ActiveRecord::Schema.define(:version => 20131212101357) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "",   :null => false
-    t.string   "encrypted_password",     :default => "",   :null => false
+    t.string   "email",                  :default => "",                    :null => false
+    t.string   "encrypted_password",     :default => "",                    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,    :null => false
+    t.integer  "sign_in_count",          :default => 0,                     :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nickname"
@@ -345,16 +345,17 @@ ActiveRecord::Schema.define(:version => 20131212101357) do
     t.string   "location"
     t.boolean  "agree"
     t.boolean  "status"
-    t.integer  "credit",                 :default => 0,    :null => false
-    t.integer  "freecredit",             :default => 0,    :null => false
-    t.integer  "buycredit",              :default => 0,    :null => false
-    t.integer  "spend_credit",           :default => 0,    :null => false
+    t.integer  "credit",                 :default => 0,                     :null => false
+    t.integer  "freecredit",             :default => 0,                     :null => false
+    t.integer  "buycredit",              :default => 0,                     :null => false
+    t.integer  "spend_credit",           :default => 0,                     :null => false
     t.text     "about"
     t.string   "pic_file_name"
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
+    t.datetime "visibility_updated_on",  :default => '2013-12-16 04:42:58'
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
