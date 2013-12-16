@@ -1,8 +1,12 @@
 <% @comments.each do |comment| %>
+
   <% unless User.find_by_id(comment.user_id).nil? %>
     <div class="blog_div">
-      <div class="small_thumb"> <%= image_tag User.find_by_id(comment.user_id).pic.url(:thumb) if User.find_by_id(comment.user_id).present? %></div>
-      <div class="blog_right"> <%= link_to User.find_by_id(comment.user_id).nickname,User.find_by_id(comment.user_id),:class => "redlink" %> <br>
+      <div class="small_thumb"> 
+      	<%= image_tag comment.user.pic.url(:thumb) if comment.user.nickname.present? %>
+      </div>
+      <div class="blog_right" style="width:315px;float:left;margin:0;">
+       <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
         <%= comment.body %></div>
     </div>
     <% end %>

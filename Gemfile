@@ -15,6 +15,7 @@ gem 'rails', '3.2.14'
 
 
 
+
 gem 'paperclip'
 gem 'rmagick'
 gem 'pry'
@@ -27,6 +28,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem "socialization"
 gem 'prototype-rails'
+gem 'impressionist'
 
 gem 'pg'
 

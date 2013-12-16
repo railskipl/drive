@@ -28,7 +28,15 @@ def search
 q = params[:q]
 @q = User.search(first_name_or_last_name_or_location_cont: q)
 @users=@q.result(:distinct => true)
+end
 
+def keywordsearch
+q = params[:q]
+@users = User.search(first_name_or_last_name_or_nickname_or_location_cont: q).result
+@user_blogs = UserBlog.search(title_cont: q).result
+@logbooks = Logbook.search(title_cont: q).result
+@carprofiles = Carprofile.search(license_plate_or_engine_dis_or_power__or_cont: q).result
+@favourites =  Favourite.search(favourite_type_cont: q).result
 end
 
 def subscribe_count

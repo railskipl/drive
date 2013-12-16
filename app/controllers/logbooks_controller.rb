@@ -115,6 +115,7 @@ class LogbooksController < ApplicationController
       @likes.each do |like|
          @count << like.count
       end
+    @counts = @logbook.sum_counts(@count)
 
   end
 

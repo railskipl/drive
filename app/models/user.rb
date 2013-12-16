@@ -7,11 +7,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,:first_name,:last_name,:nickname,:birthday,:location,:agree,:status,
-                   :freecredit, :buycredit, :credit,:about,:pic
-
+                   :freecredit, :buycredit, :credit,:about,:pic,:visibility_status,:visibility_updated_on
+  
   # attr_accessible :title, :body
 
   has_many :carprofiles,dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :logbooks, dependent: :destroy
   has_many :user_blogs, dependent: :destroy
   has_many :favourites, dependent: :destroy
