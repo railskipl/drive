@@ -93,8 +93,12 @@ def subscribe_profile
    else
      current_user.update_attribute("visibility_status",true)
    end
-   render :json => {:status => current_user.visibility_status}.to_json
-end
+
+   render :json => {:status => current_user.visibility_status,:credit => current_user.credit}.to_json
+   
+  end
+
+
 
 def user_friends
   @user = User.find(params[:id])

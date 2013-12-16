@@ -1,0 +1,2 @@
+module CommentLogsHelper
+end

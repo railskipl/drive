@@ -1,6 +1,5 @@
 Drive::Application.routes.draw do
 
-
   resources :messages do
     collection do
       get :trash_messages
@@ -28,7 +27,7 @@ Drive::Application.routes.draw do
  end
 
   resources :blog_comments
-  
+  resources :comment_logs
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
 
   match "user_blogs/:id/user_blog"  => 'favourites#user_blog'
@@ -164,6 +163,8 @@ end
 
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'
+  match 'searchpeople' => 'home#searchpeople'
+  match 'keywordsearch' => 'home#keywordsearch'
 
 #:controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation:
