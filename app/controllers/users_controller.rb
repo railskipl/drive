@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	layout 'admin'
 
 
-   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status]
+   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends]
    helper :friendships
 
 
@@ -87,6 +87,15 @@ def change_status
      current_user.update_attribute("visibility_status",true)
    end
    render :json => {:status => current_user.visibility_status}.to_json
-  end
+end
+
+
+def user_friends
+  @user = User.find(params[:id])
+  @logged_in_user = current_user 
+  @friends = @user.friends
+  render :layout => "application"
+end
+
 
 end

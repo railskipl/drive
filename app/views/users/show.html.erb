@@ -43,13 +43,25 @@
 		</div>
     	<ul class="profile_menu">
 		
-		<li><%= link_to friendships_path do %>
+		<li>
+			<% if current_user == @user %>
+			<%= link_to friendships_path do %>
 			Friends
 			<span class="light_gray">(<%= @user.friends.count %>)
-			<% if !@user.requested_friends.empty? && current_user == @user %>
-			 New*
-			<% end %>
+			  <% if !@user.requested_friends.empty? && current_user == @user %>
+			   New*
+			  <% end %>
 			</span>
+			<% end %>
+			<% else %>
+			 <%= link_to user_friends_user_path do %>
+			Friends
+			<span class="light_gray">(<%= @user.friends.count %>)
+			  <% if !@user.requested_friends.empty? && current_user == @user %>
+			   New*
+			  <% end %>
+			</span>
+			<% end %>
 			<% end %>
 		</li>
 		<% unless current_user.id == @user.id %>
