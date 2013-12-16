@@ -97,7 +97,7 @@ def change_status
    render :json => {:status => current_user.visibility_status,:credit => current_user.credit}.to_json
   end
 
-end
+
 
 
 end
