@@ -101,6 +101,7 @@ class UserBlogsController < ApplicationController
       @likes.each do |like|
          @count << like.count
       end
+    @counts = @user_blog.sum_counts(@count)
   end
 
   def destroy
