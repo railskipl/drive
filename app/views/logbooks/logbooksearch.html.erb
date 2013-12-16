@@ -35,8 +35,8 @@
     <div class="grid_12">
     
     <div><br/> <%= form_tag logbooksearch_path, :method=> :get do %>
-          <%= text_field_tag :q, nil,:class=>"search_tf"%>
-           <%= submit_tag "Search",:class=>"submit_btn" %>
+          <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
+           <%= submit_tag "Search",:class=>"submit_btn2" %>
           <% end %>
     </div>
 
@@ -51,7 +51,7 @@
   
     <div class="mail_content" style="width:475px">
     <div><a href="<%=logbook_path(logbook)%>" class="bluelink bold"><%=logbook.title rescue nil%></a></div>
-    <div style="margin:0 0 5px 0">by <a class="bluelink" href="#"><%=logbook.user.first_name rescue nil%></a></div>
+    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%=user_path(logbook.user_id)%>"><%=logbook.user.first_name rescue nil%></a></div>
     <div><%= truncate(logbook.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
     <div class="likediv"> <a href="<%=logbook_path(logbook)%>" class="likelink">Comment</a>  

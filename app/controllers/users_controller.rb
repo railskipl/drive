@@ -77,7 +77,7 @@ def subscribe_profile
    render :layout => 'application'
  end
 
-def change_status
+  def change_status
 
    if params[:status]== "INACTIVE"
   
@@ -100,4 +100,3 @@ def change_status
 end
 
 
-end
