@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :carprofiles,dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :logbooks, dependent: :destroy
   has_many :user_blogs, dependent: :destroy
   has_many :favourites, dependent: :destroy

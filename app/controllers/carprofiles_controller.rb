@@ -3,6 +3,8 @@ class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
   before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date rescue ""
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
   def index
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -95,6 +97,7 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
+      @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
       @logbooks = Logbook.all
       @logbook = @carprofile.logbooks
       @egift = @carprofile.send_gifts
@@ -103,7 +106,7 @@ class CarprofilesController < ApplicationController
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
-      @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
+      @comments = Comment.where("carprofile_id = ? ",@carprofile.id).order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -159,7 +162,7 @@ def post_comment
     else
        @error = "Please Enter Text In Body !!!"
     end
-    @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
+    @comments = Comment.where("carprofile_id = ? ",@carprofile.id).order("created_at desc")
   end
 
 

@@ -1,62 +1,48 @@
 
 
-</script>
-
 
 <div class="container_20">
-    <div class="middle">
+  <div class="middle">
     <div class="container_20" style="background:#333; margin-bottom:10px">
       <%= render 'shared/carousel' %>
+    </div>
     
-      </div>
+    <div class="container_20 profile_bg">
+      <div class="grid_10">
+       <div class="car_profile_image">
+        <div class="gift" style="margin:0 0 0 352px"><%= image_tag @record.egift.image ,:width => 128, :height => 128 rescue nil %></div>
+         <%= image_tag @carprofile.carprofile_photos.first.photo.url ,:width => 480,:height => 240  rescue nil %>   
+       </div>
+       <div style="float:left; margin:10px 0">
+        <ul class="tab_menu">
+         <% if current_user.id == @carprofile.user_id %>     
+            <li><%= link_to "Subscribers",:action=>"subscar_count",:id=>@carprofile.id %></li>
+         <% end %>
+         <li><%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
+         </li>
+         <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
+         </li> 
+        <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
+        <% unless current_user.id == @carprofile.user_id %>  
+          <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
+        <% end %>
+        <li><%= link_to "favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
+        <% unless current_user.id == @carprofile.user_id %>
+          <li><%= link_to (Subscriber.subscribes?(current_user,@carprofile) ? "Unsubscribe": "Subscribe"),subscribe_car_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote => true,:id=>"subscribe_car"%></li>
+        <% end %>
+        </ul>
+    </div>
     
     
-        <div class="container_20 profile_bg">
-        
-        
-        <div class="grid_3">
-        <div class="profile_image">
-        <div class="gift">
-       
-          <%= image_tag @record.egift.image ,:width => 45 rescue nil %></div>
-          
-          <%= image_tag @carprofile.carprofile_photos.first.photo.url(:profile) rescue nil %>
-         
-        </div>
-  
-  
-  <ul class="tab_menu2">
-
-
-    <% if current_user.id == @carprofile.user_id %>     
-    <li><%= link_to "Subscribers",:action=>"subscar_count",:id=>@carprofile.id %>
-      <% end %>
-    </li>
-    <li> <span id="like_count" class="count2"><%= @counts %></span> <%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
-   </li>
-     <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
-  </li>
-    <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
-
-    <% unless current_user.id == @carprofile.user_id %>  
-    <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
-    <% end %>
-    
-    <li><%= link_to "favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
-<% unless current_user.id == @carprofile.user_id %>
-    <li><%= link_to (Subscriber.subscribes?(current_user,@carprofile) ? "Unsubscribe": "Subscribe"),subscribe_car_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote => true,:id=>"subscribe_car"%></li><% end %>
-
-  </ul>
-  
-  <div>
- 
-  
-  </div>
+    <div style="float:left; width:100%"><strong>Car Description</strong></div>
+    <div class="car_description" style="float:left;" >
+      <p> <%= @carprofile.car_description.html_safe  %></p>
+    </div>
   </div>
   
-          <div class="grid_7">
-          
-          <h1><%= @carprofile.car_model.name rescue nil %><img src="/assets/online.png" alt=""></h1>
+  
+        <div class="grid_10">
+    
     
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -110,22 +96,44 @@
   </tr>
 </table>
 
+
+
+<h1><%= @carprofile.car_model.name %> Statistics </h1>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top">
+  <div><span class="redcount" id="like_count"><%= @counts %></span></div>
+  <div><strong>Likes</strong></div>
   
+  </td>
+    <td align="left" valign="top">
+  <div><span class="bluecount"><%= @egift.count %></span></div>
+  <div><strong>Egifts</strong>  </div>
+  </td>
+   <td align="left" valign="top">
+  <div><span class="orangecount"><%= @subscribers.count %></span></div>
+  <div><strong>Subscribers</strong>  </div>
+  </td>
+    <td align="left" valign="top">
+  <div> <span class="greencount"><%= @comments.count %></span></div>
+  <div><strong>Comments</strong></div> </td>
+  
+  <td align="left" valign="top">
+  <div>Car Profile</div>
+  <div>created on</div>
+  <div><%= @carprofile.created_at.strftime("%T %a %b %e %Y ") %></div>
+  </td>
+  </tr>
+</table>
+
   
   
   </div>
-  
-  
-  
-  <div class="grid_10">
-    
-  <div><strong>Car Description</strong></div>
-  
-  <div class="car_description" style= "height:320px; overflow:auto">
-  
-    <p>  <%= @carprofile.car_description.html_safe  %></p>
-  </div>
-  </div>
+
+
+   
+
 
     
     </div>
@@ -139,160 +147,65 @@
     <div class="container_20">
         
         
-        <div class="grid_20 aboutme">
+    <div class="grid_20 aboutme">
     
   
   <h4>My Cars</h4>
   
   <div id="mainwrapper">
     <% for carprofile in @carprofile.carprofile_photos %>
-
-
-
-    <div id="box-1" class="box1">
-      <a href="#inline1" id="various1">
-      
-     <%= image_tag(carprofile.photo.url(:thumb))  %>
-        <span class="caption simple-caption">
+     <div id="box-1" class="box1">
+      <%= image_tag(carprofile.photo.url(:thumb))  %>
+      <span class="caption simple-caption">
           <p><a href="#inline1" id="various1">Simple Caption</a></p>
-        </span>
-    </div>
-    
-<% end %>
+      </span>
+     </div>
+    <% end %>
 
-    
-    
-    
-
-    
   </div>
 
   
+  </div> 
   </div>
 
 
-<div class="grid_20 aboutme">
-    
   
-  <h4>Egifts</h4>
+  <div class="container_20">
+  <div class="grid_10">
+ 
   
-  <div id="mainwrapper" style="float:left;text-align:left">
-   
-   <h4>Public :</h4>
-    <% @public.each do |g|%>
-
-  <div class="message">
-
- <table width="100%" border="0" cellspacing="5" cellpadding="5">
-  <tr>
-    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
-    <td align="left" valign="top" ><%= g.sender.email %></td>
-    </tr>
-  <tr>
-    <td align="left" valign="top"><strong>Message</strong></td>
-    <td align="left" valign="top"><%= g.message %></td>
-    </tr>
-  <tr>
-    <td align="left" valign="top"><strong>Gift</strong></td>
-    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
-    </tr>
-</table>
-
+<h4>My Logbooks</h4>
   
-  </div>
-  <% end %>
-  <br><br>
-  
-  <h4>Anonymous :</h4>
-
-     <% @anon.each do |g|%>
-
-  <div class="message">
- <table width="100%" border="0" cellspacing="5" cellpadding="5">
-  <tr>
-    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
-    <td align="left" valign="top" ><%= g.sender.email %></td>
-    </tr>
-  <tr>
-    <td align="left" valign="top"><strong>Message</strong></td>
-    <td align="left" valign="top"><%= g.message %></td>
-    </tr>
-  <tr>
-    <td align="left" valign="top"><strong>Gift</strong></td>
-    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
-    </tr>
-</table>
-
-  
-  </div>
-  <% end %>
-
- <br><br>
-  
-  <h4>Personal :</h4>
-
-     <% @personal.each do |g|%>
-
-  <div class="message">
- <table width="100%" border="0" cellspacing="5" cellpadding="5">
-  <tr>
-    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
-    <td align="left" valign="top" ><%= g.sender.email %></td>
-    </tr>
-  <tr>
-    <td align="left" valign="top"><strong>Message</strong></td>
-    <td align="left" valign="top"><%= g.message %></td>
-    </tr>
-  <tr>
-    <td align="left" valign="top"><strong>Gift</strong></td>
-    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
-    </tr>
-</table>
-
-  
-  </div>
-  <% end %>
-  
-  
-
-    
-  </div>
-
-  
-  </div>
-
-  <div class="grid_20 aboutme">
-  <h4>My Logbooks</h4>
-  
-  <% if @logbooks.each do |logbook| %>
-  <div class="blog_div">
-    <% if logbook.carprofile_id == carprofile.id %>
-      <a href="<%= logbook_path(logbook)%>" class="redlink"><%=  logbook.logbook_category.name%></a><br>
-         <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> <br/>
+  <% @logbooks.each do |logbook| %>
+  <div class="blog_div" style="width:100% !important">
+    <% if logbook.carprofile_id == @carprofile.id %>
+      <a href="<%= logbook_path(logbook)%>" class="redlink">
+        <%=  logbook.logbook_category.name%>
+      </a><br>
+    <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> <br/>
          <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More
       </a>
       <%end%> 
   </div>
   <%end%>
     
+ 
+ </div>
+
     
-    
-    </div>
-    
-    <div class="grid_20 aboutme">
-    
-       <h4>Comments</h4>
+  <div class="grid_10">
+            <h4>Comments</h4>
         <div class="small_thumb"><%= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%></div>
 
         <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
             <%= hidden_field_tag :car_profile_id,@carprofile.id %>
             <p>
-              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" %>
+              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" ,:style => "width:365px"%>
             </p>
             <%= submit_tag "Done", :style=>"margin-left:100px",:class=>"submit_btn"%>
         <% end %>
 
-     <div id="comment_load">
+     <div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
           <%if @comments.empty? %>
               <div class="blog_div">
                 <div class="blog_right"><br>
@@ -303,16 +216,12 @@
           <% end %>
         </div>
 
-        
-        
-        
-        
      
 </div>
   
   
-  
-          
+  </div>
+        
 
     
     </div>
@@ -323,8 +232,6 @@
     
     </div>
     
-
-</div>
 
 
 
@@ -363,5 +270,12 @@ $("a.topopup").click(function(){
   <div class="loader"></div>
     <div id="backgroundPopup"></div>
 
-<%end%>
 
+<style type="text/css">
+.blog_div {
+     border-bottom: 1px dotted #B7B7B7;
+    float: left;
+    padding: 10px 0;
+    width: auto !important;
+}
+</style>
