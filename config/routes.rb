@@ -80,6 +80,7 @@ end
     end
    member do
       get :friend_request
+      get :user_friends
    end
   end
   

@@ -5,12 +5,13 @@ def friendship_status(user, friend)
   return "#{friend.nickname} is not your friend (yet)." if friendship.nil?
   case friendship.flag
     when 'requested'
-     "#{friend.email} would like to be your friend."
+     "#{friend.nickname} would like to be your friend."
     when 'pending'
      "Friendship requested"
     when 'accepted'
-     "#{friend.email} is your friend."
+     "#{friend.nickname} is your friend."
     end
   end
 
 end
+  
