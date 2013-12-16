@@ -33,12 +33,12 @@
     
     </div>
     <%if friend.pic.blank? %>
-    <a href="<%= user_path(friend)%>"><img src="assets/thumb_profile.jpg" alt="">
+    <a href="<%= user_path(friend)%>"><img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
     <%= link_to image_tag(friend.pic.url(:thumb),:width => 50, :height => 40), user_path(friend)%>
     <% end %>
     <div class="mail_content">
-    <div><a href="#" class="bluelink bold"><b><%=friend.first_name %> <%= friend.last_name%></b></a></div>
+    <div><a href="<%= user_path(friend)%>" class="bluelink bold"><b><%=friend.first_name %> <%= friend.last_name%></b></a></div>
     
     
     </div>
