@@ -165,6 +165,7 @@ end
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'
   match 'searchpeople' => 'home#searchpeople'
+  match 'keywordsearch' => 'home#keywordsearch'
 
 #:controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation:
