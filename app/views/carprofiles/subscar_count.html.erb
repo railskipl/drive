@@ -1,12 +1,28 @@
-<table>
-<tr>
-<td>User</td>
-<td></td>
-</tr>
-<% @subscribers.each do |subscribe| %>
-<tr>
-<td><%=subscribe.first_name %></td>
-<td><%=subscribe.last_name %></td>
-</tr>
-<% end %>
-</table>
+
+<%= stylesheet_link_tag  "table_style" %>
+<div class="middle">
+	<div class="grid_20 title">
+		<h4 style="margin-top:10px;">Subscribers</h4>
+		</div>
+
+	<div class="grid_20" style="margin:10px;">	
+		  <table width="100%">
+			<tr>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Email</th>
+			</tr>
+			<% @subscribers.each do |subscribe| %>
+			<tr>
+			<td><%=subscribe.first_name %></td>
+             <td><%=subscribe.last_name %></td>
+              <td><%=subscribe.email %></td>
+		
+			</tr>
+			<% end %>
+			</table>
+</div>
+
+</div>
+
+

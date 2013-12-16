@@ -1,10 +1,16 @@
- <%= stylesheet_link_tag  "table_style" %>
 
-<table>
+<%= stylesheet_link_tag  "table_style" %>
+<div class="middle">
+	<div class="grid_20 title">
+		<h4 style="margin-top:10px;">Subscribers</h4>
+		</div>
+
+	<div class="grid_20" style="margin:10px;">	
+<table width="100%">
 <tr>
-<td>First Name</td>
-<td>Last Name</td>
-<td>Email</td>
+<th>First name</th>
+<th>Last name</th>
+<th>Email</th>
 </tr>
 <% @subscribers.each do |subscribe| %>
 <tr>
@@ -14,3 +20,8 @@
 </tr>
 <% end %>
 </table>
+</div>
+
+</div>
+
+

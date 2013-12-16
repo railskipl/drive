@@ -14,3 +14,4 @@ def friendship_status(user, friend)
   end
 
 end
+  

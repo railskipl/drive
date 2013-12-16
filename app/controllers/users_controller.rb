@@ -80,15 +80,21 @@ def subscribe_profile
 def change_status
 
    if params[:status]== "INACTIVE"
-
-    # write code logic for deducting points
-     current_user.update_attribute("visibility_status",false)
-    else
+  
+     unless current_user.credit < 10
+      updated_on =(Date.parse(DateTime.now.to_s) - Date.parse(current_user.visibility_updated_on.to_s)).to_i
+      if updated_on < 10
+        current_user.update_attribute("visibility_status",false)
+      else
+        current_user.update_attribute("credit",current_user.credit-10)
+        current_user.update_attributes(:visibility_status => false,:visibility_updated_on => DateTime.now)
+      end
+     end
+   else
      current_user.update_attribute("visibility_status",true)
    end
    render :json => {:status => current_user.visibility_status}.to_json
 end
-
 
 def user_friends
   @user = User.find(params[:id])
@@ -96,6 +102,9 @@ def user_friends
   @friends = @user.friends
   render :layout => "application"
 end
+
+
+
 
 
 end
