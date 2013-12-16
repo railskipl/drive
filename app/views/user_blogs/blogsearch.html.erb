@@ -66,7 +66,7 @@
     
     <div class="mail_content" style="width:442px">
     <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
-    <div style="margin:0 0 5px 0">By <a href="<%= root_path%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
+    <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
     <div><%=truncate(user_blog.body.html_safe, :length => 300).html_safe rescue nil%></div>
     </div>
     
@@ -117,7 +117,7 @@
     
     
     <div class="blog_right">
-    <a class="bluelink bold" href="#"><%= blog_comment.user_blog.user.first_name rescue nil %></a><br>
+    <a class="bluelink bold" href="#"><%= blog_comment.user.first_name rescue nil %></a><br>
     <%= truncate(blog_comment.body, :length => 20) rescue nil%> <br> 
     <%= blog_comment.created_at.strftime("%b %d, %Y") rescue nil %></div>
     
