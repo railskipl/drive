@@ -114,6 +114,7 @@ class CarprofilesController < ApplicationController
       @comments = Comment.where("carprofile_id = ? ",@carprofile.id).order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
+      
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
      
 

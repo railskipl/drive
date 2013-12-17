@@ -1,5 +1,23 @@
 
+  <style type="text/css">
 
+a.morelink {
+  text-decoration:none;
+  outline: none; color:#00487A; text-decoration:none; font-weight:bold;
+}
+.morecontent span {
+  display: none;
+
+}
+
+.blog_div {
+     border-bottom: 1px dotted #B7B7B7;
+    float: left;
+    padding: 10px 0;
+    width: auto !important;
+}
+  
+  </style>
 
 <div class="container_20">
   <div class="middle">
@@ -36,7 +54,9 @@
     
     <div style="float:left; width:100%"><strong>Car Description</strong></div>
     <div class="car_description" style="float:left;" >
-      <p> <%= @carprofile.car_description.html_safe  %></p>
+    <div class="comment more">
+      <%= @carprofile.car_description.html_safe %>  
+     </div>
     </div>
   </div>
   
@@ -59,7 +79,7 @@
   </tr>
   <tr>
     <td align="left" valign="top" class="profile_col1">Body Index</td>
-    <td class="profile_col2"><%= @carprofile.body_index.bodyindex %></td>
+    <td class="profile_col2"><%= @carprofile.body_index.bodyindex rescue nil %></td>
   </tr>
   <tr>
     <td align="left" valign="top" class="profile_col1">Year of Purchase</td>
@@ -267,11 +287,40 @@ $("a.topopup").click(function(){
     <div id="backgroundPopup"></div>
 
 
-<style type="text/css">
-.blog_div {
-     border-bottom: 1px dotted #B7B7B7;
-    float: left;
-    padding: 10px 0;
-    width: auto !important;
-}
-</style>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  var showChar = 400;
+  var ellipsestext = "...";
+  var moretext = "More";
+  var lesstext = "Less";
+  $('.more').each(function() {
+    var content = $(this).html();
+
+    if(content.length > showChar) {
+
+      var c = content.substr(0, showChar);
+      var h = content.substr(showChar-1, content.length - showChar);
+
+      var html = c + '<span class="moreelipses">'+ellipsestext+'</span>&nbsp;<span class="morecontent"><span>' + h + '</span>&nbsp;&nbsp;<a href="" class="morelink">'+moretext+'</a></span>';
+
+      $(this).html(html);
+    }
+
+  });
+
+  $(".morelink").click(function(){
+    if($(this).hasClass("less")) {
+      $(this).removeClass("less");
+      $(this).html(moretext);
+    } else {
+      $(this).addClass("less");
+      $(this).html(lesstext);
+    }
+    $(this).parent().prev().toggle();
+    $(this).prev().toggle();
+    return false;
+  });
+});
+</script>
