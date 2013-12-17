@@ -75,7 +75,7 @@
     <%#  user = User.find(n.user_id)%>
     <%if n.favourite_type == "favourite_logbook"%>
        <%#= raise @favourites.inspect %>
-      <td><%= link_to n.logbook.title,logbook_path(n.logbook_id) %></td>
+      <td><%= link_to n.logbook.title,logbook_path(n.logbook_id) rescue nil %></td>
     <% end %>
 
   <% end %>
