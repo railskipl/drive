@@ -5,17 +5,20 @@
       <div class ="box">
         <h5><a class="submit_btn" style="margin:0" href="<%= new_carprofile_path%>">Add A New Car</a></h5>
    
-        <table>
+        <table cellpadding=5>
 	      <tr>
 		    <th>Car Make</th>
 		    <th>Car Model</th>
+		    <th>Actions</th>
 		  </tr>
 
 		 <% @carprofiles.each do |carprofile| %>
 		  <tr>
 			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
 			<td><%= carprofile.car_model.name  rescue nil %></td>
-		  </tr>
+		 	<td style="text-align: center !important;"><%= link_to 'Edit', edit_carprofile_path(carprofile) %></td>
+    		<td style="text-align: center !important;"><%= link_to 'Destroy',carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+			  </tr>
 		 <% end %>
 
 		</table>

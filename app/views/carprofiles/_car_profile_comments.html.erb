@@ -3,7 +3,7 @@
   <% unless User.find_by_id(comment.user_id).nil? %>
     <div class="blog_div">
       <div class="small_thumb"> 
-      	<%= image_tag comment.user.pic.url(:thumb) if comment.user.nickname.present? %>
+      	<%= image_tag comment.user.pic.url(:thumb), :width => 50, :height => 40 if comment.user.nickname.present? %>
       </div>
       <div class="blog_right" style="width:315px;float:left;margin:0;">
        <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
