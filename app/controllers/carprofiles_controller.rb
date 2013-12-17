@@ -36,6 +36,12 @@ class CarprofilesController < ApplicationController
     end
   end
 
+  def destroy
+    @carprofile = Carprofile.find(params[:id])
+    @carprofile.destroy
+    redirect_to carprofiles_path, :notice => "Car Profile Removed"
+  end
+
   def like_car
 
    @car_profile =Carprofile.find(params[:id])
@@ -98,8 +104,7 @@ class CarprofilesController < ApplicationController
   def show
       @carprofile = Carprofile.find(params[:id])
       @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
-      @logbooks = Logbook.all
-      @logbook = @carprofile.logbooks
+      @logbooks = @carprofile.logbooks
       @egift = @carprofile.send_gifts
       offset = entry_index_to_display rescue ""
       @record = @egift.limit(1).offset(offset).first

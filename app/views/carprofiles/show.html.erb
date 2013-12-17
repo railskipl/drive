@@ -175,17 +175,15 @@
  
   
 <h4>My Logbooks</h4>
-  
   <% @logbooks.each do |logbook| %>
   <div class="blog_div" style="width:100% !important">
-    <% if logbook.carprofile_id == @carprofile.id %>
-      <a href="<%= logbook_path(logbook)%>" class="redlink">
+  <a href="<%= logbook_path(logbook)%>" class="redlink">
         <%=  logbook.logbook_category.name%>
-      </a><br>
-    <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> <br/>
+  </a><br>
+  <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> 
+  <br/>
          <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More
       </a>
-      <%end%> 
   </div>
   <%end%>
     
@@ -195,7 +193,8 @@
     
   <div class="grid_10">
             <h4>Comments</h4>
-        <div class="small_thumb"><%= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%></div>
+          
+        <div class="small_thumb"><%= image_tag (current_user.pic.url(:thumb)),:height => "40",:width => "50",:style=>"float:left;"%></div>
 
         <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
             <%= hidden_field_tag :car_profile_id,@carprofile.id %>
@@ -205,17 +204,14 @@
             <%= submit_tag "Comment", :style=>"margin-left:100px",:class=>"submit_btn"%>
         <% end %>
 
-     <div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
+
+  <div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
           <%if @comments.empty? %>
-              <div class="blog_div">
-                <div class="blog_right"><br>
-                  NO COMMENT FOUND </div>
-              </div>
+             NO COMMENTS FOUND
           <% else %>
               <%= render "car_profile_comments"%>
           <% end %>
         </div>
-
      
 </div>
   
