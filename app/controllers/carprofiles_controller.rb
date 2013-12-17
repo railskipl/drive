@@ -148,6 +148,12 @@ def subscribe_car
  
 end
 
+def comment_destroy
+   @comment = Comment.find(params[:id])
+   @comment.destroy
+   redirect_to :back,:notice => "Comment Deleted Successfully"
+end
+
 def subscar_count
  @carprofile = Carprofile.find(params[:id])
  @subscribers =  Subscriber.subscribers(@carprofile,User)
