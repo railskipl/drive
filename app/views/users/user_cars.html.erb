@@ -1,0 +1,26 @@
+<div class="middle">
+  <div class="container_20">
+    <div class="grid_10" style="margin:10px auto; float:none; display:block">
+      <h1>Listing Cars</h1>
+      <div class ="box">
+     
+   
+        <table cellpadding=5>
+	      <tr>
+		    <th>Car Make</th>
+		    <th>Car Model</th>
+		  </tr>
+
+		 <% @carprofiles.each do |carprofile| %>
+		  <tr>
+			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
+			<td><%= carprofile.car_model.name  rescue nil %></td>
+	
+			  </tr>
+		 <% end %>
+
+		</table>
+	  </div>
+    </div>
+  </div>
+</div>
