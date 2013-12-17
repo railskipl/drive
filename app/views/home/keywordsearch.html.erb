@@ -55,7 +55,7 @@
 </tr>
    <% @logbooks.each do |logbook| %>
   <tr>
-    <td><%= link_to logbook.title,:controller=>"logbooks",:action=>"show",:id=>logbook.id %></td>
+    <td><%= link_to logbook.title,:controller=>"logbooks",:action=>"show",:id=>logbook.id rescue nil%></td>
   </tr>
     <% end %>
 </table>
