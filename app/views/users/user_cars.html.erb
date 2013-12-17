@@ -15,7 +15,10 @@
 		  <tr>
 			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
 			<td><%= carprofile.car_model.name  rescue nil %></td>
-	
+	 		<% if current_user == carprofile.user %>
+	 		<td style="text-align: center !important;"><%= link_to 'Edit', edit_carprofile_path(carprofile) %></td>
+    		<td style="text-align: center !important;"><%= link_to 'Destroy',carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+    		<% end %>
 			  </tr>
 		 <% end %>
 
