@@ -5,8 +5,15 @@
       <div class="small_thumb"> 
       	<%= image_tag comment.user.pic.url(:thumb), :width => 50, :height => 40 if comment.user.nickname.present? %>
       </div>
-      <div class="blog_right" style="width:315px;float:left;margin:0;">
-         <% if  (comment.user == current_user) || (@carprofile.user == current_user)  %>
+      <div class="blog_right" style="width:300px;float:left;margin:0;">
+    
+       <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
+        <%= comment.body %>
+       
+       
+      </div>
+      <div style="width:100px;height:auto;float:left;">
+     <% if  (comment.user == current_user) || (@carprofile.user == current_user)  %>
         <%= link_to (image_tag "/assets/delete.png"),carprofiles_comment_destroy_path(:id => comment),:class => "close2" ,:method => :delete, :confirm => "Are You Sure?" %>
         <% end %>
          <div class="time">
@@ -16,10 +23,6 @@
              <li><%= comment.created_at.strftime("%b %d, %Y") %></li>
           <% end %>
         </div>
-       <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
-        <%= comment.body %>
-       
-       
       </div>
 
     </div>
