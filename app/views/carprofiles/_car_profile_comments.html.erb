@@ -7,7 +7,15 @@
       </div>
       <div class="blog_right" style="width:315px;float:left;margin:0;">
        <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
-        <%= comment.body %></div>
+        <%= comment.body %>
+        <% if comment.created_at > Time.now.beginning_of_day %>
+               <%="#{time_ago_in_words(comment.created_at)} ago"%>
+               <% else %>
+             <li><%= comment_logbook.created_at.strftime("%b %d, %Y") %></li>
+          <% end %>
+        <%= link_to (image_tag "/assets/delete.png"),carprofiles_comment_destroy_path(:id => comment),:method => :delete, :confirm => "Are You Sure?" %>
+      </div>
+
     </div>
     <% end %>
 <% end %>
