@@ -70,6 +70,7 @@
        <% unless current_user != @user %>
        <li><a href="#">Credit Points <span class="light_gray">(<%= @user.credit %>)</span></a></li>
        <% end %>
+       <li><%= link_to "Cars" , user_cars_user_path(@user)%></li>
       <% unless current_user.id == @user.id %>
        
    
@@ -100,8 +101,7 @@
 		
 		<div class="grid_16">
 		
-		Loremi pilsLoreLoremi pilsLoremi pilsiimi pilsii Loremi pilsLoremi pilsiLoremi pilsiLoremi pilsii
-
+		<%= @user.about rescue nil %>
 		
 		</div>
 		

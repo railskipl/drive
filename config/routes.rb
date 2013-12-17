@@ -80,6 +80,7 @@ end
    member do
       get :friend_request
       get :user_friends
+      get :user_cars
    end
   end
   
