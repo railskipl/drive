@@ -38,10 +38,6 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-
-
-
-
     def build_photo_tag(photo_file, alt_text)
         photo_tag(photo_file, :size =>"20x20", :alt => alt_text)
     end
@@ -55,8 +51,11 @@ module ApplicationHelper
   end
   
   def rate_count(carprofile_id)
+    carprofile = Carprofile.find(params[:id])
     count = 0
-    count += Comment.where("carprofile_id = ?",carprofile_id).count
+    count += carprofile.send_gifts.count
+    count += carprofile.comments_count
+    count += carprofile.sum_counts(@count)
     count += Subscriber.find_all_by_subscribable_id(@carprofile.id).count
     count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0
     return rating_star(count)

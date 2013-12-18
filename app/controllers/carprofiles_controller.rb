@@ -1,5 +1,4 @@
 class CarprofilesController < ApplicationController
-  
   before_filter :authenticate_user!, :except => []
   before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date rescue ""
