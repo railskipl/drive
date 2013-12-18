@@ -51,13 +51,13 @@ module ApplicationHelper
   end
   
   def rate_count(carprofile_id)
-   
     carprofile = Carprofile.find(params[:id])
     count = 0
     count += carprofile.send_gifts.count
-    count += carprofile.comments_count 
-    count += carprofile.logbooks.count 
-    count += carprofile.favourites.count 
+    count += carprofile.comments_count
+    count += carprofile.sum_counts(@count)
+    count += carprofile.logbooks.count
+    count += carprofile.favourites.count
     count += Subscriber.find_all_by_subscribable_id(@carprofile.id).count
     count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0
     return rating_star(count)

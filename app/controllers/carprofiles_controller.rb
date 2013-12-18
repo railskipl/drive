@@ -95,7 +95,8 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
-      #@logbooks = Logbook.all
+      @logbooks = Logbook.all
+      @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
       @logbook = @carprofile.logbooks
       @egift = @carprofile.send_gifts
       offset = entry_index_to_display rescue ""
@@ -103,6 +104,7 @@ class CarprofilesController < ApplicationController
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
+      @favourites  = @carprofile.favourites
       @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
