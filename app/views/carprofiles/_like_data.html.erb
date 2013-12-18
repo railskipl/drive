@@ -5,10 +5,11 @@
 <td></td>
 <td>Count</td>
 </tr>
+<%= @likes.count %>
 <% @likes.each do |like| %>
 <tr>
-<td><%=User.find(like.liker_id).first_name%></td>
-<td><%=User.find(like.liker_id).last_name%></td>
+<td><%= User.find(like.liker_id).first_name%></td>
+<td><%= User.find(like.liker_id).last_name%></td>
 
 <td><%=like.count%></td>
 </tr>

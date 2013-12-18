@@ -40,13 +40,13 @@ function ajax_call(status){
                  if(data.status==false){
                    $("#visibility_status").val("INACTIVE");
                    $("#visible_mode").attr("src","/assets/offline.gif");
-                   $(".earn_credit").html("Earn credits("+data.credit+")");
+                   $(".earn_credit").html("Buy credits("+data.credit+")");
                  }
                  else
                  {
                     $("#visibility_status").val("ACTIVE");
                     $("#visible_mode").attr("src","/assets/online.png");
-                    $(".earn_credit").html("Earn credits("+data.credit+")");
+                    $(".earn_credit").html("Buy credits("+data.credit+")");
                  }
                },
               dataType: "json"

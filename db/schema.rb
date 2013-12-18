@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131216071036) do
+ActiveRecord::Schema.define(:version => 20131216115436) do
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20131216071036) do
     t.integer  "body_index_id"
     t.boolean  "spotlighted",         :default => false
     t.string   "engine_dis"
+    t.integer  "user_visit",          :default => 0
+    t.integer  "comments_count",      :default => 0
   end
 
   create_table "comment_logbooks", :force => true do |t|
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20131216071036) do
     t.datetime "updated_at",       :null => false
     t.string   "commentable_type"
     t.integer  "user_id"
+    t.integer  "carprofile_id"
   end
 
   add_index "comments", ["commentable_id", "user_id"], :name => "index_comments_on_commentable_id_and_user_id"
@@ -213,6 +216,31 @@ ActiveRecord::Schema.define(:version => 20131216071036) do
     t.datetime "updated_at",  :null => false
     t.string   "flag"
   end
+
+  create_table "impressions", :force => true do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], :name => "controlleraction_ip_index"
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], :name => "controlleraction_request_index"
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], :name => "controlleraction_session_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
+  add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "likes", :force => true do |t|
     t.string   "liker_type"
@@ -356,7 +384,7 @@ ActiveRecord::Schema.define(:version => 20131216071036) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
+    t.datetime "visibility_updated_on",  :default => '2013-12-16 04:42:58'
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

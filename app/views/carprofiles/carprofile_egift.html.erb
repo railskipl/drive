@@ -1,0 +1,154 @@
+
+
+<div class="grid_20 aboutme">
+    
+  
+  <h4>Egifts</h4>
+  
+  <div id="mainwrapper" style="float:left;text-align:left">
+   
+   <h4>Public :</h4>
+    <% @public.each do |g|%>
+
+  <div class="message">
+
+ <table width="100%" border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
+    <td align="left" valign="top" ><%= g.sender.email %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Message</strong></td>
+    <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Gift</strong></td>
+    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
+    </tr>
+</table>
+
+  
+  </div>
+  <% end %>
+  <br><br>
+  
+  <h4>Anonymous :</h4>
+
+     <% @anon.each do |g|%>
+
+  <div class="message">
+ <table width="100%" border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
+    <td align="left" valign="top" ><%= g.sender.email %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Message</strong></td>
+    <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Gift</strong></td>
+    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
+    </tr>
+</table>
+
+  
+  </div>
+  <% end %>
+
+ <br><br>
+  
+  <h4>Personal :</h4>
+
+     <% @personal.each do |g|%>
+
+  <div class="message">
+ <table width="100%" border="0" cellspacing="5" cellpadding="5">
+  <tr>
+    <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
+    <td align="left" valign="top" ><%= g.sender.email %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Message</strong></td>
+    <td align="left" valign="top"><%= g.message %></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><strong>Gift</strong></td>
+    <td align="left" valign="top"><%= image_tag g.egift.image.url ,:class =>"giftimage" %> </td>
+    </tr>
+</table>
+
+  
+  </div>
+  <% end %>
+  
+  
+
+    
+  </div>
+
+  
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  
+  <div class="grid_20 aboutme">
+  <h4>My Logbooks</h4>
+  
+  <% if @logbooks.each do |logbook| %>
+  <div class="blog_div">
+    <% if logbook.carprofile_id == carprofile.id %>
+      <a href="<%= logbook_path(logbook)%>" class="redlink"><%=  logbook.logbook_category.name%></a><br>
+         <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> <br/>
+         <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More
+      </a>
+      <%end%> 
+  </div>
+  <%end%>
+    
+    <%end%>
+
+    
+    </div>
+    
+    <div class="grid_20 aboutme">
+    
+       <h4>Comments</h4>
+        <div class="small_thumb"><%= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%></div>
+
+        <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
+            <%= hidden_field_tag :car_profile_id,@carprofile.id %>
+            <p>
+              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" %>
+            </p>
+            <%= submit_tag "Done", :style=>"margin-left:100px",:class=>"submit_btn"%>
+        <% end %>
+
+     <div id="comment_load">
+          <%if @comments.empty? %>
+              <div class="blog_div">
+                <div class="blog_right"><br>
+                  NO COMMENT FOUND </div>
+              </div>
+          <% else %>
+              <%= render "car_profile_comments"%>
+          <% end %>
+        </div>
+
+        
+        
+        
+        
+     
+</div>
+  
+  

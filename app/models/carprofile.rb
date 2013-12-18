@@ -7,16 +7,21 @@ class Carprofile < ActiveRecord::Base
   belongs_to :body_index
   belongs_to :car_make
   belongs_to :car_model
-  has_many :send_gifts
+  has_many :send_gifts, dependent: :destroy
   has_many :favourites,dependent: :destroy
   has_many :carprofile_photos, dependent: :destroy
   has_many :logbooks, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  validates_length_of :car_description,:maximum => 2000
+
 
   validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar,:manufacturing_year,:car_make_id,:car_model_id,:body_index_id
 
   accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].blank? }, :allow_destroy => true,limit: 10
   
   acts_as_likeable
+
 
   def likes(id)
     Like.find_all_by_likeable_id(id) rescue nil

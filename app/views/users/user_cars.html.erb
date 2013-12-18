@@ -3,21 +3,22 @@
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
       <h1>Listing Cars</h1>
       <div class ="box">
-        <h5><a class="submit_btn" style="margin:0" href="<%= new_carprofile_path%>">Add A New Car</a></h5>
+     
    
         <table cellpadding=5>
 	      <tr>
 		    <th>Car Make</th>
 		    <th>Car Model</th>
-		    <th>Actions</th>
 		  </tr>
 
 		 <% @carprofiles.each do |carprofile| %>
 		  <tr>
 			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
 			<td><%= carprofile.car_model.name  rescue nil %></td>
-		 	<td style="text-align: center !important;"><%= link_to 'Edit', edit_carprofile_path(carprofile) %></td>
+	 		<% if current_user == carprofile.user %>
+	 		<td style="text-align: center !important;"><%= link_to 'Edit', edit_carprofile_path(carprofile) %></td>
     		<td style="text-align: center !important;"><%= link_to 'Destroy',carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+    		<% end %>
 			  </tr>
 		 <% end %>
 

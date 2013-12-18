@@ -80,6 +80,7 @@ end
    member do
       get :friend_request
       get :user_friends
+      get :user_cars
    end
   end
   
@@ -106,6 +107,8 @@ end
   match "myfriend"  => 'logbooks#myfriend'
 
   match "myfriend_blog"  => 'user_blogs#myfriend_blog'
+
+  match "/carprofiles/comment_destroy", :to => "carprofiles#comment_destroy"
 
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root
@@ -164,6 +167,7 @@ end
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'
   match 'searchpeople' => 'home#searchpeople'
+  match 'keywordsearch' => 'home#keywordsearch'
 
 #:controllers => {:registrations => "registrations"}
   # The priority is based upon order of creation:

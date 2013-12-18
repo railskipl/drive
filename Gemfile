@@ -19,6 +19,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem "socialization"
 gem 'prototype-rails'
+gem 'impressionist'
 
 #gem 'pg'
 

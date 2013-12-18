@@ -1,0 +1,115 @@
+<%= stylesheet_link_tag  "table_style" %>
+<div class="middle">
+  <div class="grid_20 title">
+    <h4 style="margin-top:10px;">Message</h4>
+    </div>
+
+<% unless @users.empty? %>
+<div class="grid_20" style="margin:10px;">  
+<table width="100%">
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+<th>Email</th>
+<th>Location</th>
+</tr>
+<% @users.each do |user|%>
+  <tr>
+    <% status = Block.find_by_blockable_id_and_blocker_id(current_user.id,user.id).present? %>
+    <% if status %>
+     <td><%= link_to user.first_name, "#",:id=>user.id ,:onclick => "alert('You are being Blocked !!!');"%></td>
+    <% else %>
+    <td><%= link_to user.first_name, user_path(user),:id=>user.id %></td>
+    <% end %>    
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.location %></td>
+    <%# end %>
+  </tr>
+<% end %>
+</table>
+</div>
+<% end %>
+
+<% unless @user_blogs.empty? %>
+<div class="grid_20" style="margin:10px;"> 
+<table width="100%">
+<tr>
+<th>UserblogTitle</th>
+</tr>
+  <% @user_blogs.each do |user_blog| %>
+  <tr>
+    <td><%= link_to user_blog.title,:controller=>"user_blogs",:action=>"show",:id=>user_blog.id %></td>
+  </tr>
+    <% end %>
+</table>
+</div>
+<% end %>
+
+
+ <% unless @logbooks.empty? %>
+<div class="grid_20" style="margin:10px;"> 
+<table width="100%">
+<tr>
+<th>LogbookTitle</th>
+</tr>
+   <% @logbooks.each do |logbook| %>
+  <tr>
+    <td><%= link_to logbook.title,:controller=>"logbooks",:action=>"show",:id=>logbook.id rescue nil%></td>
+  </tr>
+    <% end %>
+</table>
+</div>
+<% end %>
+
+
+<% unless @favourites.empty? %> 
+<div class="grid_20" style="margin:10px;">
+<table width="100%">
+<tr>
+<th>Favouritetype</th>
+
+</tr>
+<% @favourites.each do |n| %>
+     
+    <%#  user = User.find(n.user_id)%>
+    <%if n.favourite_type == "favourite_logbook"%>
+       <%#= raise @favourites.inspect %>
+      <td><%= link_to n.logbook.title,logbook_path(n.logbook_id) rescue nil %></td>
+    <% end %>
+
+  <% end %>
+
+  <% @favourites.each do |n| %>
+     
+    <%if n.favourite_type == "favourite_blog"  %>
+      <td><%= link_to n.user_blog.title ,user_blog_path(n.user_blog_id) %></td>
+    <% end %>
+
+  <%end%>
+
+  <% @favourites.each do |n| %>
+    <%if n.favourite_type == "favourite_carprofile"  %>
+      <td><%= link_to n.carprofile.car_model.name ,carprofile_path(n.carprofile_id) %></td> 
+    <% end %>
+
+  <% end %>
+</table>
+</div>
+<% end %>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
