@@ -110,6 +110,7 @@ class CarprofilesController < ApplicationController
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
+      @favourites = @carprofile.favourites
       @comments = Comment.where("carprofile_id = ? ",@carprofile.id).order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
