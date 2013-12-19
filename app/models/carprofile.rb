@@ -1,7 +1,7 @@
 class Carprofile < ActiveRecord::Base
   attr_accessible :car_make_id, :car_model_id, :manufacturing_year, :whatkindofcar, :year_of_purchase, :car_description,
                   :power, :sellthiscar, :license_plate, :VIN, :user_id, :engine_dis, :carprofile_photo_id,
-                  :carprofile_photos_attributes, :body_index_id
+                  :carprofile_photos_attributes, :body_index_id,:user_visit
 
   belongs_to :user
   belongs_to :body_index
@@ -22,7 +22,7 @@ class Carprofile < ActiveRecord::Base
   
   acts_as_likeable
 
-
+  is_impressionable :counter_cache => true, :column_name => :user_visit,:unique => :session_hash
   def likes(id)
     Like.find_all_by_likeable_id(id) rescue nil
   end
@@ -40,6 +40,20 @@ def self.spotlight(car_profile)
           self.where(:subscriber_type => subscriber.class.name.classify).
                where(:subscriber_id => subscriber.id).destroy_all
         end
-
+  def visitor(carprofile)
+    
+    carprofile.impressions.each do |imp|
   
+      a = Time.now
+      if a > imp.created_at
+        c = a.to_date - (imp.created_at).to_date
+  
+        if c >= 30
+          imp.destroy
+        else
+        
+        end
+      end
+    end
+  end
 end
