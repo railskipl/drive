@@ -205,11 +205,6 @@ def post_comment
    redirect_to :back,:notice => "Comment Deleted Successfully"
   end
 
-def comment_destroy
-   @comment = Comment.find(params[:id])
-    @comment.destroy
-   redirect_to :back,:notice => "Comment Destroy Successfully"
-  end
 
 
 private
