@@ -33,7 +33,7 @@ Drive::Application.routes.draw do
   match "user_blogs/:id/user_blog"  => 'favourites#user_blog'
 
   match "carprofiles/:id/mycarprofile"  => 'favourites#mycarprofile'
-
+ 
   resources :comment_logbooks
 
   resources :user_blogs do
@@ -45,7 +45,7 @@ Drive::Application.routes.draw do
   end
 
   resources :comments
-
+  resources :new_cars
   resources :favourites
 
    resources :egifts ,:only => [:index] do
@@ -146,6 +146,7 @@ end
       post :subscribe_car
       post :spotlight
       post :post_comment
+      get :guest_user
     end
   end 
   resources :carprofile_photos
