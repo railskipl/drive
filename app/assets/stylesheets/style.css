@@ -967,3 +967,66 @@ color: #000;
 
 
 .time {text-align: right;width: 115px;font-size: 11px;color: gray;float:right;}
+
+/* style for rating star */
+
+.half_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -1px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.one_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -25px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.one_half_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -50px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.two_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -75px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.two_half_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -100px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.three_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -125px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.three_half_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -150px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.four_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -175px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.four_half_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -200px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}
+.five_star {
+    background: url("../assets/rating.png") no-repeat scroll -2px -225px rgba(0, 0, 0, 0);
+    height: 24px;
+    width: 128px;
+
+}

@@ -3,8 +3,6 @@ class CarprofilesController < ApplicationController
   before_filter :authenticate_user!, :except => []
   before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date rescue ""
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-
   def index
   	@carprofiles = current_user.carprofiles.all
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -34,12 +32,6 @@ class CarprofilesController < ApplicationController
     else
         render :new
     end
-  end
-
-  def destroy
-    @carprofile = Carprofile.find(params[:id])
-    @carprofile.destroy
-    redirect_to carprofiles_path, :notice => "Car Profile Removed"
   end
 
   def like_car
@@ -103,18 +95,19 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
+      @logbooks = Logbook.all
       @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
-      @logbooks = @carprofile.logbooks
+      @logbook = @carprofile.logbooks
       @egift = @carprofile.send_gifts
       offset = entry_index_to_display rescue ""
       @record = @egift.limit(1).offset(offset).first
       @public = @egift.public_gift
       @personal = @egift.personal
       @anon = @egift.anonymous
-      @comments = Comment.where("carprofile_id = ? ",@carprofile.id).order("created_at desc")
+      @favourites  = @carprofile.favourites
+      @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
-      
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
      
 
@@ -148,12 +141,6 @@ def subscribe_car
  
 end
 
-def comment_destroy
-   @comment = Comment.find(params[:id])
-   @comment.destroy
-   redirect_to :back,:notice => "Comment Deleted Successfully"
-end
-
 def subscar_count
  @carprofile = Carprofile.find(params[:id])
  @subscribers =  Subscriber.subscribers(@carprofile,User)
@@ -174,7 +161,7 @@ def post_comment
     else
        @error = "Please Enter Text In Body !!!"
     end
-    @comments = Comment.where("carprofile_id = ? ",@carprofile.id).order("created_at desc")
+    @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
   end
 
 

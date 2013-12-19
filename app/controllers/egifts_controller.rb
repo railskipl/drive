@@ -2,7 +2,7 @@ class EgiftsController < ApplicationController
   def index
   	@egifts = Egift.all
   	@category = EgiftCategory.all
-   @send_gift = SendGift.new
+    @send_gift = SendGift.new
 
   end
   def my_gifts
