@@ -1,43 +1,39 @@
-<%= stylesheet_link_tag  "table_style" %>
 <div class="middle">
+  <div class="container_20" style="background:#333; margin-bottom:10px">
+  <%= render 'shared/carousel' %></div>
+ 
+   
+
+<div class="container_20">
   <div class="grid_20 title">
-    <h4 style="margin-top:10px;">Message</h4>
-    </div>
+    <div style="width:40%; float:left"><h4>Search People</h4></div>
+   </div>
+    
+    <div class="grid_20">
+      <% @users.each do |user|%>
 
-<div class="grid_20" style="margin:10px;">  
-
-<table width="100%">
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-<th>Email</th>
-<th>Location</th>
-</tr>
-<% @users.each do |user|%>
-  <tr>
+    <div class="message" style="width:50%; float:left"> 
+      <%= user.pic?  ? (image_tag user.pic.url(:thumb),:width => 48) : (image_tag 'thumb_profile.jpg')%>
+    <div class="mail_content" style="width:auto">
+    
     <% status = Block.find_by_blockable_id_and_blocker_id(current_user.id,user.id).present? %>
     <% if status %>
-     <td><%= link_to user.first_name, "#",:id=>user.id ,:onclick => "alert('You are being Blocked !!!');"%></td>
+    <div><%= link_to user.first_name, "#",:id=>user.id,:class=>"bluelink bold",:onclick => "alert('You are being Blocked !!!');"%>&nbsp;&nbsp;<%= user.last_name %></div>
     <% else %>
-     <td><%= link_to user.first_name, user_path(user),:id=>user.id %></td>
-    <% end %>    
-    <td><%= user.last_name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.location %></td>
-    <%# end %>
-  </tr>
-<% end %>
-</table>
-</div>
+    <%= link_to user.first_name, user_path(user),:id=>user.id,:class=>"bluelink bold" %> <%= user.last_name %>
+    <% end %>   
+    <div style="margin:0 0 5px 0"><%= user.email %></br>
+    <strong><%= user.location %></strong></div>
+    </div>
+ 
+    </div>
+    <% end %>
+    </div>
+    
+    </div>
+    
+   </div>
+    
 
 </div>
-
-
-
-
-
-
-
-
-
-
+ </div>
