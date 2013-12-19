@@ -174,6 +174,12 @@ def post_comment
     @carprofile.visitor(@carprofile)
   end
 
+def comment_destroy
+   @comment = Comment.find(params[:id])
+    @comment.destroy
+   redirect_to :back,:notice => "Comment Destroy Successfully"
+  end
+
 
 private
  
