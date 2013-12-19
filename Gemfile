@@ -11,7 +11,7 @@ gem 'rails', '3.2.14'
 
 
 
- #gem 'sqlite3'
+ gem 'sqlite3'
 
 
 
@@ -30,7 +30,7 @@ gem "socialization"
 gem 'prototype-rails'
 gem 'impressionist'
 
-gem 'pg'
+# gem 'pg'
 
 
 
