@@ -16,6 +16,13 @@ class CarprofilesController < ApplicationController
     1.times do
     carprofile_photo = @carprofile.carprofile_photos.build
     end
+    
+      @car_model = []
+      @body_index = []
+    
+    
+ 
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @carprofile }
@@ -23,10 +30,22 @@ class CarprofilesController < ApplicationController
   end
 
   def create
-
+      
   	@carprofile = Carprofile.new(params[:carprofile])
+    session[:car_make_id] = @carprofile.car_make_id
+    session[:car_model_id] = @carprofile.car_model_id
+    if session[:car_make_id]
+      @car_model = CarModel.find_all_by_car_make_id(session[:car_make_id])
+      
+    end
+    if session[:car_model_id]
+      @body_index = BodyIndex.find_all_by_car_model_id(session[:car_model_id])
+    end
+
     #raise @carprofile.inspect
     if @carprofile.save
+      session[:car_make_id] = nil
+      session[:car_model_id] = nil
 	 	flash[:notice] = "car profile created successfully"
         redirect_to carprofiles_path
     else
@@ -121,6 +140,7 @@ class CarprofilesController < ApplicationController
 
 
   def update_model
+    
     #raise params[:update_model].inspect
      @car_model = CarModel.find_all_by_car_make_id(params[:update_model]) 
   end
@@ -166,12 +186,11 @@ def post_comment
   end
 
   def guest_user
-        @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
-
     @carprofile = Carprofile.find(params[:id])
     @carprofile.impressions = @carprofile.impressions.order("created_at DESC")
     @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id }
     @carprofile.visitor(@carprofile)
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
 
