@@ -198,14 +198,14 @@ a.morelink {
  
   
 <h4>My Logbooks</h4>
-  <% @logbooks.each do |logbook| %>
+  <% @logbook.each do |log| %>
   <div class="blog_div" style="width:100% !important">
-  <a href="<%= logbook_path(logbook)%>" class="redlink">
-        <%=  logbook.logbook_category.name%>
+  <a href="<%= logbook_path(log)%>" class="redlink">
+        <%=  log.logbook_category.name%>
   </a><br>
-  <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> 
+  <%= truncate(log.logbook_discription, :length => 500).html_safe  rescue nil %> 
   <br/>
-         <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More
+         <a href="<%= logbook_path(log)%>" class="bluelink">Read More
       </a>
   </div>
   <%end%>
