@@ -106,7 +106,7 @@ class CarprofilesController < ApplicationController
       @personal = @egift.personal
       @anon = @egift.anonymous
       @favourites  = @carprofile.favourites
-      @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
+      @comments = @carprofile.comments.order("created_at desc")
       
       @likes= @carprofile.likes(@carprofile.id)
       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -162,7 +162,7 @@ def post_comment
     else
        @error = "Please Enter Text In Body !!!"
     end
-    @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
+    @comments = @carprofile.comments.order("created_at desc")
   end
 
   def guest_user
