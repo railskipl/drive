@@ -9,7 +9,7 @@ class EgiftsController < ApplicationController
   	@send_gifts = current_user.received_egifts
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   	@public = @send_gifts.public_gift
-    @personal = @send_gifts.anonymous
-    @anon = @send_gifts.personal
+    @personal = @send_gifts.personal
+    @anon = @send_gifts.anonymous
   end
 end

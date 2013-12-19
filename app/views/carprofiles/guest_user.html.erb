@@ -18,9 +18,11 @@
 		<div class="grid_20">
 		
 		
-		
-		<div class="message"> 
 		<% @carprofile.impressions.each do |imps|%>
+		 <%if User.find_by_id(imps.user_id).visibility_status == false%>
+
+		  <div class="message"> 
+		
 		<div class="tf"><strong>
 			<% if imps.created_at > Time.now.beginning_of_day %>
 			<%="#{time_ago_in_words(imps.created_at)} ago"%>
@@ -28,21 +30,45 @@
 	          <li><%= imps.created_at.strftime("%b %d, %Y") %></li>
 	          <% end %>
 		</strong></div>
+		<img src="/assets/thumb_profile.jpg" alt="">
+		
+		<div class="mail_content" style="width:442px">
+		<div>Invisible Member</div>
+		
+		<div></div>
+		<div style="margin:0 0 5px 0"></div>
+		</div>
+
+		</div>
+	<%else%>
+		<div class="message"> 
+		
+		
 		<%if User.find_by_id(imps.user_id).pic.blank? %>
 		<img src="/assets/thumb_profile.jpg" alt="">
 		<%else%>
-        <div class="thumb"><%=link_to image_tag(User.find_by_id(imps.user_id).pic.url(:thumb) ,:width => 50, :height => 50) %></div>
+        <div class="thumb"><%=image_tag(User.find_by_id(imps.user_id).pic.url(:thumb) ,:width => 50, :height => 50) %></div>
         <% end %>
 		<div class="mail_content" style="width:442px">
 		<div><a href="<%=user_path(imps.user_id)%>" class="bluelink bold"><%= "#{User.find_by_id(imps.user_id).first_name}"rescue nil %></a></div>
 		
 		<div><%= truncate(User.find_by_id(imps.user_id).about, :length => 100)  rescue nil %></div>
-		<div style="margin:0 0 5px 0"><a href="<%=user_path(imps.user_id)%>" class="bluelink"><%= "#{User.find_by_id(imps.user_id).location}"rescue nil %></a></div>
+		<div style="margin:0 0 5px 0 "class= "bluelink bold"><%= "#{User.find_by_id(imps.user_id).location}"rescue nil %></div>
+		<ul class="action">
+			<strong>
+				<% if imps.created_at > Time.now.beginning_of_day %>
+				   <%="#{time_ago_in_words(imps.created_at)} ago"%>
+				<% else %>
+		           <li><%= imps.created_at.strftime("%b %d, %Y") %></li>
+		        <% end %>
+		   </strong>
+	    </ul>
 		</div>
-        <%end%>
+
 		</div>
 		
-
+          <%end%>
+        <%end%>
 		
 		</div>
 		
