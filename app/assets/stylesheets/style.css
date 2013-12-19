@@ -930,7 +930,13 @@ color: #000;
 
 }
 
-.mycardiv{ width:140px; height:auto; float:left; margin:10px}
+.mycardiv{ float: left;
+    height: auto;
+    margin: 10px;
+    min-height: 190px;
+    text-align: left;
+    width: 140px;
+    }
 
 .mycardiv img{border: 5px solid #FFFFFF;
     box-shadow: 0 0 0 1px #CCCCCC;
