@@ -206,6 +206,7 @@ def post_comment
   end
 
 
+
 private
  
  def correct_user
