@@ -25,14 +25,15 @@ class HomeController < ApplicationController
     end
 
 def search
+@spotlighted_cars = Carprofile.where("spotlighted = ?",true)
 q = params[:q]
-@q = User.search(first_name_or_last_name_or_location_cont: q)
+@q = User.search(first_name_or_last_name_or_location_or_email_cont: q)
 @users=@q.result(:distinct => true)
 end
 
 def keywordsearch
 q = params[:q]
-@users = User.search(first_name_or_last_name_or_nickname_or_location_cont: q).result
+@users = User.search(first_name_or_last_name_or_nickname_or_location_or_email_cont: q).result
 @user_blogs = UserBlog.search(title_cont: q).result
 @logbooks = Logbook.search(title_cont: q).result
 @carprofiles = Carprofile.search(license_plate_or_engine_dis_or_power__or_cont: q).result
