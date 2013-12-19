@@ -43,13 +43,7 @@
 	<%else%>
 		<div class="message"> 
 		
-		<div class="tf"><strong>
-			<% if imps.created_at > Time.now.beginning_of_day %>
-			<%="#{time_ago_in_words(imps.created_at)} ago"%>
-			<% else %>
-	          <li><%= imps.created_at.strftime("%b %d, %Y") %></li>
-	          <% end %>
-		</strong></div>
+		
 		<%if User.find_by_id(imps.user_id).pic.blank? %>
 		<img src="/assets/thumb_profile.jpg" alt="">
 		<%else%>
@@ -59,7 +53,16 @@
 		<div><a href="<%=user_path(imps.user_id)%>" class="bluelink bold"><%= "#{User.find_by_id(imps.user_id).first_name}"rescue nil %></a></div>
 		
 		<div><%= truncate(User.find_by_id(imps.user_id).about, :length => 100)  rescue nil %></div>
-		<div style="margin:0 0 5px 0"><a href="<%=user_path(imps.user_id)%>" class="bluelink"><%= "#{User.find_by_id(imps.user_id).location}"rescue nil %></a></div>
+		<div style="margin:0 0 5px 0 "class= "bluelink bold"><%= "#{User.find_by_id(imps.user_id).location}"rescue nil %></div>
+		<ul class="action">
+			<strong>
+				<% if imps.created_at > Time.now.beginning_of_day %>
+				   <%="#{time_ago_in_words(imps.created_at)} ago"%>
+				<% else %>
+		           <li><%= imps.created_at.strftime("%b %d, %Y") %></li>
+		        <% end %>
+		   </strong>
+	    </ul>
 		</div>
 
 		</div>
