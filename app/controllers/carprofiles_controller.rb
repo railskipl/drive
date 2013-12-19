@@ -116,10 +116,8 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
-      
-      @logbooks = Logbook.all
       @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
-      @logbook = @carprofile.logbooks
+      @logbooks = @carprofile.logbooks
       @egift = @carprofile.send_gifts
       offset = entry_index_to_display rescue ""
       @record = @egift.limit(1).offset(offset).first
@@ -199,6 +197,12 @@ def post_comment
     @carprofile = Carprofile.find(params[:id])
     @carprofile.destroy
     redirect_to carprofiles_path
+  end
+
+  def comment_destroy
+   @comment = Comment.find(params[:id])
+   @comment.destroy
+   redirect_to :back,:notice => "Comment Deleted Successfully"
   end
 
 
