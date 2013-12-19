@@ -42,10 +42,12 @@ class CarprofilesController < ApplicationController
       @body_index = BodyIndex.find_all_by_car_model_id(session[:car_model_id])
     end
 
+
     #raise @carprofile.inspect
     if @carprofile.save
-      session[:car_make_id] = nil
-      session[:car_model_id] = nil
+      session.delete(:car_make_id)
+      session.delete(:car_model_id)
+      
 	 	flash[:notice] = "car profile created successfully"
         redirect_to carprofiles_path
     else
@@ -191,6 +193,12 @@ def post_comment
     @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id }
     @carprofile.visitor(@carprofile)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  end
+
+  def destroy
+    @carprofile = Carprofile.find(params[:id])
+    @carprofile.destroy
+    redirect_to carprofiles_path
   end
 
 
