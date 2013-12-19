@@ -1,5 +1,5 @@
 class CarprofilesController < ApplicationController
-  
+  impressionist :actions=>[:show] ,:unique => [:impressionable_id,:impressionable_type,:session_hash]
   before_filter :authenticate_user!, :except => []
   before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date rescue ""
@@ -95,6 +95,7 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
+      
       @logbooks = Logbook.all
       @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
       @logbook = @carprofile.logbooks
@@ -162,6 +163,15 @@ def post_comment
        @error = "Please Enter Text In Body !!!"
     end
     @comments = Comment.where("commentable_id = ? and commentable_type = ?",@carprofile.id,@carprofile.class.table_name.classify).order("created_at desc")
+  end
+
+  def guest_user
+        @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
+    @carprofile = Carprofile.find(params[:id])
+    @carprofile.impressions = @carprofile.impressions.order("created_at DESC")
+    @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id }
+    @carprofile.visitor(@carprofile)
   end
 
 

@@ -204,7 +204,7 @@ float: left;
 display: block;
 text-decoration: none;
 margin: 0;
-padding: 10px 20px; /*padding inside each tab*/
+padding: 10px 18px; /*padding inside each tab*/
 border-right: 1px solid #6c000a; /*right divider between tabs*/
 border-left: 1px solid #f91e32; /*right divider between tabs*/
 color: white;

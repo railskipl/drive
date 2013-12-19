@@ -26,10 +26,10 @@ a.morelink {
     </div>
     
     <div class="container_20 profile_bg">
-      <div class="grid_10">
+      <div class="grid_11">
        <div class="car_profile_image">
         <div class="gift" style="margin:0 0 0 352px"><%= image_tag @record.egift.image ,:width => 128, :height => 128 rescue nil %></div>
-         <%= image_tag @carprofile.carprofile_photos.first.photo.url ,:width => 480,:height => 240  rescue nil %>   
+         <%= image_tag @carprofile.carprofile_photos.first.photo.url ,:width => 530,:height => 240  rescue nil %>   
        </div>
        <div style="float:left; margin:10px 0">
         <ul class="tab_menu">
@@ -45,6 +45,7 @@ a.morelink {
           <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
         <% end %>
         <li><%= link_to "favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
+        <li><%= link_to "My Guest",guest_user_carprofiles_path(:id => params[:id])%></li>
         <% unless current_user.id == @carprofile.user_id %>
           <li><%= link_to (Subscriber.subscribes?(current_user,@carprofile) ? "Unsubscribe": "Subscribe"),subscribe_car_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote => true,:id=>"subscribe_car"%></li>
         <% end %>
@@ -61,11 +62,11 @@ a.morelink {
   </div>
   
   
-        <div class="grid_10">
+        <div class="grid_9">
     
     
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr><p class="<%= rate_count(@carprofile.id) %>"></p></tr>
+    <tr><p class="<%= rate_count(@carprofile.id) rescue nil%>"></p></tr>
   <tr>
     <td align="left" valign="top" class="profile_col1">Car Make</td>
     <td class="profile_col2"><%= @carprofile.car_make.name%></td>
@@ -116,7 +117,6 @@ a.morelink {
 </td>
   </tr>
 </table>
-
 
 
 <h1><%= @carprofile.car_model.name %> Statistics </h1>
