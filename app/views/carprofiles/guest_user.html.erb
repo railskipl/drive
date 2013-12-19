@@ -18,9 +18,10 @@
 		<div class="grid_20">
 		
 		
-		
-		<div class="message"> 
 		<% @carprofile.impressions.each do |imps|%>
+		 <%if User.find_by_id(imps.user_id).visibility_status == true%>
+		<div class="message"> 
+		
 		<div class="tf"><strong>
 			<% if imps.created_at > Time.now.beginning_of_day %>
 			<%="#{time_ago_in_words(imps.created_at)} ago"%>
@@ -39,10 +40,11 @@
 		<div><%= truncate(User.find_by_id(imps.user_id).about, :length => 100)  rescue nil %></div>
 		<div style="margin:0 0 5px 0"><a href="<%=user_path(imps.user_id)%>" class="bluelink"><%= "#{User.find_by_id(imps.user_id).location}"rescue nil %></a></div>
 		</div>
-        <%end%>
+
 		</div>
 		
-
+         <%end%>
+        <%end%>
 		
 		</div>
 		
