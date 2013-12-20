@@ -3,7 +3,6 @@
 <% @likes.each do |like| %>
 <%= User.find(like.liker_id).first_name%>
 <%= User.find(like.liker_id).last_name%>
-
-<%=like.count%>
+<%=like.count%></br>
 
 <% end %>
