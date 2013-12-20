@@ -19,11 +19,7 @@ class CarprofilesController < ApplicationController
     
       @car_model = []
       @body_index = []
-    
-    
- 
-    
-    respond_to do |format|
+      respond_to do |format|
       format.html # new.html.erb
       format.xml { render :xml => @carprofile }
     end
