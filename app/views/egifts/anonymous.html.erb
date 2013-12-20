@@ -4,36 +4,37 @@
   <%= render 'shared/carousel' %>   
   </div>
     <div class="container_20">
-        
-    <div class="grid_4">
+     <div class="grid_4">
+    
+    
+    
       <ul class="message_menu">
-      <li  class="selected" ><%= link_to "Public", my_gifts_egifts_path %></li>
-      <li><%= link_to "Personal", personal_egifts_path %></li>
-      <li><%= link_to "Anonymous", anonymous_egifts_path %></li>
-      </ul>
-    </div>
+    <li><%= link_to "Public", my_gifts_egifts_path %></li>
+    <li><%= link_to "Personal", personal_egifts_path %></li>
+    <li class="selected" ><%= link_to "Anonymous", anonymous_egifts_path %></li>
+    </ul>
     
+    
+      </div>
     <div class="grid_16">
-    
-   <h4>Public</h4>
-    <% @public.each do |g|%>
+  <h4>Anonymous</h4>
+
+     <% @anon.each do |g|%>
 
   <div class="message">
-
  <table width="100%" border="0" cellspacing="5" cellpadding="5">
   <tr>
     <td align="left" valign="top" width="150px"><strong>Sender</strong></td>
-    <td align="left" valign="top" ><%= g.sender.first_name %> <%= g.sender.last_name %></td>
+    <td align="left" valign="top" >Anonymous</td>
     </tr>
   <tr>
     <td align="left" valign="top"><strong>Message</strong></td>
     <td align="left" valign="top"><%= g.message %></td>
-  </tr>
-<tr>
+    </tr>
+    <tr>
     <td align="left" valign="top"><strong>Car</strong></td>
     <td align="left" valign="top"><%= g.carprofile.car_model.name %></td>
     </tr>
-  
   <tr>
     <td align="left" valign="top"><strong>Gift</strong></td>
     <td align="left" valign="top"><%= image_tag g.egift.image.url(:thumb) ,:class =>"giftimage" %> </td>
@@ -43,14 +44,7 @@
   
   </div>
   <% end %>
-  
-  
-<%= will_paginate @public %>
- 
-  
-  
-  
-  </div>
-</div>
-</div>
 
+</div>
+</div>
+</div>
