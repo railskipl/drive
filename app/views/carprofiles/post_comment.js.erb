@@ -1,6 +1,7 @@
 <% if @success %>
 $("#body").val("");
 $('#comment_load').html("<%= escape_javascript (render :partial => 'car_profile_comments') %>");
+$("#star_rating").attr("class",'<%=@class%>');
 <% else %>
 alert("Max. Characters 2000");
 <% end %>

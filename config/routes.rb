@@ -59,6 +59,8 @@ Drive::Application.routes.draw do
      resources :send_gifts
      collection do
       get :my_gifts
+      get :anonymous
+      get :personal
      end
    end
 
