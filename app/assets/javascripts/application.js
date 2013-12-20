@@ -18,7 +18,7 @@ function user_status(status){
 	}
 	else{
 
-		var result=confirm("Your 10 point will be deducted.Are you sure to Continue?");
+		var result=confirm("Your 10 point will be deducted.Are you sure to Continue? if credit is not present then buy for inactivating your account.");
 		if (result==true)
 		  {
 		   ajax_call(status) 

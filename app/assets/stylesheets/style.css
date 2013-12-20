@@ -578,6 +578,8 @@ span.arrow {
 }
 div#popup_content {
     margin: 4px 7px;
+    height: 200px;
+    overflow :auto;
 }
 
 /*26-nov*/
@@ -965,8 +967,10 @@ color: #000;
 .comment_arrow{ background:url(../assets/top_arrow.png) no-repeat 10px 0; width:auto; height:8px}
 .comment_content{ background:#F3F3F3 ; width:auto; padding:10px; overflow:hidden; border-bottom:1px solid #fff}
 .comment_right{ width:auto; height:auto; margin:0 0 0 60px}
+
 .close{ width:16px; height:16px; padding:5px; background:url(../assets/closebox.png) no-repeat 5px 5px; position:absolute; margin-left:880px}
 .close:hover{background:url(../assets/closebox.png) no-repeat 5px 5px #333 ;}
+
 
 .close2{ width:16px; height:16px; padding:5px; background:url(../assets/delete.png) no-repeat 5px 5px;float:right;}
 .close2:hover{background:url(../assets/delete.png) no-repeat 5px 5px #333 ;}
