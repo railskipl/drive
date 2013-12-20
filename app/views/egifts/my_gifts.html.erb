@@ -44,12 +44,10 @@
   </div>
   <% end %>
   
-  
-<%= will_paginate @public %>
+  <div class="digg_pagination">
+    <%= will_paginate @public, :container => false %>
+  </div>
  
-  
-  
-  
   </div>
 </div>
 </div>
