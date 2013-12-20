@@ -82,7 +82,8 @@ class CarprofilesController < ApplicationController
 
   def like_count
     @car_profile= Carprofile.find(params[:id])
-    @likes= Like.find_all_by_likeable_id(@car_profile.id)
+    @likes = @car_profile.likes(@car_profile.id)
+    @likes = @likes.delete_if {|i| i.count == 0 }
   end
 
 
