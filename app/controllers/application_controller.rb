@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
   protect_from_forgery
 
-  before_filter :meta_defaults
+  before_filter :meta_defaults, :cars
 
 
   private
+  def cars
+    @car_makes = CarMake.order("name asc").limit(32)
+    @carmakes = CarMake.all
+  end
 
 
   def meta_defaults

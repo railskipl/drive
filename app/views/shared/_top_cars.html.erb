@@ -2,84 +2,15 @@
 <div class="container_20">
 <div class="grid_20">
  <div class="top_car">Top Cars</div>
- <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
  
  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
+  <% @car_makes.each do |car_make|%>      
+ <li><%= link_to car_make.name, search_shared_index_path(:id => car_make.id)%></li>
+  <%end%>
+ 
  </ul>
  
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
-  <ul class="topcar">
- <li><a href="#">Acura</a></li>
-  <li><a href="#">Alfa Romeo</a></li>
-   <li><a href="#">Aston Martin	Audi</a></li>
-    <li><a href="#">Buick</a></li>
-	 <li><a href="#">BYD</a></li>
-	  <li><a href="#">BMW</a></li>
- </ul>
- 
- 
- 
- 
+ <div align = "right"><a href="<%= all_car_shared_index_path%>"  class="bluelink bold">All Cars</a></div>
  </div>
  
  </div>

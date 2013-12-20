@@ -1,0 +1,61 @@
+
+<div class="container_20">
+
+		
+		<div class="middle">
+		
+		<div class="container_20" style="background:#333; margin-bottom:10px">
+		
+		
+		
+		
+		<div class="container_20">
+				
+				
+				<div class="grid_20 aboutme">
+		
+	
+	<h4 class="title"></h4>
+	
+      <%if @carprofiles.empty? %>  
+       <b>There are no cars to view </b>
+       <%else%>
+		<% @carprofiles.each do |car|%>
+		
+		<div class="mycardiv">
+			
+		<div>
+		<%= link_to  image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"186", :height=>"125"),carprofile_path(car) rescue nil%>
+		</div>
+		
+		<div class="mycar_caption">
+		<a href="<%= carprofile_path(car)%>" class="bluelink bold"><%= car.car_make.name%> <%=car.car_model.name%></a>
+		</br> 
+		<%= car.user.location%>
+		</br> 
+		<a href="<%= user_path(car.user_id)%>" class="bluelink"><%= car.user.first_name%> <%=car.user.last_name%></a>
+		<%= will_paginate @carprofiles %>
+		</div>
+		
+		</div>
+		
+		<%end%>
+
+		<%end%>
+
+	</div>
+	
+					
+
+		
+		</div>
+		
+
+
+  
+		
+		</div>
+		
+
+</div>
+

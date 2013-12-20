@@ -26,6 +26,13 @@ Drive::Application.routes.draw do
   end
  end
 
+ resources :shared do
+    collection do
+      get :search
+      get :all_car
+    end
+  end
+
   resources :blog_comments
   resources :comment_logs
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
