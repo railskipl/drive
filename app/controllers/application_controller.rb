@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
+  include ApplicationHelper
   protect_from_forgery
 
   before_filter :meta_defaults
