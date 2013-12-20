@@ -70,7 +70,7 @@ class CarprofilesController < ApplicationController
         @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_comment", :notifiable_id  => @car_profile.id)
         @notification.save
     end
-    
+      @class = rate_count(@car_profile.id)
      respond_to do |format|
      format.js {}
     end
@@ -174,6 +174,7 @@ def post_comment
     if params[:body].present?
       @comment = Comment.add_comment(params[:body],current_user,@carprofile)
       if @comment.save
+        @class = rate_count(@carprofile.id)
         @success = "Comment Saved Successfully !!!"
       end
     else
