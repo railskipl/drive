@@ -78,7 +78,8 @@ class CarprofilesController < ApplicationController
 
   def like_count
     @car_profile= Carprofile.find(params[:id])
-    @likes= Like.find_all_by_likeable_id(@car_profile.id)
+    @likes = @car_profile.likes(@car_profile.id)
+    @likes = @likes.delete_if {|i| i.count == 0 }
   end
 
 
@@ -201,11 +202,6 @@ def post_comment
    redirect_to :back,:notice => "Comment Deleted Successfully"
   end
 
-def comment_destroy
-   @comment = Comment.find(params[:id])
-    @comment.destroy
-   redirect_to :back,:notice => "Comment Destroy Successfully"
-  end
 
 
 private

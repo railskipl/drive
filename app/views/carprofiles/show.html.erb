@@ -126,7 +126,13 @@ a.morelink {
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td align="left" valign="top">
-  <div><span class="redcount" id="like_count"><%= @counts rescue nil%></span></div>
+  <div><span class="redcount" id="like_count">
+   <% if @counts.nil?%>
+    0
+  <% else %>
+  <%= @counts %>
+  <% end %>
+  </span></div>
   <div><strong>Likes</strong></div>
   
   </td>
