@@ -578,7 +578,7 @@ span.arrow {
 }
 div#popup_content {
     margin: 4px 7px;
-    height: 200px;
+    height: 100px;
     overflow :auto;
 }
 
