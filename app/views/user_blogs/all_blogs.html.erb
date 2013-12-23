@@ -59,12 +59,12 @@
     <div class="message">
       
     <%#= raise User.find_by_id(user_blog.user_id).pic.blank?.inspect%> 
-    <%if User.find_by_id(user_blog.user_id).pic.blank? %>
+    <% unless user_blog.user.pic? %>
       
     <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
     <%else%>
    
-    <div class="thumb"><%=link_to image_tag(User.find_by_id(user_blog.user_id).pic.url(:thumb) ,:width => 50, :height => 50) %></div>
+    <div class="thumb"><%=link_to image_tag(user_blog.user.pic.url(:thumb) ,:width => 50, :height => 50) %></div>
     <% end %>
     
     
