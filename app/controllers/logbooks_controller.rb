@@ -1,6 +1,6 @@
 class LogbooksController < ApplicationController
   require 'will_paginate/array'
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!
    def index
     @logbooks = current_user.logbooks.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
     #@logbooks = @logbooks.paginate(page: params[:page], per_page: 5) 
