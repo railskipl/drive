@@ -11,6 +11,8 @@ end
 
 def create
 	Friendship.request(@user, @friend)
+	@notification = Notification.new(:user_id => current_user.id, :notification_type => "friendship", :notifiable_id  => @friend.id)
+	@notification.save
 	flash[:notice] = "Friend request sent."
 	redirect_to(:back)
 end

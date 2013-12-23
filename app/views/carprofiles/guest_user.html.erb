@@ -19,17 +19,18 @@
 		
 		
 		<% @carprofile.impressions.each do |imps|%>
-		 <%if User.find_by_id(imps.user_id).visibility_status == false%>
+
+		 <% if User.find_by_id(imps.user_id).visibility_status  == false%>
 
 		  <div class="message"> 
 		
-		<div class="tf"><strong>
+		<ul class="action">
 			<% if imps.created_at > Time.now.beginning_of_day %>
 			<%="#{time_ago_in_words(imps.created_at)} ago"%>
 			<% else %>
 	          <li><%= imps.created_at.strftime("%b %d, %Y") %></li>
 	          <% end %>
-		</strong></div>
+		</ul>
 		<img src="/assets/thumb_profile.jpg" alt="">
 		
 		<div class="mail_content" style="width:442px">
@@ -44,7 +45,7 @@
 		<div class="message"> 
 		
 		
-		<%if User.find_by_id(imps.user_id).pic.blank? %>
+		<% if User.find_by_id(imps.user_id).pic.blank? %>
 		<img src="/assets/thumb_profile.jpg" alt="">
 		<%else%>
         <div class="thumb"><%=image_tag(User.find_by_id(imps.user_id).pic.url(:thumb) ,:width => 50, :height => 50) %></div>
@@ -69,7 +70,7 @@
 		
           <%end%>
         <%end%>
-		
+		<%#= will_paginate @carprofile.impressions %>
 		</div>
 		
 		

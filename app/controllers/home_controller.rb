@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-
+require 'will_paginate/array'
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @user_blogs = current_user.user_blogs.all
@@ -43,6 +43,27 @@ end
 def subscribe_count
   @user = User.find(params[:id])
   @subscribers =  Subscriber.subscribers(@user,User)
+end
+
+def logbooksearch_home
+  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  @logbook_categories = LogbookCategory.all
+  
+  carmake = params[:logbook][:car_make_id]
+  carmodel =  params[:logbook][:car_model_id]
+  lc = params[:logbook][:logbook_category_id_eq]
+
+  if carmake.empty?
+  @logbooks = Logbook.search(logbook_category_id_eq: lc).result.paginate(page: params[:page], per_page: 5) 
+  elsif carmodel.nil?
+  @logbooks = Logbook.where("car_make_id = ? and logbook_category_id = ?", carmake,lc).paginate(page: params[:page], per_page: 5) 
+  else
+    if lc.empty?
+      @logbooks = Logbook.search(car_model_id_eq: carmodel).result.paginate(page: params[:page], per_page: 5)
+    else
+      @logbooks = Logbook.where("car_make_id = ? and car_model_id = ? and logbook_category_id = ?", carmodel,carmake,lc).paginate(page: params[:page], per_page: 5) 
+    end 
+  end
 end
 
 end

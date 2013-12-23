@@ -26,6 +26,13 @@ Drive::Application.routes.draw do
   end
  end
 
+ resources :shared do
+    collection do
+      get :search
+      get :all_car
+    end
+  end
+
   resources :blog_comments
   resources :comment_logs
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
@@ -107,6 +114,8 @@ end
   match 'blogsearch' => 'user_blogs#blogsearch'
 
   match "myfriend"  => 'logbooks#myfriend'
+
+  match "/logbooksearch_home", :to => "home#logbooksearch_home"
 
   match "myfriend_blog"  => 'user_blogs#myfriend_blog'
 

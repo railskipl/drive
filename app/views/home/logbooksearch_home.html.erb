@@ -1,0 +1,109 @@
+<div class="middle">
+    
+    <div class="container_20" style="background:#333; margin-bottom:10px">
+    <%= render 'shared/carousel' %>
+    
+    <div class="grid_20 title" style="margin-top:10px">
+    
+  <div style="width:40%; float:left"><h4>My Logbook</h4></div>
+  <!-- <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%= new_logbook_path %>" class="compose">Add Logbook +</a></div> -->
+  
+  </div>
+    
+    <div class="grid_4">
+    
+    
+    
+      <ul class="message_menu">
+    <li><%= link_to "All Logbook", logbooks_all_logbook_path rescue nil%></li>
+    
+    </ul>
+    
+    <strong class="bluelink">Topic</strong>
+    <ul class="message_menu">
+      <% @logbook_categories.each do |logbook| %>
+
+        <li><%= link_to logbook.name, search_logbook_categories_path(:name => logbook.name ) %></li>
+      <% end %>
+    </ul>
+    
+    
+    
+      </div>
+    
+    <div class="grid_12">
+
+
+    <% if @logbooks.empty? %>
+     <%= "No logbook found" %>
+     <%else%>
+     <% @logbooks.each do |logbook| %>
+    <div class="message"> 
+ 
+    
+    <div class = "thumb"><%=link_to image_tag(logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+  
+    <div class="mail_content" style="width:475px">
+    <div><a href="<%=logbook_path(logbook)%>" class="bluelink bold"><%=logbook.title rescue nil%></a></div>
+    <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%=user_path(logbook.user_id)%>"><%=logbook.user.first_name rescue nil%></a></div>
+    <div><%= truncate(logbook.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
+    
+    <div class="likediv"> <a href="<%=logbook_path(logbook)%>" class="likelink">Comment</a>  
+      <% if logbook.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(logbook.created_at)} ago"%>
+           <% else %>
+           <%= logbook.created_at.strftime("%b %d, %Y") %>
+      <% end %></div>
+    </div>
+
+    
+    
+   </div>
+  <%end%>
+     <%end%>
+    
+    
+  <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+   <%= will_paginate @logbooks %>
+  </ul>
+    
+    
+    
+    </div>
+        
+    <div class="grid_4">
+    
+    <div class="black_heading" style="margin-top:10px"> What Is Logbook</div>
+  <div class="pe_box">
+  
+  
+
+The Logbook is designed to record the events in the life of the respective car. In this section you can select the category and describe all modifications that you have made with your car. Logbook - All personal life of your vehicle. Equipment set, stories, performance modifications, improvements, photos e.t.c. 
+
+
+</div>
+    
+    
+      </div>
+        
+    
+    </div>
+    
+
+
+  
+    
+    </div>
+    
+
+</div>
+
+
+
+
+
+
+
+
+
+

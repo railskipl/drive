@@ -13,10 +13,12 @@
   <% end %>
 
   <div class="comment_div">
-      <div class="comment_arrow"></div>
+      
       <div class="comment_content">
          <%#raise current_user.pic.url(:thumb).blank?.inspect%>
+
         <% unless current_user.pic?%>
+
 
         <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
           <%else%>
