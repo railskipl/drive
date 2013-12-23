@@ -1,13 +1,14 @@
  <%= stylesheet_link_tag  "table_style" %>
+
 <div class="middle">
 	<div class="grid_20 title">
-		<h4 style="margin-top:10px;">Message</h4>
+		<h4 style="margin-top:10px;">Blocked users</h4>
 		</div>
 
-	<div class="grid_20" style="margin:10px;">	
-<% if @blocked_users.empty? %>
+ <% if @blocked_users.empty? %>
 <h2>You didnt block any users yet !!!</h2>
 <% else %>
+<div class="grid_20" style="margin:10px;">	
 <table width="100%">
 <tr>
 <th>Name</th>
@@ -26,3 +27,4 @@
 </div>
 <% end %>
 </div>
+
