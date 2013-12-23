@@ -43,11 +43,13 @@ class SendGiftsController < ApplicationController
   def create
     @send_gift = SendGift.new(params[:send_gift])
 
-
+    #raise @send_gift.carprofile_id.inspect
     if current_user.credit >= 0 and current_user.credit >= @send_gift.egift.credit.to_i
 
     respond_to do |format|
        if @send_gift.save
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "sendgift", :notifiable_id  => @send_gift.carprofile_id)
+         @notification.save
          current_user.spend_credit_egift(current_user, @send_gift.egift.credit)
          current_user.save
          format.html { redirect_to carprofile_path(@send_gift.carprofile_id), notice: 'Send gift was successfully created.' }
