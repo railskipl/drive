@@ -33,7 +33,12 @@ class UserBlogsController < ApplicationController
 
   def edit
   	@user_blog = UserBlog.find(params[:id])
+    if @user_blog.user == current_user
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    else
+      @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+      redirect_to root_path ,:notice => "Access Denied"
+    end
   	
   end
 

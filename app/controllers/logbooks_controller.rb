@@ -53,8 +53,13 @@ class LogbooksController < ApplicationController
 
   def edit
     @logbook = Logbook.find(params[:id])
+    if @logbook.user == current_user
     @carprofile = current_user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    else
+       @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+       redirect_to root_path ,:notice => "Access Denied"
+    end
   end
 
   def like_logbook
