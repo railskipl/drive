@@ -228,7 +228,7 @@ a.morelink {
         <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
             <%= hidden_field_tag :car_profile_id,@carprofile.id %>
             <p>
-              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" ,:style => "width:365px"%>
+              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" ,:style => "width:365px", :maxlength => 2000 %>
             </p>
             <%= submit_tag "Comment", :style=>"margin-left:100px",:class=>"submit_btn"%>
         <% end %>
