@@ -3,7 +3,11 @@
   <% unless User.find_by_id(comment.user_id).nil? %>
     <div class="blog_div">
       <div class="small_thumb"> 
+        <% unless comment.user.pic? %>
+           <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
+        <% else %>
       	<%= image_tag comment.user.pic.url(:thumb), :width => 50, :height => 40  %>
+        <% end %>
       </div>
       <div class="blog_right" style="width:300px;float:left;margin:0;">
     

@@ -223,7 +223,13 @@ a.morelink {
   <div class="grid_10">
             <h4>Comments</h4>
           
-        <div class="small_thumb"><%= image_tag (current_user.pic.url(:thumb)),:height => "40",:width => "50",:style=>"float:left;"%></div>
+        <div class="small_thumb">
+        <% unless current_user.pic? %>
+            <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
+        <% else %>
+          <%= image_tag (current_user.pic.url(:thumb)),:height => "40",:width => "50",:style=>"float:left;"%>
+        <% end %>
+        </div>
 
         <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
             <%= hidden_field_tag :car_profile_id,@carprofile.id %>
