@@ -71,10 +71,10 @@
         <% end %>
           <div class="comment_right">
 
-            <% if comment_logbook.user_id == current_user.id  %>
-             <div style="float:right" ><%= link_to (image_tag "delete.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%></div>
+        
+                <% if comment_logbook.user_id == current_user.id  %>
+           <%= link_to (image_tag "delete.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "close2"%>
              <%end%>
-            <a href="#" class="close2"></a>
             <div style="margin:0 0 5px 0">By <a class="bluelink" href="<%=user_path(comment_logbook.user.id)%>" ><%=comment_logbook.user.first_name%></a></div>
             <div><%= comment_logbook.body.to_s.html_safe rescue nil%>
             </div>
