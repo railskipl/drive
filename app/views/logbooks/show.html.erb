@@ -57,18 +57,24 @@
 
 <h4>Comments</h4>
 
-
+  <div class="comment_arrow"></div>
 <% @logbook.comment_logbooks.each do |comment_logbook| %>
   <% unless comment_logbook.id.nil? %>
+
+
 <div class="comment_content">
-  <%#= image_tag (current_user.pic.url(:thumb)),:height => "77",:width => "77",:style=>"float:left;"%>
-        <img alt="" src="<%= User.find_by_id(comment_logbook.user_id).pic.url(:thumb)%>" style="float:left" height="40" width="50">
+
+        <% unless  comment_logbook.user.pic? %>
+        <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
+          <%else%>
+        <img alt="" src="<%=  comment_logbook.user.pic.url(:thumb)%>" style="float:left" height="40" width="50">
+        <% end %>
           <div class="comment_right">
-            <%#raise comment_logbook.user.id.inspect%>
+
             <% if comment_logbook.user_id == current_user.id  %>
              <div style="float:right" ><%= link_to (image_tag "delete.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' }%></div>
              <%end%>
-            <a href="#" class="close"></a>
+            <a href="#" class="close2"></a>
             <div style="margin:0 0 5px 0">By <a class="bluelink" href="<%=user_path(comment_logbook.user.id)%>" ><%=comment_logbook.user.first_name%></a></div>
             <div><%= comment_logbook.body.to_s.html_safe rescue nil%>
             </div>
