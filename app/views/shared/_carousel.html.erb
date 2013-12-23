@@ -1,6 +1,7 @@
 <script type="text/javascript">
-$(document).ready(function() {
- $('#carouselhAuto').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true, masked: true, itemstodisplay:5, orientation: 'h' });
+jQuery.noConflict();
+jQuery(document).ready(function() {
+ jQuery('#carouselhAuto').jsCarousel({ onthumbnailclick: function(src) { alert(src); }, autoscroll: true, masked: true, itemstodisplay:5, orientation: 'h' });
 });       
 </script>
 <div id="carouselhAuto">
