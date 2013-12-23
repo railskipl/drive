@@ -25,9 +25,9 @@
     
     
       <ul class="message_menu">
-    <li class="selected"><%= link_to "All Blogs", all_blogs_user_blogs_path %></li>
-    <li><%= link_to "My Blogs", user_blogs_path %></li>
-    <li><a href="<%= myfriend_blog_path%>">Friend's Blog</a></li>
+    <li <% if controller.action_name == "all_blogs" %> class="selected" <% end %>><%= link_to "All Blogs", all_blogs_user_blogs_path %></li>
+    <li <% if controller.action_name == "index" %> class="selected" <% end %>><%= link_to "My Blogs", user_blogs_path %></li>
+    <li <% if controller.action_name == "myfriend_blog" %> class="selected" <% end %>><a href="<%= myfriend_blog_path%>">Friend's Blog</a></li>
     </ul>
     
     

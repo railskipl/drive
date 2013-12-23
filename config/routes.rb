@@ -115,6 +115,8 @@ end
 
   match "myfriend"  => 'logbooks#myfriend'
 
+  match "/logbooksearch_home", :to => "home#logbooksearch_home"
+
   match "myfriend_blog"  => 'user_blogs#myfriend_blog'
 
   match "/carprofiles/comment_destroy", :to => "carprofiles#comment_destroy"
