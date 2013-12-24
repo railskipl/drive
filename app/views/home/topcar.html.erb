@@ -13,7 +13,7 @@
 	<div class="message" style="width:auto;"> 
 		<div class="rank"><%= index+1 %></div>
 	 		<div class="rank_car_div">
-				<%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb) %></br>
+				<%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb) rescue nil  %></br>
 				<a href="#" class="bluelink bold"><%= carprofile.car_model.name %></a>
 				<p class="<%= rate_count(carprofile.id) rescue nil %>"></p>
 			</div>
@@ -33,7 +33,10 @@
   	</div>
  <% end %>
  </div>
+   <div class="digg_pagination">
+
  <%= will_paginate @top_cars,:params => {:controller => "home",:action => "paginate_top_car" } %>
+</div>
  <!-- STOP MAIN LOOP FOR TOP CARS -->
 </div>
 </div>
