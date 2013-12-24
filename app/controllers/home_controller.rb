@@ -62,7 +62,7 @@ end
 end
 
 
-=======
+
 def logbooksearch_home
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @logbook_categories = LogbookCategory.all
@@ -88,5 +88,5 @@ def logbooksearch_home
   end
 end
 
->>>>>>> c0420f602045d32ccadb48032b64919efeedaaf7
+
 end
