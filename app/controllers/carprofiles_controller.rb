@@ -147,6 +147,7 @@ class CarprofilesController < ApplicationController
   end
 
 def subscribe_car
+
   @carprofile = Carprofile.find(params[:id])
   if Subscriber.subscribes?(current_user,@carprofile)
     Subscriber.unsubscribe!(current_user,@carprofile)
@@ -156,7 +157,6 @@ def subscribe_car
    respond_to do |format|
      format.js {}
     end
- 
 end
 
 def subscar_count

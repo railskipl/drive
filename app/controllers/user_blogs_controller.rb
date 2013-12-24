@@ -1,6 +1,6 @@
 class UserBlogsController < ApplicationController
   require 'will_paginate/array'
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!
   def index
     @user_blogs = current_user.user_blogs.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -33,7 +33,12 @@ class UserBlogsController < ApplicationController
 
   def edit
   	@user_blog = UserBlog.find(params[:id])
+    if @user_blog.user == current_user
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    else
+      @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+      redirect_to root_path ,:notice => "Access Denied"
+    end
   	
   end
 

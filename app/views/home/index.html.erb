@@ -1,9 +1,12 @@
+
 <div class="middle">
   <div class="container_20" style="background:#333; margin-bottom:10px">
 	<%= render 'shared/carousel' %>		
   </div>
 		
 		
+<%= javascript_include_tag "prototype" %>
+
   <div class="container_20 profile_bg">
 	<div class="grid_4">
       <div class="profile_image"><!-- <img alt="" src="assets/profile.jpg"> -->
@@ -59,77 +62,56 @@
 		
 </div>
 	
-  <div class="grid_11 aboutme">
-		
-  <h4>Comments</h4>
-
-<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
-<textarea rows="4" class="comment_tf"></textarea>
-
-<div style="float:right; margin:10px 0; text-align:right; width:100%"><input type="button" style="margin:0" class="submit_btn" value="Search"></div>
-
-
-<div class="blog_div2">
-		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
+  <div class="grid_11">
 		
 		
-		<div class="blog_div2">
-		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
-		
-		<div class="blog_div2">
-		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
-		
-		<div class="blog_div2">
-		
-		<div class="small_thumb"><img src="assets/small_thumb.png" alt="" style="float:left"></div>
-		
-		<div class="blog_right">
-		<a class="redlink" href="#">John Smith </a><br>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla gravida dolor sit consectetur enim. lit. Nulla gravida 
-		
-		</div>
-		
-		</div>
-		
-
-
-
-	</div>
-
-		
-		</div>
-		
-
-
+		<div class="black_heading" style="margin-top:10px">PERSONAL EXPERIENCE</div>
+  <div class="pe_box" style="margin-bottom:10px">
+  <strong>Personal stories, advice and support</strong><br>
   
+  Logbooks from the real car owners - are truth about the experience from the first hands.
+How-to guides with photos, tips and articles on car care and maintenance.  
+<%= form_tag logbooksearch_home_path, :method => :get do %>
+<div style="margin-top:10px"><strong>Make</strong>  <span class="red">*</span></div>
+<div>
+    <%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %><br/><br/>
+
+    <div id="car_make_id">
+        <%= select "carprofile", :car_model_id,   @car_model.map {|s| [s.name, s.id]},{:prompt => "Select model"}  ,:onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_body"}, :with => "'update_body='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}"  rescue nil %>
+<%= image_tag("/assets/loadingg.gif",
+                    :align => "absmiddle",
+                    :border => 0,
+                    :id => "loader",
+                    :style =>"display: none;" ) %><br/><br/>   
+
+    </div>
+    
+</div>
+
+
+
+
+<div style="margin-top:10px"><strong>Topic</strong>  <span class="red">*</span></div>
+<div>
+    <%= collection_select :logbook ,:logbook_category_id_eq, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category'%>
+   
+</div>
+
+
+<div style="margin:10px 0 0 0" ><%= submit_tag "Search",:class=>"submit_btn2"%>
+</div>
+<%end%>
+</div>
 		
+		
+		</div>
+		
+		</div>
+		
+
+</div>
+  
+		</div>
 		</div>
 		
 

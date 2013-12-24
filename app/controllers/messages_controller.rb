@@ -87,10 +87,12 @@ class MessagesController < ApplicationController
       recipients_array.each do |r|
        @message = Message.create(:subject => @msg.subject, :body => @msg.body,
         :sender_id => current_user.id, :recipient_id => r )
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "message", :notifiable_id  => r )
        @message.msg(@message.id)
       end
       respond_to do |format|
         if @message.save
+          @notification.save
           format.html { redirect_to @message, notice: 'Message send successfully.' }
           format.json { render json: @message, status: :created, location: @message }
         else

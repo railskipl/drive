@@ -1,5 +1,6 @@
-  require "will_paginate/array"
+ require 'will_paginate/array'
  class HomeController < ApplicationController
+
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @user_blogs = current_user.user_blogs.all
@@ -45,6 +46,7 @@ def subscribe_count
   @subscribers =  Subscriber.subscribers(@user,User)
 end
 
+<<<<<<< HEAD
 def topcar
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @top_cars = top_cars(Carprofile.all.map(&:id))
@@ -60,4 +62,31 @@ end
 end
 
 
+=======
+def logbooksearch_home
+  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  @logbook_categories = LogbookCategory.all
+  
+  carmake = params[:logbook][:car_make_id]
+  carmodel =  params[:logbook][:car_model_id]
+  lc = params[:logbook][:logbook_category_id_eq]
+
+  if carmake.empty?
+  @logbooks = Logbook.search(logbook_category_id_eq: lc).result.paginate(page: params[:page], per_page: 5) 
+  elsif carmodel.nil?
+    if lc.empty?
+      @logbooks = Logbook.where("car_make_id = ? ", carmake).paginate(page: params[:page], per_page: 5) 
+    else
+      @logbooks = Logbook.where("car_make_id = ? and logbook_category_id = ?", carmake,lc).paginate(page: params[:page], per_page: 5) 
+    end
+  else
+    if lc.empty?
+      @logbooks = Logbook.search(car_make_id_eq: carmake).result.paginate(page: params[:page], per_page: 5)
+    else
+      @logbooks = Logbook.where("car_make_id = ? and car_model_id = ? and logbook_category_id = ?", carmake,carmodel,lc).paginate(page: params[:page], per_page: 5) 
+    end 
+  end
+end
+
+>>>>>>> c0420f602045d32ccadb48032b64919efeedaaf7
 end
