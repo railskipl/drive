@@ -8,10 +8,9 @@
  <!-- START MAIN LOOP FOR TOP CARS -->
  <div class="grid_20">
  	<p><%= (page_entries_info @top_cars).gsub("arrays","top cars").html_safe %></p>
-   <% @top_cars.each_with_index do |car,index| %>
+   <% @top_cars.each do |car| %>
    <% carprofile = Carprofile.find(car[0]) %>
 	<div class="message" style="width:auto;"> 
-		<div class="rank"><%= index+1 %></div>
 	 		<div class="rank_car_div">
 				<%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb) rescue nil  %></br>
 				<a href="#" class="bluelink bold"><%= carprofile.car_model.name %></a>
