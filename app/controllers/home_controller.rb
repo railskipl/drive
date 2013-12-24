@@ -46,7 +46,6 @@ def subscribe_count
   @subscribers =  Subscriber.subscribers(@user,User)
 end
 
-<<<<<<< HEAD
 def topcar
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @top_cars = top_cars(Carprofile.all.map(&:id))
