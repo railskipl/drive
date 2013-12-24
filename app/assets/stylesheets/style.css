@@ -1057,6 +1057,7 @@ color: #000;
 }
 
 .rank{ font-size:50px; width:100px; float:left; margin-right:10px}
-    .rank_car_div{ width:auto; float:left; margin-right:50px}
-    /*.rank_car_div img{ border:1px solid #E6E6E6}*/
-
+    .rank_car_div{ width:auto; min-height:145px; float:left; margin-right:10px; background:#f0f0f0; padding:10px}
+    .rank_car_div2{ width:740px; min-height:145px; float:left; background:#f0f0f0; padding:10px}
+    .rank_car_div img{ border:1px solid #E6E6E6}
+    
