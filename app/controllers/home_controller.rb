@@ -1,5 +1,6 @@
-class HomeController < ApplicationController
-require 'will_paginate/array'
+ require 'will_paginate/array'
+ class HomeController < ApplicationController
+
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @user_blogs = current_user.user_blogs.all
@@ -45,6 +46,23 @@ def subscribe_count
   @subscribers =  Subscriber.subscribers(@user,User)
 end
 
+<<<<<<< HEAD
+def topcar
+  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  @top_cars = top_cars(Carprofile.all.map(&:id))
+  @@cars = @top_cars.to_a
+  @top_cars = @top_cars.to_a.paginate(:page => params[:page],:per_page => 3)  
+end
+
+ def paginate_top_car
+ @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+ @top_cars = @@cars.paginate(:page => params[:page],:per_page => 3)
+ render "topcar"
+
+end
+
+
+=======
 def logbooksearch_home
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @logbook_categories = LogbookCategory.all
@@ -70,4 +88,5 @@ def logbooksearch_home
   end
 end
 
+>>>>>>> c0420f602045d32ccadb48032b64919efeedaaf7
 end

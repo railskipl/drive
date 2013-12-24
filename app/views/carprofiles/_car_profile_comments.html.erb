@@ -1,20 +1,20 @@
 <% @comments.each do |comment| %>
-
-  <% unless User.find_by_id(comment.user_id).nil? %>
+<% unless User.find_by_id(comment.user_id).nil? %>
     <div class="blog_div">
       <div class="small_thumb"> 
+
         <% unless comment.user.pic? %>
            <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
         <% else %>
       	<%= image_tag comment.user.pic.url(:thumb), :width => 50, :height => 40  %>
         <% end %>
+
       </div>
       <div class="blog_right" style="width:300px;float:left;margin:0;">
     
        <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
         <%= comment.body %>
-       
-       
+      
       </div>
       <div style="width:100px;height:auto;float:left;">
      <% if  (comment.user == current_user) || (@carprofile.user == current_user)  %>
