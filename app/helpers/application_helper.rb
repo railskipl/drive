@@ -1,6 +1,4 @@
 module ApplicationHelper
-
-
  def format_boolean(approved)
         if approved
           icon_tick
@@ -88,5 +86,23 @@ module ApplicationHelper
         "five_star"
     end
   end
+
+   def top_cars(carprofile_ids=[])
+     top_cars = {}
+     carprofile_ids.each do |carprofile_id|
+     carprofile = Carprofile.find(carprofile_id)
+     count = 0
+     count += carprofile.send_gifts.count
+     count += carprofile.comments_count
+     count += Like.find_by_likeable_type_and_likeable_id("Carprofile",carprofile_id).count rescue 0
+     count += carprofile.logbooks.count
+     count += carprofile.favourites.count
+     count += Subscriber.find_all_by_subscribable_id(carprofile_id).count rescue 0
+     count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0
+     top_cars.merge!({carprofile.id => count})
+    end
+   return Hash[top_cars.sort_by{|car, count| count }.reverse]
+ end
+
 
 end

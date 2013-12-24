@@ -1,0 +1,40 @@
+<div class="middle">
+  <div class="container_20" style="background:#333; margin-bottom:10px">
+  <%= render 'shared/carousel' %></div>
+ <div class="container_20">		
+  <div class="grid_20 title">	
+	<div style="width:40%; float:left"><h4>Top Car</h4></div>
+  </div>		
+ <!-- START MAIN LOOP FOR TOP CARS -->
+ <div class="grid_20">
+ 	<p><%= (page_entries_info @top_cars).gsub("arrays","top cars").html_safe %></p>
+   <% @top_cars.each_with_index do |car,index| %>
+   <% carprofile = Carprofile.find(car[0]) %>
+	<div class="message" style="width:auto;"> 
+		<div class="rank"><%= index+1 %></div>
+	 		<div class="rank_car_div">
+				<%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb) %></br>
+				<a href="#" class="bluelink bold"><%= carprofile.car_model.name %></a>
+				<p class="<%= rate_count(carprofile.id) rescue nil %>"></p>
+			</div>
+	 		<div style="width:auto; float:left"> 
+				<div class="small_thumb">
+					<%= carprofile.user.pic?  ? (image_tag carprofile.user.pic(:thumb),:style => "float:left") : (image_tag 'small_thumb.png')%>
+					<!-- <img style="float:left" alt="" src="/assets/small_thumb.png"> -->
+				</div>
+				<div style="width:auto" class="mail_content">
+					<div><a class="bluelink bold" href="#"><%= "#{carprofile.user.first_name} #{carprofile.user.last_name}".capitalize %></a></div>
+		   			<div style="margin:0 0 5px 0">
+			 			<%= carprofile.user.email %><br>
+		     			<strong><%= carprofile.user.location %></strong>
+	       			</div>
+	    		</div>
+			</div>
+  	</div>
+ <% end %>
+ </div>
+ <%= will_paginate @top_cars,:params => {:controller => "home",:action => "paginate_top_car" } %>
+ <!-- STOP MAIN LOOP FOR TOP CARS -->
+</div>
+</div>
+</div>

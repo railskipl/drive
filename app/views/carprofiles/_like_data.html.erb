@@ -1,8 +1,13 @@
-<%= javascript_include_tag  "script.js" %>
-
-<% @likes.each do |like| %>
-<%= User.find(like.liker_id).first_name%>
-<%= User.find(like.liker_id).last_name%>
-<%=like.count%></br>
-
+ <% @likes.each do |like| %>
+<% user = User.find(like.liker_id)%>
+ <div class="message" style="width:50%; float:left"> 
+	<%= user.pic? ? (image_tag user.pic(:thumb),:width => 48) : (image_tag 'thumb_profile.jpg',:width => 48) %>
+	 <div class="mail_content" style="width:auto">
+	<%= "#{user.first_name} #{user.last_name }".capitalize %>
+	<span class="bluelink bold"><%= like.count%></span></br>
+	</div>
+</div>
 <% end %>
+
+
+
