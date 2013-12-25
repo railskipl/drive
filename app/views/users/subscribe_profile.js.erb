@@ -1,5 +1,5 @@
 <% if Subscriber.subscribes?(current_user,@user) %>
- $("#subscribe_profile").html("Unsubscribe");
+ jQuery("#subscribe_profile").html("Unsubscribe");
 <% else %>
- $("#subscribe_profile").html("Subscribe");
+ jQuery("#subscribe_profile").html("Subscribe");
  <% end %>
