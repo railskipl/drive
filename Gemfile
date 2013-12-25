@@ -26,6 +26,7 @@ gem 'execjs'
 gem "socialization"
 gem 'prototype-rails'
 gem 'impressionist'
+gem "bullet", :group => "development"
 
 # gem 'pg'
 
