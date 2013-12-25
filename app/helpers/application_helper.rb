@@ -109,10 +109,10 @@ module ApplicationHelper
       when 60..70
         @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "four_star")
       when 70..80
-        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "five_star")
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "four_half_star")
       else
         
-        @notification = Notification.first_or_create(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id)
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "five_star")
     end
   end
 
