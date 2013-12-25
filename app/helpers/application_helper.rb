@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def resource
-    @resource ||= User.new
+    @resource ||= User.create
   end
 
   def devise_mapping
@@ -41,7 +41,7 @@ module ApplicationHelper
     end
   
   def link_to_add_fields(name, f, association)
-    new_object = f.object.class.reflect_on_association(association).klass.new
+    new_object = f.object.class.reflect_on_association(association).klass.create
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
       render(association.to_s.singularize + "_fields", :f => builder)
     end
@@ -49,7 +49,9 @@ module ApplicationHelper
   end
   
   def rate_count(carprofile_id)
+   
     carprofile = Carprofile.find(carprofile_id)
+
     count = 0
     count += carprofile.send_gifts.count
     count += carprofile.comments_count
@@ -58,7 +60,7 @@ module ApplicationHelper
     count += carprofile.favourites.count
     count += Subscriber.find_all_by_subscribable_id(carprofile_id).count
     count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0
-    return rating_star(count)
+    return rating_star(count), send_noti(carprofile,count)
  end
 
 
@@ -84,6 +86,33 @@ module ApplicationHelper
         "four_half_star"
       else
         "five_star"
+    end
+  end
+
+  def send_noti(carprofile,count)
+
+    case count
+      when 0..5
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "half_star")
+      when 5..10
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "one_star")
+      when 10..20
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "one_half_star")
+      when 20..30
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "two_star")
+      when 30..40
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "two_half_star")
+      when 40..50
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "three_star")
+     when 50..60
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "three_half_star")
+      when 60..70
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "four_star")
+      when 70..80
+        @notification = Notification.find_or_create_by_rate_count(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id, :rate_count => "five_star")
+      else
+        
+        @notification = Notification.first_or_create(:user_id => carprofile.user_id, :notification_type => "rate_carprofile", :notifiable_id  => carprofile.user_id)
     end
   end
 
