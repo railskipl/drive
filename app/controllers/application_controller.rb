@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     @carmakes = CarMake.all
   end
 
+   
+
 
   def meta_defaults
     seo = Seo.first

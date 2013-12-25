@@ -34,6 +34,9 @@ Drive::Application.routes.draw do
   end
 
   resources :blog_comments
+
+  resources :notifications
+  
   resources :comment_logs
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
 

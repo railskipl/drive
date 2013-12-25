@@ -98,6 +98,20 @@ has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", 
     end
   end
 
+  # def check_message
+    
+  #     notifications =[]
+  #     notifications = Notification.find(:all , :conditions => ["notifiable_id = '#{current_user.id}'"])
+  #     count = 0
+  #     notifications.each do |r|
+  #       unless r.is_read
+  #         count += 1
+  #       end
+  #     end
+  #     return count
+  # end
+  
+
   def spendcredits(current_user)
 
     if current_user.freecredit > current_user.buycredit 
