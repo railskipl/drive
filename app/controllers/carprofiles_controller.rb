@@ -182,7 +182,9 @@ def post_comment
 
     if params[:body].present?
       @comment = Comment.add_comment(params[:body],current_user,@carprofile)
+      #raise @carprofile.user_id.inspect
       if @comment.save
+        @notification = Notification.create(:user_id => current_user.id, :notification_type => "comment_carprofile", :notifiable_id  => @carprofile.user_id)
         @class = rate_count(@carprofile.id)
         @success = "Comment Saved Successfully !!!"
         

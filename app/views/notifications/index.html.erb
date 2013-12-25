@@ -52,6 +52,36 @@
     <%end%>
      <%end%>
 
+     <%if noti.notification_type == "comment_carprofile" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div><a href="<%= user_path(noti.user_id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
+    <div>Has commented on your carprofile.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+
        <%if noti.notification_type == "rate_carprofile" %>
     
     <%if current_user.id == noti.notifiable_id%>
