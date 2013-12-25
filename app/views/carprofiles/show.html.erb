@@ -68,7 +68,7 @@ a.morelink {
     
     
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr><p class="<%= rate_count(@carprofile.id) rescue nil %>" id ="star_rating"></p></tr>
+    <tr><p class="<%= rate_count(@carprofile.id)[0]  %>" id ="star_rating"></p></tr>
   <tr>
     <td align="left" valign="top" class="profile_col1">Car Make</td>
     <td class="profile_col2"><%= @carprofile.car_make.name%></td>

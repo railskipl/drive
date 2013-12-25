@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
 	include UsersHelper
-    
+    require 'will_paginate/array'
 before_filter  :setup_friends,:except => :index
 
 def index
@@ -11,6 +11,7 @@ end
 
 def create
 	Friendship.request(@user, @friend)
+	#raise @friend.id.inspect
 	@notification = Notification.new(:user_id => current_user.id, :notification_type => "friendship", :notifiable_id  => @friend.id)
 	@notification.save
 	flash[:notice] = "Friend request sent."
