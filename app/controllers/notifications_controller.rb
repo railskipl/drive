@@ -3,10 +3,11 @@ class NotificationsController < ApplicationController
 
 	def index
 
-	   @notifications = Notification.find(:all, :order => "created_at DESC").paginate(page: params[:page], per_page: 5)
+	   @notifications = Notification.find(:all, :order => "created_at DESC")
 	   #@notifications = @notifications.delete_if {|i| i.user_id == current_user.id }
 	   remove
        #raise @notifications.inspect
+       #.paginate(page: params[:page], per_page: 5)
 	end
 
 	def remove

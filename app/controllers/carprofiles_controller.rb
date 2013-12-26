@@ -194,7 +194,6 @@ def post_comment
        @error = "Please Enter Text In Body !!!"
     end
     @comments = @carprofile.comments.order("created_at desc")
-  end
 
   def guest_user
     @carprofile = Carprofile.find(params[:id])
