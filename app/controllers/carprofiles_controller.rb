@@ -199,7 +199,7 @@ end
   def guest_user
     @carprofile = Carprofile.find(params[:id])
     @carprofile.impressions = @carprofile.impressions.order("created_at DESC")
-    @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id }
+    @carprofile.impressions = @carprofile.impressions.delete_if {|i| (i.user_id == current_user.id || i.user_id.blank?) }
     @carprofile.visitor(@carprofile)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
