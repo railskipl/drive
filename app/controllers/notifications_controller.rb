@@ -1,7 +1,9 @@
 class NotificationsController < ApplicationController
+	  before_filter :authenticate_user!
+
 	def index
 
-	   @notifications = Notification.find(:all, :order => "created_at DESC")
+	   @notifications = Notification.find(:all, :order => "created_at DESC").paginate(page: params[:page], per_page: 5)
 	   #@notifications = @notifications.delete_if {|i| i.user_id == current_user.id }
 	   remove
        #raise @notifications.inspect

@@ -34,6 +34,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if params[:noti_id]
+    @notification = Notification.find_by_id(params[:noti_id])
+    end
+     @notification.update_column(:is_read,true) rescue ""
     @logged_in_user = current_user 
     @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)

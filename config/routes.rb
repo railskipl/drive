@@ -56,7 +56,11 @@ Drive::Application.routes.draw do
 
   resources :comments
   resources :new_cars
-  resources :favourites
+  resources :favourites do
+    collection do
+      get :deletefav
+    end
+  end
 
    resources :egifts ,:only => [:index] do
      resources :send_gifts

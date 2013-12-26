@@ -1,33 +1,92 @@
-<h1>Favourites</h1>
+<div class="container_20">
 
-
-
-<p>
-
-  <% @favourites.each do |n| %>
-     
-    <%#  user = User.find(n.user_id)%>
-    <%if n.favourite_type == "favourite_logbook"%>
-       <%#= raise @favourites.inspect %>
-      <%= link_to n.logbook.title,logbook_path(n.logbook_id) rescue nil %>,your favourite logbook <br/>
-    <%end%>
-
-  <%end%>
-
-  <% @favourites.each do |n| %>
-     
-    <%if n.favourite_type == "favourite_blog"  %>
-      <%= link_to n.user_blog.title ,user_blog_path(n.user_blog_id) rescue nil %> ,your favourite blog <br/>
-    <%end%>
-
-  <%end%>
-
-  <% @favourites.each do |n| %>
-    <%if n.favourite_type == "favourite_carprofile"  %>
-      <%= link_to n.carprofile.car_model.name ,carprofile_path(n.carprofile_id) rescue nil %> ,your favourite carprofile <br/>
-    <%end%>
-
-  <%end%>
     
-</p>
+    <div class="middle">
+    
+    <div class="container_20" style="background:#333; margin-bottom:10px">
+    
+    <%= render 'shared/carousel' %> 
+    
+    
+    
+        <div class="container_20">
+        
+        
+        <div class="grid_20 title">
+    
+  <div style="width:40%; float:left"><h4>My Favourites</h4></div>
+  
+  </div>
+    
+    
+    
+    <div class="grid_20">
+    
+    
+<% @favourites.each do |n| %> 
+<%if n.favourite_type == "favourite_logbook"  %>  
+<div class="message"> 
+  <div class="mail_content">
+    <div><a href="<%=logbook_path(n.logbook_id)%>" class="bluelink bold"><%= n.logbook.title rescue nil%></a></div>
+    <ul class="action">
+    <div style="float:right"><a href="#" class="bluelink bold"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this blog?' } %></a></div>
+  </ul>
+    <div>Your favourite logbook.</div>
+  </div>
+</div>
+<%end%>
+<%end%>
+
+<% @favourites.each do |n| %> 
+<%if n.favourite_type == "favourite_blog"  %>  
+<div class="message"> 
+  <div class="mail_content">
+    <div><a href="<%=user_blog_path(n.user_blog_id)%>" class="bluelink bold"><%=n.user_blog.title rescue nil%></a></div>
+    <ul class="action">
+    <div style="float:right"><a href="#" class="bluelink bold"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this blog?' } %></a></div>
+  </ul>
+    <div>Your favourite blog.</div>
+
+  </div>
+</div>
+<%end%>
+<%end%>
+
+<% @favourites.each do |n| %> 
+<%if n.favourite_type == "favourite_carprofile"  %>  
+<div class="message"> 
+  <div class="mail_content">
+    <div><a href="<%=carprofile_path(n.carprofile_id)%>" class="bluelink bold"><%= n.carprofile.car_model.name rescue nil%></a></div>
+    <ul class="action">
+    <div style="float:right"><a href="#" class="bluelink bold"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this blog?' } %></a></div>
+  </ul>
+    <div>Your favourite car profile.</div>
+  </div>
+</div>
+<%end%>
+<%end%>
+    
+    
+<div class="digg_pagination">
+ 
+  <%= will_paginate @favourites %>
+ </div>
+    
+    
+    
+    </div>
+        
+    
+        
+    
+    </div>
+    
+
+
+  
+    
+    </div>
+    
+
+</div>
 
