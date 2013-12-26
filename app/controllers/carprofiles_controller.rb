@@ -174,7 +174,7 @@ def spotlight
 Carprofile.spotlight(@car_profile)
 end
 
-def post_comment
+  def post_comment
 
     @carprofile = Carprofile.find_by_id(params[:car_profile_id])
     @carprofile.favourites.each do |n|
@@ -194,6 +194,7 @@ def post_comment
        @error = "Please Enter Text In Body !!!"
     end
     @comments = @carprofile.comments.order("created_at desc")
+  end
 
   def guest_user
     @carprofile = Carprofile.find(params[:id])
