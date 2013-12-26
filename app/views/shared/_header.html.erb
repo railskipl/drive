@@ -13,7 +13,13 @@
   <% if user_signed_in? %>
       <ul class="bottom_menu" style="margin-top:8px; float:right;">
         <li>
-      <span class="notification"><a href="#">10</a></span>
+          <% noti_count = current_user.check_message%>
+          <% if noti_count != 0 %>
+          <span class="notification"><a href="#"> 
+            <%= current_user.check_message%> </a>
+          </span>
+          <%end%>
+        
       <a href="<%= notifications_path%>"><img src="/assets/new-message.png" alt="" align="absmiddle"></a> </li> 
       <li><%= link_to "Settings", edit_user_registration_path %></li>  
       <li><a href="#">Help</a></li>   

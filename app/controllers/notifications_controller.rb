@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+	  before_filter :authenticate_user!
+
 	def index
 
 	   @notifications = Notification.find(:all, :order => "created_at DESC")

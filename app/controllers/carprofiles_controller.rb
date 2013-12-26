@@ -90,6 +90,7 @@ class CarprofilesController < ApplicationController
   
   def update
     @carprofile = Carprofile.find(params[:id])
+
     @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
     @subscribers.each do |sub|
      @notification = Notification.create(:user_id => current_user.id, :notification_type => "subscriber_carprofile", :notifiable_id  => sub.subscriber_id)
