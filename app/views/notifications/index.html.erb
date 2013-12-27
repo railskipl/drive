@@ -29,13 +29,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has commented on your favourite carprofile.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has commented on your favourite carprofile.</div>
     </div>
     
     <ul class="action">
@@ -58,13 +58,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Your rating is improved</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Your rating is improved</div>
     </div>
     
     <ul class="action">
@@ -87,13 +87,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has updated carprofile you subscribed.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has updated carprofile you subscribed.</div>
     </div>
     
     <ul class="action">
@@ -116,13 +116,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has messaged you</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has messaged you</div>
     </div>
     
     <ul class="action">
@@ -143,13 +143,13 @@
   <div class="message"> 
     
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has sended you friend request.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has sended you friend request.</div>
     </div>
     
     <ul class="action">
@@ -170,13 +170,13 @@
   <div class="message"> 
   
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has commented on your blog.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has commented on your blog.</div>
     </div>
     
     <ul class="action">
@@ -197,13 +197,13 @@
        <%if current_user.id == noti.notifiable_id%>
   <div class="message"> 
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has commented on your logbook. </div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has commented on your logbook. </div>
     </div>
     
     <ul class="action">
@@ -224,13 +224,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Has sended you a gift.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has sended you a gift.</div>
     </div>
     
     <ul class="action">
@@ -253,13 +253,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Liked your car profile.</div>
+    <div class="bold"><%= noti.user.first_name%></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Liked your car profile.</div>
     </div>
     
     <ul class="action">
@@ -282,13 +282,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Liked your logbook.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Liked your logbook.</div>
     </div>
     
     <ul class="action">
@@ -311,13 +311,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name%></a></div>
-    <div>Liked your blog.</div>
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Liked your blog.</div>
     </div>
     
     <ul class="action">
@@ -340,13 +340,13 @@
   <div class="message"> 
    
     <%unless noti.user.pic? %>
-      <img src="assets/thumb_profile.jpg" alt="">
+      <img src="/assets/thumb_profile.jpg" alt="">
     <%else%>
       <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
     <%end%>
     <div class="mail_content" style="width:750px">
-    <div><a href="<%= user_path(noti.user_id, :noti_id => noti.id)%>" class="bluelink bold"><%= noti.user.first_name rescue nil%></a></div>
-    <div>has commented on your carprofile</div>
+    <div class="bold"><%= noti.user.first_name rescue nil%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">has commented on your carprofile</div>
     </div>
     
     <ul class="action">

@@ -21,7 +21,12 @@
 		<div class="mycardiv">
 			
 		<div>
-		<%= link_to  image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"186", :height=>"125"),carprofile_path(car) rescue nil%>
+			<% unless  car.carprofile_photos.blank?%>
+              <%= link_to  image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"186", :height=>"125"),carprofile_path(car) rescue nil%>
+			<%else%>
+			  <a href="#"><img src="/assets/nullcar1.jpg" alt="">
+
+			<%end%>
 		</div>
 		
 		<div class="mycar_caption">

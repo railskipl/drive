@@ -43,11 +43,11 @@ def self.spotlight(car_profile)
   def visitor(carprofile)
     
     carprofile.impressions.each do |imp|
-  
+     
       a = Time.now
       if a > imp.created_at
         c = a.to_date - (imp.created_at).to_date
-  
+        
         if c >= 30
           imp.destroy
         else

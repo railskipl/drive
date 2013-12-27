@@ -62,7 +62,7 @@
     <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= user_path(logbooks.user.id)%>"><%=logbooks.user.first_name rescue nil%></a></div>
     <div><%= truncate(logbooks.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
-    <div class="likediv">  <a href="#" class="likelink">Comment</a>  
+    <div class="likediv">  <a href="<%=logbook_path(logbooks)%>" class="likelink">Comment</a>  
       <% if logbooks.created_at > Time.now.beginning_of_day %> 
            <%="#{time_ago_in_words(logbooks.created_at)} ago"%>
            <% else %>

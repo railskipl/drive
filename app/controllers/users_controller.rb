@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
    before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars]
    helper :friendships
-
+   before_filter :authenticate_user!
 
   def index
     @users = User.all
@@ -34,10 +34,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:noti_id]
-    @notification = Notification.find_by_id(params[:noti_id])
-    end
-     @notification.update_column(:is_read,true) rescue ""
+    
     @logged_in_user = current_user 
     @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)

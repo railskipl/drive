@@ -1,5 +1,6 @@
  require 'will_paginate/array'
  class HomeController < ApplicationController
+   before_filter :authenticate_user!
 
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
