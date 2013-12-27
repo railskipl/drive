@@ -15,7 +15,7 @@
 	 			<% unless carprofile.carprofile_photos.blank?%>
 				  <%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb), :width => 150, :height => 100 rescue nil  %></br>
 				<%else%>
-                  <a href="#"><img src="/assets/nullcar1.jpg" alt="" width="150", height="100 ">
+                  <a href="#"><img src="/assets/nullcar1.jpeg" alt="" width="150", height="100 ">
                 <%end%>
 				<a href="#" class="bluelink bold"><%= carprofile.car_model.name rescue nil%></a>
 				<p class="<%= rate_count(carprofile.id) rescue nil %>"></p>
