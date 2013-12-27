@@ -27,7 +27,7 @@
       </li> 
 		<li><a href="#">Message</a></li> 
 		<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
-		<li><a href="#"><img src="assets/star2.png" alt=""></a></li>
+		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>
 		<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status(jQuery(\":selected\").text());", :class=>"pe_tf"%></li>	    
 		</ul>
 	</div>
@@ -53,10 +53,9 @@
 	<div class="blog_div2">
         <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>
         <%= truncate(user_blog.body, :length => 200).html_safe  rescue nil %><br/><br/>
-        <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More
-		</a>
-		
-	</div>
+        <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More</a>
+    </div>
+
 	<%end%>
 		
 		
