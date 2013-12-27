@@ -79,7 +79,7 @@ def subscribe_profile
  end
 
   def change_status
-
+    #raise "hi"
    if params[:status]== "INACTIVE"
   
      unless current_user.credit < 10
