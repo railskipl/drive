@@ -35,7 +35,11 @@ Drive::Application.routes.draw do
 
   resources :blog_comments
 
-  resources :notifications
+  resources :notifications do 
+    collection do
+      get :noti_delete
+    end
+  end
   
   resources :comment_logs
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'

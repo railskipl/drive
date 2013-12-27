@@ -21,15 +21,20 @@
 		<div class="mycardiv">
 			
 		<div>
-		<%= link_to  image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"186", :height=>"125"),carprofile_path(car) rescue nil%>
+			<% unless  car.carprofile_photos.blank?%>
+              <%= link_to  image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"186", :height=>"125"),carprofile_path(car) rescue nil%>
+			<%else%>
+			  <a href="<%=carprofile_path(car)%>"><img src="/assets/nullcar1.jpg" alt="">
+
+			<%end%>
 		</div>
 		
 		<div class="mycar_caption">
-		<a href="<%= carprofile_path(car)%>" class="bluelink bold"><%= car.car_make.name%> <%=car.car_model.name%></a>
+		<a href="<%= carprofile_path(car)%>" class="bluelink bold"><%= car.car_make.name%> <%=car.car_model.name rescue nil%></a>
 		</br> 
-		<%= car.user.location%>
+		<%= car.user.location rescue nil%>
 		</br> 
-		<a href="<%= user_path(car.user_id)%>" class="bluelink"><%= car.user.first_name%> <%=car.user.last_name%></a>
+		<a href="<%= user_path(car.user_id)%>" class="bluelink"><%= car.user.first_name%> <%=car.user.last_name rescue nil%></a>
 		</div>
 		
 		</div>

@@ -10,21 +10,33 @@ class NotificationsController < ApplicationController
        #.paginate(page: params[:page], per_page: 5)
 	end
 
+	def noti_delete
+		if params[:noti_id]
+			#raise params[:noti_id].inspect
+	      @notification = Notification.find_by_id(params[:noti_id])
+
+	    end
+      @notification.update_column(:is_read,true) rescue ""
+      @notification.destroy
+      redirect_to notifications_path
+	end
+
 	def remove
 
 		@notifications.each do |noti|
-  
+
 	      a = Time.now
 	      if a > noti.created_at
 	        c = a.to_date - (noti.created_at).to_date
 	       
-	        if c >= 30
+	        if c >= 15
 
 	          noti.destroy
 	        else
 	        
 	        end
 	      end
+	     
        end
 	end
 end

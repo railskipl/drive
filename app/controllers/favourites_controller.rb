@@ -1,4 +1,6 @@
 class FavouritesController < ApplicationController
+     before_filter :authenticate_user!
+
   def index
   
   	@favourites = current_user.favourites.order("created_at desc").paginate(page: params[:page], per_page: 5) 
