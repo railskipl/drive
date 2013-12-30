@@ -88,7 +88,7 @@ class SendGiftsController < ApplicationController
     @send_gift.destroy
 
     respond_to do |format|
-      format.html { redirect_to send_gifts_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
