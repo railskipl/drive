@@ -101,6 +101,7 @@ end
       get :friend_request
       get :user_friends
       get :user_cars
+      get :user_gifts
    end
   end
   
