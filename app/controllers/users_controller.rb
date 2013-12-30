@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	layout 'admin'
 
 
-   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars]
+   before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars,:user_gifts]
    helper :friendships
    before_filter :authenticate_user!
 
@@ -110,6 +110,12 @@ end
 def user_cars
   @user = User.find(params[:id])
   @carprofiles = @user.carprofiles
+  render :layout => "application"
+end
+
+def user_gifts
+  user = User.find(params[:id])
+  @user = user.received_egifts
   render :layout => "application"
 end
 
