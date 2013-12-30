@@ -1,9 +1,8 @@
 <% if @success %>
 jQuery("#body").val("");
 jQuery('#comment_load').html("<%= escape_javascript (render :partial => 'car_profile_comments') %>");
-jQuery(".greencount").html("<%= @comments.count %>");
 jQuery("#star_rating").attr("class",'<%=@class%>');
-jquery(".greencount").html("<%=@count%>");
+jQuery(".greencount").html("<%= @comments.count %>")
 <% else %>
 alert("Cannot be blank");
 <% end %>

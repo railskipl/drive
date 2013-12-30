@@ -187,7 +187,6 @@ end
       if @comment.save
         @notification = Notification.create(:user_id => current_user.id, :notification_type => "comment_carprofile", :notifiable_id  => @carprofile.user_id)
         @class = rate_count(@carprofile.id)
-        @count = @carprofile.comments_count
         @success = "Comment Saved Successfully !!!"
         
       end
