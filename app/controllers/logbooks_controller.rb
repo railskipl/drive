@@ -83,7 +83,7 @@ class LogbooksController < ApplicationController
     #raise @logbook.user_id.inspect
     if current_user.credit >= 0
         current_user.save
-        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_logbooks", :notifiable_id  => @logbook.user_id)
+        @notification = Notification.create(:user_id => current_user.id, :notification_type => "like_logbooks", :notifiable_id  => @logbook.user_id)
         @notification.save
     end
     
