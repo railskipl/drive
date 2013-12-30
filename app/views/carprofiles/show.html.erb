@@ -36,7 +36,7 @@ a.morelink {
          <% if current_user.id == @carprofile.user_id %>     
             <li><%= link_to "Subscribers",:action=>"subscar_count",:id=>@carprofile.id %></li>
          <% end %>
-         <li><%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:method => "post",:remote => true,:id => "like_car" %>
+         <li><%= link_to ("Like+") ,like_car_carprofiles_path(:id => @carprofile.id),:confirm  => "Your one credit point will get deducted if you like this carprofile",:method => "post",:remote => true,:id => "like_car" %>
          </li>
          <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
          </li> 
