@@ -39,6 +39,10 @@
     <td align="left" valign="top"><strong>Gift</strong></td>
     <td align="left" valign="top"><%= image_tag g.egift.image.url(:thumb) ,:class =>"giftimage" %> </td>
     </tr>
+    <tr>
+    <td align="left" valign="top"><strong></strong></td>
+    <td align="left" valign="top"><%= link_to 'Destroy',  egift_send_gift_path(g,g), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
 </table>
 
   
