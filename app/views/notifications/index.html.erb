@@ -1,0 +1,390 @@
+<div class="container_20">
+
+    
+    <div class="middle">
+    
+    <div class="container_20" style="background:#333; margin-bottom:10px">
+    
+    </div>
+    
+    
+        <div class="container_20">
+        
+        
+        <div class="grid_20 title">
+    
+  <div style="width:40%; float:left"><h4>Notifications</h4></div>
+              </div>
+    
+    
+    
+    <div class="grid_20">
+    
+  
+  <% @notifications.each do |noti|%> 
+
+  <%if noti.notification_type == "carprofile_comment" %> 
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has commented on your favourite carprofile.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+       <%if noti.notification_type == "rate_carprofile" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Your rating is improved</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+     <%if noti.notification_type == "subscriber_carprofile" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has updated carprofile you subscribed.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+  <%if noti.notification_type == "Message" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has messaged you</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+    <%if noti.notification_type == "friendship"%>
+       <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+    
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has sended you friend request.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+      <%end%>
+    <%if noti.notification_type == "blog_comment"%>
+       <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+  
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has commented on your blog.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+   <!--  <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+      <%end%>
+
+    <%if noti.notification_type == "logbook_comment"%>
+       <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has commented on your logbook. </div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+    <%if noti.notification_type == "sendgift"%>
+       <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Has sended you a gift.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+      <%end%>
+
+      <%if noti.notification_type == "like_carprofile" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Liked your car profile.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+     <%if noti.notification_type == "like_logbooks" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Liked your logbook.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+     <%if noti.notification_type == "like_blog" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">Liked your blog.</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+
+     <%if noti.notification_type == "comment_carprofile" %>
+    
+    <%if current_user.id == noti.notifiable_id%>
+  <div class="message"> 
+   
+    <%unless noti.user.pic? %>
+      <img src="/assets/thumb_profile.jpg" alt="">
+    <%else%>
+      <img src="<%=  noti.user.pic.url(:thumb)%>" alt="" height="40" width="50">
+    <%end%>
+    <div class="mail_content" style="width:750px">
+    <div class="bold"><%= noti.user.first_name rescue nil%></a></div>
+    <div><a href="<%= noti_delete_notifications_path(:noti_id => noti.id)%>" class="bluelink bold">has commented on your carprofile</div>
+    </div>
+    
+    <ul class="action">
+    <li><% if noti.created_at > Time.now.beginning_of_day %> 
+           <%="#{time_ago_in_words(noti.created_at)} ago"%>
+           <% else %>
+           <%= noti.created_at.strftime("%b %d, %Y") %>
+      <% end %></li>
+    <li><a href="#"><img src="assets/mail_read.png" alt="" border="0"></a></li>
+    <!-- <li><a href="#"><img src="assets/delete.png" alt="" border="0"></a></li> -->
+    
+    </ul>
+  </div>
+    <%end%>
+     <%end%>
+  
+  <%end%>
+    
+      <div class="digg_pagination">
+ 
+      <%#= will_paginate @notifications %>
+      </div>
+    </div>
+        
+    
+        
+    
+    </div>
+    
+
+
+  
+    
+    </div>
+    
+
+</div>
+
+
+
+

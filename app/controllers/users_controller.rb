@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
    before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars]
    helper :friendships
-
+   before_filter :authenticate_user!
 
   def index
     @users = User.all
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    
     @logged_in_user = current_user 
     @cars = @user.carprofiles
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -78,7 +79,7 @@ def subscribe_profile
  end
 
   def change_status
-
+    #raise "hi"
    if params[:status]== "INACTIVE"
   
      unless current_user.credit < 10

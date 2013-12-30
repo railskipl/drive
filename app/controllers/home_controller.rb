@@ -1,5 +1,6 @@
  require 'will_paginate/array'
  class HomeController < ApplicationController
+   before_filter :authenticate_user!
 
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
@@ -51,12 +52,12 @@ def topcar
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @top_cars = top_cars(Carprofile.all.map(&:id))
   @@cars = @top_cars.to_a
-  @top_cars = @top_cars.to_a.paginate(:page => params[:page],:per_page => 3)  
+  @top_cars = @top_cars.to_a.paginate(:page => params[:page],:per_page => 10)  
 end
 
  def paginate_top_car
  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
- @top_cars = @@cars.paginate(:page => params[:page],:per_page => 3)
+ @top_cars = @@cars.paginate(:page => params[:page],:per_page => 10)
  render "topcar"
 
 end

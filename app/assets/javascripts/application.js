@@ -25,28 +25,28 @@ function user_status(status){
 		  }
 		else
 		  {
-		  $("#visibility_status").val("ACTIVE");
+		  jQuery("#visibility_status").val("ACTIVE");
 		  }
 
 	}
 }
 
 function ajax_call(status){
-    $.ajax({
+    jQuery.ajax({
               type: "POST",
               url: "/users/change_status",
               data: {"status":status},
               success: function(data){
                  if(data.status==false){
-                   $("#visibility_status").val("INACTIVE");
-                   $("#visible_mode").attr("src","/assets/offline.gif");
-                   $(".earn_credit").html("Buy credits("+data.credit+")");
+                   jQuery("#visibility_status").val("INACTIVE");
+                   jQuery("#visible_mode").attr("src","/assets/offline.gif");
+                   jQuery(".earn_credit").html("Buy credits("+data.credit+")");
                  }
                  else
                  {
-                    $("#visibility_status").val("ACTIVE");
-                    $("#visible_mode").attr("src","/assets/online.png");
-                    $(".earn_credit").html("Buy credits("+data.credit+")");
+                    jQuery("#visibility_status").val("ACTIVE");
+                    jQuery("#visible_mode").attr("src","/assets/online.png");
+                    jQuery(".earn_credit").html("Buy credits("+data.credit+")");
                  }
                },
               dataType: "json"

@@ -17,8 +17,8 @@ class Carprofile < ActiveRecord::Base
 
 
   validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar,:manufacturing_year,:car_make_id,:car_model_id,:body_index_id
-
-  accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].blank? }, :allow_destroy => true,limit: 10
+  # validates_presence_of :carprofile_photos
+  accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].nil? }, :allow_destroy => true,limit: 10
   
   acts_as_likeable
 
@@ -43,11 +43,11 @@ def self.spotlight(car_profile)
   def visitor(carprofile)
     
     carprofile.impressions.each do |imp|
-  
+     
       a = Time.now
       if a > imp.created_at
         c = a.to_date - (imp.created_at).to_date
-  
+        
         if c >= 30
           imp.destroy
         else

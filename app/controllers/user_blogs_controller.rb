@@ -54,10 +54,10 @@ class UserBlogsController < ApplicationController
       end
        @count = @user_blog.sum_counts(@count)
     current_user.spendcredits(current_user)
-    
+    #raise @user_blog.user_id.inspect
     if current_user.credit >= 0
         current_user.save
-        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_blog", :notifiable_id  => @user_blog.id)
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_blog", :notifiable_id  => @user_blog.user_id)
         @notification.save
     end
     

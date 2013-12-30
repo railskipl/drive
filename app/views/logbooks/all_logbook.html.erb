@@ -20,10 +20,9 @@
     
     
       <ul class="message_menu">
-    <li><%= link_to "All Logbook",logbooks_all_logbook_path %></li>
-
-    <li><%= link_to "My Logbooks", logbooks_path %></li>
-    <li><a href="<%= myfriend_path%>">Friend's Logbook</a></li>
+  <li <% if controller.action_name == "all_logbook" %> class="selected" <% end %>><%= link_to "All Logbook", logbooks_all_logbook_path rescue nil%></li>
+    <li <% if controller.action_name == "index" %> class="selected" <% end %>><%= link_to "My Logbooks", logbooks_path rescue nil%></li>
+    <li <% if controller.action_name == "myfriend" %> class="selected" <% end %>><a href="<%=myfriend_path%>">Friend's Logbook</a></li>
     </ul>
     
     <strong class="bluelink">Topic</strong>
@@ -39,7 +38,7 @@
     
     <div class="grid_12">
     
-    <div><br/> <%= form_tag logbooksearch_path, :method=> :get do %>
+    <div><%= form_tag logbooksearch_path, :method=> :get do %>
           <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
            <%= submit_tag "Search",:class=>"submit_btn2" %>
           <% end %>
@@ -63,7 +62,7 @@
     <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= user_path(logbooks.user.id)%>"><%=logbooks.user.first_name rescue nil%></a></div>
     <div><%= truncate(logbooks.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
     
-    <div class="likediv">  <a href="#" class="likelink">Comment</a>  
+    <div class="likediv">  <a href="<%=logbook_path(logbooks)%>" class="likelink">Comment</a>  
       <% if logbooks.created_at > Time.now.beginning_of_day %> 
            <%="#{time_ago_in_words(logbooks.created_at)} ago"%>
            <% else %>
@@ -79,9 +78,9 @@
     
     
     
-  <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+  <div class="digg_pagination">
     <%= will_paginate @logbook %>
-  </ul>
+  </div>
     
     
     

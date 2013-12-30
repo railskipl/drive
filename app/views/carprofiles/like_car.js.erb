@@ -6,4 +6,6 @@ jQuery("#star_rating").attr("class",'<%=@class%>');
 jQuery("#like_car img").attr("src","/assets/like.jpg");
 jQuery("#like_count").html('<%= "#{Like.sum('count')
 } likes."%>');
+jQuery("#star_rating").attr("class",'<%=@class%>');
+
 <% end %>

@@ -34,6 +34,13 @@ Drive::Application.routes.draw do
   end
 
   resources :blog_comments
+
+  resources :notifications do 
+    collection do
+      get :noti_delete
+    end
+  end
+  
   resources :comment_logs
   match "logbooks/:id/user_logbook"  => 'favourites#user_logbook'
 
@@ -53,7 +60,11 @@ Drive::Application.routes.draw do
 
   resources :comments
   resources :new_cars
-  resources :favourites
+  resources :favourites do
+    collection do
+      get :deletefav
+    end
+  end
 
    resources :egifts ,:only => [:index] do
      resources :send_gifts

@@ -26,7 +26,7 @@ class CarprofilesController < ApplicationController
   end
 
   def create
-      
+      # raise params.inspect
   	@carprofile = Carprofile.new(params[:carprofile])
     session[:car_make_id] = @carprofile.car_make_id
     session[:car_model_id] = @carprofile.car_model_id
@@ -51,9 +51,10 @@ class CarprofilesController < ApplicationController
     end
   end
 
-  def like_car
+    def like_car
 
    @car_profile =Carprofile.find(params[:id])
+   #raise @car_profile.user_id.inspect
     current_user.like!(@car_profile)
       @likes= @car_profile.likes(@car_profile.id)
       
@@ -67,10 +68,10 @@ class CarprofilesController < ApplicationController
     
     if current_user.credit >= 0
         current_user.save
-        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_comment", :notifiable_id  => @car_profile.id)
+        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_carprofile", :notifiable_id  => @car_profile.user_id)
         @notification.save
     end
-      @class = rate_count(@car_profile.id)
+      @class = rate_count(@car_profile.id)[0]
      respond_to do |format|
      format.js {}
     end
@@ -89,7 +90,11 @@ class CarprofilesController < ApplicationController
   
   def update
     @carprofile = Carprofile.find(params[:id])
-
+    
+    @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
+    @subscribers.each do |sub|
+     @notification = Notification.create(:user_id => current_user.id, :notification_type => "subscriber_carprofile", :notifiable_id  => sub.subscriber_id)
+    end
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
         format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
@@ -110,7 +115,7 @@ class CarprofilesController < ApplicationController
     index = (interval/7.0).floor
     index % @egift.count
   end
- 
+
   def show
       @carprofile = Carprofile.find(params[:id])
       @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
@@ -169,14 +174,22 @@ def spotlight
 Carprofile.spotlight(@car_profile)
 end
 
-def post_comment
+  def post_comment
+
     @carprofile = Carprofile.find_by_id(params[:car_profile_id])
+    @carprofile.favourites.each do |n|
+      @notification = Notification.create(:user_id => current_user.id, :notification_type => "carprofile_comment", :notifiable_id  => n.user_id)
+    end
+
     if params[:body].present?
       @comment = Comment.add_comment(params[:body],current_user,@carprofile)
+      #raise @carprofile.user_id.inspect
       if @comment.save
+        @notification = Notification.create(:user_id => current_user.id, :notification_type => "comment_carprofile", :notifiable_id  => @carprofile.user_id)
         @class = rate_count(@carprofile.id)
         @count = @carprofile.comments_count
         @success = "Comment Saved Successfully !!!"
+        
       end
     else
        @error = "Please Enter Text In Body !!!"
@@ -187,7 +200,7 @@ def post_comment
   def guest_user
     @carprofile = Carprofile.find(params[:id])
     @carprofile.impressions = @carprofile.impressions.order("created_at DESC")
-    @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id }
+    @carprofile.impressions = @carprofile.impressions.delete_if {|i| (i.user_id == current_user.id || i.user_id.blank?) }
     @carprofile.visitor(@carprofile)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end

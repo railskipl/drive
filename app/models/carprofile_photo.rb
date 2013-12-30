@@ -3,6 +3,8 @@ class CarprofilePhoto < ActiveRecord::Base
 
   belongs_to :carprofile
 
+  validates_presence_of :photo
+
   has_attached_file :photo,:styles => { :thumb => "176x100", :medium => "480x270>", :profile => "130x126"},
                    :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :path => "public/attachments/car/:id/:style/:basename.:extension",
