@@ -18,7 +18,7 @@
                   <a href="#"><img src="/assets/nullcar1.jpeg" alt="" width="150", height="100 ">
                 <%end%>
 				<a href="#" class="bluelink bold"><%= carprofile.car_model.name rescue nil%></a>
-				<p class="<%= rate_count(carprofile.id) rescue nil %>"></p>
+				<p class="<%= rate_count(carprofile.id)[0] rescue nil %>"></p>
 			</div>
 			<div class="rank_car_div2"> 
 	 		<div style="width:auto; float:left"> 
