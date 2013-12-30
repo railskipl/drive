@@ -20,14 +20,8 @@
     </div>
   <% end %>
   
- <div class="row">
-  <%= f.fields_for :carprofile_photos do |builder| %>
-    <%= render "carprofile_photo_fields", :f => builder %><br/>
-
-  <% end %>
- <p><%= link_to_add_fields "Add Image", f, :carprofile_photos %></p><br/>
- </div>
-<p><strong>/!\ Attention ! Photos will pass moderation.Cars with other people,as well as brand,terrible quality,or indecent photographs will be blocked by the moderator. Do not upload  photos from car magazines or someone else’s car.Please follow Forum Rules.  
+ 
+<p><strong>Attention ! Photos will pass moderation.Cars with other people,as well as brand,terrible quality,or indecent photographs will be blocked by the moderator. Do not upload  photos from car magazines or someone else’s car.Please follow Forum Rules.  
   </strong></p>
 
  
@@ -64,6 +58,12 @@
   </div>
   <br/>
   
+  <div class="row">
+  <%= f.fields_for :carprofile_photos do |builder| %>
+    <%= render "carprofile_photo_fields", :f => builder %><br/>
+  <% end %>
+ <p><%= link_to_add_fields "Add Image", f, :carprofile_photos %></p><br/>
+ </div>
   
   <div class="row">
     *<%= f.label "Car Description" %><br />

@@ -57,12 +57,10 @@
   <div style="float:left; width:100%; margin:20px 0">
   
   <table width="100%" cellspacing="5" cellpadding="5" border="0">
-  <tbody><tr>
-    <td><span class="red">*</span> Topic:</td>
-  </tr>
+  <tbody>
   <tr>
   <td>
-    <%= f.collection_select :logbook_category_id, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category' %>
+    <%= f.collection_select :logbook_category_id, LogbookCategory.all ,:id,:name, :prompt => 'Logbook Category' %>
   </td>
   </tr>
   <tr>
