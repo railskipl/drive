@@ -22,7 +22,7 @@
 
 		<li><%= link_to "Buy credits(#{current_user.credit.to_i})", earn_credits_credits_path,:class => "earn_credit"  %></li> 
 
-		<li><%= link_to "Cars" , carprofiles_path %></li>
+		<li><%= link_to " My Cars" , carprofiles_path %></li>
 		<li><%= link_to "Subscribers",:action=>"subscribe_count",:id=>current_user.id%>
       </li> 
 		<li><a href="#">Message</a></li> 
