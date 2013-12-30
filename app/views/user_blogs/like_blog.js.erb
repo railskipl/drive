@@ -1,8 +1,8 @@
 <% if current_user.likes?(@user_blog) %>
-$("#like_blog img").attr("src","/assets/like.jpg");
-$("#like_count").html('<%= "#{@count} likes."%>');
+jQuery("#like_blog img").attr("src","/assets/like.jpg");
+jQuery("#like_count").html('<%= "#{@count} likes."%>');
 <% else %>
-$("#like_blog img").attr("src","/assets/like.jpg");
-$("#like_count").html('<%= "#{Like.sum('count')
+jQuery("#like_blog img").attr("src","/assets/like.jpg");
+jQuery("#like_count").html('<%= "#{Like.sum('count')
 } likes."%>');
 <% end %>

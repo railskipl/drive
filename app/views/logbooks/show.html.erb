@@ -38,7 +38,7 @@
   </p>
   <tr>
    
-  <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
+  <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:confirm  => "Your one credit point will get deducted if you like this logbook",:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
 
    
  
