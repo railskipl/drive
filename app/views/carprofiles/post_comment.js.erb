@@ -2,6 +2,7 @@
 jQuery("#body").val("");
 jQuery('#comment_load').html("<%= escape_javascript (render :partial => 'car_profile_comments') %>");
 jQuery("#star_rating").attr("class",'<%=@class%>');
+jquery(".greencount").html("<%=@count%>");
 <% else %>
 alert("Cannot be blank");
 <% end %>

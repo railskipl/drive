@@ -175,6 +175,7 @@ def post_comment
       @comment = Comment.add_comment(params[:body],current_user,@carprofile)
       if @comment.save
         @class = rate_count(@carprofile.id)
+        @count = @carprofile.comments_count
         @success = "Comment Saved Successfully !!!"
       end
     else
