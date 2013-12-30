@@ -16,6 +16,7 @@
 	
 	<div class="grid_16">
 	 <h1><%= current_user.first_name %>&nbsp;<%= current_user.last_name %>&nbsp;
+	
 	  	<%= image_tag (current_user.visibility_status ? "online.png" : "offline.gif"), :id => "visible_mode" %>
 	  </h1>
 		<ul class="tab_menu">
