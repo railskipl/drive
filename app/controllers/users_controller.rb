@@ -114,8 +114,12 @@ def user_cars
 end
 
 def user_gifts
-  user = User.find(params[:id])
-  @user = user.received_egifts
+  @user = User.find(params[:id])
+  @gifts = @user.received_egifts
+  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  @public = @gifts.public_gift
+  @anon = @gifts.anonymous
+  @personal = @gifts.personal 
   render :layout => "application"
 end
 

@@ -25,9 +25,16 @@ color: black;
   </div>
     <div class="field">
     <%= f.label :visibility_id %><br />
-    <% Visibility.all.each do |item| %>
-  <%= f.radio_button :visibility_id, item.id, :checked => item.id.eql?(1)%> <%= item.profile_type %><br />
-<% end %>
+    <%# Visibility.all.each do |item| %>
+      <%#= f.radio_button :visibility_id, item.id, :checked => item.id.eql?(1)%>
+      <%#= item.profile_type %><br />
+    <%# end %>
+    <%= f.radio_button :visibility_id,1,:checked => true %>Public<br/>
+    Everyone will see your gift,message and name<br/>
+    <%= f.radio_button :visibility_id,2 %>Personal<br/>
+    Everyone will see your gift,but only the recipient will be able to see your name and message<br/>
+    <%= f.radio_button :visibility_id,3 %>Anonymous<br/>
+     Everyone will see your gift,but only the recipient will see your message
   </div>
     <%= f.hidden_field :egift_id ,:value => egift.id %>
    <%= f.hidden_field :sender_id ,:value => current_user.id %><br/>
