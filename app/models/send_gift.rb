@@ -8,15 +8,28 @@ class SendGift < ActiveRecord::Base
 
 
   def self.public_gift
-  	find_all_by_visibility_id(1,:order => "created_at desc")
+  	find_all_by_visibility_id_and_status(1,true,:order => "created_at desc")
   end
 
   def self.personal
-  	find_all_by_visibility_id(2,:order => "created_at desc")
+  	find_all_by_visibility_id_and_status(2,true,:order => "created_at desc")
   end
 
   def self.anonymous
-  	find_all_by_visibility_id(3,:order => "created_at desc")
+  	find_all_by_visibility_id_and_status(3,true,:order => "created_at desc")
+  end
+
+
+  def self.public_gift2
+    find_all_by_visibility_id_and_status(1,false,:order => "created_at desc")
+  end
+
+  def self.personal2
+    find_all_by_visibility_id_and_status(2,false,:order => "created_at desc")
+  end
+
+  def self.anonymous2
+    find_all_by_visibility_id_and_status(3,false,:order => "created_at desc")
   end
 
 
