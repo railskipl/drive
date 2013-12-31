@@ -69,16 +69,8 @@ class SendGiftsController < ApplicationController
   # PUT /send_gifts/1.json
   def update
     @send_gift = SendGift.find(params[:id])
-
-    respond_to do |format|
-      if @send_gift.update_attributes(params[:send_gift])
-        format.html { redirect_to @send_gift, notice: 'Send gift was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @send_gift.errors, status: :unprocessable_entity }
-      end
-    end
+    @send_gift.update_column("status",true)
+    redirect_to :back
   end
 
   # DELETE /send_gifts/1

@@ -72,6 +72,7 @@ Drive::Application.routes.draw do
       get :my_gifts
       get :anonymous
       get :personal
+      get :egift_notifications
      end
    end
 
