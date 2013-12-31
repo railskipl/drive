@@ -76,7 +76,9 @@
     </tr>
     <tr>
     <td align="left" valign="top"><strong></strong></td>
-    <td align="left" valign="top"><%= link_to 'Destroy',  egift_send_gift_path(g,g), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td align="left" valign="top">
+      <%= link_to 'Accept',  egift_send_gift_path(g,g),method: :put %>
+    <%= link_to 'Reject',  egift_send_gift_path(g,g), method: :delete, data: { confirm: 'Are you sure?' } %>></td>
     </tr>
 </table>
 
@@ -114,7 +116,9 @@
     </tr>
     <tr>
     <td align="left" valign="top"><strong></strong></td>
-    <td align="left" valign="top"><%= link_to 'Destroy',  egift_send_gift_path(g,g), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td align="left" valign="top">
+      <%= link_to 'Accept',  egift_send_gift_path(g,g),method: :put %>
+    <%= link_to 'Reject',  egift_send_gift_path(g,g), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
 </table>
 
