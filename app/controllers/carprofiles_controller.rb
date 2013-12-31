@@ -67,8 +67,8 @@ class CarprofilesController < ApplicationController
     
     if current_user.credit >= 0
         current_user.save
-        @notification = Notification.new(:user_id => current_user.id, :notification_type => "like_comment", :notifiable_id  => @car_profile.id)
-        @notification.save
+        @notification = Notification.create(:user_id => current_user.id, :notification_type => "like_carprofile", :notifiable_id  => @car_profile.id)
+        #@notification.save
     end
       @class = rate_count(@car_profile.id)[0]
      respond_to do |format|

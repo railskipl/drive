@@ -26,4 +26,12 @@ class EgiftsController < ApplicationController
     @personal = @send_gifts.personal.paginate(page: params[:page], per_page: 5) 
   end
 
+  def egift_notifications
+    @send_gifts = current_user.received_egifts
+    @public = @send_gifts.public_gift2 
+    @anon = @send_gifts.anonymous2
+    @personal = @send_gifts.personal2
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  end
+
 end
