@@ -8,7 +8,7 @@ jQuery(document).ready(function() {
    <% @spotlighted_cars.each do |car|%>
     <% car.carprofile_photos.each do |photo_url|%>
     <div>
-      <%= image_tag photo_url.photo.url(:medium)%><br/>
+     <%= link_to (image_tag photo_url.photo.url(:medium)),carprofile_path(car)%><br/>
       <span class="thumbnail-text"><%= car.car_make.name %></span>
       </div>
     <% end %>
