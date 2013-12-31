@@ -1,7 +1,7 @@
 class Carprofile < ActiveRecord::Base
   attr_accessible :car_make_id, :car_model_id, :manufacturing_year, :whatkindofcar, :year_of_purchase, :car_description,
                   :power, :sellthiscar, :license_plate, :VIN, :user_id, :engine_dis, :carprofile_photo_id,
-                  :carprofile_photos_attributes, :body_index_id,:user_visit
+                  :carprofile_photos_attributes, :body_index_id,:user_visit,:car_nickname
 
   belongs_to :user
   belongs_to :body_index
@@ -16,7 +16,7 @@ class Carprofile < ActiveRecord::Base
   validates_length_of :car_description,:maximum => 2000
 
 
-  validates_presence_of :year_of_purchase,:license_plate,:sellthiscar,:car_description,:power,:whatkindofcar,:manufacturing_year,:car_make_id,:car_model_id,:body_index_id
+  validates_presence_of :year_of_purchase,:sellthiscar,:car_description,:whatkindofcar,:manufacturing_year,:car_make_id,:car_model_id,:body_index_id
   # validates_presence_of :carprofile_photos
   accepts_nested_attributes_for :carprofile_photos, :reject_if => lambda { |a| a[:photo].nil? }, :allow_destroy => true,limit: 10
   
