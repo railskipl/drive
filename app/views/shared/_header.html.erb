@@ -21,7 +21,8 @@
               <%end%>
               <a href="<%= notifications_path %>"><img src="/assets/new-message.png" alt="" align="absmiddle">
               </a>
-          </li> 
+          </li>
+                <li> 
            <span class="notification">
             <a href="#"> 
              <% count =current_user.received_egifts.delete_if {|m| m.status == true}%>
@@ -30,7 +31,7 @@
               <% end %>
             </a>
             </span>
-           <li>
+     
              <a href="<%= egift_notifications_egifts_path %>"><img src="/assets/gift.2.png" alt="" align="absmiddle">
               </a>
           </li> 
