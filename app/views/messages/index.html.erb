@@ -40,8 +40,8 @@
     
     <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
       <%= form_tag move_all_to_trash_recipient_messages_path, :method => :put do %>
-<% @a = @messages.reject {|i| i.is_trashed_by_recipient == true} %>
-<% @a.each do |message| %>
+
+<% @messages.each do |message| %>
     <div class="message"> 
     
     <div class="tf">
@@ -90,7 +90,9 @@
     
     </div>
     <% end %>
-    
+     <div class="digg_pagination">
+    <%= will_paginate @messages, :container => false %>
+  </div>
 <!--     <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
  
   <li><a href="#">1</a></li>

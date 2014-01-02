@@ -36,13 +36,12 @@
     
       </div>
     
-    <div class="grid_16" style="height:400px;overflow:auto;margin-bottom:10px;padding-right:10px;width:770px;">
+    <div class="grid_16" style="margin-bottom:10px;padding-right:10px;width:770px;">
     
     <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
           <%= form_tag move_all_to_trash_recipient_messages_path, :method => :put do %>
 
-<% @a = @messages.reject {|i| i.is_trashed_by_recipient == false} %>
-<% @a.each do |message| %>
+<% @messages.each do |message| %>
     <div class="message"> 
     
     <div class="tf">
@@ -84,7 +83,9 @@
     <div style="float:right"> <%= submit_tag "Move To Inbox", :class=> "submit_btn"  %> </div>
     
     </div>
-    
+      <div class="digg_pagination">
+    <%= will_paginate @messages, :container => false %>
+  </div>
     
 <% end %>
 <!--     <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">

@@ -411,7 +411,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .message img{ float:left;}
 
-.message .mail_content{margin-left:10px; position:relative; width:500px; float:left}
+.message .mail_content{margin-left:10px; position:relative; width:450px; float:left}
 
 .action {
     display: inline;

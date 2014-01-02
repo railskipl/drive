@@ -1,10 +1,12 @@
+require 'will_paginate/array'
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_user.recipient_messages.order("created_at desc")
-    @messages.delete_if {|i| i.is_deleted_by_recipient == true } 
+    @messages = current_user.recipient_messages
+    @messages = @messages.delete_if {|i| (i.is_deleted_by_recipient == true || i.is_trashed_by_recipient == true)}
+    @messages = @messages.paginate(page: params[:page], per_page: 10)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     respond_to do |format|
       format.html # index.html.erb
@@ -177,12 +179,15 @@ class MessagesController < ApplicationController
 
   def trash_messages
     @messages = current_user.recipient_messages
-    @messages.delete_if {|i| i.is_deleted_by_recipient == true } 
-    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @messages = @messages.delete_if {|i| i.is_deleted_by_recipient == true || i.is_trashed_by_recipient == false }
+    @messages = @messages.paginate(page: params[:page], per_page: 10)
+     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
   def sent_messages
     @sent_messages = current_user.sent_messages.order("created_at desc") rescue nil
+    @sent_messages =  @sent_messages.delete_if {|i| i.is_deleted_by_sender == true }
+    @sent_messages = @sent_messages.paginate(page: params[:page], per_page: 10)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
