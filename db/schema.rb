@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20131231052823) do
+
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
@@ -69,9 +71,10 @@ ActiveRecord::Schema.define(:version => 20131231052823) do
   create_table "body_indices", :force => true do |t|
     t.integer  "car_model_id"
     t.string   "bodyindex"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "manufacturing_year"
+    t.string   "end_manufacturing_year"
   end
 
   create_table "car_makes", :force => true do |t|
@@ -119,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20131231052823) do
     t.string   "engine_dis"
     t.integer  "user_visit",          :default => 0
     t.integer  "comments_count",      :default => 0
+    t.string   "car_nickname"
   end
 
   create_table "comment_logbooks", :force => true do |t|
@@ -387,7 +391,9 @@ ActiveRecord::Schema.define(:version => 20131231052823) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
+
     t.datetime "visibility_updated_on",  :default => '2013-12-10 08:10:34'
+
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

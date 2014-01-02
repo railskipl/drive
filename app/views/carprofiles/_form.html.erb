@@ -52,6 +52,11 @@
   </div>
 
   <div class="row">
+    *<%= f.label "Car Nickname" %><br />
+    <%= f.text_field :car_nickname %>
+  </div>
+
+  <div class="row">
     *<%= f.label "What kind of this car" %><br />
     Currently own<%= f.radio_button :whatkindofcar, "Currently own" %>
     Previous Car<%= f.radio_button :whatkindofcar, "Previous Car" %>
