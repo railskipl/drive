@@ -5,6 +5,9 @@ class NotificationsController < ApplicationController
 
 	   @notifications = Notification.find(:all, :order => "created_at DESC")
 	   #@notifications = @notifications.delete_if {|i| i.user_id == current_user.id }
+	   @notifications.each do |notification|
+       notification.update_attribute(:is_read, true)
+      end
 	   remove
        #raise @notifications.inspect
        #.paginate(page: params[:page], per_page: 5)
