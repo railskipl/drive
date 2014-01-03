@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 	layout 'admin'
 
-
+   helper_method :resource, :resource_name, :devise_mapping
    before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars,:user_gifts]
+   before_filter :authenticate_admin!, :only => [:new,:update,:edit]
    helper :friendships
    before_filter :authenticate_user!, :only => [:blocked_users, :show, :user_cars, :user_friends, :friend_request]
 
@@ -14,6 +15,43 @@ class UsersController < ApplicationController
   @users = User.order(:email)
     respond_to do |format|
     format.json { render json: @users.json_tokens(params[:q])}
+    end
+  end
+
+   def new
+    #raise "hi"
+    @user = User.new
+    
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user }
+
+    end
+  end
+
+  def create
+    #raise "hello"
+    @user = User.create(params[:user])
+    raise @user.inspect
+    if @user.save
+       flash[:notice] = "successfully added user"
+       redirect_to users_path
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    #raise "hi"
+    @user = User.find(params[:id])
+    #raise @user.inspect
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "successfully updated #{@user.email} credit"
+      redirect_to users_path
     end
   end
 

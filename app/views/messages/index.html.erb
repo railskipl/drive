@@ -1,3 +1,11 @@
+<script type='text/javascript'>//<![CDATA[ 
+jQuery(window).load(function(){
+jQuery('#selectAll').click(function (e) {
+    jQuery('input:checkbox').not(this).prop('checked', this.checked);
+ });
+});//]]>  
+
+</script>
 
     
     <div class="middle">
@@ -40,6 +48,8 @@
     
     <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
       <%= form_tag move_all_to_trash_recipient_messages_path, :method => :put do %>
+
+      <input type="checkbox" id="selectAll" />Select All
 
 <% @messages.each do |message| %>
     <div class="message"> 

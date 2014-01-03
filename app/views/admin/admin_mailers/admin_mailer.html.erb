@@ -1,0 +1,23 @@
+
+<%= form_for :reset_password do |f| %>
+
+
+	<div class="field-row">
+		<label>Name	</label><br/>									
+		<%= f.text_field :name%>
+	</div>
+
+	<div class="field-row">
+		<label>Email</label><br/>
+		<%= f.text_field :email%>	
+	</div>
+
+	<div class="field-row">
+		<label>Message</label><br/>
+		<%= f.text_area :message%>
+	</div>
+
+	
+	<%= submit_tag 'Send',:class =>"button2" %>
+<%end%>
+							
