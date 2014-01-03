@@ -71,9 +71,8 @@
 </tr>
 
 <% @favourites.each do |n| %>
-  
-     
-    <%#  user = User.find(n.user_id)%>
+<tr>
+  <%#  user = User.find(n.user_id)%>
     <%if n.favourite_type == "favourite_logbook"%>
        <%#= raise @favourites.inspect %>
       <td><%= link_to n.logbook.title,logbook_path(n.logbook_id) rescue nil %></td>
@@ -93,6 +92,7 @@
     <%if n.favourite_type == "favourite_carprofile"  %>
       <td><%= link_to n.carprofile.car_model.name ,carprofile_path(n.carprofile_id) %></td> 
     <% end %>
+  </tr>
 
   <% end %>
 </table>
