@@ -38,7 +38,7 @@
 		<div class="profile_image">
 		<%= @user.pic?  ? (image_tag @user.pic.url(:thumb)) : (image_tag 'profile.jpg')%>
 		</div>
-		<div class="profile_image profile_name"> <img src="/assets/online.png" alt=""> 
+		<div class="profile_image profile_name"><%= image_tag (current_user.visibility_status ? "online.png" : "offline.gif"), :id => "visible_mode" %>
 		 <%= @user.nickname %>
 		</div>
     	<ul class="profile_menu">
