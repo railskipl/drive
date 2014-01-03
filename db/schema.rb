@@ -389,7 +389,7 @@ ActiveRecord::Schema.define(:version => 20131231122427) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-13 11:12:46'
+    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -12,14 +12,22 @@ class FavouritesController < ApplicationController
   def user_logbook
   	
   	@logbook = Logbook.find(params[:id])
-  	@favourite = Favourite.find_or_create_by_user_id_and_logbook_id(:user_id => current_user.id, :favourite_type => "favourite_logbook", :favourite_type_id => @logbook.id, :logbook_id => @logbook.id )
-  	#@favourite.save
+    unless current_user.id == @logbook.user_id
+  	  @favourite = Favourite.find_or_create_by_user_id_and_logbook_id(:user_id => current_user.id, :favourite_type => "favourite_logbook", :favourite_type_id => @logbook.id, :logbook_id => @logbook.id )
+  	else
+      flash[:notice] = "You cannot favourite your own logbook."
+    end
+    #@favourite.save
   	redirect_to logbook_path(@logbook)
   end
 
   def user_blog
    @user_blog = UserBlog.find(params[:id])
-   @favourite = Favourite.find_or_create_by_user_id_and_user_blog_id(:user_id => current_user.id, :favourite_type => "favourite_blog", :favourite_type_id => @user_blog.id, :user_blog_id => @user_blog.id)
+   unless current_user.id == @user_blog.user_id
+      @favourite = Favourite.find_or_create_by_user_id_and_user_blog_id(:user_id => current_user.id, :favourite_type => "favourite_blog", :favourite_type_id => @user_blog.id, :user_blog_id => @user_blog.id)
+   else
+      flash[:notice] = "You cannot favourite your own blog."
+    end
    #@favourite.save
    redirect_to user_blog_path(@user_blog)
   end	
@@ -27,7 +35,11 @@ class FavouritesController < ApplicationController
   def mycarprofile
     
    @carprofile = Carprofile.find(params[:id])
+   unless current_user.id == @carprofile.user_id
    @favourite = Favourite.find_or_create_by_user_id_and_carprofile_id(:user_id => current_user.id, :favourite_type => "favourite_carprofile", :favourite_type_id => @carprofile.id, :carprofile_id => @carprofile.id)
+   else
+     flash[:notice] = "You cannot favourite your own carprofile."
+   end
    #@favourite.save
    redirect_to carprofile_path(@carprofile)
   end 
