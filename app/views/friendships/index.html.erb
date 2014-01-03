@@ -14,10 +14,6 @@
   <div style="width:40%; float:left"><h4>Friends</h4></div>
   <!-- <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="#" class="compose">Create a List </a></div> -->
   
-  
-  
-    
-    
     </div>
     
     <div class="grid_4">
@@ -39,36 +35,38 @@
     
     <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
      <% current_user.friends.each do |friend|%>
-    <div class="message"> 
-    
-    <div class="tf">
-    <!-- <input name="" type="checkbox" value=""> -->
-    
-    
+        <div class="message">
+         <div class="tf">
+            <!-- <input name="" type="checkbox" value=""> -->
+         </div>
+     <% if Block.status(current_user,friend) %>
+      <%= image_tag "blocked.jpg" %>
+      <% if friend.pic.blank? %>
+         <a href="#"><img src="assets/thumb_profile.jpg" alt="">
+           <%else%>
+         <%= image_tag(friend.pic.url(:thumb),:width => 50, :height => 40)%>
+          <% end %>
+        <div class="mail_content">
+         <div><a href="#" class="bluelink bold"><b><%=friend.first_name %> <%= friend.last_name%></b></a></div>
+        </div>
+         <ul class="action">
+        <li><%= link_to (image_tag "delete.png"),delete_friendship_path(:id => friend.id) ,:method => :post,:confirm => "Are you sure, you want to remove #{friend.email}?" %></li>
+     </ul>
     </div>
-    <%if friend.pic.blank? %>
-    <a href="<%= user_path(friend)%>"><img src="assets/thumb_profile.jpg" alt="">
-    <%else%>
-    <%= link_to image_tag(friend.pic.url(:thumb),:width => 50, :height => 40), user_path(friend)%>
-    <% end %>
-    <div class="mail_content">
-    <div><a href="<%= user_path(friend)%>" class="bluelink bold"><b><%=friend.first_name %> <%= friend.last_name%></b></a></div>
-    
-    
+     <% else %>
+         <% if friend.pic.blank? %>
+         <a href="<%= user_path(friend)%>"><img src="assets/thumb_profile.jpg" alt="">
+           <%else%>
+         <%= link_to image_tag(friend.pic.url(:thumb),:width => 50, :height => 40), user_path(friend)%>
+          <% end %>
+        <div class="mail_content">
+         <div><a href="<%= user_path(friend)%>" class="bluelink bold"><b><%=friend.first_name %> <%= friend.last_name%></b></a></div>
+        </div>
+         <ul class="action">
+        <li><%= link_to (image_tag "delete.png"),delete_friendship_path(:id => friend.id) ,:method => :post,:confirm => "Are you sure, you want to remove #{friend.email}?" %></li>
+     </ul>
     </div>
-    
-    
-    
-    <ul class="action">
-    
-    
-    <li><li><%= link_to (image_tag "delete.png"),delete_friendship_path(:id => friend.id) ,:method => :post,:confirm => "Are you sure, you want to remove #{friend.email}?" %></li></li>
-    
-    </ul>
-    
-    
-    
-    </div>
+     <% end %>
     <%end%>
     
     
