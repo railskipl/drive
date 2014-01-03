@@ -1,5 +1,5 @@
 class BodyIndex < ActiveRecord::Base
-  attr_accessible :bodyindex, :car_model_id,:manufacturing_year
+  attr_accessible :bodyindex, :car_model_id,:manufacturing_year,:end_manufacturing_year
 
   belongs_to :car_model
   has_many :carprofiles

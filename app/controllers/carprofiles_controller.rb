@@ -185,9 +185,10 @@ def post_comment
 
   def guest_user
     @carprofile = Carprofile.find(params[:id])
-    @carprofile.impressions = @carprofile.impressions.order("created_at DESC")
-    @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id }
+    @carprofile.impressions = @carprofile.impressions.order("created_at DESC") rescue ""
     @carprofile.visitor(@carprofile)
+    @carprofile.impressions = @carprofile.impressions.delete_if {|i| i.user_id == current_user.id } 
+    
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 

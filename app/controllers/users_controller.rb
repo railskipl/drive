@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
    before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars,:user_gifts]
    helper :friendships
-   before_filter :authenticate_user!
+   before_filter :authenticate_user!, :only => [:blocked_users, :show, :user_cars, :user_friends, :friend_request]
 
   def index
     @users = User.all
