@@ -25,6 +25,7 @@
     
     <!-- <div><input name="" type="text" class="pe_tf message_search"></div> -->
      <% @friends.each do |friend|%>
+      <% unless Block.status(current_user,friend) %>
     <div class="message"> 
     
     <div class="tf">
@@ -60,7 +61,8 @@
     
     
     </div>
-    <%end%>
+    <% end %>
+    <% end %>
     
     
     <!-- <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">

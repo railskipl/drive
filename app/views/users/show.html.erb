@@ -44,26 +44,34 @@
     	<ul class="profile_menu">
 		
 		<li>
-			<% if current_user == @user %>
-			<%= link_to friendships_path do %>
-			Friends
-			<span class="light_gray">(<%= @user.friends.count %>)
-			  <% if !@user.requested_friends.empty? && current_user == @user %>
-			   New*
-			  <% end %>
-			</span>
-			<% end %>
-			<% else %>
-			 <%= link_to user_friends_user_path do %>
-			Friends
-			<span class="light_gray">(<%= @user.friends.count %>)
-			  <% if !@user.requested_friends.empty? && current_user == @user %>
-			   New*
-			  <% end %>
-			</span>
-			<% end %>
-			<% end %>
-		</li>
+            <% if current_user == @user %>
+                <%= link_to friendships_path do %>
+                    Friends
+                    <% count = 0 %>
+                    <% @user.friends.each do |friend| %>
+                        <% count += 1 unless Block.status(current_user,friend)%>
+                    <% end %>
+                    <span class="light_gray">(<%= count %>)
+                      <% if !@user.requested_friends.empty? && current_user == @user %>
+                           New*
+                      <% end %>
+                    </span>
+                <% end %>
+            <% else %>
+                 <%= link_to user_friends_user_path do %>
+                    Friends
+                    <% count = 0 %>
+                    <% @user.friends.each do |friend| %>
+                        <% count += 1 unless Block.status(current_user,friend)%>
+                    <% end %>
+                    <span class="light_gray">(<%= count %>)
+                      <% if !@user.requested_friends.empty? && current_user == @user %>
+                           New*
+                      <% end %>
+                    </span>
+                <% end %>
+            <% end %>
+        </li>
 		<% unless current_user.id == @user.id %>
          <li><%= link_to (Subscriber.subscribes?(current_user,@user) ? "Unsubscribe": "Subscribe"),subscribe_profile_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"subscribe_profile"%></li> 
        <% end %>

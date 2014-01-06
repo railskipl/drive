@@ -8,11 +8,12 @@
  <!-- START MAIN LOOP FOR TOP CARS -->
  <div class="grid_20">
  	<p><%= (page_entries_info @top_cars).gsub("arrays","top cars").html_safe %></p>
-   <% @top_cars.each do |car| %>
+   <% @top_cars.each_with_index do |car,index| %>
    <% carprofile = Carprofile.find(car[0]) %>
-	<div class="message" style="width:auto;"> 
+	<div class="top_car_div" style="width:auto;"> 
 	 		<div class="rank_car_div">
 	 			<% unless carprofile.carprofile_photos.blank?%>
+	 			
 				  <%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb), :width => 150, :height => 100 rescue nil  %></br>
 				<%else%>
                   <a href="#"><img src="/assets/nullcar1.jpeg" alt="" width="150", height="100 ">
@@ -32,15 +33,17 @@
 			 			<%= carprofile.user.email rescue nil%><br>
 		     			<strong><%= carprofile.user.location rescue nil%></strong>
 	       			</div>
+	       			
 	    		</div>
 			</div>
-
 		</div>
+        <div class="rank_car_div2" style="width:auto"> 
+		<div  class="rank_count"><%= index+1 %></div>
+	       			<div style="clear:left; float:left"><a href="<%= carprofile_path(carprofile)%>"  class="submit_btn">Read More</a></div></div>
   	</div>
  <% end %>
  </div>
    <div class="digg_pagination">
-
  <%= will_paginate @top_cars,:params => {:controller => "home",:action => "paginate_top_car" } %>
 </div>
  <!-- STOP MAIN LOOP FOR TOP CARS -->
