@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131231122427) do
+ActiveRecord::Schema.define(:version => 20140103122804) do
+
+  create_table "admin_mailers", :force => true do |t|
+    t.string   "name"
+    t.string   "subject"
+    t.text     "message"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"

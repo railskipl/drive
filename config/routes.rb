@@ -89,7 +89,7 @@ end
 
   devise_for :admins
 
-  resources :users,  :only => [:index,:destroy,:show,:subscribe_profile,:block_user,:unblock_user,:blocked_users,:change_status] do
+  resources :users,  :only => [:index,:destroy,:show,:subscribe_profile,:block_user,:unblock_user,:blocked_users,:change_status,:edit,:update,:new,:create] do
   collection    do
       post :subscribe_profile
       get  :user_emails
@@ -136,6 +136,7 @@ end
 
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root
+    match '/admin_mailer' => 'admin_mailers#admin_mailer'
     resources :pages
     resources :blogs
     resources :seos
@@ -188,7 +189,7 @@ end
 
   match 'subscar_count' =>'carprofiles#subscar_count'
 
-
+  
   match '/contact' => 'home#contact'
   match 'search' => 'home#search'
   match 'searchpeople' => 'home#searchpeople'

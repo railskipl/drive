@@ -2,16 +2,22 @@
  <tr class="admintablehd">
     <td width="25%">Name</td>
    <td>Block</td>
+   <td>Points</td>
+   <td>Add Points</td>
    <td>Delete User</td>
+   
 </tr>
 
-
+<%= link_to "Add New User", new_user_path %>
 <% @users.each do |user|%>
   <tr>
     <td><%= user.email %></td>
      <td><%= link_to format_boolean(user.status?), {:controller => 'users', :action => 'toggled_status', :id => user.id} %></td>
+     <td> <%= user.freecredit%></td>
+     <td><%= link_to "Give Points", edit_user_path(user)%></td>
     <td style="text-align: center !important;"><%= link_to 'Destroy',user_path(user) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>
     </td>
+    
 
   </tr>
 <% end %>
