@@ -114,8 +114,8 @@ ActiveRecord::Schema.define(:version => 20140103122804) do
     t.string   "manufacturing_year"
     t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(:version => 20140103122804) do
 
   create_table "egifts", :force => true do |t|
     t.integer  "credit"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -398,7 +398,7 @@ ActiveRecord::Schema.define(:version => 20140103122804) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
+    t.datetime "visibility_updated_on",  :default => '2013-12-10 08:10:34'
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
