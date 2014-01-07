@@ -813,7 +813,7 @@ caption {
 .profile_col1{ border-bottom:1px solid #E6E6E6; padding:5px 0}
 .profile_col2{ border-bottom:1px solid #E6E6E6; padding:5px 0; font-weight:bold}
 
-.car_description{ width:auto; height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:10px 0 0 0 }
+.car_description{ width:510px;word-wrap:break-word;height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:10px 0 0 0 }
 
 .count2
 {float: right; 
