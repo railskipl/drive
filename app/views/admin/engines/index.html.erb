@@ -1,21 +1,40 @@
+<script type='text/javascript'>//<![CDATA[ 
+jQuery(window).load(function(){
+jQuery('#selectAll').click(function(e){
+	jQuery('input:checkbox').prop('checked', this.checked);
+});
+});//]]>  
+
+</script>
+
+
 <%= link_to 'New Engine Displacement', new_admin_engine_path %>
 <br/><br/>
 <h1>Engine Displacement</h1>
-
+<!-- 
 <table class="admintable">
  <tr class="admintablehd">
           <td width="25%">Engine Displacement</td>
    <td colspan=2 style="text-align: center !important;">Actions</td>
+</tr> -->
+
+<%= form_tag destroy_multiple_admin_engines_path, method: :delete do %>
+
+ 
+<!-- <input type="checkbox" id="selectAll" />Select All  -->
+<table>
+<%@engines.each do |engine|%>
+
+
+<tr>
+<td><%= check_box_tag "engine_ids[]", engine.id %><%= engine.engine_displacement rescue nil %></td>
 </tr>
-
-
-
-<% @engines.each do |engine|%>
-  <tr>
-    <td><%= engine.engine_displacement rescue nil %></td>
-    <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_engine_path(engine) %></td>
-    <td style="text-align: center !important;"><%= link_to 'Destroy',admin_engine_path(engine) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-    </td>
-  </tr>
-<% end %>
+<%end%>
 </table>
+<%= submit_tag "Delete selected" %>
+<% end %>
+
+
+
+<!-- </table>
+ -->

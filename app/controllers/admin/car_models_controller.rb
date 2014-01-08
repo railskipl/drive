@@ -3,7 +3,7 @@ class Admin::CarModelsController < ApplicationController
   layout 'admin'
 
   def index
-  	@car_models = CarModel.all
+  	@car_models = CarModel.all(:order => "name")
   end
 
   def new

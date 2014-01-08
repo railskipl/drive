@@ -35,16 +35,21 @@
   
 
 
-  <div style="margin:10px 0"><strong>Select another car to blog about </strong></div>
   
+
+ <%if @carprofile.empty? %>
+    <b>please add a car/model to post logbook</b>
+  <%else%>
+  <div style="margin:10px 0"><strong>Select car/model to write logbook for </strong></div> 
   <% @carprofile.each do |carprofile| %>
+   
   <div style="float:left">
   
   <%= f.radio_button :carprofile_id , carprofile.id rescue nil%>
   <% unless carprofile.carprofile_photos.blank?%>
    <%= image_tag(carprofile.carprofile_photos.first.photo.url(:thumb),:width => 50, :height => 40) rescue nil%>
    <%else%>
-    <a  href="#"><img src="/assets/car6.png" alt="" width="50", height="40 " ></a>
+    <a href="#"><img src="/assets/thumb_profile.jpg" alt=""  width="50" height="40">
   <%end%>
   <%= f.hidden_field :car_make_id,:value => carprofile.car_make_id%>
   
@@ -52,7 +57,7 @@
   
   </div>
   <%end%>
-  
+  <%end%>
   
   <div style="float:left; width:100%; margin:20px 0">
   
@@ -75,32 +80,15 @@
   
   <tr>
     <td><%= f.text_area :logbook_discription,:maxlength => 2000, :class =>"pe_tf",:rows =>"12", :style => "width:960px" %></td>
+    <%= f.hidden_field :user_id,:value => current_user.id %>
   </tr>
-  <tr>
-    <td><span class="red">*</span> Privacy: </td>
-  </tr>
-  <tr>
-    <td><select class="pe_dd" name="select">
-      <option>Select</option>
-    </select> <span style="color:#999999">Control who can see this logbook.</span></td>
-  </tr>
-  <tr>
-    <td><span class="red">*</span> Comment Privacy: </td>
-  </tr>
-  <%= f.hidden_field :user_id,:value => current_user.id %>
-  <tr>
-    <td><select class="pe_dd" name="select2">
-      <option>Select</option>
-    </select>
-      <span style="color:#999999">Control who can comment on this logbook.</span></td>
-  </tr>
+  
   <tr>
     <td>
       <input type="submit" style="margin:0" class="submit_btn" value="Publish" name="submit">
-   <!--   <input type="submit" style="margin:0" class="submit_btn" value="Save as Draft" name="Submit">
-      <input type="submit" style="margin:0" class="submit_btn" value="Preview" name="Submit">   </td> -->
+   
   </tr>
-</tbody></table>
+ </tbody></table>
   
   </div>
   

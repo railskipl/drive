@@ -4,6 +4,9 @@
 
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @friends = current_user.friends
+    @contactadmins = Contactadmin.all
+    @user = @friends.find_all {|u| u.birthday_today?}
     @user_blogs = current_user.user_blogs.all
   end
 
@@ -12,7 +15,7 @@
             if contact = Contact.new(params[:reset_password])
               contact.name = "#{params[:reset_password][:name]}"
               contact.email = "#{params[:reset_password][:email]}"
-           
+
               contact.subject = "#{params[:reset_password][:subject]}"
               contact.message = "#{params[:reset_password][:message]}"
               if contact.save

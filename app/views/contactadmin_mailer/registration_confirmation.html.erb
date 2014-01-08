@@ -1,0 +1,3 @@
+Hi <%= @full_name rescue nil%><br/>
+Subject :<%= @contactadmin.subject rescue nil%>
+Message :<%= @contactadmin.message.html_safe rescue nil%>

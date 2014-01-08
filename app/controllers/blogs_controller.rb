@@ -1,4 +1,5 @@
 class BlogsController < ApplicationController
+  before_filter :authenticate_user!
 	def search_blog
 		@blogs =  Blog.all
         @spotlighted_cars = Carprofile.where("spotlighted = ?",true)

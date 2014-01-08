@@ -61,6 +61,25 @@
 		
 		
 </div>
+
+   <table  border="0" cellspacing="0" cellpadding="5">
+  <% @user.each do |u|%>
+    <%unless u.id == current_user.id%>
+	  <tr>
+	    <td align="left" valign="middle"><img src="/assets/birth.png" alt=""></td>
+	    <td width="100%" align="left" valign="middle"><strong><%=u.first_name rescue nil%>'s</strong> Birthday Today</td>
+	  </tr>
+    <%else%>
+    <%end%>
+  <%end%>
+ 
+  <% @contactadmins.each do |contact|%>
+  <tr>
+    <td align="left" valign="middle"><img src="/assets/newspapers.png" alt="" width="24" height="24"></td>
+    <td align="left" valign="middle"><b><%= contact.message rescue nil%></b></td>
+  </tr>
+  <%end%>
+</table>
 	
   <div class="grid_11">
 		
