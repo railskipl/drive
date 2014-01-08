@@ -813,7 +813,7 @@ caption {
 .profile_col1{ border-bottom:1px solid #E6E6E6; padding:5px 0}
 .profile_col2{ border-bottom:1px solid #E6E6E6; padding:5px 0; font-weight:bold}
 
-.car_description{ width:auto; height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:10px 0 0 0 }
+.car_description{ width:510px;word-wrap:break-word;height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:10px 0 0 0 }
 
 .count2
 {float: right; 
@@ -1078,7 +1078,16 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
     .notification a{ color:#FFFFFF; padding:0!important}
     .notification a:hover{ color:#FFFFFF !important;}
 
-    .rank_car_div{ width:143px; min-height:130px; float:left; margin-right:10px; margin-left:240px; background:#f0f0f0; padding:10px}
-    .rank_car_div2{ width:300px; min-height:130px; float:left; background:#f0f0f0; padding:10px}
+    .rank{ font-size:50px; width:100px; float:left; margin-right:10px}
+    .rank_car_div{ width:auto; min-height:155px; float:left; margin-right:10px; background:#fff; padding:10px}
+    .rank_car_div2{ width:280px; min-height:155px; float:left; background:#fff; padding:10px}
     .rank_car_div img{ border:1px solid #E6E6E6}
+ 
+    .top_car_div{ 
+            width:602px!important; height:auto; margin:10px auto; overflow:hidden; border-bottom:1px solid #E6E6E6; padding:10px;
+            background:#F0F0F0}
+            
+            
+   .rank_count{ float:left; font-size:50px; color:#CB1B2C ; width:100px; font-weight:bold}
+
 

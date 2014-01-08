@@ -26,9 +26,9 @@
 		<li><%= link_to " My Cars" , carprofiles_path %></li>
 		<li><%= link_to "Subscribers",:action=>"subscribe_count",:id=>current_user.id%>
       </li> 
-		<li><a href="#">Message</a></li> 
+		<li><a href="<%= messages_path %>">Message</a></li> 
 		<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
-		<li><a href="#"><img src="/assets/star2.png" alt=""></a></li>
+		<li><a href="<%= favourites_path %>"><img src="/assets/star2.png" alt=""></a></li>
 		<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status(jQuery(\"#visibility_status\").val());", :class=>"pe_tf"%></li>      
 		</ul>
 	</div>
