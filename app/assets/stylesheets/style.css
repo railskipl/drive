@@ -1080,11 +1080,11 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
 
     .rank{ font-size:50px; width:100px; float:left; margin-right:10px}
     .rank_car_div{ width:auto; min-height:155px; float:left; margin-right:10px; background:#fff; padding:10px}
-    .rank_car_div2{ width:280px; min-height:155px; float:left; background:#fff; padding:10px}
+    .rank_car_div2{ width:380px; min-height:155px; float:left; background:#fff; padding:10px}
     .rank_car_div img{ border:1px solid #E6E6E6}
  
     .top_car_div{ 
-            width:602px!important; height:auto; margin:10px auto; overflow:hidden; border-bottom:1px solid #E6E6E6; padding:10px;
+            width:702px!important; height:auto; margin:10px auto; overflow:hidden; border-bottom:1px solid #E6E6E6; padding:10px;
             background:#F0F0F0}
             
             
