@@ -5,7 +5,7 @@
   def index
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @friends = current_user.friends
-    @contactadmins = Contactadmin.all
+    @contactadmins = Contactadmin.find(:all, :order => "created_at DESC")
     @user = @friends.find_all {|u| u.birthday_today?}
     @user_blogs = current_user.user_blogs.all
   end
