@@ -1,6 +1,7 @@
 require 'will_paginate/array'
 
 class EgiftsController < ApplicationController
+before_filter :authenticate_user!
   def index
   	@egifts = Egift.all
   	@category = EgiftCategory.all

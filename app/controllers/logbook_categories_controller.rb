@@ -1,5 +1,5 @@
 class LogbookCategoriesController < ApplicationController
-
+   before_filter :authenticate_user!
 	def search
 
     @logbook_categories =  LogbookCategory.all

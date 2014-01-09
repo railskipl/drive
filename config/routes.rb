@@ -1,5 +1,8 @@
 Drive::Application.routes.draw do
 
+  resources :contactadmins
+
+
   resources :messages do
     collection do
       get :trash_messages
@@ -146,7 +149,11 @@ end
     resources :logbook_categories
     resources :egift_categories
     resources :egifts
-    resources :engines
+    resources :engines do 
+      collection do
+        delete 'destroy_multiple'
+      end
+    end
     resources :body_indices
     resources :credit_packages
   end

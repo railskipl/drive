@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
 	layout 'admin'
-
+  require 'will_paginate/array'
    helper_method :resource, :resource_name, :devise_mapping
    before_filter :authenticate_admin!, :except => [:user_emails,:show,:subscribe_profile,:friend_request,:block_user,:unblock_user,:blocked_users,:change_status,:user_friends,:user_cars,:user_gifts]
-   before_filter :authenticate_admin!, :only => [:new,:update,:edit]
+   before_filter :authenticate_admin!, :only => [:new,:update,:edit, :user_birthday]
    helper :friendships
    before_filter :authenticate_user!, :only => [:blocked_users, :show, :user_cars, :user_friends, :friend_request]
 
   def index
-    @users = User.all
+   @search = User.search(params[:q])
+   @users = @search.result.find(:all, :order => "created_at DESC")
+   @users = @users.paginate(page: params[:page], per_page: 100)
+    #@users = User.find(:all, :order => "created_at DESC")
   end
 
   def user_emails
@@ -17,6 +20,11 @@ class UsersController < ApplicationController
     format.json { render json: @users.json_tokens(params[:q])}
     end
   end
+
+  # def user_birthday
+  #   @user = User.all.find_all {|u| u.birthday_today?}
+  #   #raise @user.inspect
+  # end
 
    def new
     #raise "hi"

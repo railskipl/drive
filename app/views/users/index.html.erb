@@ -1,3 +1,4 @@
+
 <table class="admintable">
  <tr class="admintablehd">
     <td width="25%">Name</td>
@@ -7,8 +8,17 @@
    <td>Delete User</td>
    
 </tr>
+<%#= link_to "Send Birthday Notice", user_birthday_path%><br/>
+<%= link_to "Add New User", new_user_path %><br/>
+<%= link_to "Publish News or Announcement ", contactadmins_path%>
 
-<%= link_to "Add New User", new_user_path %>
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :email_cont, "Find Email" %>
+    <%= f.text_field :email_cont %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %><br/>
 <% @users.each do |user|%>
   <tr>
     <td><%= user.email %></td>
@@ -22,5 +32,9 @@
   </tr>
 <% end %>
 </table>
+
+<div class="digg_pagination">
+   <%= will_paginate @users %>
+</div>
 
 <br />

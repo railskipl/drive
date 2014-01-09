@@ -1,0 +1,26 @@
+<%= link_to 'Publish News To All Registered Users', new_contactadmin_path %>
+
+<h1>Listing Sent Mails</h1>
+
+<table>
+  <tr>
+    <th>Message</th>
+    
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contactadmins.each do |contactadmin| %>
+  <tr>
+    <td><%= contactadmin.message[0..20] rescue nil%></td>
+    <td><%= link_to 'Show', contactadmin %></td>
+    <td><%= link_to 'Edit', edit_contactadmin_path(contactadmin) %></td>
+    <td><%= link_to 'Destroy', contactadmin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

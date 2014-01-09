@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :recipient_messages, :class_name => 'Message', :foreign_key => 'recipient_id', :dependent => :destroy
 
   has_many :friendships
- 
+  #has_many :admin_mailers
   has_many :friends,
            :through => :friendships,
            :conditions => "flag = 'accepted'",
@@ -56,6 +56,8 @@ class User < ActiveRecord::Base
 
 
  acts_as_liker
+
+ acts_as_birthday :birthday
 
 has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", :profile => "130x126"},
                    :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml",
