@@ -38,7 +38,7 @@
 				
 				
 				<div class="grid_9 aboutme">
-		
+	
 	<h4>About Me</h4>
 	<p>
 		<% if current_user.about.nil? || current_user.about.blank? %>
@@ -47,6 +47,7 @@
 		<%= current_user.about %>
 		<% end %>
 	</p>
+
 	<h4>My Blogs</h4>
 	
 	<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
