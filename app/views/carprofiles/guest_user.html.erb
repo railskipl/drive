@@ -20,6 +20,10 @@
 		
 		<% @carprofile.impressions.each do |imps|%>
 
+		<%if imps.user_id == nil%>
+            <%= imps.destroy%>
+		<%end%>
+
 		 <% if User.find_by_id(imps.user_id).visibility_status  == false%>
 
 		  <div class="message"> 

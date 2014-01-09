@@ -7,5 +7,5 @@ class CarModel < ActiveRecord::Base
   has_many :logbooks, dependent: :destroy
 
   validates_presence_of :name
-
+  #acts_as_tree :order => "name"
 end

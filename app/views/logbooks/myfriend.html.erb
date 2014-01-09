@@ -50,7 +50,11 @@
       <% fri.logbooks.each do |log|%>
     <div class="message"> 
  
-    <div class = "thumb"><%=link_to image_tag(log.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+    <%unless log.carprofile.carprofile_photos.blank?%>
+      <div class = "thumb"><%=link_to image_tag(log.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+    <%else%>
+      <div class = "thumb"><a href="#"><img src="/assets/index.jpeg" alt=""  width="50" height="40"></div>
+    <%end%>
     
   
     <div class="mail_content" style="width:475px">

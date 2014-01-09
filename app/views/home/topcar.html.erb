@@ -16,7 +16,7 @@
 	 			
 				  <%= image_tag carprofile.carprofile_photos.first.photo.url(:thumb), :width => 150, :height => 100 rescue nil  %></br>
 				<%else%>
-                  <a href="#"><img src="/assets/nullcar1.jpeg" alt="" width="150", height="100 ">
+                  <a href="#"><img src="/assets/nullcar1.jpeg" alt="" width="150", height="100 "></a><br/>
                 <%end%>
 				<a href="#" class="bluelink bold"><%= carprofile.car_model.name rescue nil%></a>
 				<p class="<%= rate_count(carprofile.id)[0] rescue nil %>"></p>
@@ -28,7 +28,7 @@
 					<!-- <img style="float:left" alt="" src="/assets/small_thumb.png"> -->
 				</div>
 				<div style="width:auto; float:left; width:175px" class="mail_content">
-					<div><a class="bluelink bold" href="#"><%= "#{carprofile.user.first_name} #{carprofile.user.last_name}".capitalize %></a></div>
+					<div><a><%= "#{carprofile.user.first_name} #{carprofile.user.last_name}".capitalize %></a></div>
 		   			<div style="margin:0 0 5px 0">
 			 			<%= carprofile.user.email rescue nil%><br>
 		     			<strong><%= carprofile.user.location rescue nil%></strong>

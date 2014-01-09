@@ -1,0 +1,2 @@
+module ContactadminsHelper
+end

@@ -23,9 +23,9 @@
     
     
       <ul class="message_menu">
-    <li><a href="<%=logbooks_all_logbook_path%>">All Logbook</a>
-    <li class="selected"><a href="#">My Logbooks</a></li>
-    <li><a href="#">Friend's Logbook</a></li>
+  <li <% if controller.action_name == "all_logbook" %> class="selected" <% end %>><%= link_to "All Logbook", logbooks_all_logbook_path rescue nil%></li>
+    <li <% if controller.action_name == "index" %> class="selected" <% end %>><%= link_to "My Logbooks", logbooks_path rescue nil%></li>
+    <li <% if controller.action_name == "myfriend" %> class="selected" <% end %>><a href="<%=myfriend_path%>">Friend's Logbook</a></li>
     </ul>
     
     <strong class="bluelink">Topic</strong>
@@ -59,7 +59,11 @@
     
     
     </div>
-    <div class = "thumb"><%=link_to image_tag(logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+    <%unless logbook.carprofile.carprofile_photos.blank?%>
+      <div class = "thumb"><%=link_to image_tag(logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+    <%else%>
+      <div class = "thumb"><a href="#"><img src="/assets/index.jpeg" alt=""  width="50" height="40"></div>
+    <%end%>
     
   
     <div class="mail_content" style="width:475px">
@@ -82,10 +86,10 @@
     <%end%>
     
     
-  <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+  <div class="digg_pagination">
    <%= will_paginate @logbooks %>
     
-  </ul>
+  </div>
     
     
     

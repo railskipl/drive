@@ -25,9 +25,9 @@
     
     
       <ul class="message_menu">
-    <li class="selected"><%= link_to "All Blogs", all_blogs_user_blogs_path %></li>
-    <li><%= link_to "My Blogs", user_blogs_path %></li>
-    <li><a href="#">Friend's Blog</a></li>
+    <li <% if controller.action_name == "all_blogs" %> class="selected" <% end %>><%= link_to "All Blogs", all_blogs_user_blogs_path %></li>
+    <li <% if controller.action_name == "index" %> class="selected" <% end %>><%= link_to "My Blogs", user_blogs_path %></li>
+    <li <% if controller.action_name == "myfriend_blog" %> class="selected" <% end %>><a href="<%= myfriend_blog_path%>">Friend's Blog</a></li>
     </ul>
     
     
@@ -56,9 +56,9 @@
     
     <div class="message"> 
     
-    <%if User.find_by_id(user_blog.user_id).pic.blank? %>
+      <% if User.find_by_id(user_blog.user_id).pic.blank? %>
       
-    <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
+      <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
     <%else%>
    
     <div class="thumb"><%=link_to image_tag(User.find_by_id(user_blog.user_id).pic.url(:thumb) ,:width => 50, :height => 50) %></div>
@@ -67,31 +67,35 @@
     <div class="mail_content" style="width:442px">
     <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
     <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
-    <div><%= raw(user_blog.body)[0..300] rescue nil%></div>
+    <div><%=   raw(user_blog.body)[0..300] rescue nil%></div>
     </div>
     
 
     <ul class="action">
     <li><a href="<%=user_blog_path(user_blog)%>">Comment</a></li>
-    <% if user_blog.created_at > Time.now.beginning_of_day %> 
-    <li><%="#{time_ago_in_words(user_blog.created_at)} ago"%>
-           <% else %>
-           <%= user_blog.created_at.strftime("%b %d, %Y") rescue nil %></li>
-           <%end%>
+    
+      <% if user_blog.created_at > Time.now.beginning_of_day %> 
+        <li><%="#{time_ago_in_words(user_blog.created_at)} ago"%></li>
+      <% else %>
+        <li><%= user_blog.created_at.strftime("%b %d, %Y") rescue nil %></li>
+      <%end%>
     
     </ul>
 
     </div>
+
+
     <%end%>
-  <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+
+  <div class="digg_pagination">
  
-      <%= will_paginate @user_blogs %>
- </ul>
+  <%= will_paginate @user_blogs %>
+ </div>
     
     
     
     </div>
-    
+
     
     
     <div class="grid_5">

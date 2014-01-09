@@ -34,6 +34,19 @@ class Admin::EnginesController < ApplicationController
   	@engine = Engine.find(params[:id])
   end
 
+  def destroy_multiple
+   #raise "hi"
+  #Engine.destroy(params[:id])
+   Engine.destroy(params[:engine_ids])
+  #engine.destroy
+  respond_to do |format|
+
+    format.html { redirect_to admin_engines_path }
+    format.json { head :no_content }
+  end
+
+end
+
   def destroy
     @engine = Engine.find(params[:id])
        if @engine.destroy
