@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20140106131401) do
 
-  create_table "admin_mailers", :force => true do |t|
-    t.string   "name"
-    t.string   "subject"
-    t.text     "message"
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
     t.string   "carmake"
@@ -114,8 +105,8 @@ ActiveRecord::Schema.define(:version => 20140106131401) do
     t.string   "manufacturing_year"
     t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -197,8 +188,8 @@ ActiveRecord::Schema.define(:version => 20140106131401) do
 
   create_table "egifts", :force => true do |t|
     t.integer  "credit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -405,7 +396,7 @@ ActiveRecord::Schema.define(:version => 20140106131401) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-10 08:10:34'
+    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
