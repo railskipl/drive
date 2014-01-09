@@ -88,7 +88,8 @@ has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", 
   def credit_points(current_user)
     @credit = Credit.first
     if current_user.freecredit == @credit.free_credit
-  
+      current_user.credit = current_user.freecredit + current_user.buycredit
+      current_user.save
     elsif current_user.credit >= current_user.spend_credit && current_user.current_sign_in_at > current_user.last_sign_in_at
      c = current_user.credit - current_user.spend_credit
      credit_added = current_user.current_sign_in_at.to_date - current_user.last_sign_in_at.to_date
@@ -96,9 +97,14 @@ has_attached_file :pic,:styles => { :thumb => "140x100", :medium => "480x270>", 
         current_user.freecredit = current_user.freecredit + credit_added
         current_user.credit = current_user.freecredit + current_user.buycredit
         current_user.save
+      else
+        #raise "hi"
+        current_user.credit = current_user.freecredit + current_user.buycredit
+        current_user.save
       end
     end
   end
+
 
   def check_message
       notifications =[]
