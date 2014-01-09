@@ -28,7 +28,7 @@
 					<!-- <img style="float:left" alt="" src="/assets/small_thumb.png"> -->
 				</div>
 				<div style="width:auto; float:left; width:175px" class="mail_content">
-					<div><a class="bluelink bold" href="#"><%= "#{carprofile.user.first_name} #{carprofile.user.last_name}".capitalize %></a></div>
+					<div><a><%= "#{carprofile.user.first_name} #{carprofile.user.last_name}".capitalize %></a></div>
 		   			<div style="margin:0 0 5px 0">
 			 			<%= carprofile.user.email rescue nil%><br>
 		     			<strong><%= carprofile.user.location rescue nil%></strong>
