@@ -38,7 +38,7 @@
 				
 				
 				<div class="grid_9 aboutme">
-		
+	
 	<h4>About Me</h4>
 	<p>
 		<% if current_user.about.nil? || current_user.about.blank? %>
@@ -47,21 +47,23 @@
 		<%= current_user.about %>
 		<% end %>
 	</p>
+
 	<h4>My Blogs</h4>
 	
-	
+	<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
 	<% @user_blogs.each do |user_blog| %>
 	<div class="blog_div2">
         <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>
-        <%= truncate(user_blog.body, :length => 200).html_safe  rescue nil %><br/><br/>
+        <%= raw(user_blog.body)[0..300] rescue nil %><br/><br/>
         <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More</a>
     </div>
-
-	<%end%>
+    <%end%>
+</div>
 		
 		
 </div>
-
+   <div class="car_description" style="float:left;" >
+   <div id="comment_load" style="overflow: auto; height: 80px; margin: 10px 0px;">
    <table  border="0" cellspacing="0" cellpadding="5">
   <% @user.each do |u|%>
     <%unless u.id == current_user.id%>
@@ -80,7 +82,8 @@
   </tr>
   <%end%>
 </table>
-	
+	</div>
+	  </div>
   <div class="grid_11">
 		
 		
