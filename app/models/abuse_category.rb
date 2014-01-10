@@ -1,5 +1,5 @@
 class AbuseCategory < ActiveRecord::Base
   attr_accessible :name
-
-  belongs_to :abuse_category
+  validates_presence_of :name
+  has_many :abuse_reports
 end

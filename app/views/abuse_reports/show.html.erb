@@ -1,30 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @abuse_report.user_id %>
+  <b>Requester User:</b>
+  <%= @abuse_report.user.first_name %> <%= @abuse_report.user.last_name %>
 </p>
-
+<%unless @abuse_report.logbook_id == nil %>
 <p>
-  <b>Carprofile:</b>
+  <b>In Carprofile Id :</b>
   <%= @abuse_report.carprofile_id %>
 </p>
-
+<%end%>
+<%unless @abuse_report.logbook_id == nil %>
 <p>
-  <b>Logbook:</b>
+  <b>In Logbook Id:</b>
   <%= @abuse_report.logbook_id %>
 </p>
-
+<%end%>
+<%unless @abuse_report.user_blog_id == nil %>
 <p>
-  <b>User blog:</b>
+  <b>In User blog Id:</b>
   <%= @abuse_report.user_blog_id %>
 </p>
-
+<%end%>
+<%unless @abuse_report.comment_id == nil %>
 <p>
-  <b>Comment:</b>
+  <b>Comment Id:</b>
   <%= @abuse_report.comment_id %>
 </p>
-
+<%end%>
 <p>
   <b>Abuse type:</b>
   <%= @abuse_report.abuse_type %>
@@ -32,7 +35,8 @@
 
 <p>
   <b>Abuser user:</b>
-  <%= @abuse_report.abuser_user_id %>
+  
+  <%= User.find_by_id(@abuse_report.abuser_user_id).first_name %> <%= User.find_by_id(@abuse_report.abuser_user_id).last_name %>(<%= User.find_by_id(@abuse_report.abuser_user_id).email %>)
 </p>
 
 <p>
@@ -42,9 +46,9 @@
 
 <p>
   <b>Abuse category:</b>
-  <%= @abuse_report.abuse_category_id %>
+  <%= @abuse_report.abuse_category.name %>
 </p>
 
 
-<%= link_to 'Edit', edit_abuse_report_path(@abuse_report) %> |
+<%#= link_to 'Edit', edit_abuse_report_path(@abuse_report) %> 
 <%= link_to 'Back', abuse_reports_path %>

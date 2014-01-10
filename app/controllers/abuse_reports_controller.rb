@@ -1,11 +1,12 @@
 class AbuseReportsController < ApplicationController
   before_filter :authenticate_admin!, :only => [:index, :show, :delete, :update, :edit]
   before_filter :authenticate_user! , :only => [:new]
+  layout "admin"
   # GET /abuse_reports
   # GET /abuse_reports.json
   def index
     @abuse_reports = AbuseReport.all
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @abuse_reports }
@@ -27,7 +28,7 @@ class AbuseReportsController < ApplicationController
   # GET /abuse_reports/new.json
   def new
     @abuse_report = AbuseReport.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @abuse_report }
