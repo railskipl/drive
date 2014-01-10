@@ -44,7 +44,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', end
 	margin:0 0 0 10px; line-height:normal
 }
 
-
+.submit_btn3 {
+    background: #cb1b2b; /* Old browsers */
+    background: -moz-linear-gradient(top, #cb1b2b 0%, #a20111 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cb1b2b), color-stop(100%,#a20111)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #cb1b2b 0%,#a20111 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #cb1b2b 0%,#a20111 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #cb1b2b 0%,#a20111 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #cb1b2b 0%,#a20111 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb1b2b', endColorstr='#a20111',GradientType=0 ); /* IE6-9 */
+    border: 1px solid #000;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF !important;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 3px 6px;
+    text-decoration: none;
+    margin:0 0 0 10px; line-height:normal
+}
 
 .submit_btn2 {
     background: #cb1b2b; /* Old browsers */
