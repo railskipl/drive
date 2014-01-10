@@ -15,7 +15,7 @@
                 by <a class="bluelink" href="#"><%= n.logbook.user.first_name rescue nil%></a>
                 <%#= n.logbook.%>
                 <ul class="action">
-                <div style="float:right"><a href="#" class="bluelink bold"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this logbook ?' } %></a></div>
+                <div style="float:right"><a href="#"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this logbook ?' },:class=>"submit_btn3" %></a></div>
               </ul>
                 <div>Your favourite logbook.</div>
               </div>
@@ -31,7 +31,7 @@
                 <div><a href="<%=user_blog_path(n.user_blog_id)%>" class="bluelink bold"><%=n.user_blog.title rescue nil%></a></div>
                 by <a class="bluelink" href="#"><%= n.user_blog.user.first_name rescue nil%></a>
                 <ul class="action">
-                <div style="float:right"><a href="#" class="bluelink bold"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this blog ?' } %></a></div>
+                <div style="float:right"><a href="#"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this blog ?' },:class=>"submit_btn3" %></a></div>
               </ul>
                 <div>Your favourite blog.</div>
 
@@ -48,7 +48,7 @@
                 <div><a href="<%=carprofile_path(n.carprofile_id)%>" class="bluelink bold"><%= n.carprofile.car_model.name rescue nil%></a></div>
                 by <a class="bluelink" href="#"><%= n.carprofile.user.first_name rescue nil%></a>
                 <ul class="action">
-                <div style="float:right"><a href="#" class="bluelink bold"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this carprofile ?' } %></a></div>
+                <div style="float:right"><a href="#"><%= link_to  "Unfavourite",deletefav_favourites_path(:n_id => n.id), :data=> { :confirm=> 'Are you sure you want to unfavourite this carprofile ?' },:class=>"submit_btn3" %></a></div>
               </ul>
                 <div>Your favourite car profile.</div>
               </div>
