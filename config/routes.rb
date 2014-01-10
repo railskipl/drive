@@ -1,5 +1,11 @@
 Drive::Application.routes.draw do
 
+  resources :abuse_reports
+
+
+  resources :abuse_categories
+
+
   resources :contactadmins
 
 

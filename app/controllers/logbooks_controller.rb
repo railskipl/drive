@@ -111,6 +111,8 @@ class LogbooksController < ApplicationController
   def show
   
     @logbook = Logbook.find(params[:id])
+    @abuse_report = AbuseReport.new
+
     @comment_logbook = @logbook.comment_logbooks.build
    
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)

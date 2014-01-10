@@ -1,0 +1,21 @@
+<%= form_for(@abuse_category) do |f| %>
+  <% if @abuse_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@abuse_category.errors.count, "error") %> prohibited this abuse_category from being saved:</h2>
+
+      <ul>
+      <% @abuse_category.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

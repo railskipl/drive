@@ -29,6 +29,7 @@ class AdmincontactsController < ApplicationController
 
   def show
   	@admincontact = Admincontact.find(params[:id])
+    render :layout => 'admin'
   end
 
   def destroy

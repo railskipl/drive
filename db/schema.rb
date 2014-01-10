@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106131401) do
+ActiveRecord::Schema.define(:version => 20140110052533) do
+
+  create_table "abuse_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "abuse_reports", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "carprofile_id"
+    t.integer  "logbook_id"
+    t.integer  "user_blog_id"
+    t.integer  "comment_id"
+    t.string   "abuse_type"
+    t.integer  "abuser_user_id"
+    t.text     "comments"
+    t.integer  "abuse_category_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
