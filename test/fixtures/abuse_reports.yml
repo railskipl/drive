@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  carprofile_id: 1
+  logbook_id: 1
+  user_blog_id: 1
+  comment_id: 1
+  abuse_type: MyString
+  abuser_user_id: 1
+  comments: MyText
+  abuse_category_id: 1
+
+two:
+  user_id: 1
+  carprofile_id: 1
+  logbook_id: 1
+  user_blog_id: 1
+  comment_id: 1
+  abuse_type: MyString
+  abuser_user_id: 1
+  comments: MyText
+  abuse_category_id: 1

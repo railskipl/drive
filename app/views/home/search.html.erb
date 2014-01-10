@@ -2,40 +2,34 @@
   <div class="container_20" style="background:#333; margin-bottom:10px">
   <%= render 'shared/carousel' %></div>
  
-   
-
-<div class="container_20">
+ <div class="container_20">
   <div class="grid_20 title">
     <div style="width:40%; float:left"><h4>Search People</h4></div>
    </div>
-    
     <div class="grid_20">
       <% @users.each do |user|%>
 
     <div class="message" style="width:50%; float:left"> 
-      <%= user.pic?  ? (image_tag user.pic.url(:thumb),:width => 48) : (image_tag 'thumb_profile.jpg')%>
+      <%= user.pic?  ? (image_tag user.pic.url(:thumb),:width => 100) : (image_tag 'thumb_profile.jpg',:width => 100)%>
     <div class="mail_content" style="width:auto">
-    
     <% status = Block.find_by_blockable_id_and_blocker_id(current_user.id,user.id).present? %>
     <% if status %>
-    <div><%= link_to user.first_name, "#",:id=>user.id,:class=>"bluelink bold",:onclick => "alert('You are being Blocked !!!');"%>&nbsp;&nbsp;<%= user.last_name %></div>
+   <%= link_to user.first_name, "#",:id=>user.id,:class=>"bluelink bold",:onclick => "alert('You are being Blocked !!!');"%>&nbsp;&nbsp;<%= user.last_name %>
     <% else %>
-    <%= link_to user.first_name, user_path(user),:id=>user.id,:class=>"bluelink bold" %> <%= user.last_name %>
-    <% end %>   
-    <div style="margin:0 0 5px 0"><%= user.email %></br>
+    <%= link_to user.first_name, user_path(user),:id=>user.id,:class=>"bluelink bold" %> &nbsp;&nbsp;<%= user.last_name %>
+    <% end %></br>   
+     <div style="margin:0 0 5px 0"><% if user.about.nil? || user.about.blank? %>
+    No Description Yet!
+    <% else %>
+    <%= truncate(user.about, :length => 50).html_safe  %>
+    <% end %></br>
     <strong><%= user.location %></strong></div>
     </div>
  
     </div>
     <% end %>
-
-  
-    </div>
     
     </div>
     
    </div>
-    
-
-</div>
  </div>

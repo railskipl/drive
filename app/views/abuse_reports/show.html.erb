@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @abuse_report.user_id %>
+</p>
+
+<p>
+  <b>Carprofile:</b>
+  <%= @abuse_report.carprofile_id %>
+</p>
+
+<p>
+  <b>Logbook:</b>
+  <%= @abuse_report.logbook_id %>
+</p>
+
+<p>
+  <b>User blog:</b>
+  <%= @abuse_report.user_blog_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @abuse_report.comment_id %>
+</p>
+
+<p>
+  <b>Abuse type:</b>
+  <%= @abuse_report.abuse_type %>
+</p>
+
+<p>
+  <b>Abuser user:</b>
+  <%= @abuse_report.abuser_user_id %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @abuse_report.comments %>
+</p>
+
+<p>
+  <b>Abuse category:</b>
+  <%= @abuse_report.abuse_category_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_abuse_report_path(@abuse_report) %> |
+<%= link_to 'Back', abuse_reports_path %>

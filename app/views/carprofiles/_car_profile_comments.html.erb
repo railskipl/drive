@@ -1,5 +1,25 @@
+ <%= stylesheet_link_tag "jquery.fancybox" %>
+
+ <%= javascript_include_tag "jquery.fancybox.pack" %>
+
 <% @comments.each do |comment| %>
 <% unless User.find_by_id(comment.user_id).nil? %>
+
+  <script type="text/javascript">
+ jQuery.noConflict();
+    jQuery(document).ready(function() {
+   
+      jQuery("#various<%= comment.id%>").fancybox({
+        'titlePosition'   : 'inside',
+        'transitionIn'    : 'none',
+        'transitionOut'   : 'none'
+      });
+    
+      
+
+          });
+  </script>
+
     <div class="blog_div">
       <div class="small_thumb"> 
 
@@ -19,13 +39,28 @@
       <div style="width:100px;height:auto;float:left;">
      <% if  (comment.user == current_user) || (@carprofile.user == current_user)  %>
         <%= link_to (image_tag "/assets/delete.png"),carprofiles_comment_destroy_path(:id => comment),:class => "close2" ,:method => :delete, :confirm => "Are You Sure?" %>
+
+    
         <% end %>
+
          <div class="time">
         <% if comment.created_at > Time.now.beginning_of_day %>
                <%="#{time_ago_in_words(comment.created_at)} ago"%>
                <% else %>
              <li><%= comment.created_at.strftime("%b %d, %Y") %></li>
           <% end %>
+
+          <a href="#inline<%= comment.id %>" id="various<%= comment.id %>" class="time">Report Abuse</a>
+      <div style="display: none ">
+         <div id="inline<%= comment.id %>" style="width:450px; height:auto ; overflow:auto; text-align:left">
+        <div>
+          <div class="fancybox_title"  style="width:430px;">Report Abuse</div>
+            <div  style="padding:17px 10px">
+              <%= render 'abuse_reports/form',:comment => comment %>
+            </div>
+          </div>
+        </div>
+      </div>
         </div>
       </div>
 

@@ -1,0 +1,39 @@
+<h1>Listing abuse_reports</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Carprofile</th>
+    <th>Logbook</th>
+    <th>User blog</th>
+    <th>Comment</th>
+    <th>Abuse type</th>
+    <th>Abuser user</th>
+    <th>Comments</th>
+    <th>Abuse category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @abuse_reports.each do |abuse_report| %>
+  <tr>
+    <td><%= abuse_report.user_id %></td>
+    <td><%= abuse_report.carprofile_id %></td>
+    <td><%= abuse_report.logbook_id %></td>
+    <td><%= abuse_report.user_blog_id %></td>
+    <td><%= abuse_report.comment_id %></td>
+    <td><%= abuse_report.abuse_type %></td>
+    <td><%= abuse_report.abuser_user_id %></td>
+    <td><%= abuse_report.comments %></td>
+    <td><%= abuse_report.abuse_category_id %></td>
+    <td><%= link_to 'Show', abuse_report %></td>
+    <td><%= link_to 'Edit', edit_abuse_report_path(abuse_report) %></td>
+    <td><%= link_to 'Destroy', abuse_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Abuse report', new_abuse_report_path %>

@@ -113,6 +113,7 @@ class CarprofilesController < ApplicationController
  
   def show
       @carprofile = Carprofile.find(params[:id])
+      @abuse_report = AbuseReport.new
       @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
       @logbooks = @carprofile.logbooks
       @egift = @carprofile.send_gifts

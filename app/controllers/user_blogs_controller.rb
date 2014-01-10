@@ -98,6 +98,7 @@ class UserBlogsController < ApplicationController
   def show
   
   	@user_blog = UserBlog.find(params[:id])
+    @abuse_report = AbuseReport.new
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comment = @user_blog.blog_comments.build
     @likes = @user_blog.likes(@user_blog.id)

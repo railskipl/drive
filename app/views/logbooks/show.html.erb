@@ -1,3 +1,7 @@
+ <%= stylesheet_link_tag "jquery.fancybox" %>
+
+ <%= javascript_include_tag "jquery.fancybox.pack" %>
+
 <div class="container_20">
 
     
@@ -60,7 +64,20 @@
   <div class="comment_arrow"></div>
 <% @logbook.comment_logbooks.each do |comment_logbook| %>
   <% unless comment_logbook.id.nil? %>
+    <script type="text/javascript">
+    jQuery.noConflict();
+    jQuery(document).ready(function() {
+   
+      jQuery("#various<%= comment_logbook.id%>").fancybox({
+        'titlePosition'   : 'inside',
+        'transitionIn'    : 'none',
+        'transitionOut'   : 'none'
+      });
+    
+      
 
+          });
+  </script>
 
 <div class="comment_content">
 
@@ -81,12 +98,24 @@
             
             <ul class="action">
               <% if comment_logbook.created_at > Time.now.beginning_of_day %>
-               <%="#{time_ago_in_words(comment_logbook.created_at)} ago"%>
+               <%="#{time_ago_in_words(comment_logbook.created_at)} ago"%>&nbsp;&nbsp;
                <% else %>
           <!-- <li><a href="#">Like</a></li> -->
           <!-- <li><a href="#">Comment</a></li> -->
           <li><%= comment_logbook.created_at.strftime("%b %d, %Y") %></li>
           <% end %>
+
+          <a href="#inline<%= comment_logbook.id %>" id="various<%= comment_logbook.id %>" class="action">Report Abuse</a>
+         <div style="display: none ">
+         <div id="inline<%= comment_logbook.id %>" style="width:450px; height:auto ; overflow:auto; text-align:left">
+        <div>
+          <div class="fancybox_title"  style="width:430px;">Report Abuse</div>
+            <div  style="padding:17px 10px">
+              <%= render 'logbooks/abuse_logbook',:comment_logbook => comment_logbook %>
+            </div>
+          </div>
+        </div>
+      </div>
           </ul>
     
           </div>
