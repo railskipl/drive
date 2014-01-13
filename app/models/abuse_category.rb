@@ -1,0 +1,5 @@
+class AbuseCategory < ActiveRecord::Base
+  attr_accessible :name
+  validates_presence_of :name
+  has_many :abuse_reports
+end

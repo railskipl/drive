@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :blog_comments ,dependent: :destroy
   has_many :sent_egifts, :class_name => 'SendGift', :foreign_key => 'sender_id', :dependent => :destroy
   has_many :received_egifts, :class_name => 'SendGift', :foreign_key => 'receiver_id', :dependent => :destroy
-
+  has_many :abuse_reports
   has_many :sent_messages, :class_name => 'Message', :foreign_key => 'sender_id', :dependent => :destroy
   has_many :recipient_messages, :class_name => 'Message', :foreign_key => 'recipient_id', :dependent => :destroy
 
