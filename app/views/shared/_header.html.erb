@@ -42,12 +42,12 @@
           
           <li><%= link_to "Logout",destroy_user_session_path,:method => :delete %></li>  
       <% end %>
-      <div class="search_div" style="margin:-6px;">
+      <div class="search_div" style="margin:-6px; color:white">
           <% unless user_signed_in? %>
                <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-                  <%= f.email_field :email,:class=>"search_tf"%>
-                  <%= f.password_field :password,:class=>"search_tf" %>
-                  <%= f.submit "Log In",:class=>"submit_btn" %>
+                   <div style="float:left"><%= f.email_field :email,:class=>"search_tf",:style=>"float:left; margin:0"%></div>
+                  <div style="float:left"><%= f.password_field :password,:class=>"search_tf",:style=>"float:left; margin:0" %></div>
+                  <%= f.submit "Log In",:class=>"submit_btn log_in" %>
                   <div style="width:auto; padding:5px 7px; color:#FFFFFF"> 
                   <div style="width:228px; float:left"><%= f.check_box :remember_me %>Remember Me </div>
                 <% end %>
