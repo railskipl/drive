@@ -15,6 +15,7 @@
 <% @abuse_reports.each do |abuse_report| %>
   
   <tr>
+    
     <td><%= abuse_report.user.first_name%>  <%= abuse_report.user.last_name%>(<%= abuse_report.user.email%>)</td>
     <td><%= abuse_report.abuse_category.name %></td>
     <td><%= abuse_report.abuse_type %></td>

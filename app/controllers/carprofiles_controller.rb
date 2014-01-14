@@ -172,6 +172,8 @@ end
 
 def post_comment
     @carprofile = Carprofile.find_by_id(params[:car_profile_id])
+    @abuse_report = AbuseReport.new
+
     if params[:body].present?
       @comment = Comment.add_comment(params[:body],current_user,@carprofile)
       if @comment.save

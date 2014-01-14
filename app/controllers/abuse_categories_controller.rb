@@ -5,7 +5,7 @@ class AbuseCategoriesController < ApplicationController
   # GET /abuse_categories
   # GET /abuse_categories.json
   def index
-    @abuse_categories = AbuseCategory.all
+    @abuse_categories = AbuseCategory.find(:all , :order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
