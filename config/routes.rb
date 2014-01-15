@@ -106,6 +106,8 @@ end
       post :unblock_user
       get  :blocked_users
       post :change_status
+      get :addpoints
+      post :addedpoints
     end
    member do
       get :friend_request
@@ -142,6 +144,8 @@ end
   match "myfriend_blog"  => 'user_blogs#myfriend_blog'
 
   match "/carprofiles/comment_destroy", :to => "carprofiles#comment_destroy"
+
+
 
   namespace :admin do 
     match '/dashboard' => "dashboard#index", :as => :root

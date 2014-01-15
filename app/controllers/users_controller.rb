@@ -53,6 +53,31 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def addpoints
+    @users = User.all
+    
+    if params[:id]
+      @user = User.find_by_id(params[:id])
+      #raise params[:add].inspect
+    end
+    
+  end
+
+  def addedpoints
+      
+     if params[:id]
+       @user = User.find_by_id(params[:id])
+     end
+    #raise @user.buycredit.inspect
+    @user.freecredit = @user.freecredit.to_i + params[:add].to_i
+    @user.credit = @user.freecredit.to_i + @user.buycredit.to_i
+    #raise @user.credit.inspect
+     # @user.update_column(:freecredit,params[:freecredit])
+     # @user.update_column(:credit,params[:credit])
+     @user.save!
+    redirect_to users_path
+  end
+
   def update
     #raise "hi"
     @user = User.find(params[:id])
