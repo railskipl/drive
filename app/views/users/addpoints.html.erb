@@ -1,0 +1,36 @@
+<%= link_to "Back", users_path%>
+<%= form_for :user,:url=>{:action=>"addedpoints", :controller=>"users", :method => :post ,:id => params[:id] } do |f| %>
+   <% if @user.errors.any? %>
+     <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this car make from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div> 
+  <% end %>
+
+  <div class="field">
+    <%= f.label "User email id" %>
+    <%= f.text_field :email ,:value => @user.email,:readonly => true %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label "Free Points" %>
+    <%= f.text_field :freecredit, :value => @user.freecredit, :readonly => true %>
+  </div>
+
+  <div>
+  <%= f.label "Please Add points" %> 
+  <%= text_field_tag 'add' %></div>
+
+   </br>
+
+  
+  <%= submit_tag "Enter" %>
+ 
+<%end%>
+
