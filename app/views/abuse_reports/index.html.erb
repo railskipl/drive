@@ -14,11 +14,11 @@
   
   <tr>
     
-    <td><%= abuse_report.user.first_name%>  <%= abuse_report.user.last_name%>(<%= abuse_report.user.email%>)</td>
-    <td><%= abuse_report.abuse_category.name %></td>
-    <td><%= abuse_report.abuse_type %></td>
-    <td><%= abuse_report.comments[0..20] %></td>
-    <td><%= User.find_by_id(abuse_report.abuser_user_id).first_name %>  <%= User.find_by_id(abuse_report.abuser_user_id).last_name %></td>
+    <td><%= abuse_report.user.first_name rescue nil%>  <%= abuse_report.user.last_name rescue nil%>(<%= abuse_report.user.email rescue nil%>)</td>
+    <td><%= abuse_report.abuse_category.name rescue nil%></td>
+    <td><%= abuse_report.abuse_type rescue nil%></td>
+    <td><%= abuse_report.comments[0..20] rescue nil%></td>
+    <td><%= User.find_by_id(abuse_report.abuser_user_id).first_name rescue nil%>  <%= User.find_by_id(abuse_report.abuser_user_id).last_name rescue nil%></td>
     <td><%= link_to 'Show Report', abuse_report %></td>
     <td><%= link_to 'Destroy', abuse_report, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
