@@ -1,15 +1,13 @@
 <h1>Listing Abuse Reports</h1>
 
-<table>
-  <tr>
-    <th> Requester User</th>
-    <th>Abuse category</th>
-    <th>Abuse type</th>
-    <th>Comments</th>
-    <th>Abuser user</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<table class="admintable">
+  <tr class="admintablehd">
+    <td > Requester User</td>
+    <td >Abuse category</td>
+    <td >Abuse type</td>
+    <td >Comments</td>
+    <td >Abuser user</td>
+    <td colspan=2 style="text-align: center !important;">Actions</td>
   </tr>
 
 <% @abuse_reports.each do |abuse_report| %>
@@ -24,12 +22,7 @@
     <td><%= link_to 'Show Report', abuse_report %></td>
     <td><%= link_to 'Destroy', abuse_report, method: :delete, data: { confirm: 'Are you sure?' } %>
     </td>
-    <td><%#= link_to 'Edit', edit_abuse_report_path(abuse_report) %></td>
     
-    <td><%#= abuse_report.carprofile_id %></td>
-    <td><%#= abuse_report.logbook_id %></td>
-    <td><%#= abuse_report.user_blog_id %></td>
-    <td><%#= abuse_report.comment_id %></td>
     
     
     
