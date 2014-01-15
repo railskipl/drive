@@ -8,7 +8,7 @@ You are about to report a violation of our Term of Use.
 All reports are strictly confidential.</strong></div>
 <div style="margin:5px 0"> <strong>Reason: </strong><br>
 
-  <%=  f.collection_select :abuse_category_id, AbuseCategory.all(:order => "name"), :id, :name %>
+  <%=  f.collection_select :abuse_category_id, AbuseCategory.all(:order => "name"), :id, :name,:prompt => "Choose One.." %>
 
 </div>
 <div style="margin:10px 0">
