@@ -47,18 +47,25 @@ class AbuseReportsController < ApplicationController
     #raise @abuse_report.inspect
        @abuse_report.save
       if @abuse_report.abuse_type == "carprofile"
-        flash[:notice] =  'Abuse report successfully  sent.'
-        redirect_to carprofile_path(@abuse_report.carprofile_id)  
+         flash[:notice] =  'Abuse report successfully  sent.'
+         redirect_to carprofile_path(@abuse_report.carprofile_id)  
       elsif @abuse_report.abuse_type == "logbook"
          
           flash[:notice] =  'Abuse report successfully sent.'
           redirect_to logbook_path(@abuse_report.logbook_id)
-      else 
-        if @abuse_report.abuse_type == "user_blog"
+      elsif @abuse_report.abuse_type == "user_blog" 
         
           flash[:notice] =  'Abuse report successfully sent.'
           redirect_to user_blog_path(@abuse_report.user_blog_id)
-        end
+      elsif  @abuse_report.abuse_type == "On logbook Page"
+          flash[:notice] =  'Abuse report successfully sent.'
+          redirect_to logbook_path(@abuse_report.logbook_id)
+      elsif @abuse_report.abuse_type == "On Blog Page" 
+          flash[:notice] =  'Abuse report successfully sent.'
+          redirect_to user_blog_path(@abuse_report.user_blog_id)
+      else @abuse_report.abuse_type == "On Carprofile Page" 
+          flash[:notice] =  'Abuse report successfully sent.'
+          redirect_to carprofile_path(@abuse_report.carprofile_id)
       end
   end
 

@@ -1,0 +1,32 @@
+
+<div> 
+
+<%= form_for(@abuse_report) do |f| %>
+You are about to report a violation of our Term of Use.
+</div>
+<div><strong> 
+All reports are strictly confidential.</strong></div>
+<div style="margin:5px 0"> <strong>Reason: </strong><br>
+
+  <%=  f.collection_select :abuse_category_id, AbuseCategory.all(:order => "name"), :id, :name %>
+
+</div>
+<div style="margin:10px 0">
+A comment? (optional):<br>
+<textarea name="abuse_report[comments]" class="pe_tf"></textarea>
+</div>
+  <%= f.hidden_field :user_id , :value => current_user.id%>
+  <%= f.hidden_field :logbook_id , :value => @logbook.id%>
+  <%= f.hidden_field :abuser_user_id , :value => @logbook.user_id%>
+  <%= f.hidden_field :abuse_type , :value => "On logbook Page"%>
+<div>
+  
+  <input type="submit" value="Submit" class="submit_btn" style="margin:0">
+
+  <!-- <div class="actions">
+    <%= f.submit %>
+  </div> -->
+<!-- <input type="button" value="submit" class="submit_btn" style="margin:0"> -->
+</div>
+<%end%>
+<!-- <input type="button" value="Submit" name="commit" class="submit_btn" style="margin:0"> -->
