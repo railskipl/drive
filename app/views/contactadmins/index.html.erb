@@ -1,14 +1,12 @@
-<%= link_to 'Publish News To All Registered Users', new_contactadmin_path %>
+<%= link_to 'Publish News To All Registered Users', new_contactadmin_path %> | <%= link_to "Back", users_path%>
 
-<h1>Listing Sent Mails</h1>
+<h1>Listing News or Announcements</h1>
 
-<table>
-  <tr>
-    <th>Message</th>
-    
-    <th></th>
-    <th></th>
-    <th></th>
+
+  <table class="admintable">
+  <tr class="admintablehd">
+    <td>Message</td>
+    <td colspan=3 style="text-align: center !important;">Actions</td>
   </tr>
 
 <% @contactadmins.each do |contactadmin| %>

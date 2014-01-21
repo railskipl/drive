@@ -8,18 +8,17 @@ You are about to report a violation of our Term of Use.
 All reports are strictly confidential.</strong></div>
 <div style="margin:5px 0"> <strong>Reason: </strong><br>
 
-  <%=  f.collection_select :abuse_category_id, AbuseCategory.all(:order => "name"), :id, :name,:prompt => "Choose One.." %>
+  <%=  f.collection_select :abuse_category_id, AbuseCategory.all(:order => "name"), :id, :name, :prompt => "Choose One.." %>
 
 </div>
 <div style="margin:10px 0">
 A comment? (optional):<br>
 <textarea name="abuse_report[comments]" class="pe_tf"></textarea>
 </div>
-  <%= f.hidden_field :user_id , :value => current_user.id%>
-  <%= f.hidden_field :logbook_id , :value => @logbook.id%>
-  <%= f.hidden_field :comment_id , :value => comment_logbook.id%>
-  <%= f.hidden_field :abuser_user_id , :value => comment_logbook.user_id%>
-  <%= f.hidden_field :abuse_type , :value => "logbook"%>
+<%= f.hidden_field :user_id , :value => current_user.id%>
+  <%= f.hidden_field :carprofile_id , :value => @carprofile.id%>
+  <%= f.hidden_field :abuser_user_id , :value => @carprofile.user_id%>
+  <%= f.hidden_field :abuse_type , :value => "On Carprofile Page"%>
 <div>
   
   <input type="submit" value="Submit" class="submit_btn" style="margin:0">

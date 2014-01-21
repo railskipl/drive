@@ -17,9 +17,8 @@ A comment? (optional):<br>
 </div>
   <%= f.hidden_field :user_id , :value => current_user.id%>
   <%= f.hidden_field :logbook_id , :value => @logbook.id%>
-  <%= f.hidden_field :comment_id , :value => comment_logbook.id%>
-  <%= f.hidden_field :abuser_user_id , :value => comment_logbook.user_id%>
-  <%= f.hidden_field :abuse_type , :value => "logbook"%>
+  <%= f.hidden_field :abuser_user_id , :value => @logbook.user_id%>
+  <%= f.hidden_field :abuse_type , :value => "On logbook Page"%>
 <div>
   
   <input type="submit" value="Submit" class="submit_btn" style="margin:0">

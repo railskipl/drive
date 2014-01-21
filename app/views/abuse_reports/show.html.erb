@@ -2,53 +2,53 @@
 
 <p>
   <b>Requester User:</b>
-  <%= @abuse_report.user.first_name %> <%= @abuse_report.user.last_name %>
+  <%= @abuse_report.user.first_name rescue nil%> <%= @abuse_report.user.last_name rescue nil%>
 </p>
-<%unless @abuse_report.logbook_id == nil %>
+<%unless @abuse_report.carprofile_id == nil %>
 <p>
   <b>In Carprofile Id :</b>
-  <%= @abuse_report.carprofile_id %>
+  <%= @abuse_report.carprofile_id rescue nil%>
 </p>
 <%end%>
 <%unless @abuse_report.logbook_id == nil %>
 <p>
   <b>In Logbook Id:</b>
-  <%= @abuse_report.logbook_id %>
+  <%= @abuse_report.logbook_id rescue nil%>
 </p>
 <%end%>
 <%unless @abuse_report.user_blog_id == nil %>
 <p>
   <b>In User blog Id:</b>
-  <%= @abuse_report.user_blog_id %>
+  <%= @abuse_report.user_blog_id rescue nil%>
 </p>
 <%end%>
 <%unless @abuse_report.comment_id == nil %>
 <p>
   <b>Comment Id:</b>
-  <%= @abuse_report.comment_id %>
+  <%= @abuse_report.comment_id rescue nil%>
 </p>
 <%end%>
 <p>
   <b>Abuse type:</b>
-  <%= @abuse_report.abuse_type %>
+  <%= @abuse_report.abuse_type rescue nil%>
 </p>
 
 <p>
   <b>Abuser user:</b>
   
-  <%= User.find_by_id(@abuse_report.abuser_user_id).first_name %> <%= User.find_by_id(@abuse_report.abuser_user_id).last_name %>(<%= User.find_by_id(@abuse_report.abuser_user_id).email %>)
+  <%= User.find_by_id(@abuse_report.abuser_user_id).first_name rescue nil%> <%= User.find_by_id(@abuse_report.abuser_user_id).last_name rescue nil%>(<%= User.find_by_id(@abuse_report.abuser_user_id).email rescue nil%>)
 </p>
 
 <p>
   <b>Comments:</b>
-  <%= @abuse_report.comments %>
+  <%= @abuse_report.comments rescue nil%>
 </p>
 
 <p>
   <b>Abuse category:</b>
-  <%= @abuse_report.abuse_category.name %>
+  <%= @abuse_report.abuse_category.name rescue nil%>
 </p>
 
-
+<!-- <p>Visit Page: <%= link_to "Click Here", "http://localhost:3000/carprofiles/#{@abuse_report.carprofile_id}"%></p> -->
 <%#= link_to 'Edit', edit_abuse_report_path(@abuse_report) %> 
 <%= link_to 'Back', abuse_reports_path %>
