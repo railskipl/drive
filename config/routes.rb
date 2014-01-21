@@ -39,6 +39,7 @@ Drive::Application.routes.draw do
     collection do
       get :search
       get :all_car
+      get :car_body_index
     end
   end
 
