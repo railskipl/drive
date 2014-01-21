@@ -33,7 +33,7 @@ def search
 @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
 q = params[:q]
 @q = User.search(first_name_or_last_name_or_location_or_email_cont: q)
-@users=@q.result(:distinct => true)
+@users=@q.result(:distinct => true).paginate(:page => params[:page],:per_page => 8)
 end
 
 def keywordsearch
@@ -49,20 +49,18 @@ def subscribe_count
   @user = User.find(params[:id])
   @subscribers =  Subscriber.subscribers(@user,User)
 end
-
-
+  
 def topcar
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @top_cars = top_cars(Carprofile.all.map(&:id))
   @@cars = @top_cars.to_a
-  @top_cars = @top_cars.to_a.paginate(:page => params[:page],:per_page => 10)  
+  @top_cars = @top_cars.to_a.paginate(:page => params[:page],:per_page => 5)  
 end
 
  def paginate_top_car
  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
- @top_cars = @@cars.paginate(:page => params[:page],:per_page => 10)
+ @top_cars = @@cars.paginate(:page => params[:page],:per_page => 5)
  render "topcar"
-
 end
 
 

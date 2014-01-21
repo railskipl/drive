@@ -2,15 +2,15 @@
 <br /><br />
 <table class="admintable">
  <tr class="admintablehd">
-    <td width="25%">Name</td>
-     <td width="25%">Package Type</td>
+    <td width="25%">Points</td>
+     <td width="25%">Package Type(In USD)</td>
      
    <td colspan=2 style="text-align: center !important;">Actions</td>
 </tr>
 
 <% @credit_packages.each do |credit_package|%>
   <tr>
-    <td><%= credit_package.name %></td>
+    <td><%= credit_package.name %> Points</td>
     <td><%= credit_package.package_type %></td>
     <td style="text-align: center !important;"><%= link_to 'Edit', edit_admin_credit_package_path(credit_package) %></td>
     <td style="text-align: center !important;"><%= link_to 'Destroy',admin_credit_package_path(credit_package) ,:method => :delete , :data=>{ :confirm=> 'Are you sure?' } %>

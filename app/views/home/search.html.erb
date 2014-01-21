@@ -6,7 +6,7 @@
   <div class="grid_20 title">
     <div style="width:40%; float:left"><h4>Search People</h4></div>
    </div>
-    <div class="grid_20">
+    <div class="grid_20" style="overflow: auto; height: auto; margin: 10px 0px;">
       <% @users.each do |user|%>
 
     <div class="message" style="width:50%; float:left"> 
@@ -33,3 +33,6 @@
     
    </div>
  </div>
+<div class="digg_pagination">
+ <%= will_paginate @users %>
+</div>
