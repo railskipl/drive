@@ -2,16 +2,21 @@
     <div class="container_20" style="background:#333; margin-bottom:10px">
         <div class="grid_20">
               <div class="top_car">All Cars</div>
+
+              <% if @car_models.empty? %>
+              <div class="car_body_index">
+                  <p> NO CAR MODELS FOUND FOR THIS CAR MAKE. </p>
+                </div>             
+              <% else %>
                 <div class="topcar2">
                    <% @car_models.each do |car|%>
                        <li><%= link_to car.name, car_body_index_shared_index_path(:id => car.id), :remote => true,:class=>"bluelink bold" %></li>
-              </li>
                     <% end %>
                 </div>
                 <div class="car_body_index">
-                  <p>   Click on the CarModel to view. </p>
-
+                  <p> Click on the car to view. </p>
                 </div>
+              <% end %>             
             </div>
         </div>
     </div>

@@ -1,4 +1,3 @@
-
 class SharedController < ApplicationController
   def index
     @car_makes = CarMake.order("created_at desc").limit(100)
