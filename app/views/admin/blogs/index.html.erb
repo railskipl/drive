@@ -8,7 +8,7 @@
 
 <% @blogs.each do |blog| %>
   <tr>
-    <td><%= blog.name %></td>
+    <td><%= blog.name rescue nil%></td>
     <td><%= link_to 'Edit', edit_admin_blog_path(blog) %></td>
     <td><%= link_to 'Destroy',admin_blog_path(blog) ,:method => :delete , data: { confirm: 'Are you sure?' } %>
     </td><br/>

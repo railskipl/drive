@@ -39,6 +39,7 @@ Drive::Application.routes.draw do
     collection do
       get :search
       get :all_car
+      get :car_body_index
     end
   end
 
@@ -145,6 +146,10 @@ end
 
   match "/carprofiles/comment_destroy", :to => "carprofiles#comment_destroy"
 
+  # match "/credits/select_package" , :to => "credits#select_package"
+
+  match "/credits/get_credits" , :to => "credits#get_credits"
+
 
 
   namespace :admin do 
@@ -171,7 +176,7 @@ end
   resources :credits do
     collection do
       get :earn_credits
-      post :get_credits
+      get :select_package
     end
   end
   resources :admincontacts
