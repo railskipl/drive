@@ -38,7 +38,7 @@
 			</div>
 		</div>
         <div class="rank_car_div2" style="width:auto"> 
-		<div  class="rank_count"><%= index+1 %></div>
+		<div class="rank_count"><%= @car_rank.index(car) + 1 %></div>
 	       			<div style="clear:left; float:left"><a href="<%= carprofile_path(carprofile)%>"  class="submit_btn">Read More</a></div></div>
   	</div>
  <% end %>
