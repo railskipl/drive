@@ -59,7 +59,8 @@ a.morelink {
         <% unless current_user.id == @carprofile.user_id %>  
           <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
         <% end %>
-        <li><%= link_to "Favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
+         <% unless current_user.id == @carprofile.user_id %> 
+        <li><%= link_to "Favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li><% end %>
         <%if current_user.id == @carprofile.user_id%>
         <li><%= link_to "My Guest",guest_user_carprofiles_path(:id => params[:id])%></li>
         <li><%= link_to "Edit", edit_carprofile_path(@carprofile)%></li>
