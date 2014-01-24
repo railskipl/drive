@@ -1,35 +1,22 @@
-   <div class="container_20" style="background:#333; margin-bottom:10px">
-            <div class="container_20">
-                <div class="grid_20 aboutme">
-                       <!--  <h4 class="title"></h4> -->
-                          <% if @carprofiles.empty? %>
-                                <div class="mycar_caption">
-                                    <p>No Such Car Model with bodyindex Found for this Model.</p>
-                                </div>
-                           <% else %>
-                             <% @carprofiles.each do |car|%>
-                                <div class="mycardiv">
-                                    <div>
-                                      <% unless car.carprofile_photos.blank?%>
-                                        <%= link_to  image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"186", :height=>"125"),carprofile_path(car) rescue nil%>
-                                        <% else %>
-                                        <a href="<%=carprofile_path(car)%>"><img src="/assets/nullcar1.jpg" alt="">
-                                      <% end %>
-                                    </div>
-                                    <div class="mycar_caption">
-                                      <a href="<%= carprofile_path(car)%>" class="bluelink bold"><%= car.car_model.name%></br>
-                                        <%= car.body_index.bodyindex unless car.body_index.nil? %>
-
-                                     </a>
-
-                                     
-                                    </div>
-                                </div>
-                         
-                        <% end %>
-                      <% end %>
-                           
-                </div>
-            </div>
-        </div>
-   
+  <% if @carprofiles.empty? %>
+      <div class="mycar_caption">
+      <p>No Such Car Model Found for this Model.</p>
+      </div>
+    <% else %>
+<% @carprofiles.each do |car|%>
+    <div class="carcard carcard-big">
+      <div class="carcard-pic" >
+        <% unless car.carprofile_photos.blank? %>
+            <%= link_to image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"220", :height=>"135"),carprofile_path(car) rescue nil%>
+        <% else %>
+            <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt="">
+        <% end %>
+      </div>
+      <div class="carcard-meta">
+        <span  class="carcard-meta-drive"><span><%= total_rating_count(car) %></span></div>
+      <div class="carcard-caption"><%= link_to car.car_nickname ,carprofile_path(car),:class=>"bluelink bold" %></div>
+      <div class="carcard-info"><span><%= car.user.location %></span></div>
+      <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></span></a></div>
+    </div>
+<% end %>
+<%  end %>

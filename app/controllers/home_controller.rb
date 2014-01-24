@@ -55,13 +55,13 @@ end
     @top_cars = top_cars(Carprofile.all.map(&:id))
     @@cars = @top_cars.to_a
     @car_rank = @@cars
-    @top_cars = @top_cars.to_a.paginate(:page => params[:page], :per_page => 5)
+    @top_cars = @top_cars.to_a.take(100)
   end
 
   def paginate_top_car
     @spotlighted_cars = Carprofile.where("spotlighted = ?", true)
     @car_rank = @@cars
-    @top_cars = @@cars.paginate(:page => params[:page], :per_page => 5)
+    @top_cars = @@cars.take(100)
     render "topcar"
 
   end
