@@ -1,24 +1,39 @@
 <div class="middle">
-    <div class="container_20" style="background:#333; margin-bottom:10px">
-        <div class="grid_20">
-              <div class="top_car">All Cars</div>
+  <div class="container_20" style="background:#333; margin-bottom:10px">
+    <div class="grid_20">
+      <div class="top_car">All Cars</div>
 
-              <% if @car_models.empty? %>
-              <div class="car_body_index">
-                  <p> NO CAR MODELS FOUND FOR THIS CAR MAKE. </p>
-                </div>             
-              <% else %>
-                <div class="topcar2">
-                   <% @car_models.each do |car|%>
-                       <li><%= link_to car.name, car_body_index_shared_index_path(:id => car.id), :remote => true,:class=>"bluelink bold" %></li>
-                    <% end %>
-                </div>
-                <div class="car_body_index">
-                  <p> Click on the car to view. </p>
-                </div>
-              <% end %>             
+      <% if @car_models.empty? %>
+          <div class="car_body_index">
+            <p> NO CAR MODELS FOUND FOR THIS CAR MAKE. </p>
+          </div>
+      <% else %>
+          <div class="topcar2">
+            <% @car_models.each do |car|%>
+                <li><%= link_to car.name, car_body_index_shared_index_path(:id => car.id),:class=>"bluelink bold", :remote => true %></li>
+            <% end %>
+          </div>
+      <% end %>
+      <div class="grid_20 car_body_index">
+        <h4 class="title"><%= "CAR PROFILES" if @carprofiles %></h4>
+        <% @carprofiles.each do |car|%>
+            <div class="carcard carcard-big">
+              <div class="carcard-pic" >
+                <% unless car.carprofile_photos.blank? %>
+                    <%= link_to image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"220", :height=>"135"),carprofile_path(car) rescue nil%>
+                <% else %>
+                    <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt="">
+                <% end %>
+              </div>
+              <div class="carcard-meta">
+                <span  class="carcard-meta-drive"><span><%= total_rating_count(car) %></span></div>
+              <div class="carcard-caption"><%= link_to car.car_nickname,carprofile_path(car),:class=>"bluelink bold" %></div>
+              <div class="carcard-info"><span><%= car.user.location %></span></div>
+              <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></span></a></div>
             </div>
-        </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
 <%#= will_paginate @carprofiles %>

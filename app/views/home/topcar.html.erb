@@ -7,7 +7,7 @@
   </div>		
  <!-- START MAIN LOOP FOR TOP CARS -->
  <div class="grid_20">
- 	<p><%= (page_entries_info @top_cars).gsub("arrays","top cars").html_safe %></p>
+ 	<!-- <p><%#= (page_entries_info @top_cars).gsub("arrays","top cars").html_safe %></p> -->
    <% @top_cars.each_with_index do |car,index| %>
    <% carprofile = Carprofile.find(car[0]) %>
 	<div class="top_car_div" style="width:auto;"> 
@@ -43,9 +43,9 @@
   	</div>
  <% end %>
  </div>
-   <div class="digg_pagination">
- <%= will_paginate @top_cars,:params => {:controller => "home",:action => "paginate_top_car" } %>
-</div>
+   <!-- <div class="digg_pagination">
+ <%#= will_paginate @top_cars,:params => {:controller => "home",:action => "paginate_top_car" } %>
+</div> -->
  <!-- STOP MAIN LOOP FOR TOP CARS -->
 </div>
 </div>
