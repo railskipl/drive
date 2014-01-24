@@ -9,27 +9,32 @@
           </div>
       <% else %>
           <div class="topcar2">
-            <% @car_models.each do |car|%>
-                <li><%= link_to car.name, car_body_index_shared_index_path(:id => car.id),:class=>"bluelink bold", :remote => true %></li>
-            <% end %>
+            <nav>
+              <ul>
+                <% @car_models.each do |car|%>
+                    <li><%= link_to car.name, car_body_index_shared_index_path(:id => car.id),:class=>"bluelink car_model bold", :remote => true %></li>
+                <% end %>
+              </ul>
+            </nav>
           </div>
       <% end %>
       <div class="grid_20 car_body_index">
         <h4 class="title"><%= "CAR PROFILES" if @carprofiles %></h4>
-        <% @carprofiles.each do |car|%>
+        <% @carprofiles.each do |car| %>
             <div class="carcard carcard-big">
               <div class="carcard-pic" >
                 <% unless car.carprofile_photos.blank? %>
                     <%= link_to image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"220", :height=>"135"),carprofile_path(car) rescue nil%>
                 <% else %>
-                    <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt="">
+                    <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt=""/></a>
                 <% end %>
               </div>
               <div class="carcard-meta">
-                <span  class="carcard-meta-drive"><span><%= total_rating_count(car) %></span></div>
+                <span class="carcard-meta-drive"><%= total_rating_count(car) %></span>
+              </div>
               <div class="carcard-caption"><%= link_to car.car_nickname.nil? ? car.car_model.name : car.car_nickname ,carprofile_path(car),:class=>"bluelink bold" %></div>
               <div class="carcard-info"><span><%= car.user.location %></span></div>
-              <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></span></a></div>
+              <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></a></div>
             </div>
         <% end %>
       </div>

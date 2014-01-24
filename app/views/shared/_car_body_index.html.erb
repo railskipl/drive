@@ -1,6 +1,6 @@
-  <% if @carprofiles.empty? %>
+ <% if @carprofiles.empty? %>
       <div class="mycar_caption">
-      <p>No Such Car Model Found for this Model.</p>
+      <p>No Such Car Model Type Found for this Model.</p>
       </div>
     <% else %>
 <% @carprofiles.each do |car|%>
@@ -9,14 +9,14 @@
         <% unless car.carprofile_photos.blank? %>
             <%= link_to image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"220", :height=>"135"),carprofile_path(car) rescue nil%>
         <% else %>
-            <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt="">
+            <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt=""/></a>
         <% end %>
       </div>
       <div class="carcard-meta">
-        <span  class="carcard-meta-drive"><span><%= total_rating_count(car) %></span></div>
-     <div class="carcard-caption"><%= link_to car.car_nickname.nil? ? car.car_model.name : car.car_nickname ,carprofile_path(car),:class=>"bluelink bold" %></div>
+        <span class="carcard-meta-drive"><%= total_rating_count(car) %></span></div>
+      <div class="carcard-caption"><%= link_to car.car_nickname.nil? ? car.car_model.name : car.car_nickname ,carprofile_path(car),:class=>"bluelink bold" %></div>
       <div class="carcard-info"><span><%= car.user.location %></span></div>
-      <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></span></a></div>
+      <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></a></div>
     </div>
 <% end %>
-<%  end %>
+<% end %>

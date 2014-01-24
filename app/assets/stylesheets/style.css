@@ -1163,9 +1163,9 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
     position: relative;
 }
 .carcard-meta-drive, .carcard-meta-overdrive, .carcard-meta-blog {
-    background: none repeat scroll 0 0 #FF0033;
+    background: url(../assets/star16.png) no-repeat 5px 3px #ff0000;
     float: left;
-    padding: 0 0.5em;
+    padding:2px 10px 2px 20px; border-radius:5px; 
 }
 .carcard-meta-overdrive {
     background: none repeat scroll 0 0 #FF6600;
@@ -1217,8 +1217,8 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
     width: 220px;
 }
 .carcard-big .carcard-meta {
-    font: bold 16px/19px sans-serif;
-    margin-top: -25px; 
+    font: normal 12px sans-serif;
+    margin-top: -131px;  margin-right: 10px; 
 }
 .carcard-big .carcard-owner {
     font: 11px/13px sans-serif;
@@ -1353,3 +1353,7 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
 }
 
 
+.bluelink.car_model.bold.active{
+    background-position:0px -164px;
+    background-color: #ADFF2F;
+}
