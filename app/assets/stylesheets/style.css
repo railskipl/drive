@@ -1352,8 +1352,19 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
     width: 42px;
 }
 
-
 .bluelink.car_model.bold.active{
     background-position:0px -164px;
-    background-color: #ADFF2F;
+    /*background-color: #00487a;*/
+    padding: 2px 5px;
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #f91e32;
+    background: #cb1b2c;
+    background: -moz-linear-gradient(top, #cb1b2c 0%, #a10010 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cb1b2c), color-stop(100%,#a10010));
+    background: -webkit-linear-gradient(top, #cb1b2c 0%,#a10010 100%);
+    background: -o-linear-gradient(top, #cb1b2c 0%,#a10010 100%);
+    background: -ms-linear-gradient(top, #cb1b2c 0%,#a10010 100%);
+    background: linear-gradient(to bottom, #cb1b2c 0%,#a10010 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb1b2c', endColorstr='#a10010',GradientType=0 );
 }
