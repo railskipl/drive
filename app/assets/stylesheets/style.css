@@ -1120,6 +1120,251 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
 .credit_row2{ border-top:1px solid #E6E6E6; padding:5px 10px; margin:40px 0 0 0}
 
 
-   .error{float:left;clear:left;padding-left:10px; }
+.error{float:left;clear:left;padding-left:10px; }
 
+/*car catalog design*/
 
+.carcard {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0);
+    display: inline-block;
+    font: 12px/14px sans-serif;
+    margin:5px;
+    padding: 5px;
+    position: relative;
+    text-align: left;
+    transition: background-color 0.2s ease-in-out 0s;
+    vertical-align: top;
+    width: 120px;
+}
+.carcard:hover {
+    background: none repeat scroll 0 0 #eee;
+}
+.carcard-drag-hover {
+    cursor: move;
+}
+.carcard-drag-current {
+    opacity: 0.3;
+}
+.carcard-drag-active {
+    transition: none 0s ease 0s;
+}
+.carcard-pic {
+    background: none repeat scroll 0 0 #DDDDDD;
+    height: 68px;
+    line-height: 0;
+    margin: 0 0 5px;
+    width: 120px;
+}
+.carcard-meta {
+    color: #FFFFFF;
+    float: right;
+    font: bold 10px/12px sans-serif;
+    margin: -17px 0 5px;
+    position: relative;
+}
+.carcard-meta-drive, .carcard-meta-overdrive, .carcard-meta-blog {
+    background: url(../assets/star16.png) no-repeat 5px 3px #ff0000;
+    float: left;
+    padding:2px 10px 2px 20px; border-radius:5px; 
+}
+.carcard-meta-overdrive {
+    background: none repeat scroll 0 0 #FF6600;
+    border-left: 1px solid #DB5800;
+}
+.carcard-meta-blog {
+    background: none repeat scroll 0 0 #707880;
+}
+.carcard-caption {
+    clear: right;
+    margin: 0 0 2px;
+    word-wrap: break-word;
+}
+.carcard-owner {
+    font: 10px/13px Tahoma,sans-serif;
+    margin: 0 0 2px;
+}
+.carcard-info {
+    color: #808080;
+    font: 10px/13px Tahoma,sans-serif;
+    margin: 0 0 2px;
+    word-wrap: break-word;
+}
+.carcard-modmsg {
+    font: 11px/12px sans-serif;
+    left: 10px;
+    position: absolute;
+    top: 13px;
+    width: 120px;
+}
+.carcard-modmsg-text {
+    background: none repeat scroll 0 0 #FFF200;
+    color: #000000;
+}
+.carcard-button {
+    margin: 10px 0 0 8px;
+    width: 116px;
+}
+.carcard-button:first-child {
+    margin-left: 0;
+}
+.carcard-big {
+    font: 18px/20px sans-serif;
+    width: 220px;
+}
+.carcard-big .carcard-pic {
+    height: 135px;
+    margin: 0 0 6px;
+    width: 220px;
+}
+.carcard-big .carcard-meta {
+    font: normal 12px sans-serif;
+    margin-top: -131px;  margin-right: 10px; 
+}
+.carcard-big .carcard-owner {
+    font: 11px/13px sans-serif;
+}
+.carcard-big .carcard-info {
+    font: 11px/13px sans-serif;
+}
+.carcard-big .carcard-modmsg {
+    font: bold 14px/16px sans-serif;
+    width: 240px;
+}
+.carcard-label {
+    background: none repeat scroll 0 0 #D8D8D8;
+    cursor: pointer;
+    float: left;
+    height: 135px;
+    margin: 0 0 0 -40px;
+    text-align: center;
+    width: 40px;
+}
+.carcard-label:hover {
+    background: none repeat scroll 0 0 #FF0033;
+}
+.carcard-label-inactive:hover {
+    background: none repeat scroll 0 0 #D8D8D8;
+}
+.carcard-label input {
+    margin: 60px 0 0;
+}
+.carcard-label-inactive {
+    cursor: default;
+}
+.carcard-check {
+    margin-right: 30px;
+    padding: 10px 10px 10px 50px;
+    width: 240px;
+}
+.carcard-check .carcard-pic {
+    float: left;
+}
+.carcard-check-active .carcard-label {
+    background: none repeat scroll 0 0 #FF0033;
+}
+.carcard-check-inactive .carcard-pic, .carcard-check-inactive .carcard-meta {
+    opacity: 0.4;
+}
+.carcard-hovercard {
+    padding: 5px;
+}
+.carcard-hovercard .carcard {
+    margin: 0 0 -2px;
+    padding: 0;
+}
+.carcard-group {
+    margin: 0 -10px -20px 0;
+}
+.carcard-group:after {
+    content: "";
+    display: block;
+    margin: 0 0 20px;
+}
+.carcard-group .carcard {
+    margin-right: 0;
+}
+.carcard-group .carcard-big {
+    margin-right: 15px;
+}
+.carcard-side {
+    margin: -10px -30px 10px -10px;
+    min-height: 45px;
+    padding: 10px 30px 10px 10px;
+    transition: background-color 0.15s ease-in-out 0s;
+}
+.carcard-side:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+.carcard-side:hover {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.carcard-side-pic {
+    background: none repeat scroll 0 0 #DDDDDD;
+    float: left;
+    height: 45px;
+    width: 80px;
+}
+.carcard-side-caption {
+    font: 12px/14px sans-serif;
+    margin: 0 0 3px 90px;
+    word-wrap: break-word;
+}
+.carcard-side-city {
+    color: #808080;
+}
+.carcard-side-city, .carcard-side-username {
+    font: 10px/1.3 Tahoma,sans-serif;
+    margin: 0 0 0 90px;
+    word-wrap: break-word;
+}
+.carcard-side-mid {
+    min-height: 68px;
+    padding-right: 10px;
+}
+.carcard-side-mid .carcard-side-pic {
+    height: 68px;
+    width: 120px;
+}
+.carcard-side-mid .carcard-side-caption, .carcard-side-mid .carcard-side-city, .carcard-side-mid .carcard-side-username {
+    margin-left: 130px;
+}
+.carcard-compact-w {
+    float: left;
+    position: relative;
+}
+.carcard-compact {
+    color: #FFFFFF;
+    float: left;
+    height: 135px;
+    overflow: hidden;
+    position: relative;
+    width: 240px;
+}
+.carcard-compact-num {
+    color: #808080;
+    font: 40px/0.8 sans-serif;
+    left: -50px;
+    position: absolute;
+    text-align: right;
+    top: 0;
+    width: 42px;
+}
+
+.bluelink.car_model.bold.active{
+    background-position:0px -164px;
+    /*background-color: #00487a;*/
+    padding: 2px 5px;
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+    border-top: 1px solid #f91e32;
+    background: #cb1b2c;
+    background: -moz-linear-gradient(top, #cb1b2c 0%, #a10010 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cb1b2c), color-stop(100%,#a10010));
+    background: -webkit-linear-gradient(top, #cb1b2c 0%,#a10010 100%);
+    background: -o-linear-gradient(top, #cb1b2c 0%,#a10010 100%);
+    background: -ms-linear-gradient(top, #cb1b2c 0%,#a10010 100%);
+    background: linear-gradient(to bottom, #cb1b2c 0%,#a10010 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb1b2c', endColorstr='#a10010',GradientType=0 );
+}

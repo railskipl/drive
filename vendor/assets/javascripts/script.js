@@ -68,5 +68,13 @@ jQuery(function($) {
 			popupStatus = 0;  // and set value to 0
 		}
 	}
+
+    $("nav li").click(function ( e ) {
+        e.preventDefault();
+        $("nav li a.active").removeClass("active"); //Remove any "active" class
+        $("a", this).addClass("active"); //Add "active" class to selected tab
+
+        // $(activeTab).show(); //Fade in the active content
+    });
 	/************** end: functions. **************/
 }); // jQuery End
