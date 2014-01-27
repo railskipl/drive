@@ -1,5 +1,5 @@
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
-<%= form_for(@logbook) do |f| %>
+<%= form_for(@logbook, :html=>{:id=>"logbook"}) do |f| %>
    <% if @logbook.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@logbook.errors.count, "error") %> prohibited this car make from being saved:</h2>
@@ -11,6 +11,24 @@
       </ul>
     </div>
   <% end %>
+  <%= javascript_include_tag "facebox.js" %>
+  <%= stylesheet_link_tag "facebox.css" %>
+ 
+  <script>
+    
+    jQuery.noConflict();
+
+    jQuery(document).ready(function() {
+    jQuery('#previes123').click(function() {
+          jQuery.ajax({
+          type: "POST",
+          url: "<%= previews_logbooks_path %>",
+          data: 'prevdata='+ encodeURIComponent(jQuery('#logbook').find('.nicEdit-main').html()),
+          });
+        });
+     });
+  </script>
+
   <div class="middle">
     
     <div class="container_20" style="background:#333; margin-bottom:10px">
@@ -79,14 +97,17 @@
   </tr>
   
   <tr>
-    <td><%= f.text_area :logbook_discription,:maxlength => 2000, :class =>"pe_tf",:rows =>"12", :style => "width:960px" %></td>
+    <td><%= f.text_area :logbook_discription,:maxlength => 2000, :class =>"pe_tf",:rows =>"12", :style => "width:960px ; overflow-y: scroll; height: 200px; " %></td>
     <%= f.hidden_field :user_id,:value => current_user.id %>
   </tr>
+
   
   <tr>
     <td>
-      <input type="submit" style="margin:0" class="submit_btn" value="Publish" name="submit">
-   
+      <%= f.submit "Publish", :name => "publish" , :class=>"submit_btn" %>
+      <%= f.submit "Save as Draft", :name => "draft",:class=>"submit_btn" %>
+      <%= link_to "Preview", "javascript:void(0);", :id=>"previes123", :class=>"submit_btn", :style=>"position: relative; padding: 9px 10px; top: -2px;"%>
+    </td>
   </tr>
  </tbody></table>
   

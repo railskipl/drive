@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
       if  params[:name]
        @blog = Blog.find_by_name(params[:name])
       end
-      @user_blogs = @blog.user_blogs.paginate(page: params[:page], per_page: 5) 
+      @user_blogs = @blog.user_blogs.where(:status => true).paginate(page: params[:page], per_page: 5) 
       @user_blogs = @user_blogs.order("created_at desc")
    end
 end

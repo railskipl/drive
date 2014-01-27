@@ -12,18 +12,18 @@ class UserBlogsController < ApplicationController
 
 
   def all_blogs
-    @user_blogs = UserBlog.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5)
+    @user_blogs = UserBlog.where(:status =>  true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+    #@user_blogs = UserBlog.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5)
     @blogs  = Blog.all
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 
   def myfriend_blog
-    @friends = current_user.friends
+    @friends = current_user.friends.paginate(page: params[:page], per_page: 5)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     @blogs  = Blog.all
-
   end
 
   def new
@@ -69,6 +69,7 @@ class UserBlogsController < ApplicationController
   def create
      @user_blog = UserBlog.new(params[:user_blog])
      @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+     @user_blog.status = "true" if params[:publish] == "Publish"
     if @user_blog.body == "<br>"
       flash[:notice] = "please fill all fields"
       redirect_to new_user_blog_path
@@ -84,8 +85,10 @@ class UserBlogsController < ApplicationController
 
   def update
      @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+
   	@user_blog = UserBlog.find(params[:id])
-   
+      @user_blog.status = "true" if params[:publish] == "Publish"
+      @user_blog.status = "false" if params[:draft] == "Save as Draft"
   	if @user_blog.update_attributes(params[:user_blog])
   		flash[:notice] = "Blog updated successfully."
   		redirect_to user_blogs_path
@@ -124,6 +127,7 @@ class UserBlogsController < ApplicationController
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     q = params[:q]
     @user_blogs =  UserBlog.search(title_cont: q).result
-    @user_blogs = @user_blogs.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
+    @user_blogs = @user_blogs.where(:status =>  true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+    #raise @user_blogs.inspect
   end
 end

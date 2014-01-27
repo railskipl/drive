@@ -1,7 +1,7 @@
 
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
-<%= form_for(@user_blog) do |f| %>
+<%= form_for(@user_blog, :html=>{:id => "user_blog"}) do |f| %>
    <% if @user_blog.errors.any? %>
      <div id="error_explanation">
       <h2><%= pluralize(@user_blog.errors.count, "error") %> prohibited this car make from being saved:</h2>
@@ -13,6 +13,23 @@
       </ul>
     </div> 
   <% end %>
+  <%= javascript_include_tag "facebox.js" %>
+  <%= stylesheet_link_tag "facebox.css" %>
+ 
+  <script>
+    
+    jQuery.noConflict();
+
+    jQuery(document).ready(function() {
+    jQuery('#previes123').click(function() {
+          jQuery.ajax({
+          type: "POST",
+          url: "<%= previews_logbooks_path %>",
+          data: 'prevdata='+ encodeURIComponent(jQuery('#user_blog').find('.nicEdit-main').html()),
+          });
+        });
+     });
+  </script>
   
  
 <div class="middle">
@@ -62,8 +79,11 @@
   
   <tr>
     <td>
-      <input type="submit" style="margin:0" class="submit_btn" value="Publish" name="submit">
-  
+      <%= f.submit "Publish", :name => "publish" , :class=>"submit_btn" %>
+      <%= f.submit "Save as Draft", :name => "draft",:class=>"submit_btn" %>
+      <%= link_to "Preview", "javascript:void(0);", :id=>"previes123", :class=>"submit_btn", :style=>"position: relative; padding: 9px 10px; top: -2px;"%>
+      
+    </td>
   </tr>
 </tbody></table>
   

@@ -184,6 +184,7 @@ end
     collection do 
       post :like_logbook
       get :like_count
+      post :previews
     end
   end
   resources :carprofiles do

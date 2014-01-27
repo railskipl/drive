@@ -8,7 +8,7 @@ class LogbookCategoriesController < ApplicationController
     if  params[:name]
        @logbook_category = LogbookCategory.find_by_name(params[:name])
     end
-    @logbooks = @logbook_category.logbooks.paginate(page: params[:page], per_page: 5) 
+    @logbooks = @logbook_category.logbooks.where(:status => true).paginate(page: params[:page], per_page: 5) 
     @logbooks = @logbooks.order("created_at desc")
   end
 end

@@ -43,30 +43,45 @@ class AbuseReportsController < ApplicationController
   # POST /abuse_reports
   # POST /abuse_reports.json
   def create
-
-    @abuse_report = AbuseReport.create(params[:abuse_report])
+    
+    @abuse_report = AbuseReport.new(params[:abuse_report])
     unless @abuse_report.abuse_category_id == nil
     #raise @abuse_report.inspect
-       @abuse_report.save
+       
       if @abuse_report.abuse_type == "carprofile"
+         @abuse_report = AbuseReport.find_or_create_by_user_id_and_comment_id(params[:abuse_report])
          flash[:notice] =  'Abuse report successfully  sent.'
+         @abuse_report.save
          redirect_to carprofile_path(@abuse_report.carprofile_id)  
+      
       elsif @abuse_report.abuse_type == "logbook"
-         
+          @abuse_report = AbuseReport.find_or_create_by_user_id_and_comment_id(params[:abuse_report])
           flash[:notice] =  'Abuse report successfully sent.'
+          @abuse_report.save
           redirect_to logbook_path(@abuse_report.logbook_id)
+      
       elsif @abuse_report.abuse_type == "user_blog" 
-        
+          @abuse_report = AbuseReport.find_or_create_by_user_id_and_comment_id(params[:abuse_report])
           flash[:notice] =  'Abuse report successfully sent.'
+          @abuse_report.save
           redirect_to user_blog_path(@abuse_report.user_blog_id)
+      
       elsif  @abuse_report.abuse_type == "On logbook Page"
+          @abuse_report = AbuseReport.find_or_create_by_user_id(params[:abuse_report])
           flash[:notice] =  'Abuse report successfully sent.'
+          @abuse_report.save
           redirect_to logbook_path(@abuse_report.logbook_id)
-      elsif @abuse_report.abuse_type == "On Blog Page" 
+      
+      elsif @abuse_report.abuse_type == "On Blog Page"
+          @abuse_report = AbuseReport.find_or_create_by_user_id(params[:abuse_report]) 
           flash[:notice] =  'Abuse report successfully sent.'
+          @abuse_report.save
           redirect_to user_blog_path(@abuse_report.user_blog_id)
+      
       else @abuse_report.abuse_type == "On Carprofile Page" 
+          @abuse_report = AbuseReport.find_or_create_by_user_id(params[:abuse_report])
           flash[:notice] =  'Abuse report successfully sent.'
+          @abuse_report.save
           redirect_to carprofile_path(@abuse_report.carprofile_id)
       end
     else
@@ -83,12 +98,15 @@ class AbuseReportsController < ApplicationController
           flash[:notice] = "Please specify the abuse category"
           redirect_to user_blog_path(@abuse_report.user_blog_id)
       elsif  @abuse_report.abuse_type == "On logbook Page"
+          
           flash[:notice] = "Please specify the abuse category"
           redirect_to logbook_path(@abuse_report.logbook_id)
       elsif @abuse_report.abuse_type == "On Blog Page" 
-         flash[:notice] = "Please specify the abuse category"
+         
+          flash[:notice] = "Please specify the abuse category"
           redirect_to user_blog_path(@abuse_report.user_blog_id)
       else @abuse_report.abuse_type == "On Carprofile Page" 
+          
           flash[:notice] = "Please specify the abuse category"
           redirect_to carprofile_path(@abuse_report.carprofile_id)
       end

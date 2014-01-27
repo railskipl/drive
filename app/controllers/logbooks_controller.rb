@@ -1,6 +1,8 @@
 class LogbooksController < ApplicationController
   require 'will_paginate/array'
   before_filter :authenticate_user!
+  respond_to :html, :js
+
    def index
     @logbooks = current_user.logbooks.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
     #@logbooks = @logbooks.paginate(page: params[:page], per_page: 5) 
@@ -11,8 +13,9 @@ class LogbooksController < ApplicationController
   end
 
   def all_logbook
-    @logbook = Logbook.find(:all , :order => "created_at DESC") 
-    @logbook = @logbook.paginate(page: params[:page], per_page: 5)
+    #@logbook = Logbook.find(:all , :order => "created_at DESC") 
+    @logbook = Logbook.where(:status =>  true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+    #@logbook = @logbook.paginate(page: params[:page], per_page: 5)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @carprofile = current_user.carprofiles
     @logbook_categories =  LogbookCategory.all
@@ -26,6 +29,11 @@ class LogbooksController < ApplicationController
 
   end
 
+  def previews
+    #raise "hi"
+    @description = params[:prevdata].force_encoding("ISO-8859-1").encode("UTF-8")
+  end
+
   def new
   	@logbook = Logbook.new
     @carprofile = current_user.carprofiles
@@ -35,6 +43,7 @@ class LogbooksController < ApplicationController
   def create
     @logbook = Logbook.create(params[:logbook])
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @logbook.status = "true" if params[:publish] == "Publish"
     @carprofile = current_user.carprofiles
 
 
@@ -99,6 +108,8 @@ class LogbooksController < ApplicationController
   def update
   	@logbook = Logbook.find(params[:id])
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    @logbook.status = "true" if params[:publish] == "Publish"
+    @logbook.status = "false" if params[:draft] == "Save as Draft"
     @carprofile = current_user.carprofiles
   	if @logbook.update_attributes(params[:logbook])
   		flash[:notice] = "Logbook updated successfully"
@@ -151,6 +162,6 @@ class LogbooksController < ApplicationController
     @logbooks =   Logbook.search(title_cont: q).result
     @logbook_categories =  LogbookCategory.all
     #@logbook_categories =  LogbookCategory.search(name_cont: q).result
-    @logbooks = @logbooks.paginate(page: params[:page], per_page: 5)
+    @logbooks = @logbooks.where(:status => true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
   end
 end
