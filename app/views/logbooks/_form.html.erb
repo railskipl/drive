@@ -67,7 +67,7 @@
   <% unless carprofile.carprofile_photos.blank?%>
    <%= image_tag(carprofile.carprofile_photos.first.photo.url(:thumb),:width => 50, :height => 40) rescue nil%>
    <%else%>
-    <a href="#"><img src="/assets/thumb_profile.jpg" alt=""  width="50" height="40">
+    <a href="#"><img src="/assets/thumb_profile.jpg" alt=""  width="50" height="40"></a>
   <%end%>
   <%= f.hidden_field :car_make_id,:value => carprofile.car_make_id%>
   
