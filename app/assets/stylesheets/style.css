@@ -1368,3 +1368,22 @@ color:#FFFFFF; padding:1px 2px; position:absolute; margin:-10px 0 0 25px; border
     background: linear-gradient(to bottom, #cb1b2c 0%,#a10010 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb1b2c', endColorstr='#a10010',GradientType=0 );
 }
+
+.breadcrumb{
+ font: bold 12px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+}
+
+.breadcrumb a{
+ background: transparent url(../assets/arrow-right.png) no-repeat center right;
+ text-decoration: none;
+ padding-right: 18px; /*adjust bullet image padding*/
+ color: #999;
+ }
+
+.breadcrumb a:visited, .breadcrumb a:active{
+ color:#999;
+ }
+
+ .breadcrumb a:hover{
+  text-decoration: none; color:#333
+ }

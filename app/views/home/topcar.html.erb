@@ -29,8 +29,11 @@
 				</div>
 				<div style="width:auto; float:left; width:175px" class="mail_content">
 					<div><a><%= "#{carprofile.user.first_name} #{carprofile.user.last_name}".capitalize %></a></div>
-		   			<div style="margin:0 0 5px 0">
-			 			<%= carprofile.user.email rescue nil%><br>
+		   			<div style="margin:0 0 5px 0"><% if carprofile.user.about.nil? || carprofile.user.about.blank? %>
+                        No Description Yet!
+                       <% else %>
+                       <%= truncate(carprofile.user.about, :length => 30).html_safe  %>
+                       <% end %></br>
 		     			<strong><%= carprofile.user.location rescue nil%></strong>
 	       			</div>
 	       			

@@ -36,7 +36,21 @@ a.morelink {
 
           });
   </script>
- 
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+      jQuery("a[rel=example_group]").fancybox({
+        'transitionIn'    : 'none',
+        'transitionOut'   : 'none',
+        'titlePosition'   : 'over',
+        'titleFormat'   : function(title, currentArray, currentIndex, currentOpts) {
+          return '<span id="fancybox-title-over">Image ' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? ' &nbsp; ' + title : '') + '</span>';
+        }
+      });
+    });
+  </script>
+
+
 <div class="container_20">
   <div class="middle">
     <div class="container_20" style="background:#333; margin-bottom:10px">
@@ -198,43 +212,29 @@ a.morelink {
   
   </div>
 
-
-   
-
-
     
     </div>
     
     
-    
-    
-    
-    
-    
-    <div class="container_20">
-        
-        
-    <div class="grid_20 aboutme">
-    
   
-  <h4>My Cars</h4>
+    <div class="container_20">
+      <div class="grid_20 aboutme">
+    
+    <h4>My Cars</h4>
   
   <div id="mainwrapper">
-    <% for carprofile in @carprofile.carprofile_photos %>
-     <div id="box-1" class="box1">
-      <%= image_tag(carprofile.photo.url(:thumb))  %>
-      <span class="caption simple-caption">
-          <p><a href="#inline1" id="various1">Simple Caption</a></p>
-      </span>
-     </div>
-    <% end %>
+     
+  <div class="page-content blog-list-wrapper" style ="float:left;">
+      <% for carprofile in @carprofile.carprofile_photos %>
+  <td><a rel="example_group" href="<%= carprofile.photo.url %>" ><%= image_tag carprofile.photo.url(:thumb) %></td>
+    <% end %>       
 
   </div>
+    
+  </div>
 
-  
   </div> 
   </div>
-
 
   
   <div class="container_20">
