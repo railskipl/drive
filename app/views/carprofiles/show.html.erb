@@ -18,7 +18,7 @@ a.morelink {
     padding: 10px 0;
     width: 100% !important;
 }
-  
+
   
   </style>
 
@@ -79,17 +79,16 @@ a.morelink {
     <div style="float:left; width:100%"><strong>Car Description</strong></div>
     <div class="car_description" style="float:left;" >
     <div class="comment more">
-      <%= @carprofile.car_description.html_safe %>  
+      <%= raw(@carprofile.car_description) %>  
      </div>
     </div>
   </div>
-  
-  
-        <div class="grid_9">
+
+  <div class="grid_9">
     
     
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr><p class="<%= rate_count(@carprofile.id)[0]  rescue "" %>" id ="star_rating"></p></tr>
+    <tr><p class="<%= rate_count(@carprofile.id)[0]  rescue ""%>" id ="star_rating"></p></tr>
     <tr></tr>
   <tr>
     <td align="left" valign="top" class="profile_col1">Car Nickname</td>
@@ -238,52 +237,45 @@ a.morelink {
 
   
   <div class="container_20">
-  <div class="grid_10" style="overflow: auto; height: 480px;">
- 
-  
-<h4>My Logbooks</h4>
-  <% @logbooks.each do |logbook| %>
-  <div class="blog_div" style="width:100% !important">
-  <a href="<%= logbook_path(logbook)%>" class="redlink">
-        <%=  logbook.logbook_category.name%>
-  </a><br>
-  <%= truncate(logbook.logbook_discription, :length => 500).html_safe  rescue nil %> 
-  <br/>
-         <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More
-      </a>
+    <div class="grid_10" style="overflow: auto; height: 480px;">
+      <h4>My Logbooks</h4>
+      <% @logbooks.each do |logbook| %>
+        <div class="blog_div" style="width:100% !important word-wrap: break-word;">
+          <a href="<%= logbook_path(logbook)%>" class="redlink">
+            <%=  logbook.logbook_category.name%>
+          </a><br>
+           <%= raw(logbook.logbook_discription)[0..500]  rescue nil %> 
+          <br/>
+         <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More</a>
+        </div>
+      <%end%>
+    </div>
   </div>
-  <%end%>
-    
- 
- </div>
 
     
   <div class="grid_10">
-            <h4>Comments</h4>
-          
-        <div class="small_thumb">
-        <% unless current_user.pic? %>
-            <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
-        <% else %>
-          <%= image_tag (current_user.pic.url(:thumb)),:height => "40",:width => "50",:style=>"float:left;"%>
-        <% end %>
-        </div>
-
-        <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
-            <%= hidden_field_tag :car_profile_id,@carprofile.id %>
-            <p>
-              <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" ,:style => "width:365px", :maxlength => 2000 %>
-            </p>
-            <%= submit_tag "Comment", :style=>"margin-left:100px",:class=>"submit_btn"%>
-        <% end %>
-
-
-  <div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
-          <%if @comments.empty? %>
-          <% else %>
-              <%= render "car_profile_comments"%>
-          <% end %>
-        </div>
+    <h4>Comments</h4>
+    <div class="small_thumb">
+      <% unless current_user.pic? %>
+        <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
+      <% else %>
+        <%= image_tag (current_user.pic.url(:thumb)),:height => "40",:width => "50",:style=>"float:left;"%>
+      <% end %>
+    </div>
+    <%= form_tag({:action => 'post_comment'},:method=>"post",:remote => true ) do %>
+      <%= hidden_field_tag :car_profile_id,@carprofile.id %>
+        <p>
+          <%= text_area_tag :body,nil,:class=>"comment_tf2",:rows=>"4" ,:style => "width:365px", :maxlength => 2000 %>
+        </p>
+        <%= submit_tag "Comment", :style=>"margin-left:100px",:class=>"submit_btn"%>
+    <% end %>
+    <div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
+      <%if @comments.empty? %>
+        NO COMMENTS
+      <% else %>
+        <%= render "car_profile_comments"%>
+      <% end %>
+    </div>
      
 </div>
   
@@ -341,12 +333,12 @@ jQuery("a.topopup").click(function(){
 
 
 
-<script type="text/javascript">
+<SCRIPT>
 jQuery(document).ready(function() {
-  var showChar = 400;
+  var showChar = 100;
   var ellipsestext = "...";
-  var moretext = "More";
-  var lesstext = "Less";
+  var moretext = "more";
+  var lesstext = "less";
   jQuery('.more').each(function() {
     var content = jQuery(this).html();
 
@@ -375,4 +367,4 @@ jQuery(document).ready(function() {
     return false;
   });
 });
-</script>
+</SCRIPT>
