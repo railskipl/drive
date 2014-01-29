@@ -50,7 +50,7 @@
 
 	<h4>My Blogs</h4>
 	
-	<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px;">
+	<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px; word-wrap:break-word;">
 	<% @user_blogs.each do |user_blog| %>
 	<div class="blog_div2">
         <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>

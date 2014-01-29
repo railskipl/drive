@@ -48,7 +48,7 @@ class SendGiftsController < ApplicationController
 
     respond_to do |format|
        if @send_gift.save
-        @notification = Notification.new(:user_id => current_user.id, :notification_type => "sendgift", :notifiable_id  => @send_gift.carprofile.user_id)
+         @notification = Notification.new(:user_id => current_user.id, :notification_type => "sendgift", :notifiable_id  => @send_gift.carprofile.user_id)
          @notification.save
          current_user.spend_credit_egift(current_user, @send_gift.egift.credit)
          current_user.save

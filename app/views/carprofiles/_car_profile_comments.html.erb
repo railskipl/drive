@@ -30,7 +30,7 @@
         <% end %>
 
       </div>
-      <div class="blog_right" style="width:300px;float:left;margin:0;">
+      <div class="blog_right" style="width:300px;float:left;margin:0;word-wrap: break-word;">
     
        <%= link_to comment.user.nickname, user_path(comment.user) ,:class => "redlink" %> <br>
         <%= comment.body %>

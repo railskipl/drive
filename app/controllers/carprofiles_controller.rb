@@ -54,6 +54,7 @@ class CarprofilesController < ApplicationController
   def like_car
 
    @car_profile =Carprofile.find(params[:id])
+   #raise @car_profile.user_id.inspect
     current_user.like!(@car_profile)
       @likes= @car_profile.likes(@car_profile.id)
       
@@ -67,7 +68,7 @@ class CarprofilesController < ApplicationController
     
     if current_user.credit >= 0
         current_user.save
-        @notification = Notification.create(:user_id => current_user.id, :notification_type => "like_carprofile", :notifiable_id  => @car_profile.id)
+        @notification = Notification.create(:user_id => current_user.id, :notification_type => "like_carprofile", :notifiable_id  => @car_profile.user_id)
         #@notification.save
     end
       @class = rate_count(@car_profile.id)[0]
@@ -89,7 +90,10 @@ class CarprofilesController < ApplicationController
   
   def update
     @carprofile = Carprofile.find(params[:id])
-
+    @subscribers = Subscriber.find_all_by_subscribable_id(@carprofile.id)
+    @subscribers.each do |sub|
+     @notification = Notification.create(:user_id => current_user.id, :notification_type => "subscriber_carprofile", :notifiable_id  => sub.subscriber_id)
+    end
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
         format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
@@ -172,12 +176,17 @@ end
 
 def post_comment
     @carprofile = Carprofile.find_by_id(params[:car_profile_id])
+    @carprofile.favourites.each do |n|
+      @notification = Notification.create(:user_id => current_user.id, :notification_type => "carprofile_comment", :notifiable_id  => n.user_id)
+    end
     @abuse_report = AbuseReport.new
 
     if params[:body].present?
       @comment = Comment.add_comment(params[:body],current_user,@carprofile)
+      @class = rate_count(@carprofile.id)[0] rescue ""
+      #raise @class.inspect
       if @comment.save
-        @class = rate_count(@carprofile.id)[0]
+        
         @success = "Comment Saved Successfully !!!"
       end
     else
