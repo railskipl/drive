@@ -225,7 +225,7 @@ a.morelink {
      
   <div class="page-content blog-list-wrapper" style ="float:left;">
       <% for carprofile in @carprofile.carprofile_photos %>
-  <td><a rel="example_group" href="<%= carprofile.photo.url %>" ><%= image_tag carprofile.photo.url(:thumb) %></td>
+  <td><a rel="example_group" href="<%= carprofile.photo.url %>" ><%= image_tag carprofile.photo.url(:thumb) %></a></td>
     <% end %>       
 
   </div>
