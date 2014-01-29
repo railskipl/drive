@@ -53,14 +53,14 @@ module ApplicationHelper
     carprofile = Carprofile.find(carprofile_id)
 
     count = 0
-    count += carprofile.send_gifts.count
-    count += carprofile.comments_count
-    count += Like.find_by_likeable_type_and_likeable_id("Carprofile",carprofile_id).count
-    count += carprofile.logbooks.count
-    count += carprofile.favourites.count
-    count += Subscriber.find_all_by_subscribable_id(carprofile_id).count
-    count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0
-    return rating_star(count), send_noti(carprofile,count)
+    count += carprofile.send_gifts.count rescue nil
+    count += carprofile.comments_count rescue nil
+    count += Like.find_all_by_likeable_type_and_likeable_id("Carprofile",carprofile_id).count rescue nil
+    count += carprofile.logbooks.count rescue nil
+    count += carprofile.favourites.count rescue nil
+    count += Subscriber.find_all_by_subscribable_id(carprofile_id).count rescue nil
+    count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0 rescue nil
+    return rating_star(count), send_noti(carprofile,count) 
  end
 
 
