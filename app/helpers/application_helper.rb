@@ -55,7 +55,7 @@ module ApplicationHelper
     count = 0
     count += carprofile.send_gifts.count rescue nil
     count += carprofile.comments_count rescue nil
-    count += Like.find_all_by_likeable_type_and_likeable_id("Carprofile",carprofile_id).count rescue nil
+    count += Like.find_all_by_likeable_type_and_likeable_id("Carprofile",carprofile.id).map(&:count).inject(:+).nil? ? 0 : Like.find_all_by_likeable_type_and_likeable_id("Carprofile",carprofile.id).map(&:count).inject(:+) rescue nil
     count += carprofile.logbooks.count rescue nil
     count += carprofile.favourites.count rescue nil
     count += Subscriber.find_all_by_subscribable_id(carprofile_id).count rescue nil
@@ -121,13 +121,13 @@ module ApplicationHelper
      carprofile_ids.each do |carprofile_id|
      carprofile = Carprofile.find(carprofile_id)
      count = 0
-     count += carprofile.send_gifts.count
-     count += carprofile.comments_count
-     count += Like.find_by_likeable_type_and_likeable_id("Carprofile",carprofile_id).count rescue 0
-     count += carprofile.logbooks.count
-     count += carprofile.favourites.count
+     count += carprofile.send_gifts.count rescue 0
+     count += carprofile.comments_count   rescue 0
+     count += Like.find_all_by_likeable_type_and_likeable_id("Carprofile",carprofile.id).map(&:count).inject(:+).nil? ? 0 : Like.find_all_by_likeable_type_and_likeable_id("Carprofile",carprofile.id).map(&:count).inject(:+) rescue 0
+     count += carprofile.logbooks.count rescue 0
+     count += carprofile.favourites.count rescue 0
      count += Subscriber.find_all_by_subscribable_id(carprofile_id).count rescue 0
-     count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0
+     count += Carprofile.find(carprofile_id).spotlighted ? 1 : 0 rescue 0
      top_cars.merge!({carprofile.id => count})
     end
    return Hash[top_cars.sort_by{|car, count| count }.reverse]
