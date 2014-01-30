@@ -1,4 +1,4 @@
-Set conversion credit points 1$ = <%= @credit.credit.to_i %><br/>
+
 <%= form_for [:admin,@credit] do |f| %>
   <% if @credit.errors.any? %>
     <div id="error_explanation">
@@ -11,9 +11,9 @@ Set conversion credit points 1$ = <%= @credit.credit.to_i %><br/>
       </ul>
     </div>
   <% end %>
-  <%= f.text_field :credit %>
+ 
   <br/><br/>
-  Maximum free credit points to be allotted to users = <%= @credit.free_credit.to_i %><br/>
+  <b>Maximum free credit points to be allotted to users = <%= @credit.free_credit.to_i %></b><br/>
   <%= f.label :free_credit_allotted_to_users  %>
   <%= f.text_field :free_credit %><br/>
   <%= f.submit "Update" %>

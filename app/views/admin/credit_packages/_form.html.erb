@@ -11,15 +11,25 @@
     </div>
   <% end %>
 
-  
   <div class="field">
-    <%= f.label :name  %><br />
-    <%= f.text_field :name %>
+    <%= f.label :Points_To_Be_Added  %>
+    (Example: Simply add how much points user can buy. Remember only integer value should be enterd, eg: 10 )<br/>
+    <%= f.text_field :points_field %>
+  </div><br/>
+
+
+  <div class="field">
+    <%= f.label :Amount_Of_Point  %>(Example: Add amount of package, eg: 1 USD)<br/>
+    <%= f.text_field :amount %>
+  </div><br/>
+
+  <div class="field">
+    <%= f.label :Custom_Field  %>(Example: This field is used as code,this tell application to increase the points of user. eg code: 1001)<br/>
+    <%= f.text_field :custom_field %>
+  </div><br/>
+
+  <div class="field">
+    <%= f.label :Link  %>(Example: This is the BuyNow URL link generated after product registration you can find this BuyNow URL link in contract general information, 
+    eg: you will see this type of URL => href='https://www.plimus.com/jsp/buynow.jsp?contractId=3222914, simply add it in text field )<br/>
+    <textarea id="credit_package_link" rows="20" name="credit_package[link]" cols="40" style="width: 682px; height: 38px;"></textarea>
   </div>
-
-    <div class="field">
-    <%= f.label :package_type ,"Package Type" %><br />
-    <%= f.text_field :package_type %>
-  </div>
-
-
