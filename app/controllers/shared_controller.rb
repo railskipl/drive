@@ -7,26 +7,26 @@ class SharedController < ApplicationController
   end
 
   def search
-  #     if params[:id]
+    #     if params[:id]
     @car_make = CarMake.find_by_id(params[:id])
     @carprofile = Carprofile.find_by_id(params[:id])
-  #   end
-  #   @carprofiles = @car_make.carprofiles.paginate(page: params[:page], per_page: 40)
-  # end
+    #   end
+    #   @carprofiles = @car_make.carprofiles.paginate(page: params[:page], per_page: 40)
+    # end
     @car_models = CarModel.find_all_by_car_make_id(@car_make.id)
     @carprofiles = @car_make.carprofiles.paginate(page: params[:page], per_page: 40)
-end
+    @logbooks = Logbook.find_all_by_car_model_id(@car_modals)
+  end
 
-
- def car_body_index
-   @car_model = CarModel.find_by_id(params[:id])
-   @carprofiles = @car_model.carprofiles.paginate(page: params[:page], per_page: 40)
-
- end
+  def car_body_index
+    @car_make = CarMake.find(params[:car_make])
+    @car_model = CarModel.find_by_id(params[:id])
+    @carprofiles = @car_model.carprofiles.paginate(page: params[:page], per_page: 40)
+  end
 
   protected
-  
-   def total_rating_count(carprofile_id)
+
+  def total_rating_count(carprofile_id)
     carprofile = Carprofile.find(carprofile_id)
     count = 0
     count += carprofile.send_gifts.count rescue 0
@@ -38,8 +38,7 @@ end
     count += Carprofile.find(carprofile.id).spotlighted ? 1 : 0  rescue 0
   end
 
-
- end
+end
 
 
 #@body_indices = BodyIndex.find_all_by_car_model_id(@car_model.id).paginate(page: params[:page], per_page: 40)
