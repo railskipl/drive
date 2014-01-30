@@ -30,69 +30,27 @@
 		
 		<div class="grid_20">
 		
-		<img src="/assets/steps.png" alt="" style="margin:10px 0">
+		<img src="/assets/step2.png" alt="" style="margin:10px 0">
 		
+    
+	<%@credit_packages.each do |credit|%>	
 	<div class="message"> 
 		
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><strong>10 Points</strong></td>
-    <td style="color:#FF0000">1 USD</td>
-    <td><a href='https://sandbox.plimus.com/jsp/buynow.jsp?contractId=2146228&custom1=1001' title='Secure Online Payments by BlueSnap'><img src='https://sandbox.plimus.com/images/BuyNowBtns/b_buy_s.png' alt='Secure Online Payments and Credit Card Processing by BlueSnap' border='0' /></a></td>
-  </tr>
-</table>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		  <tr>
+		    <td><strong><%= credit.points_field%> Points</strong></td>
+		 	
+		 	<%#raise session[:id].inspect %>
+		    <td style="color:#FF0000"><%= credit.amount%></td>
+		    <td><a href='<%= credit.link%>&custom1=<%= credit.custom_field%>&custom2=<%= session[:id] %>' title='Secure Online Payments by BlueSnap'><img src='https://sandbox.plimus.com/images/BuyNowBtns/b_buy_s.png' alt='Secure Online Payments and Credit Card Processing by BlueSnap' border='0' /></a></td>
+
+		  </tr>
+		</table>
 
 	</div>
+	<%end%>
 	
-	
-	<div class="message"> 
-		
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><strong>20 Points</strong></td>
-    <td style="color:#FF0000">2 USD</td>
-    <td><a href='https://sandbox.plimus.com/jsp/buynow.jsp?contractId=2146230&custom1=1002' title='Secure Online Payments by BlueSnap'><img src='https://sandbox.plimus.com/images/BuyNowBtns/b_buy_s.png' alt='Secure Online Payments and Credit Card Processing by BlueSnap' border='0' /></a></td>
-  
-  </tr>
-</table>
-
 	</div>
-	
-	
-	<div class="message"> 
-		
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><strong>50 Points</strong></td>
-    <td style="color:#FF0000">4 USD</td>
-    <td><a href='https://sandbox.plimus.com/jsp/buynow.jsp?contractId=2146302&custom1=1000' title='Secure Online Payments by BlueSnap'><img src='https://sandbox.plimus.com/images/BuyNowBtns/b_buy_s.png' alt='Secure Online Payments and Credit Card Processing by BlueSnap' border='0' /></a></td>
-  </tr>
-</table>
-
-	</div>
-	
-	<!-- <div class="message"> 
-		
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><strong>50 Points</strong></td>
-    <td style="color:#FF0000">2 USD</td>
-    <td><input type="button" class="submit_btn" value="Buy Now"></td>
-  </tr>
-</table>
-
-	</div> -->
-	
-	
-	
-	
-	
-		
-
-		
-		
-		
-		</div>
 				
 		
 				
