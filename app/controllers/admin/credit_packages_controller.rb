@@ -17,6 +17,10 @@ class Admin::CreditPackagesController < ApplicationController
   	@credit_package = CreditPackage.new
   end
 
+  def show
+    @credit_package = CreditPackage.find(params[:id])
+  end
+
   def create
     @credit_package = CreditPackage.new(params[:credit_package])
     if @credit_package.save

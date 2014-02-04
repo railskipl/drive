@@ -20,10 +20,7 @@
   
   </div>
 	
-	
-		
-		
-		</div>
+	</div>
 		
 		
 		
@@ -32,58 +29,26 @@
 		<img src="/assets/steps.png" alt="" style="margin:10px 0">
 	<div>Please choose one of following packages you want to buy</div>
 	
-	
+	<%@credit_packages.each do |pack|%>
 	<div class="credit_box">
-	<div class="credit_row"><strong>10 Points</strong></div>
+	<div class="credit_row"><strong><%= pack.points_field%> Points</strong></div>
 	<div class="credit_row2">
 	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
-          <td align="left" valign="top" style="color:#FF0000">1 USD </td>
-          <td align="right" valign="top" style="color:#009933">10 Credit </td>
+          <td align="left" valign="top" style="color:#FF0000"><%= pack.amount%></td>
+          <td align="right" valign="top" style="color:#009933"><%= pack.points_field%> Credit </td>
         </tr>
       </table>
 	</div>
 	</div>
-	
-	<div class="credit_box">
-	<div class="credit_row"><strong>20 Points</strong></div>
-	<div class="credit_row2">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td align="left" valign="top" style="color:#FF0000">2 USD </td>
-          <td align="right" valign="top" style="color:#009933">20 Credit </td>
-        </tr>
-      </table>
-	</div>
-	</div>
-	
-	<div class="credit_box">
-	<div class="credit_row"><strong>50 Points</strong></div>
-	<div class="credit_row2">
-	  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-        <tr>
-          <td align="left" valign="top" style="color:#FF0000">4 USD </td>
-          <td align="right" valign="top" style="color:#009933">50 Credit </td>
-        </tr>
-      </table>
-	</div>
-	</div>
-	
+	<%end%>
 	
 
 		<div style="width:565px; float:left; margin:20px 0; text-align:right"><a href="<%=select_package_credits_path%>" class="submit_btn">Next</a></div>
 		
 		</div>
 				
-		
-				
-		
 		</div>
-		
-
-
-  
-		
 		</div>
 		
 
