@@ -49,7 +49,7 @@
      
       <% fri.logbooks.each do |log|%>
         <%unless log.status == false%>
-          <div class="message"> 
+          <div class="message" style="word-wrap:break-word;"> 
             <%unless log.carprofile.carprofile_photos.blank?%>
               <div class = "thumb"><%=link_to image_tag(log.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
             <%else%>
@@ -58,7 +58,7 @@
             <div class="mail_content" style="width:475px">
               <div><a href="<%=logbook_path(log)%>" class="bluelink bold"><%=log.title rescue nil%></a></div>
               <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%=user_path(log.user.id)%>"><%=log.user.first_name rescue nil%></a></div>
-              <div><%= truncate(log.logbook_discription, :length => 300).html_safe  rescue nil %></div><br/>
+              <div style="word-wrap:break-word;"><%= sanitize raw(logbooks.logbook_discription)[0..300], :tags => %w(b i u p br)  rescue nil %></div><br/>
               <div class="likediv"> <a href="<%=logbook_path(log)%>" class="likelink">Comment</a>  
                 <% if log.created_at > Time.now.beginning_of_day %> 
                   <%="#{time_ago_in_words(log.created_at)} ago"%>

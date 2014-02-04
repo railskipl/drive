@@ -54,7 +54,7 @@
     
     <% @user_blogs.each do |user_blog| %>
     
-    <div class="message"> 
+    <div class="message" style="word-wrap:break-word;"> 
     
       <% if User.find_by_id(user_blog.user_id).pic.blank? %>
       
@@ -67,7 +67,7 @@
     <div class="mail_content" style="width:442px">
     <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
     <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
-    <div><%=   raw(user_blog.body)[0..300] rescue nil%></div>
+    <div style="word-wrap:break-word;"><%= sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br) rescue nil%></div>
     </div>
     
 
@@ -119,7 +119,7 @@
     <%else%>
       <div class="thumb"><%=link_to image_tag(User.find_by_id(blog_comment.user_id).pic.url(:thumb) ,:width => 50, :height => 40) %></div>
     <% end %>
-    <div class="blog_right">
+    <div class="blog_right" style="word-wrap:break-word;">
     <a class="bluelink bold" href="#"><%= blog_comment.user.first_name rescue nil %></a><br>
     <%= truncate(blog_comment.body, :length => 20) rescue nil%> <br> 
     <%= blog_comment.created_at.strftime("%b %d, %Y") rescue nil %></div>
