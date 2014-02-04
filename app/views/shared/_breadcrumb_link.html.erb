@@ -1,1 +1,5 @@
-<%= link_to "All Cars", "/shared/all_car" %> <%= link_to @car_make.name, "/shared/search?id=#{@car_make.id}" %> <%=@car_model.name %>
+<% if params[:body_index_id].present? %>
+    <%= link_to "All Cars", "/shared/all_car" %> <%= link_to @car_make.name, "/shared/search?id=#{@car_make.id}" %> <%= link_to @car_model.name, "/shared/car_body_index?car_make=#{@car_make.id}&id=#{@car_model.id}",:remote => true %> <%= @body_index.bodyindex %>
+<% else %>
+    <%= link_to "All Cars", "/shared/all_car" %> <%= link_to @car_make.name, "/shared/search?id=#{@car_make.id}" %> <%=@car_model.name %>
+<% end %>
