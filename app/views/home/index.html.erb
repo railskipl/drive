@@ -5,136 +5,115 @@
   </div>
 		
 		
-<%= javascript_include_tag "prototype" %>
+  <%= javascript_include_tag "prototype" %>
 
-  <div class="container_20 profile_bg">
-	<div class="grid_4">
-      <div class="profile_image"><!-- <img alt="" src="assets/profile.jpg"> -->
-      	<%= current_user.pic?  ? (image_tag current_user.pic.url(:thumb)) : (image_tag 'profile.jpg')%>
-      </div>
-	</div>
+    <div class="container_20 profile_bg">
+		<div class="grid_4">
+	      <div class="profile_image"><!-- <img alt="" src="assets/profile.jpg"> -->
+	      	<%= current_user.pic?  ? (image_tag current_user.pic.url(:thumb)) : (image_tag 'profile.jpg')%>
+	      </div>
+		</div>
 	
-	<div class="grid_16">
-	 <h1><%= current_user.first_name %>&nbsp;<%= current_user.last_name %>&nbsp;
-	
-	  	<%= image_tag (current_user.visibility_status ? "online.png" : "offline.gif"), :id => "visible_mode" %>
-	  </h1>
-		<ul class="tab_menu">
+		<div class="grid_16">
+		  <h1><%= current_user.first_name %>&nbsp;<%= current_user.last_name %>&nbsp;
+		
+		  	<%= image_tag (current_user.visibility_status ? "online.png" : "offline.gif"), :id => "visible_mode" %>
+		  </h1>
+			<ul class="tab_menu">
 
-		<li><%= link_to "Buy credits(#{current_user.credit.to_i})", earn_credits_credits_path,:class => "earn_credit"  %></li> 
+				<li><%= link_to "Buy credits(#{current_user.credit.to_i})", earn_credits_credits_path,:class => "earn_credit"  %></li> 
 
-		<li><%= link_to " My Cars" , carprofiles_path %></li>
-		<li><%= link_to "Subscribers",:action=>"subscribe_count",:id=>current_user.id%>
-      </li> 
-		<li><a href="<%= messages_path %>">Message</a></li> 
-		<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
-		<li><a href="<%= favourites_path %>"><img src="/assets/star2.png" alt=""></a></li>
-		<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status(jQuery(\"#visibility_status\").val());", :class=>"pe_tf"%></li>      
-		</ul>
-	</div>
+				<li><%= link_to " My Cars" , carprofiles_path %></li>
+				<li><%= link_to "Subscribers",:action=>"subscribe_count",:id=>current_user.id%>
+		      </li> 
+				<li><a href="<%= messages_path %>">Message</a></li> 
+				<li><%= link_to "My Gifts" , my_gifts_egifts_path %></li>
+				<li><a href="<%= favourites_path %>"><img src="/assets/star2.png" alt=""></a></li>
+				<li><%= select_tag :visibility_status,options_for_select(["ACTIVE","INACTIVE"],:selected => (current_user.visibility_status ? "ACTIVE" : "INACTIVE") ),:onchange=>"javascript:user_status(jQuery(\"#visibility_status\").val());", :class=>"pe_tf"%></li>      
+			</ul>
+		</div>
    </div>
 	
-		<div class="container_20">
-				
-				
-				<div class="grid_9 aboutme">
-	
-	<h4>About Me</h4>
-	<p>
-		<% if current_user.about.nil? || current_user.about.blank? %>
-		No Description Yet! (For about me click settings)
-		<% else %>
-		<%= current_user.about %>
-		<% end %>
-	</p>
+	<div class="container_20">
+		<div class="grid_9 aboutme" style="word-wrap:break-word;">
+	      <h4>About Me</h4>
+			<p style="overflow: auto; height: 105px; word-wrap:break-word;">
+				<% if current_user.about.nil? || current_user.about.blank? %>
+				No Description Yet! (For about me click settings)
+				<% else %>
+				<%= current_user.about %>
+				<% end %>
+			</p>
 
-	<h4>My Blogs</h4>
+	      <h4>My Blogs</h4>
 	
-	<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px; word-wrap:break-word;">
-	<% @user_blogs.each do |user_blog| %>
-	<div class="blog_div2">
-        <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>
-        <%= raw(user_blog.body)[0..300] rescue nil %><br/><br/>
-        <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More</a>
-    </div>
-    <%end%>
-</div>
-		
-		
-</div>
-   <div class="car_description" style="float:left;" >
-   <div id="comment_load" style="overflow: auto; height: 80px; margin: 10px 0px;">
-   <table  border="0" cellspacing="0" cellpadding="5">
-  <% @user.each do |u|%>
-    <%unless u.id == current_user.id%>
-	  <tr>
-	    <td align="left" valign="middle"><img src="/assets/birth.png" alt=""></td>
-	    <td width="100%" align="left" valign="middle"><strong><%=u.first_name rescue nil%>'s</strong> Birthday Today</td>
-	  </tr>
-    <%else%>
-    <%end%>
-  <%end%>
- 
-  <% @contactadmins.each do |contact|%>
-  <tr>
-    <td align="left" valign="middle"><img src="/assets/newspapers.png" alt="" width="24" height="24"></td>
-    <td align="left" valign="middle"><b><%= contact.message rescue nil%></b></td>
-  </tr>
-  <%end%>
-</table>
-	</div>
+			<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px; word-wrap:break-word;">
+				<% @user_blogs.each do |user_blog| %>
+					<div class="blog_div2" style="word-wrap:break-word;">
+				        <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>
+				        <p style="word-wrap:break-word;">
+				        	<%= sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br) rescue nil %>
+				        </p>
+				        <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More</a>
+				    </div>
+			    <%end%>
+		    </div>
+		</div>
+        
+      <div class="grid_11">
+      	<div class="car_description1" >
+           <div id="comment_load" style="overflow: auto; height: 80px; margin: 10px 0px;">
+		   <table  border="0" cellspacing="0" cellpadding="5">
+		      <% @user.each do |u|%>
+		        <%unless u.id == current_user.id%>
+			      <tr>
+			        <td align="left" valign="middle"><img src="/assets/birth.png" alt=""></td>
+			        <td width="100%" align="left" valign="middle"><strong><%=u.first_name rescue nil%>'s</strong> Birthday Today</td>
+			      </tr>
+		        <%else%>
+		        <%end%>
+		      <%end%>
+		 
+		      <% @contactadmins.each do |contact|%>
+		        <tr>
+		          <td align="left" valign="middle"><img src="/assets/newspapers.png" alt="" width="24" height="24"></td>
+		          <td align="left" valign="middle" style="word-wrap:break-word;"><b><%= contact.message rescue nil%></b></td>
+		        </tr>
+		      <%end%>
+		    </table>
+	    </div>
 	  </div>
-  <div class="grid_11">
-		
-		
-		<div class="black_heading" style="margin-top:10px">PERSONAL EXPERIENCE</div>
-  <div class="pe_box" style="margin-bottom:10px">
-  <strong>Personal stories, advice and support</strong><br>
-  
-  Logbooks from the real car owners - are truth about the experience from the first hands.
-How-to guides with photos, tips and articles on car care and maintenance.  
-<%= form_tag logbooksearch_home_path, :method => :get do %>
-<div style="margin-top:10px"><strong>Make</strong>  <span class="red">*</span></div>
-<div>
-    <%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %><br/><br/>
+		<div class="black_heading" style="margin-top:54px">PERSONAL EXPERIENCE</div>
+            <div class="pe_box" style="margin-bottom:10px">
+	            <strong>Personal stories, advice and support</strong><br>
+				Logbooks from the real car owners - are truth about the experience from the first hands.
+				How-to guides with photos, tips and articles on car care and maintenance.  
+	            <%= form_tag logbooksearch_home_path, :method => :get do %>
+	            <div style="margin-top:10px"><strong>Make</strong>  <span class="red">*</span></div>
+	            <div>
+	               <%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %><br/><br/>
 
-    <div id="car_make_id">
-        <%= select "carprofile", :car_model_id,   @car_model.map {|s| [s.name, s.id]},{:prompt => "Select model"}  ,:onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_body"}, :with => "'update_body='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}"  rescue nil %>
-<%= image_tag("/assets/loadingg.gif",
-                    :align => "absmiddle",
-                    :border => 0,
-                    :id => "loader",
-                    :style =>"display: none;" ) %><br/><br/>   
-
-    </div>
-    
-</div>
-
-
-
-
-<div style="margin-top:10px"><strong>Topic</strong>  <span class="red">*</span></div>
-<div>
-    <%= collection_select :logbook ,:logbook_category_id_eq, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category'%>
-   
-</div>
-
-
-<div style="margin:10px 0 0 0" ><%= submit_tag "Search",:class=>"submit_btn2"%>
-</div>
-<%end%>
-</div>
-		
-		
+	                <div id="car_make_id">
+	                  <%= select "carprofile", :car_model_id,   @car_model.map {|s| [s.name, s.id]},{:prompt => "Select model"}  ,:onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_body"}, :with => "'update_body='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}"  rescue nil %>
+	                  <%= image_tag("/assets/loadingg.gif",
+	                      :align => "absmiddle",
+	                      :border => 0,
+	                      :id => "loader",
+	                      :style =>"display: none;" ) %><br/><br/>
+	                </div>
+	            </div>
+	            <div style="margin-top:10px"><strong>Topic</strong>  <span class="red">*</span></div>
+                <div>
+                   <%= collection_select :logbook ,:logbook_category_id_eq, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category'%>
+                </div>
+               <div style="margin:10px 0 0 0" ><%= submit_tag "Search",:class=>"submit_btn2"%></div>
+              <%end%>
+            </div>
 		</div>
-		
-		</div>
-		
-
+	  </div>
+	</div>
 </div>
-  
-		</div>
-		</div>
+		
 		
 
 

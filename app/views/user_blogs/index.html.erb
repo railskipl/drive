@@ -58,7 +58,7 @@
      <%else%>
         <% @user_blogs.each do |user_blog| %>
           <%unless user_blog.status == false%>
-            <div class="message"> 
+            <div class="message" style="word-wrap:break-word;"> 
               <%if current_user.pic.blank? %>
                 <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
               <%else%>
@@ -67,7 +67,7 @@
               <div class="mail_content" style="width:442px">
                 <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
                 <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
-                <div><%= raw(user_blog.body)[0..300] rescue nil%></div>
+                <div style="word-wrap:break-word;"><%=sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br)  rescue nil%></div>
               </div>
               <ul class="action">
                 <li><a href="<%=user_blog_path(user_blog)%>">Comment</a></li>
@@ -79,7 +79,7 @@
               </ul>
             </div>
           <%else%>
-            <div class="message"> 
+            <div class="message" style="word-wrap:break-word;"> 
               <%if current_user.pic.blank? %>
                 <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
               <%else%>
@@ -88,7 +88,7 @@
               <div class="mail_content" style="width:442px">
                 <div><b>[DRAFT]</b><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
                 <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
-                <div><%= raw(user_blog.body)[0..300] rescue nil%></div>
+                <div style="word-wrap:break-word;"><%= sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br) rescue nil%></div>
               </div>
               <ul class="action">
                 <li><a href="<%=user_blog_path(user_blog)%>">Comment</a></li>

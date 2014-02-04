@@ -2,7 +2,7 @@
     <div class="container_20" style="background:#333; margin-bottom:10px">
 		<div class="grid_20">
 		  	<div class="top_car">All Cars</div>
-                <div class="topcar2">
+                <div class="topcar2" style="margin-bottom:10px">
                    <% @carmakes.each do |car|%>
                        <li><a href="<%= search_shared_index_path(:id => car.id)%>"  class="bluelink bold"><%=car.name%></a></li>
                     <%end%>

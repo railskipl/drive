@@ -278,7 +278,7 @@ background: #333; /*background of tabs for hover state, plus tab with "selected"
 
 .blog_div{ width: 900px; margin:10px 0 10px 0 ; border-bottom:1px dotted #b7b7b7; padding:5px 0 0; float:left}
 
-.blog_div2{ width: auto; margin:10px 0 10px 0 ; border-bottom:1px dotted #b7b7b7; padding:0 0 10px 0; float:left}
+.blog_div2{ width: 400px; margin:10px 0 10px 0 ; border-bottom:1px dotted #b7b7b7; padding:0 0 10px 0; float:left}
 
 .redlink{ color:#cc1b2c; text-decoration:none;}
 .redlink:hover{ text-decoration:underline}
@@ -832,6 +832,7 @@ caption {
 .profile_col2{ border-bottom:1px solid #E6E6E6; padding:5px 0; font-weight:bold}
 
 .car_description{ width:510px;word-wrap:break-word;height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:10px 0 0 0 }
+.car_description1{ width:510px;word-wrap:break-word;height:auto; background:#FFFFFF; border:1px solid #E6E6E6; padding:10px; text-align:justify; margin:28px 0 0 0 }
 
 .count2
 {float: right; 

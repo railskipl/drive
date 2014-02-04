@@ -92,8 +92,8 @@ a.morelink {
     
     <div style="float:left; width:100%"><strong>Car Description</strong></div>
     <div class="car_description" style="float:left;" >
-    <div class="comment more">
-      <%= raw(@carprofile.car_description) %>  
+    <div class="comment more" style="word-wrap:break-word;">
+      <%=sanitize raw(@carprofile.car_description), :tags => %w(b i u p br) rescue nil %>  
      </div>
     </div>
   </div>
@@ -244,7 +244,9 @@ a.morelink {
           <a href="<%= logbook_path(logbook)%>" class="redlink">
             <%=  logbook.logbook_category.name%>
           </a><br>
-           <%= raw(logbook.logbook_discription)[0..500]  rescue nil %> 
+          <p style="word-wrap:break-word;">
+           <%=sanitize raw(logbook.logbook_discription)[0..500], :tags => %w(b i u p br)  rescue nil %>
+          </p> 
           <br/>
          <a href="<%= logbook_path(logbook)%>" class="bluelink">Read More</a>
         </div>
