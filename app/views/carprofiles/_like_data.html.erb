@@ -1,6 +1,7 @@
+
 <% @likes.each do |like| %>
  <% user = User.find(like.liker_id)%>
- <div class="message" style="width:50%; float:left"> 
+ <div class="message" style="width:180px; float:left"> 
 	<%= user.pic? ? (image_tag user.pic(:thumb),:width => 48) : (image_tag 'thumb_profile.jpg',:width => 48) %>
 	<div class="mail_content" style="width:auto">
 		<%= "#{user.first_name} #{user.last_name }".capitalize %>
