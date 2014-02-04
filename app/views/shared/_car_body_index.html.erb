@@ -1,22 +1,10 @@
- <% if @carprofiles.empty? %>
-      <div class="mycar_caption">
-      <p>No Such Car Model Type Found for this Model.</p>
-      </div>
-    <% else %>
-<% @carprofiles.each do |car|%>
-    <div class="carcard carcard-big">
-      <div class="carcard-pic" >
-        <% unless car.carprofile_photos.blank? %>
-            <%= link_to image_tag(car.carprofile_photos.first.photo.url(:thumb), :width=>"220", :height=>"135"),carprofile_path(car) rescue nil%>
-        <% else %>
-            <a href="<%=carprofile_path(car)%>"><img src="assets/nullcar1.jpg" alt=""/></a>
-        <% end %>
-      </div>
-      <div class="carcard-meta">
-        <span class="carcard-meta-drive"><%= total_rating_count(car) rescue nil %></span></div>
-      <div class="carcard-caption"><%= link_to car.car_nickname.nil? ? car.car_model.name : car.car_nickname ,carprofile_path(car),:class=>"bluelink bold" %></div>
-      <div class="carcard-info"><span><%= car.user.location %></span></div>
-      <div class="carcard-owner"><a href="#" class="bluelink"><span class="uname uname-color06"><%= car.user.nickname %></span></a></div>
-    </div>
-<% end %>
-<% end %>
+
+<nav>
+  <ul>
+    <% @body_indices.each do |body_index|%>
+        <li>
+          <%= link_to "#{@car_model.name}(#{body_index.bodyindex})",car_body_index_shared_index_path(:body_index_id => body_index.id,:car_make => @car_make.id,:car_model => @car_model.id ),:remote => true,:class => "body_index" %>
+        </li>
+    <% end %>
+  </ul>
+</nav>
