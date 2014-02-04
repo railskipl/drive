@@ -1,2 +1,9 @@
-jQuery(".breadcrumb").html('<%= escape_javascript(render :partial => "breadcrumb_link") %>')
-jQuery(".car_body_index").html('<%= escape_javascript(render :partial => "car_body_index") %>');
+<% if params[:body_index_id].present? %>
+jQuery(".breadcrumb").html("<%= escape_javascript(render :partial => "breadcrumb_link") %>")
+jQuery(".car_body_index").html('<%= escape_javascript(render :partial => "body_index_profile") %>');
+<% else %>
+jQuery(".topcar2").html("<%= escape_javascript(render :partial => "car_body_index") %>");
+jQuery(".breadcrumb").html("<%= escape_javascript(render :partial => "breadcrumb_link") %>")
+jQuery(".car_body_index").html('<%= escape_javascript(render :partial => "body_index_profile") %>');
+jQuery(".body_indices_<%= @car_model.id.to_s %>").html('<%= escape_javascript(render :partial => "car_body_index") %>');
+<% end %>

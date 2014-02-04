@@ -19,9 +19,17 @@ class SharedController < ApplicationController
   end
 
   def car_body_index
-    @car_make = CarMake.find(params[:car_make])
-    @car_model = CarModel.find_by_id(params[:id])
-    @carprofiles = @car_model.carprofiles.paginate(page: params[:page], per_page: 40)
+    if params[:body_index_id].present?
+      @car_make = CarMake.find(params[:car_make])
+      @car_model = CarModel.find_by_id(params[:car_model])
+      @body_index = BodyIndex.find(params[:body_index_id])
+      @carprofiles = @body_index.carprofiles
+    else
+      @car_make = CarMake.find(params[:car_make])
+      @car_model = CarModel.find_by_id(params[:id])
+      @body_indices = @car_model.body_indices
+      @carprofiles = @car_model.carprofiles.paginate(page: params[:page], per_page: 40)
+    end
   end
 
   protected
@@ -40,5 +48,5 @@ class SharedController < ApplicationController
 
 end
 
-
+#
 #@body_indices = BodyIndex.find_all_by_car_model_id(@car_model.id).paginate(page: params[:page], per_page: 40)

@@ -13,7 +13,10 @@
             <nav>
               <ul>
                 <% @car_models.each do |car|%>
-                    <li><%= link_to car.name, car_body_index_shared_index_path(:id => car.id,:car_make => @car_make.id ),:class=>"bluelink car_model bold", :remote => true %></li>
+                    <li>
+                      <%= link_to car.name, car_body_index_shared_index_path(:id => car.id,:car_make => @car_make.id ),:class=>"bluelink car_model bold", :remote => true %>
+                     <div class="body_indices_<%= car.id.to_s %> clear_body_index"></div>
+                    </li>
                 <% end %>
               </ul>
             </nav>
