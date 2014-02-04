@@ -52,7 +52,7 @@
    <td>
   
 
-  <p>
+  <p style="word-wrap:break-word;">
     <%= @logbook.logbook_discription.html_safe rescue nil%>
   </p>
   <tr>
@@ -108,7 +108,7 @@
           });
   </script>
 
-<div class="comment_content">
+<div class="comment_content" >
 
         <% unless  comment_logbook.user.pic? %>
         <img alt="" src="/assets/thumb_profile.jpg" style="float:left" style="float:left" height="40" width="50">
@@ -122,7 +122,7 @@
            <%= link_to (image_tag "delete.png"), comment_logbook, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "close2"%>
              <%end%>
             <div style="margin:0 0 5px 0">By <a class="bluelink" href="<%=user_path(comment_logbook.user.id)%>" ><%=comment_logbook.user.first_name%></a></div>
-            <div><%= raw(comment_logbook.body)   rescue nil%>
+            <div style="word-wrap:break-word;"><%= raw(comment_logbook.body)   rescue nil%>
             </div>
             
             <ul class="action">

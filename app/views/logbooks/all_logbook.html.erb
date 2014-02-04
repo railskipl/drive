@@ -36,7 +36,7 @@
     
       </div>
     
-    <div class="grid_12">
+    <div class="grid_12" style="word-wrap:break-word;">
     
     <div><%= form_tag logbooksearch_path, :method=> :get do %>
           <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
@@ -47,7 +47,7 @@
     <%= "nothing to show" %>
     <%else%>
       <% @logbook.each do |logbooks| %>
-      <div class="message"> 
+      <div class="message" style="word-wrap:break-word;"> 
     
       <div class="tf">
     
@@ -63,7 +63,7 @@
     <div class="mail_content" style="width:475px">
     <div><a href="<%=logbook_path(logbooks)%>" class="bluelink bold"><%=logbooks.title%></a></div>
     <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%= user_path(logbooks.user.id)%>"><%=logbooks.user.first_name rescue nil%></a></div>
-    <div><%= raw(logbooks.logbook_discription)[0..300]  rescue nil %></div><br/>
+    <div style="word-wrap:break-word;"><%= sanitize raw(logbooks.logbook_discription)[0..300], :tags => %w(b i u p br) rescue nil  %></div><br/>
     
     <div class="likediv">  <a href="<%=logbook_path(logbooks)%>" class="likelink">Comment</a>  
       <% if logbooks.created_at > Time.now.beginning_of_day %> 
