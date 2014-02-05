@@ -150,7 +150,7 @@ def subscribe_profile
  end
 
   def change_status
-   if params[:status]== "INACTIVE"
+   if params[:status]== "INVISIBLE"
   
      unless current_user.credit < 10
       updated_on =(Date.parse(DateTime.now.to_s) - Date.parse(current_user.visibility_updated_on.to_s)).to_i
