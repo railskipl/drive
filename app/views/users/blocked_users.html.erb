@@ -12,14 +12,12 @@
 <table width="100%">
 <tr>
 <th>Name</th>
-<th>Email</th>
 <th>Location</th>
 </tr>
 <% @blocked_users.each do |user| %> 
 <% blocked_user = User.find(user.blockable_id) %>
 </tr>
 <td><%= link_to blocked_user.first_name, user_path(blocked_user) %></td>
-<td><%= blocked_user.email %></td>
 <td><%= blocked_user.location %></td>
 </tr>
 <% end %>

@@ -3,7 +3,7 @@
   <ul>
     <% @body_indices.each do |body_index|%>
         <li>
-          <%= link_to "#{@car_model.name}(#{body_index.bodyindex})",car_body_index_shared_index_path(:body_index_id => body_index.id,:car_make => @car_make.id,:car_model => @car_model.id ),:remote => true,:class => "body_index" %>
+          <%= link_to "(#{body_index.bodyindex})",car_body_index_shared_index_path(:body_index_id => body_index.id,:car_make => @car_make.id,:car_model => @car_model.id ),:remote => true,:class => "body_index" %>
         </li>
     <% end %>
   </ul>
