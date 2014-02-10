@@ -20,7 +20,10 @@ class UserBlogsController < ApplicationController
   end
 
   def myfriend_blog
-    @friends = current_user.friends.paginate(page: params[:page], per_page: 5)
+    @friends = current_user.friends
+    @user_blog = UserBlog.where(:status => true).order("created_at DESC")
+    @user_blogs = @user_blog.find_all_by_user_id(@friends).paginate(page: params[:page], per_page: 5)
+    #raise @user_blogs.inspect
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     @blogs  = Blog.all

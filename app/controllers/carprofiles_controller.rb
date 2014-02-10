@@ -86,6 +86,19 @@ class CarprofilesController < ApplicationController
 
   def edit
   	@carprofile = Carprofile.find(params[:id])
+
+    @car_model = []
+    @body_index = []
+    session[:car_make_id] = @carprofile.car_make_id
+    session[:car_model_id] = @carprofile.car_model_id
+
+    if session[:car_make_id]
+      @car_model = CarModel.find_all_by_car_make_id(session[:car_make_id])
+      
+    end
+    if session[:car_model_id]
+      @body_index = BodyIndex.find_all_by_car_model_id(session[:car_model_id])
+    end
   end
   
   def update
@@ -96,6 +109,8 @@ class CarprofilesController < ApplicationController
     end
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
+        session.delete(:car_make_id)
+        session.delete(:car_model_id)
         format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
         format.json { head :no_content }
       else

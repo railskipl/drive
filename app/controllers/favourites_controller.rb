@@ -3,7 +3,7 @@ class FavouritesController < ApplicationController
 
   def index
   
-  	@favourites = current_user.favourites.order("created_at desc").paginate(page: params[:page], per_page: 5) 
+  	@favourites = current_user.favourites.order("created_at desc").paginate(page: params[:page], per_page: 10) 
    #raise  current_user.favourites.count.inspect
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
 
@@ -14,8 +14,6 @@ class FavouritesController < ApplicationController
   	@logbook = Logbook.find(params[:id])
     unless current_user.id == @logbook.user_id
   	  @favourite = Favourite.find_or_create_by_user_id_and_logbook_id(:user_id => current_user.id, :favourite_type => "favourite_logbook", :favourite_type_id => @logbook.id, :logbook_id => @logbook.id )
-  	else
-      flash[:notice] = "You cannot favourite your own logbook."
     end
     #@favourite.save
   	redirect_to logbook_path(@logbook)
@@ -23,10 +21,8 @@ class FavouritesController < ApplicationController
 
   def user_blog
    @user_blog = UserBlog.find(params[:id])
-   unless current_user.id == @user_blog.user_id
+    unless current_user.id == @user_blog.user_id
       @favourite = Favourite.find_or_create_by_user_id_and_user_blog_id(:user_id => current_user.id, :favourite_type => "favourite_blog", :favourite_type_id => @user_blog.id, :user_blog_id => @user_blog.id)
-   else
-      flash[:notice] = "You cannot favourite your own blog."
     end
    #@favourite.save
    redirect_to user_blog_path(@user_blog)
@@ -35,11 +31,9 @@ class FavouritesController < ApplicationController
   def mycarprofile
     
    @carprofile = Carprofile.find(params[:id])
-   unless current_user.id == @carprofile.user_id
-   @favourite = Favourite.find_or_create_by_user_id_and_carprofile_id(:user_id => current_user.id, :favourite_type => "favourite_carprofile", :favourite_type_id => @carprofile.id, :carprofile_id => @carprofile.id)
-   else
-     flash[:notice] = "You cannot favourite your own carprofile."
-   end
+    unless current_user.id == @carprofile.user_id
+     @favourite = Favourite.find_or_create_by_user_id_and_carprofile_id(:user_id => current_user.id, :favourite_type => "favourite_carprofile", :favourite_type_id => @carprofile.id, :carprofile_id => @carprofile.id)
+    end
    #@favourite.save
    redirect_to carprofile_path(@carprofile)
   end 

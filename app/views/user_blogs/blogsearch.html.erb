@@ -115,7 +115,8 @@
     
     <div class="blog_right">
     <a class="bluelink bold" href="#"><%= blog_comment.user.first_name rescue nil %></a><br>
-    <%= raw(user_blog.body)[0..300]rescue nil%> <br> 
+    <%#raise blog_comment.body.inspect%>
+    <%= truncate(blog_comment.body, :length => 20) rescue nil%> <br> 
     <%= blog_comment.created_at.strftime("%b %d, %Y") rescue nil %></div>
     
     </div>

@@ -9,6 +9,16 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,:first_name,:last_name,:nickname,:birthday,:location,:agree,:status,
                    :freecredit, :buycredit, :credit,:about,:pic,:visibility_status,:visibility_updated_on
   
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged]
+
+  def slug_candidates
+    [     
+      ["#{first_name}", "#{last_name}" ]
+    ]
+  end
+
+
   # attr_accessible :title, :body
 
   has_many :carprofiles,dependent: :destroy

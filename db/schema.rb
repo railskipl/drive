@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130112629) do
+ActiveRecord::Schema.define(:version => 20140210054611) do
 
   create_table "abuse_categories", :force => true do |t|
     t.string   "name"
@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
     t.integer  "abuse_category_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-  end
-
-  create_table "admin_mailers", :force => true do |t|
-    t.string   "name"
-    t.string   "subject"
-    t.text     "message"
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "admincontacts", :force => true do |t|
@@ -134,8 +125,8 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
     t.string   "manufacturing_year"
     t.string   "year_of_purchase"
     t.string   "whatkindofcar"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.text     "car_description"
     t.string   "power"
     t.string   "sellthiscar"
@@ -150,7 +141,10 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
     t.integer  "user_visit",          :default => 0
     t.integer  "comments_count",      :default => 0
     t.string   "car_nickname"
+    t.string   "slug"
   end
+
+  add_index "carprofiles", ["slug"], :name => "index_carprofiles_on_slug"
 
   create_table "comment_logbooks", :force => true do |t|
     t.integer  "logbook_id"
@@ -221,8 +215,8 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
 
   create_table "egifts", :force => true do |t|
     t.integer  "credit"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -314,7 +308,10 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
     t.integer  "carprofile_id"
     t.string   "title"
     t.boolean  "status",              :default => false
+    t.string   "slug"
   end
+
+  add_index "logbooks", ["slug"], :name => "index_logbooks_on_slug"
 
   create_table "messages", :force => true do |t|
     t.string   "subject"
@@ -399,7 +396,10 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
     t.integer  "user_id"
     t.string   "title"
     t.boolean  "status",     :default => false
+    t.string   "slug"
   end
+
+  add_index "user_blogs", ["slug"], :name => "index_user_blogs_on_slug"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",                    :null => false
@@ -431,11 +431,13 @@ ActiveRecord::Schema.define(:version => 20140130112629) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-10 08:10:34'
+    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
+    t.string   "slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug"
 
   create_table "visibilities", :force => true do |t|
     t.string   "profile_type"
