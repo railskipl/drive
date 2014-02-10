@@ -105,6 +105,8 @@ class UserBlogsController < ApplicationController
   
   	@user_blog = UserBlog.find(params[:id])
     @abuse_report = AbuseReport.new
+    @favourite = current_user.favourites.where(:favourite_type => "favourite_blog")
+    @favourites = @favourite.find_by_user_blog_id(@user_blog)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comment = @user_blog.blog_comments.build
     @likes = @user_blog.likes(@user_blog.id)

@@ -56,14 +56,22 @@
   <tr>
    
  <%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id), :confirm  => "Your one credit point will get deducted if you like this blog",:method => "post",:remote => true,:id => "like_blog" , :title=>"Like"%> <span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
-  <% unless current_user.id == @user_blog.user_id %>
+    <% unless current_user.id == @user_blog.user_id %>
+      
+      
+       <%unless @favourites == nil%>
+          <%= image_tag "tick.png",:height => "20", :width => "20", :title=>'You already favourite this blog'%>
+       <%else%>
+          
+          <%= link_to (image_tag "add.png",:height => "22", :width => "20"),{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }, :title=>'Make Favourite'%>&nbsp;&nbsp;&nbsp;
+       <%end%>
+    <%else%>&nbsp;
+      <%= link_to (image_tag "image.jpg" ,:height => "22", :width => "20"), edit_user_blog_path, :title=>'Edit' %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to (image_tag "delete.png",:height => "20" ),user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' }, :title=>'Delete' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%end%>
 
-   <%= link_to (image_tag "star2.png"),{:controller => :favourites, :action => :user_blog, :user_id => current_user.id }, :title=>'Make Favourite'%>
-  <%else%>
+    
   
-    <%= link_to (image_tag "image.jpg" ,:height => "20", :width => "20"), edit_user_blog_path, :title=>'Edit' %>&nbsp;&nbsp;&nbsp;
-    <%= link_to (image_tag "delete.png"),user_blog_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' }, :title=>'Delete' %>
-  <%end%>
   
 
   

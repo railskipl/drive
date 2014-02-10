@@ -4,7 +4,7 @@ class CarprofilesController < ApplicationController
   before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date rescue ""
   def index
-  	@carprofiles = current_user.carprofiles.all
+  	@carprofiles = current_user.carprofiles.find(:all, :order => "created_at DESC")
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     #raise @carprofiles.inspect
    

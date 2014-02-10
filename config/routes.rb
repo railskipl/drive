@@ -115,6 +115,7 @@ end
       post :change_status
       get :addpoints
       post :addedpoints
+      get :user_blog
     end
    member do
       get :friend_request

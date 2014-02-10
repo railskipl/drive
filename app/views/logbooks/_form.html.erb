@@ -1,4 +1,7 @@
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+<%= javascript_include_tag 'nicEdit' %>
+<script type="text/javascript">
+  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
 <%= form_for(@logbook, :html=>{:id=>"logbook"}) do |f| %>
    <% if @logbook.errors.any? %>
     <div id="error_explanation">

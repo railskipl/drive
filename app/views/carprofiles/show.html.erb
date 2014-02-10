@@ -61,7 +61,11 @@ a.morelink {
       <div class="grid_11">
        <div class="car_profile_image">
         <div class="gift" style="margin:0 0 0 352px"><%= image_tag @record.egift.image ,:width => 128, :height => 128 rescue nil %></div>
+        <%unless @carprofile.carprofile_photos.blank?%>
          <%= image_tag @carprofile.carprofile_photos.first.photo.url ,:width => 530,:height => 240  rescue nil %>   
+        <%else%>
+         <div class = "thumb"><img src="/assets/index.jpeg" alt=""  width="530" height="240"></div>
+        <%end%>
        </div>
        <div style="float:left; margin:10px 0">
         <ul class="tab_menu">
