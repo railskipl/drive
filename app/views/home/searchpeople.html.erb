@@ -1,9 +1,16 @@
 
-</br>
+ <div style="min-height:400px" class="middle"></br>
+
 <%= form_tag search_path, :method=> :get do %>
-  <%= text_field_tag :q, nil,:class=>"search_tf"%>
-    <%= submit_tag "Search",:class=>"submit_btn" %>
-   <% end %></br>
+
+ <div style="text-align: center; margin-top: 100px;">
+<!-- 
+    <%#= text_field_tag  :q, nil,:class=>"search_tf"%>  -->
+   <%= collection_select :q,:location_cont,Country.all(:order => :id) ,:name ,:name ,:prompt => "Please Select",:class=>"search_tf" %>
+
+
+    <%= submit_tag "Search",:class=>"submit_btn" %></div>
+   <% end %></br></div>
    
 
 

@@ -32,8 +32,9 @@
 def search
 @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
 q = params[:q]
-@q = User.search(first_name_or_last_name_or_location_or_email_cont: q)
-@users=@q.result(:distinct => true).paginate(:page => params[:page],:per_page => 8)
+@users=User.search(params[:q]).result.paginate(:page => params[:page],:per_page => 8)
+
+# @users = User.search(first_name_or_last_name_or_location_or_email_cont: q).result(:distinct => true).paginate(:page => params[:page],:per_page => 8)
 end
 
 def keywordsearch

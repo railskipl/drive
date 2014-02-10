@@ -116,6 +116,11 @@
 		</a>
 		</li>
 		<% end %>
+
+       <% if current_user.id == @user.id %>
+        <li><%= link_to "Blocked user" ,blocked_users_users_path %></a></li>
+        <% end %>
+
 		</ul>
   		</div>
 		

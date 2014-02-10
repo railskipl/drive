@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 function user_status(status){
-	if(status == "ACTIVE"){
+	if(status == "VISIBLE"){
       	ajax_call(status)
 	}
 	else{
@@ -25,7 +25,7 @@ function user_status(status){
 		  }
 		else
 		  {
-		  jQuery("#visibility_status").val("ACTIVE");
+		  jQuery("#visibility_status").val("VISIBLE");
 		  }
 
 	}
@@ -38,13 +38,13 @@ function ajax_call(status){
               data: {"status":status},
               success: function(data){
                  if(data.status==false){
-                   jQuery("#visibility_status").val("INACTIVE");
+                   jQuery("#visibility_status").val("INVISIBLE");
                    jQuery("#visible_mode").attr("src","/assets/offline.gif");
                    jQuery(".earn_credit").html("Buy credits("+data.credit+")");
                  }
                  else
                  {
-                    jQuery("#visibility_status").val("ACTIVE");
+                    jQuery("#visibility_status").val("VISIBLE");
                     jQuery("#visible_mode").attr("src","/assets/online.png");
                     jQuery(".earn_credit").html("Buy credits("+data.credit+")");
                  }
