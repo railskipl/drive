@@ -56,4 +56,14 @@ def self.spotlight(car_profile)
       end
     end
   end
+
+def self.remove_spotlight
+    puts "Invoking Remove Spotlight #{DateTime.now} #{Carprofile.where(:spotlighted => true).inspect } \t \n"
+    Carprofile.where("spotlighted = ? and spotlighted_at < ?", true, DateTime.now-5.day).each do |car_profile|
+     car_profile.update_attributes(:spotlighted => false,:spotlighted_at => DateTime.now)
+      puts "Remove Spotlight From Car Profile with id #{car_profile.id}"
+    end
+  end
+
+
 end
