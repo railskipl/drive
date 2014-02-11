@@ -1,6 +1,10 @@
 <%= form_for [:admin, @car_model]  do |f| %>
    <%= render 'form' ,:f => f %>
     <div class="actions">
-    <%= f.submit  "Update Car Model" %>
+    <%if params[:type] == "model"%>
+      <%= f.submit  "Update Car Model", name: "type",value: "Update Model" %>
+    <%else%>
+     <%= f.submit  "Update Car Model" %>
+    <%end%>
   </div>
  <% end %>
