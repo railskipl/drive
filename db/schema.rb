@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(:version => 20140210054611) do
     t.datetime "updated_at",        :null => false
   end
 
+  create_table "admin_mailers", :force => true do |t|
+    t.string   "name"
+    t.string   "subject"
+    t.text     "message"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
     t.string   "carmake"
@@ -431,7 +440,7 @@ ActiveRecord::Schema.define(:version => 20140210054611) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
+    t.datetime "visibility_updated_on",  :default => '2014-02-01 09:18:18'
     t.string   "slug"
   end
 
