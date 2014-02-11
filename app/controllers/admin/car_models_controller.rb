@@ -20,15 +20,20 @@ class Admin::CarModelsController < ApplicationController
     end
   end
 
-  def edit
+    def edit
       @car_model = CarModel.find(params[:id])
     end
 
     def update
+      #raise params.inspect
       @car_model = CarModel.find(params[:id])
       if @car_model.update_attributes(params[:car_model])
         flash[:notice] = "Car Model Saved Successfully"
-        redirect_to admin_car_models_path
+        if params[:type] == "Update Model"
+          redirect_to manage_bodyindices_path
+        else
+          redirect_to admin_car_models_path
+        end
       else
         render :new
       end
@@ -40,7 +45,11 @@ class Admin::CarModelsController < ApplicationController
      
       if @car_model.destroy
         flash[:notice] = "Car Model Deleted Successfully"
-        redirect_to admin_car_models_path
+        if params[:type] == "model"
+           redirect_to manage_bodyindices_path
+        else
+          redirect_to admin_car_models_path
+        end
       end
       
     end

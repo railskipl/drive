@@ -19,18 +19,21 @@
                   <%= current_user.check_message%> </a>
                 </span>
               <%end%>
-              <a href="<%= notifications_path %>"><img src="/assets/new-message.png" alt="" align="absmiddle">
+              <a href="<%= notifications_path %>"><img src="/assets/chat.png" alt="" align="absmiddle">
               </a>
-          </li>
-                <li> 
-           <span class="notification">
-            <a href="#"> 
-             <% count =current_user.received_egifts.delete_if {|m| m.status == true}%>
-              <% if count.count != 0 %>
-                <%= count.count %> 
-              <% end %>
-            </a>
-            </span>
+          </li>----
+          <li> 
+            <% count =current_user.received_egifts.delete_if {|m| m.status == true}%>
+            <% if count.count != 0 %>
+              <span class="notification">
+                <a href="#"> 
+                 
+                  
+                    <%= count.count %> 
+                  
+                </a>
+              </span>
+            <% end %>
      
              <a href="<%= egift_notifications_egifts_path %>"><img src="/assets/gift.2.png" alt="" align="absmiddle">
               </a>

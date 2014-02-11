@@ -55,7 +55,7 @@
   </p>
   <tr>
    
- <%= link_to (image_tag "like.jpg") ,like_blog_user_blogs_path(:id => @user_blog.id), :confirm  => "Your one credit point will get deducted if you like this blog",:method => "post",:remote => true,:id => "like_blog" , :title=>"Like"%> <span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
+ <%= link_to (image_tag "like.png", :height => "24", :width => "67") ,like_blog_user_blogs_path(:id => @user_blog.id), :confirm  => "Your one credit point will get deducted if you like this blog",:method => "post",:remote => true,:id => "like_blog" , :title=>"Like"%>&nbsp;&nbsp;&nbsp; <span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
     <% unless current_user.id == @user_blog.user_id %>
       
       
