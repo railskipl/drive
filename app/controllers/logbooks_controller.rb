@@ -5,6 +5,7 @@ class LogbooksController < ApplicationController
 
    def index
     @logbooks = current_user.logbooks.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
+    
     #@logbooks = @logbooks.paginate(page: params[:page], per_page: 5) 
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @logbook_categories =  LogbookCategory.all
@@ -22,7 +23,11 @@ class LogbooksController < ApplicationController
   end
 
   def myfriend
-    @friends = current_user.friends.find(:all , :order => "created_at DESC").paginate(page: params[:page], per_page: 5) 
+    @friends = current_user.friends
+    @logbook = Logbook.where(:status =>  true).order("created_at DESC")
+    @logbooks = @logbook.find_all_by_user_id(@friends)
+    @logbooks = @logbooks.paginate(page: params[:page], per_page: 5)
+    #raise @logbooks.inspect
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @carprofile = current_user.carprofiles
     @logbook_categories =  LogbookCategory.all
@@ -123,7 +128,9 @@ class LogbooksController < ApplicationController
   
     @logbook = Logbook.find(params[:id])
     @abuse_report = AbuseReport.new
-
+    @favourite = current_user.favourites.where(:favourite_type => "favourite_logbook")
+    @favourites = @favourite.find_by_logbook_id(@logbook)
+    #raise @favourites.inspect
     @comment_logbook = @logbook.comment_logbooks.build
    
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)

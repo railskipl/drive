@@ -3,21 +3,29 @@
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
       <h1>Listing Cars</h1>
       <div class ="box">
-        <h5><a class="submit_btn" style="margin:0" href="<%= new_carprofile_path%>">Add A New Car</a></h5>
+        <h5><a class="compose" style="margin:0 float:right;" href="<%= new_carprofile_path%>">+Add A New Car</a></h5>
    
         <table cellpadding=5>
 	      <tr>
+	      	<th></th>
 		    <th>Car Make</th>
 		    <th>Car Model</th>
-		    <th>Actions</th>
+		    
 		  </tr>
 
 		 <% @carprofiles.each do |carprofile| %>
 		  <tr>
+		  	<td>
+			    <%unless carprofile.carprofile_photos.blank?%>
+	              <div class = "thumb"><%=link_to image_tag(carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 100, :height => 60), carprofile_path(carprofile) rescue nil%></div>
+	            <%else%>
+	              <div class = "thumb"><a href="<%= carprofile_path(carprofile)%>"><img src="/assets/index.jpeg" alt=""  width="100" height="60"></div>
+	            <%end%>
+            </td>
 			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
 			<td><%= carprofile.car_model.name  rescue nil %></td>
-		 	<td style="text-align: center !important;"><%= link_to 'Edit', edit_carprofile_path(carprofile) %></td>
-    		<td style="text-align: center !important;"><%= link_to 'Destroy',carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+		 	<td style="text-align: center !important;"><%= link_to (image_tag "image.jpg" ,:height => "22", :width => "20") , edit_carprofile_path(carprofile) %></td>
+    		<td style="text-align: center !important;"><%= link_to (image_tag "delete.png",:height => "20" ),carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
 			  </tr>
 		 <% end %>
 

@@ -4,7 +4,7 @@ class CarprofilesController < ApplicationController
   before_filter :correct_user, :only => [:edit]
    START_DATEEE = SendGift.first.created_at.to_date rescue ""
   def index
-  	@carprofiles = current_user.carprofiles.all
+  	@carprofiles = current_user.carprofiles.find(:all, :order => "created_at DESC")
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     #raise @carprofiles.inspect
    
@@ -86,6 +86,19 @@ class CarprofilesController < ApplicationController
 
   def edit
   	@carprofile = Carprofile.find(params[:id])
+
+    @car_model = []
+    @body_index = []
+    session[:car_make_id] = @carprofile.car_make_id
+    session[:car_model_id] = @carprofile.car_model_id
+
+    if session[:car_make_id]
+      @car_model = CarModel.find_all_by_car_make_id(session[:car_make_id])
+      
+    end
+    if session[:car_model_id]
+      @body_index = BodyIndex.find_all_by_car_model_id(session[:car_model_id])
+    end
   end
   
   def update
@@ -96,6 +109,8 @@ class CarprofilesController < ApplicationController
     end
       respond_to do |format|
       if @carprofile.update_attributes(params[:carprofile])
+        session.delete(:car_make_id)
+        session.delete(:car_model_id)
         format.html { redirect_to @carprofile, notice: 'Car Profile was successfully updated.' }
         format.json { head :no_content }
       else

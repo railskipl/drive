@@ -1,4 +1,7 @@
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+<%= javascript_include_tag 'nicEdit' %>
+<script type="text/javascript">
+  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
 <%= form_for(@logbook, :html=>{:id=>"logbook"}) do |f| %>
    <% if @logbook.errors.any? %>
     <div id="error_explanation">
@@ -56,22 +59,24 @@
   
 
  <%if @carprofile.empty? %>
-    <b>please add a car/model to post logbook</b>
+    <b>please add a car to post logbook</b>
   <%else%>
-  <div style="margin:10px 0"><strong>Select car/model to write logbook for </strong></div> 
+  <div style="margin:10px 0"><strong>Select car to write a logbook </strong></div> 
   <% @carprofile.each do |carprofile| %>
    
   <div style="float:left">
   
   <%= f.radio_button :carprofile_id , carprofile.id rescue nil%>
   <% unless carprofile.carprofile_photos.blank?%>
-   <%= image_tag(carprofile.carprofile_photos.first.photo.url(:thumb),:width => 50, :height => 40) rescue nil%>
+   <%= image_tag(carprofile.carprofile_photos.first.photo.url(:thumb),:width => 75, :height => 60) rescue nil%>
    <%else%>
-    <a href="#"><img src="/assets/thumb_profile.jpg" alt=""  width="50" height="40"></a>
+    <a href="#"><img src="/assets/thumb_profile.jpg" alt=""  width="75" height="60"></a>
   <%end%>
   <%= f.hidden_field :car_make_id,:value => carprofile.car_make_id%>
   
   <%= f.hidden_field :car_model_id,:value => carprofile.car_model_id %>
+
+  <%= f.hidden_field :body_index_id,:value => carprofile.body_index_id %>
   
   </div>
   <%end%>

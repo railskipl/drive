@@ -1,0 +1,65 @@
+<h1>Manage Body Index</h1>
+
+<%= javascript_include_tag  "bootstrap.min.js"%>
+<%= javascript_include_tag  "jquery-2.0.1.js"%>
+
+
+
+<%= form_tag manage_bodyindices_path ,:method => :get do%>
+  <div class="field">
+  	 <b>Search Car Make</b><br/>
+     <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
+     <%= submit_tag "Search",:class=>"submit_btn2" %>
+  </div>
+<% end %><br/>  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+jQuery(window).load(function(){
+jQuery(function () {
+    jQuery('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+    jQuery('.tree li.parent_li > span').on('click', function (e) {
+        var children = jQuery(this).parent('li.parent_li').find(' > ul > li');
+        if (children.is(":visible")) {
+            children.hide('fast');
+            jQuery(this).attr('title', 'Expand this branch').find(' > i').addClass('icon-plus-sign').removeClass('icon-minus-sign');
+        } else {
+            children.show('fast');
+            jQuery(this).attr('title', 'Collapse this branch').find(' > i').addClass('icon-minus-sign').removeClass('icon-plus-sign');
+        }
+        e.stopPropagation();
+    });
+});
+});//]]>  
+
+</script>
+
+<%@car_makes.each do |car|%>
+<div class="tree well">
+    <ul>
+        <li>
+            <span><i class="icon-folder-open"></i><%= car.name%></span> <a href="">Edit</a> <a href="">Delete</a>
+            
+            
+            
+            <ul>
+            	<% @carmodel = CarModel.find_all_by_car_make_id(car)%>
+            	<%@carmodel.each do |car_model|%>
+                <li>
+                	<span><i class="icon-minus-sign"></i><%= car_model.name%></span> <a href="">Edit</a> <a href="">Delete</a>
+                    <ul>
+                    	<% @carbody = BodyIndex.find_all_by_car_model_id(car_model)%>
+                    	<% @carbody.each do |body|%>
+                        <li>
+	                        <span><i class="icon-leaf"></i><%= body.bodyindex%></span> <a href="">Edit</a> <a href="">Delete</a>
+                        </li>
+                        <%end%>
+                    </ul>
+                </li>
+                <%end%>
+            </ul>
+        </li>
+       
+    </ul>
+</div>
+<%end%>

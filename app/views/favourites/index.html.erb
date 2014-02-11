@@ -9,7 +9,11 @@
              <% @favourites.each do |n| %> 
             <%if n.favourite_type == "favourite_logbook"  %>  
             <div class="message"> 
-              <div class = "thumb"><%=link_to image_tag(n.logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 55, :height => 40) rescue nil%></div>
+              <%unless n.logbook.carprofile.carprofile_photos.blank?%>
+                <div class = "thumb"><%= image_tag(n.logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
+              <%else%>
+                <div class = "thumb"><a href="#"><img src="/assets/index.jpeg" alt=""  width="55" height="40"></div>
+              <%end%>
               <div class="mail_content">
                 <div><a href="<%=logbook_path(n.logbook_id)%>" class="bluelink bold"><%= n.logbook.title rescue nil%></a></div>
                 by <a class="bluelink" href="#"><%= n.logbook.user.first_name rescue nil%></a>
@@ -25,8 +29,14 @@
 
             <% @favourites.each do |n| %> 
             <%if n.favourite_type == "favourite_blog"  %>  
-            <div class="message"> 
-              <div class = "thumb"><%=link_to image_tag(n.user_blog.user.pic ,:width => 55, :height => 40) rescue nil%></div>
+            <div class="message">
+              <%#raise n.user_blog.user.pic?.inspect%>
+              <%unless n.user_blog.user.pic?%> 
+                <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt="" width=55></div>
+              <%else%>
+                
+                <div class = "thumb"><%= image_tag(n.user_blog.user.pic ,:width => 55, :height => 40) rescue nil%></div>
+              <%end%>
               <div class="mail_content">
                 <div><a href="<%=user_blog_path(n.user_blog_id)%>" class="bluelink bold"><%=n.user_blog.title rescue nil%></a></div>
                 by <a class="bluelink" href="#"><%= n.user_blog.user.first_name rescue nil%></a>
@@ -42,8 +52,14 @@
 
             <% @favourites.each do |n| %> 
             <%if n.favourite_type == "favourite_carprofile"  %>  
-            <div class="message"> 
-              <div class = "thumb"><%=link_to image_tag(n.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 55, :height => 40) rescue nil%></div>
+            <div class="message">
+              
+              <%unless n.carprofile.carprofile_photos.blank?%>
+               <div class = "thumb"><%= image_tag(n.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 55, :height => 40) rescue nil%></div>
+              <%else%>
+               
+                 <div class = "thumb"><a href="#"><img src="/assets/index.jpeg" alt=""  width="50" height="40"></div>
+              <%end%>
               <div class="mail_content">
                 <div><a href="<%=carprofile_path(n.carprofile_id)%>" class="bluelink bold"><%= n.carprofile.car_model.name rescue nil%></a></div>
                 by <a class="bluelink" href="#"><%= n.carprofile.user.first_name rescue nil%></a>

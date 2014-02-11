@@ -72,12 +72,12 @@
             <%unless logbook.carprofile.carprofile_photos.blank?%>
               <div class = "thumb"><%=link_to image_tag(logbook.carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 50, :height => 40) rescue nil%></div>
             <%else%>
-              <div class = "thumb"><a href="#"><img src="/assets/index.jpeg" alt=""  width="50" height="40"></div>
+              <div class = "thumb"><a href="#"><img src="/assets/index.jpeg" alt=""  width="50" height="40"></a></div>
             <%end%>
             <div class="mail_content" style="width:475px">
-              <div><b>[DRAFT]</b><a href="<%=logbook_path(logbook)%>" class="bluelink bold"><%=logbook.title rescue nil%></a></div>
+              <div><b>[DRAFT]</b> <a href="<%=logbook_path(logbook)%>" class="bluelink bold"><%=logbook.title rescue nil%></a></div>
               <div style="margin:0 0 5px 0">by <a class="bluelink" href="<%=user_path(logbook.user.id)%>"><%=logbook.user.first_name rescue nil%></a></div>
-              <div style="word-wrap:break-word;"><%= raw(logbook.logbook_discription)[0..300] rescue nil %></div><br/>
+              <div style="word-wrap:break-word;"><%= sanitize raw(logbook.logbook_discription)[0..300], :tags => %w(b i u p br) rescue nil %></div><br/>
               <div class="likediv"> <a href="<%=logbook_path(logbook)%>" class="likelink">Comment</a>  
                 <% if logbook.created_at > Time.now.beginning_of_day %> 
                   <%="#{time_ago_in_words(logbook.created_at)} ago"%>

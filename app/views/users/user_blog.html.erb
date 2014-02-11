@@ -12,7 +12,7 @@
         <div class="grid_20 title"  style="margin-top:10px">
     
   <div style="width:40%; float:left"><h4>Blogs</h4></div>
-  <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%=new_user_blog_path%>" class="compose">Add New Blogs +</a></div>
+  <!-- <div style="width:40%; float:right; text-align:right; margin-top:5px"><a href="<%=new_user_blog_path%>" class="compose">Add New Blogs +</a></div> -->
   
   
   
@@ -24,11 +24,11 @@
     
     
     
-      <ul class="message_menu">
+  <!--     <ul class="message_menu">
      <li <% if controller.action_name == "all_blogs" %> class="selected" <% end %>><%= link_to "All Blogs", all_blogs_user_blogs_path %></li>
     <li <% if controller.action_name == "index" %> class="selected" <% end %>><%= link_to "My Blogs", user_blogs_path %></li>
     <li <% if controller.action_name == "myfriend_blog" %> class="selected" <% end %>><a href="<%= myfriend_blog_path%>">Friend's Blog</a></li>
-    </ul>
+    </ul> -->
     
     
     <a href="<%=user_blogs_path%>" class="bluelink">Categories</a>
@@ -51,38 +51,42 @@
           <% end %>
     </div>
     
-      <%if @user_blogs.empty?%>
-        <%= "No blogs found"%>
-      <%else%>
-        <% @user_blogs.each do |user_blog| %>
-          <%unless user_blog.status == false %>
-            <div class="message" style="word-wrap:break-word;">
-              <% unless user_blog.user.pic? %>
-                <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
-              <%else%>
-                <div class="thumb"><%=link_to image_tag(user_blog.user.pic.url(:thumb) ,:width => 50, :height => 50) %></div>
-              <% end %>
-              <div class="mail_content" style="width:442px">
-                <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
-                <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
-                <div style="word-wrap:break-word;"><%= sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br) rescue nil%></div>
-              </div>
-              <ul class="action">
-                <li><a href="<%=user_blog_path(user_blog)%>">Comment</a></li>
-                <% if user_blog.created_at > Time.now.beginning_of_day %> 
-                  <li><%="#{time_ago_in_words(user_blog.created_at)} ago"%>
-                <% else %>
-                  <%= user_blog.created_at.strftime("%b %d, %Y") rescue nil %></li>
-                <%end%>
-              </ul>
-            </div>
+  <%if @user_blogs.empty?%>
+    <%= "No blogs found"%>
+  <%else%>
+    <% @user_blogs.each do |user_blog| %>
+      <%unless user_blog.status == false%>
+      <div class="message" style="word-wrap:break-word;">
+        <% unless user_blog.user.pic? %>
+          
+        <div class="thumb"><a href="#"><img src="/assets/thumb_profile.jpg" alt=""></div>
+        <%else%>
+       
+        <div class="thumb"><%=link_to image_tag(user_blog.user.pic.url(:thumb) ,:width => 50, :height => 50) %></div>
+        <% end %>
+        <div class="mail_content" style="width:442px">
+          <div><a href="<%= user_blog_path(user_blog)%>" class="bluelink bold"><%= user_blog.title rescue nil%></a></div>
+          <div style="margin:0 0 5px 0">By <a href="<%= user_path(user_blog.user_id)%>" class="bluelink"><%=user_blog.user.first_name rescue nil%></a></div>
+          <div style="word-wrap:break-word;"><%= sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br)  rescue nil %></div>
+        </div>
+        <ul class="action">
+          <li><a href="<%=user_blog_path(user_blog)%>">Comment</a></li>
+          <% if user_blog.created_at > Time.now.beginning_of_day %> 
+            <li><%="#{time_ago_in_words(user_blog.created_at)} ago"%>
+          <% else %>
+            <%= user_blog.created_at.strftime("%b %d, %Y") rescue nil %></li>
           <%end%>
-        <%end%>
-      <%end%>
-      <div class="digg_pagination">
- 
-       <%= will_paginate @user_blogs %>
+        </ul>
       </div>
+      <%end%>
+    <%end%>
+  <%end%>
+
+
+  <div class="digg_pagination">
+ 
+  <%= will_paginate @user_blogs %>
+ </div>
     
     
     
@@ -115,7 +119,6 @@
     
     <div class="blog_right">
     <a class="bluelink bold" href="#"><%= blog_comment.user.first_name rescue nil %></a><br>
-    <%#raise blog_comment.body.inspect%>
     <%= truncate(blog_comment.body, :length => 20) rescue nil%> <br> 
     <%= blog_comment.created_at.strftime("%b %d, %Y") rescue nil %></div>
     

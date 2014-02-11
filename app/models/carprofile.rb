@@ -1,7 +1,19 @@
 class Carprofile < ActiveRecord::Base
   attr_accessible :car_make_id, :car_model_id, :manufacturing_year, :whatkindofcar, :year_of_purchase, :car_description,
                   :power, :sellthiscar, :license_plate, :VIN, :user_id, :engine_dis, :carprofile_photo_id,
-                  :carprofile_photos_attributes, :body_index_id,:user_visit,:car_nickname
+                  :carprofile_photos_attributes, :body_index_id,:user_visit,:car_nickname,:slug
+
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged]
+
+  def slug_candidates
+    [     
+      ["#{CarMake.find(car_make_id).name}", "#{CarModel.find(car_model_id).name}", "#{BodyIndex.find(body_index_id).bodyindex}","#{(manufacturing_year)}"]
+    ]
+  end
+
+
+
 
   belongs_to :user
   belongs_to :body_index
