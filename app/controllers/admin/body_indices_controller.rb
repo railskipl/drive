@@ -28,7 +28,11 @@ class Admin::BodyIndicesController < ApplicationController
   	@body_index = BodyIndex.find(params[:id])
   	if @body_index.update_attributes(params[:body_index])
   		flash[:notice] = "Updated Successfully"
-  		redirect_to admin_body_indices_path
+      if params[:type] == "Update Body Index"
+       redirect_to manage_bodyindices_path
+      else
+  		 redirect_to admin_body_indices_path
+      end
   	else
   		render :new
   	end
@@ -36,10 +40,15 @@ class Admin::BodyIndicesController < ApplicationController
   end
 
   def destroy
+    raise params.inspect
   	@body_index = BodyIndex.find(params[:id])
   	if @body_index.destroy
   		flash[:notice] = "Deleted Successfully"
-  		redirect_to admin_body_indices_path
+      if params[:type] == "body_index"
+        redirect_to manage_bodyindices_path
+      else
+  		  redirect_to admin_body_indices_path
+      end
   	end
   end
 end

@@ -10,6 +10,11 @@ class UserBlog < ActiveRecord::Base
 
   acts_as_likeable
 
+  extend FriendlyId
+  friendly_id :title, use: [:slugged]
+
+  
+
   def likes(id)
     Like.find_all_by_likeable_id(id) rescue nil
   end

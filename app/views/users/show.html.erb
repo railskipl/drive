@@ -21,17 +21,8 @@
   <div style="margin:10px 0"><%= friendship_status( @logged_in_user, @user) %></div>
 <% end %>
 
-
-
-
-
+</div>
 	</div>
-	
-	
-	
-		
-		
-		</div>
 		
 		<div class="grid_4">
 		
@@ -116,6 +107,14 @@
 		</a>
 		</li>
 		<% end %>
+		<%if current_user == @user %>
+		<li><a href="<%= user_blog_users_path %>">My Blogs
+			<!-- <span class="light_gray">(<%= count.count %>)</span> -->
+		</a></li>
+		<%else%>
+		 <!-- <li><a href="<%= user_blog_users_path %>">My Blogs -->
+			<!-- <span class="light_gray">(<%= count.count %>)</span> -->
+		<%end%>
 
        <% if current_user.id == @user.id %>
         <li><%= link_to "Blocked user" ,blocked_users_users_path %></a></li>

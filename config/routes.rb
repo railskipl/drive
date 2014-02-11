@@ -2,6 +2,12 @@ Drive::Application.routes.draw do
 
   resources :abuse_reports
 
+  resources :manage_bodyindices do
+    collection do
+        delete 'destroy_multiple'
+    end
+  end
+
 
   resources :abuse_categories
 
@@ -109,6 +115,7 @@ end
       post :change_status
       get :addpoints
       post :addedpoints
+      get :user_blog
     end
    member do
       get :friend_request

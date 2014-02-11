@@ -20,7 +20,10 @@ class UserBlogsController < ApplicationController
   end
 
   def myfriend_blog
-    @friends = current_user.friends.paginate(page: params[:page], per_page: 5)
+    @friends = current_user.friends
+    @user_blog = UserBlog.where(:status => true).order("created_at DESC")
+    @user_blogs = @user_blog.find_all_by_user_id(@friends).paginate(page: params[:page], per_page: 5)
+    #raise @user_blogs.inspect
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comments = BlogComment.order("created_at desc").limit(100)
     @blogs  = Blog.all
@@ -102,6 +105,8 @@ class UserBlogsController < ApplicationController
   
   	@user_blog = UserBlog.find(params[:id])
     @abuse_report = AbuseReport.new
+    @favourite = current_user.favourites.where(:favourite_type => "favourite_blog")
+    @favourites = @favourite.find_by_user_blog_id(@user_blog)
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     @blog_comment = @user_blog.blog_comments.build
     @likes = @user_blog.likes(@user_blog.id)

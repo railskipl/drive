@@ -54,9 +54,10 @@
       <% end %>
     </div>
 
-      <%  @friends.each do |fri|%>
-         
-        <% fri.user_blogs.each do |user_blog| %>
+      <%if @user_blogs.empty?%>
+        No Blogs Found
+      <%else%>   
+        <% @user_blogs.each do |user_blog| %>
            
           <%unless user_blog.status == false%>
             
@@ -85,10 +86,10 @@
         <%end%>
       <%end%>
        
-  <ul class="tsc_pagination tsc_paginationA tsc_paginationA01">
+  <div class="digg_pagination">
  
-   <%= will_paginate @friends %>
-  </ul>
+   <%= will_paginate @user_blogs %>
+  </div>
     
     
     

@@ -178,9 +178,18 @@ def user_friends
   render :layout => "application"
 end
 
+def user_blog
+  @user_blogs = current_user.user_blogs.where(:status => true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+  @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+  @blog_comments = BlogComment.order("created_at desc").limit(100)
+  @blogs  = Blog.all
+   render :layout => 'application'
+  #raise @user_blogs.inspect
+end
+
 def user_cars
   @user = User.find(params[:id])
-  @carprofiles = @user.carprofiles
+  @carprofiles = @user.carprofiles.order("created_at DESC")
   render :layout => "application"
 end
 

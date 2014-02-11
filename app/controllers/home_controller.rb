@@ -79,6 +79,7 @@ end
 
 
 def logbooksearch_home
+  
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @logbook_categories = LogbookCategory.all
   
@@ -86,19 +87,24 @@ def logbooksearch_home
   carmodel =  params[:logbook][:car_model_id]
   lc = params[:logbook][:logbook_category_id_eq]
 
-  if carmake.empty?
-  @logbooks = Logbook.search(logbook_category_id_eq: lc).result.paginate(page: params[:page], per_page: 5) 
-  elsif carmodel.nil?
+  if carmake.empty? #if car make is empty, #search for logbook category
+      @logbook = Logbook.search(logbook_category_id_eq: lc).result.paginate(page: params[:page], per_page: 5) 
+      @logbooks = @logbook.where(:status => true)
+  elsif carmodel.nil? #if car model is nil
     if lc.empty?
-      @logbooks = Logbook.where("car_make_id = ? ", carmake).paginate(page: params[:page], per_page: 5) 
+      @logbook = Logbook.where("car_make_id = ? ", carmake).paginate(page: params[:page], per_page: 5) 
+      @logbooks = @logbook.where(:status => true)
     else
-      @logbooks = Logbook.where("car_make_id = ? and logbook_category_id = ?", carmake,lc).paginate(page: params[:page], per_page: 5) 
+      @logbook = Logbook.where("car_make_id = ? and logbook_category_id = ?", carmake,lc).paginate(page: params[:page], per_page: 5)
+       @logbooks = @logbook.where(:status => true)
     end
   else
-    if lc.empty?
-      @logbooks = Logbook.search(car_make_id_eq: carmake).result.paginate(page: params[:page], per_page: 5)
+    if lc.empty? #if logbook category id is nil
+      @logbook = Logbook.search(car_make_id_eq: carmake).result.paginate(page: params[:page], per_page: 5)
+       @logbooks = @logbook.where(:status => true)
     else
-      @logbooks = Logbook.where("car_make_id = ? and car_model_id = ? and logbook_category_id = ?", carmake,carmodel,lc).paginate(page: params[:page], per_page: 5) 
+      @logbook = Logbook.where("car_make_id = ? and car_model_id = ? and logbook_category_id = ?", carmake,carmodel,lc).paginate(page: params[:page], per_page: 5)
+       @logbooks = @logbook.where(:status => true) 
     end 
   end
 end

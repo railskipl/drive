@@ -21,6 +21,7 @@ class Admin::CarMakesController < ApplicationController
   end
 
   def edit
+      #raise params.inspect
       @car_make = CarMake.find(params[:id])
     end
 
@@ -28,7 +29,11 @@ class Admin::CarMakesController < ApplicationController
       @car_make = CarMake.find(params[:id])
       if @car_make.update_attributes(params[:car_make])
         flash[:notice] = "Car Make Saved Successfully"
-        redirect_to admin_car_makes_path
+        if params[:type] == "Update Make"
+          redirect_to manage_bodyindices_path
+        else
+         redirect_to admin_car_makes_path
+        end
       else
         render :new
       end
@@ -36,11 +41,17 @@ class Admin::CarMakesController < ApplicationController
     
 
     def destroy
+
       @car_make = CarMake.find(params[:id])
      
       if @car_make.destroy
         flash[:notice] = "Car Make Deleted Successfully"
-        redirect_to admin_car_makes_path
+        if params[:type] == "make"
+          redirect_to manage_bodyindices_path
+        else
+          redirect_to admin_car_makes_path
+        end
+        
       end
       
     end

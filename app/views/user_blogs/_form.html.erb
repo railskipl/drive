@@ -1,5 +1,7 @@
-
-<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
+<%= javascript_include_tag 'nicEdit' %>
+<script type="text/javascript">
+  bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
+</script>
 
 <%= form_for(@user_blog, :html=>{:id => "user_blog"}) do |f| %>
    <% if @user_blog.errors.any? %>

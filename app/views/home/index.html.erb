@@ -44,71 +44,76 @@
 				<%= current_user.about %>
 				<% end %>
 			</p>
-
-	      <h4>My Blogs</h4>
+			
+	        <div class="black_heading">MY LATEST BLOGS</div>
 	
-			<div id="comment_load" style="overflow: auto; height: 300px; margin: 10px 0px; word-wrap:break-word;">
+			<div id="comment_load" style="overflow: auto; height: 370px; margin: 10px 0px; word-wrap:break-word;">
 				<% @user_blogs.each do |user_blog| %>
 					<div class="blog_div2" style="word-wrap:break-word;">
 				        <a class="redlink" href="<%= user_blog_path(user_blog) %>"><%=  user_blog.title rescue nil%></a><br>
 				        <p style="word-wrap:break-word;">
-				        	<%= sanitize raw(user_blog.body)[0..300], :tags => %w(b i u p br) rescue nil %>
+				        	<%= sanitize raw(user_blog.body)[0..200], :tags => %w(b i u p br) rescue nil %>
 				        </p>
 				        <a class="bluelink" href="<%= user_blog_path(user_blog) %>">Read More</a>
 				    </div>
 			    <%end%>
 		    </div>
+		    </div>
+
+		    
 		</div>
         
       <div class="grid_11">
       	<div class="car_description1" >
-           <div id="comment_load" style="overflow: auto; height: 80px; margin: 10px 0px;">
-		   <table  border="0" cellspacing="0" cellpadding="5">
-		      <% @user.each do |u|%>
-		        <%unless u.id == current_user.id%>
-			      <tr>
-			        <td align="left" valign="middle"><img src="/assets/birth.png" alt=""></td>
-			        <td width="100%" align="left" valign="middle"><strong><%=u.first_name rescue nil%>'s</strong> Birthday Today</td>
-			      </tr>
-		        <%else%>
-		        <%end%>
-		      <%end%>
-		 
-		      <% @contactadmins.each do |contact|%>
-		        <tr>
-		          <td align="left" valign="middle"><img src="/assets/newspapers.png" alt="" width="24" height="24"></td>
-		          <td align="left" valign="middle" style="word-wrap:break-word;"><b><%= contact.message rescue nil%></b></td>
-		        </tr>
-		      <%end%>
-		    </table>
+            <div id="comment_load" style="overflow: auto; height: 80px; margin: 10px 0px;">
+			    <table  border="0" cellspacing="0" cellpadding="5">
+			      <% @user.each do |u|%>
+			        <%unless u.id == current_user.id%>
+				      <tr>
+				        <td align="left" valign="middle"><img src="/assets/birth.png" alt=""></td>
+				        <td width="100%" align="left" valign="middle"><strong><%=u.first_name rescue nil%>'s</strong> Birthday Today</td>
+				      </tr>
+			        <%else%>
+			        <%end%>
+			      <%end%>
+			 
+			      <% @contactadmins.each do |contact|%>
+			        <tr>
+			          <td align="left" valign="middle"><img src="/assets/newspapers.png" alt="" width="24" height="24"></td>
+			          <td align="left" valign="middle" style="word-wrap:break-word;"><b><%= contact.message rescue nil%></b></td>
+			        </tr>
+			      <%end%>
+			    </table>
+	        </div>
 	    </div>
-	  </div>
-		<div class="black_heading" style="margin-top:54px">PERSONAL EXPERIENCE</div>
-            <div class="pe_box" style="margin-bottom:10px">
-	            <strong>Personal stories, advice and support</strong><br>
-				Logbooks from the real car owners - are truth about the experience from the first hands.
-				How-to guides with photos, tips and articles on car care and maintenance.  
-	            <%= form_tag logbooksearch_home_path, :method => :get do %>
-	            <div style="margin-top:10px"><strong>Make</strong>  <span class="red">*</span></div>
-	            <div>
-	               <%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}" %><br/><br/>
+	    <div class="grid_5" style="float:right">
+			<div class="black_heading" style="margin-top:20px">PERSONAL EXPERIENCE</div>
+	            <div class="pe_box" style="margin-bottom:10px">
+		            <strong>Personal stories, advice and support</strong><br>
+					Logbooks from the real car owners - are truth about the experience from the first hands.
+					How-to guides with photos, tips and articles on car care and maintenance.  
+		            <%= form_tag logbooksearch_home_path, :method => :get do %>
+		            <div style="margin-top:10px"><strong>Make</strong>  <span class="red">*</span></div>
+		            <div style="width: 190px;">
+		               <%= select "logbook",  :car_make_id, CarMake.all.map {|s| [s.name, s.id]},{:prompt => "Select Carmake"}, :onchange => "#{remote_function(:url => {:controller =>"logbooks", :action => "updatemodel"}, :with => "'updatemodel='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}", :style=>"width:155px" %><br/><br/>
 
-	                <div id="car_make_id">
-	                  <%= select "carprofile", :car_model_id,   @car_model.map {|s| [s.name, s.id]},{:prompt => "Select model"}  ,:onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_body"}, :with => "'update_body='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}"  rescue nil %>
-	                  <%= image_tag("/assets/loadingg.gif",
-	                      :align => "absmiddle",
-	                      :border => 0,
-	                      :id => "loader",
-	                      :style =>"display: none;" ) %><br/><br/>
+		                <div id="car_make_id" style="width: 190px;">
+		                  <%= select "carprofile", :car_model_id,   @car_model.map {|s| [s.name, s.id]},{:prompt => "Select Model"}  ,:onchange => "#{remote_function(:url => {:controller =>"carprofiles", :action => "update_body"}, :with => "'update_body='+value",:loading => "Element.show('loader');",:complete => "Element.hide('loader');")}"  rescue nil %>
+		                  <%= image_tag("/assets/loadingg.gif",
+		                      :align => "absmiddle",
+		                      :border => 0,
+		                      :id => "loader",
+		                      :style =>"display: none;" ) %>
+		                </div>
+		            </div>
+		            <div ><strong>Topic</strong>  <span class="red">*</span></div>
+	                <div>
+	                   <%= collection_select :logbook ,:logbook_category_id_eq, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category'%>
 	                </div>
+	               <div style="margin:10px 0 0 0" ><%= submit_tag "Search",:class=>"submit_btn2"%></div>
+	              <%end%>
 	            </div>
-	            <div style="margin-top:10px"><strong>Topic</strong>  <span class="red">*</span></div>
-                <div>
-                   <%= collection_select :logbook ,:logbook_category_id_eq, LogbookCategory.all ,:id,:name, :prompt => 'Logbook category'%>
-                </div>
-               <div style="margin:10px 0 0 0" ><%= submit_tag "Search",:class=>"submit_btn2"%></div>
-              <%end%>
-            </div>
+			</div>
 		</div>
 	  </div>
 	</div>

@@ -57,17 +57,24 @@
   </p>
   <tr>
    
-  <%= link_to (image_tag "like.jpg") ,like_logbook_logbooks_path(:id => @logbook.id),:confirm  => "Your one credit point will get deducted if you like this logbook",:method => "post",:remote => true,:id => "like_logbook" %><span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
+  <%= link_to (image_tag "like.png", :height => "24", :width => "67") ,like_logbook_logbooks_path(:id => @logbook.id),:confirm  => "Your one credit point will get deducted if you like this logbook",:method => "post",:remote => true,:id => "like_logbook" , :title=>'Like'%>&nbsp;&nbsp;<span id="like_count"><%= @counts %></span>&nbsp;&nbsp;&nbsp;
 
    
  
-   <% if current_user.id == @logbook.user_id %>
+    <% unless current_user.id == @logbook.user_id %>
+      
+      
+       <%unless @favourites == nil%>
+          <%= image_tag "tick.png",:height => "20", :width => "20", :title=>'You already favourite this logbook'%>
+       <%else%>
+          
+          <%= link_to (image_tag "add.png",:height => "22", :width => "20"),{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }, :title=>'Make Favourite'%>&nbsp;&nbsp;&nbsp;
+       <%end%>
+    <%else%>&nbsp;
+      <%= link_to (image_tag "image.jpg" ,:height => "22", :width => "20"), edit_logbook_path, :title=>'Edit' %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to (image_tag "delete.png",:height => "20" ),logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' }, :title=>'Delete' %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <%end%>
   
-    <%= link_to (image_tag "image.jpg" ,:height => "20", :width => "20"), edit_logbook_path %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <%= link_to (image_tag "delete.png"),logbook_path ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>&nbsp;&nbsp;&nbsp;&nbsp;
-  
-  <%end%>
-  <%= link_to (image_tag "star2.png",:height => "20", :width => "20"),{:controller => :favourites, :action => :user_logbook, :user_id => current_user.id }%>&nbsp;&nbsp;&nbsp;
 
   
   

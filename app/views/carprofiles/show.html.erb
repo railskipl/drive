@@ -61,7 +61,11 @@ a.morelink {
       <div class="grid_11">
        <div class="car_profile_image">
         <div class="gift" style="margin:0 0 0 352px"><%= image_tag @record.egift.image ,:width => 128, :height => 128 rescue nil %></div>
+        <%unless @carprofile.carprofile_photos.blank?%>
          <%= image_tag @carprofile.carprofile_photos.first.photo.url ,:width => 530,:height => 240  rescue nil %>   
+        <%else%>
+         <div class = "thumb"><img src="/assets/index.jpeg" alt=""  width="530" height="240"></div>
+        <%end%>
        </div>
        <div style="float:left; margin:10px 0">
         <ul class="tab_menu">
@@ -76,8 +80,9 @@ a.morelink {
         <% unless current_user.id == @carprofile.user_id %>  
           <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
         <% end %>
-         <% unless current_user.id == @carprofile.user_id %> 
-        <li><%= link_to "Favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li><% end %>
+          <% unless current_user.id == @carprofile.user_id %> 
+            <li><%= link_to "Favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
+          <% end %>
         <%if current_user.id == @carprofile.user_id%>
         <li><%= link_to "My Guest",guest_user_carprofiles_path(:id => params[:id])%></li>
         <li><%= link_to "Edit", edit_carprofile_path(@carprofile)%></li>
@@ -104,60 +109,76 @@ a.morelink {
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr><p class="<%= rate_count(@carprofile.id)[0]  rescue ""%>" id ="star_rating"></p></tr>
     <tr></tr>
-  <tr>
+
+  <%unless @carprofile.car_nickname.blank? %>
+    <tr>
     <td align="left" valign="top" class="profile_col1">Car Nickname</td>
     <td class="profile_col2"><%= @carprofile.car_nickname rescue nil%></td>
   </tr>
+  <%else%>
+  
+  <%end%>
 
   <tr>
     <td align="left" valign="top" class="profile_col1">Car Make</td>
     <td class="profile_col2"><%= @carprofile.car_make.name%></td>
   </tr>
-   <tr>
+  
+  <tr>
     <td align="left" valign="top" class="profile_col1">Car Model</td>
     <td class="profile_col2"><%= @carprofile.car_model.name%></td>
   </tr>
-  <tr>
-    <td align="left" valign="top" class="profile_col1">Manufacturing Year</td>
-    <td class="profile_col2"><%= @carprofile.manufacturing_year %></td>
-  </tr>
+
   <tr>
     <td align="left" valign="top" class="profile_col1">Body Index</td>
     <td class="profile_col2"><%= @carprofile.body_index.bodyindex rescue nil %></td>
   </tr>
+
+  <tr>
+    <td align="left" valign="top" class="profile_col1">Manufacturing Year</td>
+    <td class="profile_col2"><%= @carprofile.manufacturing_year %></td>
+  </tr>
+  
   <tr>
     <td align="left" valign="top" class="profile_col1">Year of Purchase</td>
     <td class="profile_col2"><%= @carprofile.year_of_purchase %></td>
   </tr>
-  <tr>
-    <td align="left" valign="top" class="profile_col1">What kind of car of this</td>
-    <td class="profile_col2"><%= @carprofile.whatkindofcar %></td>
-  </tr>
+
   <tr>
     <td align="left" valign="top" class="profile_col1">Power</td>
     <td class="profile_col2">  <%= @carprofile.power%></td>
   </tr>
+
   <tr>
     <td align="left" valign="top" class="profile_col1">Engine Displacement</td>
-    <td class="profile_col2"><%= @carprofile.engine_dis rescue nil%>
-</td>
+    <td class="profile_col2"><%= @carprofile.engine_dis rescue nil%></td>
   </tr>
 
   <tr>
+    <td align="left" valign="top" class="profile_col1">What kind of car is this</td>
+    <td class="profile_col2"><%= @carprofile.whatkindofcar rescue nil%></td>
+  </tr>
+  
+  <tr>
     <td align="left" valign="top" class="profile_col1">Do you sell this car</td>
-    <td class="profile_col2">  <%= @carprofile.sellthiscar %>
-</td>
+    <td class="profile_col2">  <%= @carprofile.sellthiscar rescue nil%></td>
   </tr>
-    <tr>
+  <%unless @carprofile.license_plate.blank?%>
+  <tr>
     <td align="left" valign="top" class="profile_col1">License plate</td>
-    <td class="profile_col2">  <%= @carprofile.license_plate%>
- </td>
+    <td class="profile_col2">  <%= @carprofile.license_plate rescue nil%></td>
   </tr>
+  <%else%>
+
+  <%end%>
+  <%unless @carprofile.VIN.blank?%>
   <tr>
     <td align="left" valign="top" class="profile_col1">VIN Code</td>
-    <td class="profile_col2">  <%= @carprofile.VIN%>
-</td>
+    <td class="profile_col2">  <%= @carprofile.VIN rescue nil%></td>
   </tr>
+  <%else%>
+
+  <%end%>
 </table>
 
 <a href="#inline<%= @carprofile.id %>" id="various<%= @carprofile.id %>" class="action">Report Abuse</a>

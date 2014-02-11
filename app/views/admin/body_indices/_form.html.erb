@@ -32,6 +32,10 @@
     <%= f.select :end_manufacturing_year, 1900..Time.now.year   ,:selected => Time.now.year %>  </div>
 
   <div class="actions">
-    <%= f.submit "Body Index" %>
+    <%if params[:type] == "body_index"%>
+      <%= f.submit "Body Index", name: "type", value: "Update Body Index" %>
+    <%else%>
+      <%= f.submit "Body Index"%>
+    <%end%>
   </div>
 <% end %>
