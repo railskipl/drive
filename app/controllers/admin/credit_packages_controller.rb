@@ -33,6 +33,7 @@ class Admin::CreditPackagesController < ApplicationController
 
   def edit
       @credit_package = CreditPackage.find(params[:id])
+      #raise @credit_package.inspect
     end
 
     def update
