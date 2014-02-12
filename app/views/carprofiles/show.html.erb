@@ -77,9 +77,9 @@ a.morelink {
          <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
          </li> 
         <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
-        <% unless current_user.id == @carprofile.user_id %>  
+        
           <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
-        <% end %>
+        
           <% unless current_user.id == @carprofile.user_id %> 
             <li><%= link_to "Favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id }%></li>
           <% end %>
