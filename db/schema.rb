@@ -33,15 +33,6 @@ ActiveRecord::Schema.define(:version => 20140210054611) do
     t.datetime "updated_at",        :null => false
   end
 
-  create_table "admin_mailers", :force => true do |t|
-    t.string   "name"
-    t.string   "subject"
-    t.text     "message"
-    t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "admincontacts", :force => true do |t|
     t.string   "emailid"
     t.string   "carmake"
@@ -150,8 +141,8 @@ ActiveRecord::Schema.define(:version => 20140210054611) do
     t.integer  "user_visit",          :default => 0
     t.integer  "comments_count",      :default => 0
     t.string   "car_nickname"
-    t.datetime "spotlighted_at",      :default => '2014-02-10 10:14:41'
     t.string   "slug"
+    t.datetime "spotlighted_at",      :default => '2014-02-12 05:19:54'
   end
 
   add_index "carprofiles", ["slug"], :name => "index_carprofiles_on_slug"
@@ -441,7 +432,7 @@ ActiveRecord::Schema.define(:version => 20140210054611) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.boolean  "visibility_status",      :default => true
-    t.datetime "visibility_updated_on",  :default => '2013-12-13 11:12:46'
+    t.datetime "visibility_updated_on",  :default => '2013-12-16 05:09:01'
     t.string   "slug"
   end
 

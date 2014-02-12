@@ -10,8 +10,18 @@
       </ul>
     </div>
   <% end %>
-
   
+  <%= javascript_include_tag "jquery-1.9.1.js","select2.js"%>
+  <%= stylesheet_link_tag "select2.css"%>
+  
+  <script type='text/javascript'>//<![CDATA[ 
+    jQuery(function(){
+    jQuery("#body_index_car_model_id").select2({
+        allowClear: true,
+        placeholder: 'Select Car Make'
+    }).select2('val',jQuery("#car_model_id_value").val())
+    });//]]>  
+  </script>
   
    <div class="field">
     <%= f.label "Car Model" %><br />
