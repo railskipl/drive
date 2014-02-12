@@ -26,9 +26,8 @@
 
 			<%end%>
 		</div>
-		
-		<div class="mycar_caption">
-		<div class="carcard-meta">
+	
+		 <div class="carcard-meta">
         <span class="carcard-meta-drive"><%= total_rating_count(car) rescue nil %></span></div>
 		<a href="<%= carprofile_path(car)%>" class="bluelink bold"><%= car.car_make.name%> <%=car.car_model.name rescue nil%></a>
 		</br> 
@@ -37,7 +36,7 @@
 		<a href="<%= user_path(car.user_id)%>" class="bluelink"><%= car.user.first_name%> <%=car.user.last_name rescue nil%></a>
 		</div>
 		
-		</div>
+
 		
 		<%end%>
 	</div>

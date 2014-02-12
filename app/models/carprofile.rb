@@ -1,7 +1,7 @@
 class Carprofile < ActiveRecord::Base
   attr_accessible :car_make_id, :car_model_id, :manufacturing_year, :whatkindofcar, :year_of_purchase, :car_description,
                   :power, :sellthiscar, :license_plate, :VIN, :user_id, :engine_dis, :carprofile_photo_id,
-                  :carprofile_photos_attributes, :body_index_id,:user_visit,:car_nickname,:slug
+                  :carprofile_photos_attributes, :body_index_id,:user_visit,:car_nickname,:slug,:spotlighted,:spotlighted_at
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged]
@@ -11,8 +11,6 @@ class Carprofile < ActiveRecord::Base
       ["#{CarMake.find(car_make_id).name}", "#{CarModel.find(car_model_id).name}", "#{BodyIndex.find(body_index_id).bodyindex}","#{(manufacturing_year)}"]
     ]
   end
-
-
 
 
   belongs_to :user
@@ -44,10 +42,10 @@ class Carprofile < ActiveRecord::Base
   end
 
 def self.spotlight(car_profile)
-  car_profile.update_attribute("spotlighted",!car_profile.spotlighted)
-  return car_profile.spotlighted
- end
- 
+    car_profile.update_attributes("spotlighted" => !car_profile.spotlighted,:spotlighted_at => DateTime.now )
+    return car_profile.spotlighted
+  end
+
   def self.remove_subscribables(subscriber)
           self.where(:subscriber_type => subscriber.class.name.classify).
                where(:subscriber_id => subscriber.id).destroy_all
@@ -68,4 +66,14 @@ def self.spotlight(car_profile)
       end
     end
   end
+
+def self.remove_spotlight
+    puts "Invoking Remove Spotlight #{DateTime.now} #{Carprofile.where(:spotlighted => true).inspect } \t \n"
+    Carprofile.where("spotlighted = ? and spotlighted_at < ?", true, DateTime.now-5.day).each do |car_profile|
+     car_profile.update_attributes(:spotlighted => false,:spotlighted_at => DateTime.now)
+      puts "Remove Spotlight From Car Profile with id #{car_profile.id}"
+    end
+  end
+
+
 end

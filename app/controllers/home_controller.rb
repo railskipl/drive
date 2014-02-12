@@ -29,13 +29,22 @@
 	         end
     end
 
-def search
-@spotlighted_cars = Carprofile.where("spotlighted = ?",true)
-q = params[:q]
-@users=User.search(params[:q]).result.paginate(:page => params[:page],:per_page => 8)
+# def search
+# @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+# q = params[:q]
+# @users=User.search(params[:q]).result.paginate(:page => params[:page],:per_page => 8)
+# # @users = User.search(first_name_or_last_name_or_location_or_email_cont: q).result(:distinct => true).paginate(:page => params[:page],:per_page => 8)
+# end
 
-# @users = User.search(first_name_or_last_name_or_location_or_email_cont: q).result(:distinct => true).paginate(:page => params[:page],:per_page => 8)
+def search
+    @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
+    if params[:user_cont].present?
+       @users = User.search(first_name_or_last_name_or_location_or_email_cont: params[:user_cont]).result(:distinct => true).paginate(:page => params[:page],:per_page => 8)
+    else
+      @users=User.search(params[:country]).result.paginate(:page => params[:page],:per_page => 8)
+    end
 end
+
 
 def keywordsearch
 q = params[:q]
