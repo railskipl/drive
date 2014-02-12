@@ -1,17 +1,33 @@
 <h1>Manage Body Index</h1>
 
-<%= javascript_include_tag  "bootstrap.min.js"%>
+<%#= javascript_include_tag  "bootstrap.min.js"%>
 <%= javascript_include_tag  "jquery-2.0.1.js"%>
+
+<%= javascript_include_tag "jquery-1.9.1.js", "select2.js"%>
+
+<%= stylesheet_link_tag "select2.css"%>
+
+  <script type='text/javascript'>//<![CDATA[ 
+    $(function(){
+    $("#name_name_cont").select2({
+        allowClear: true,
+        placeholder: 'Select Car Make'
+    }).select2('val',$("#name_cont_value").val())
+    });//]]>  
+  </script>
 
 
 
 <%= form_tag manage_bodyindices_path ,:method => :get do%>
   <div class="field">
   	 <b>Search Car Make</b><br/>
-     <%= text_field_tag :q, nil,:class=>"pe_tf message_search"%>
+     <%= collection_select :name,:name_cont,CarMake.all(:order => :id) ,:name ,:name ,{:prompt => "Select Car Make"} ,{:class => "search_country"} %><br/><br/>
      <%= submit_tag "Search",:class=>"submit_btn2" %>
   </div>
 <% end %><br/>  
+
+
+
 
 
 <script type='text/javascript'>//<![CDATA[ 

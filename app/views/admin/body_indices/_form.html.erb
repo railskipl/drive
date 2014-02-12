@@ -25,7 +25,7 @@
   
    <div class="field">
     <%= f.label "Car Model" %><br />
-    <%= f.collection_select :car_model_id, CarModel.all ,:id,:name %>
+    <%= f.collection_select :car_model_id, @car_models ,:id,:name %>
   </div>
 
   <div class="field">
