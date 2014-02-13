@@ -1,9 +1,9 @@
 <div class="middle">
   <div class="container_20">
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
-      <h1>Listing Cars</h1>
+      <h1><b>My Cars</b></h1>
       <div class ="box">
-        <h5><a class="compose" style="margin:0 float:right;" href="<%= new_carprofile_path%>">+Add A New Car</a></h5>
+        <div style="width: 100%; text-align: right;"><a href="/carprofiles/new" style="margin:0 float:right;" class="compose">+Add A New Car</a></div>
    
         <table cellpadding=5>
 	      <tr>
@@ -24,8 +24,8 @@
             </td>
 			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
 			<td><%= carprofile.car_model.name  rescue nil %></td>
-		 	<td style="text-align: center !important;"><%= link_to (image_tag "image.jpg" ,:height => "22", :width => "20") , edit_carprofile_path(carprofile) %></td>
-    		<td style="text-align: center !important;"><%= link_to (image_tag "delete.png",:height => "20" ),carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+		 	<td style="text-align: center !important;"><%= link_to (image_tag "new-24.png" ,:height => "22", :width => "20") , edit_carprofile_path(carprofile), :title => "Edit Car" %></td>
+    		<td style="text-align: center !important;"><%= link_to (image_tag "delete.png",:height => "20" ),carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' }, :title => 'Delete Car' %>
 			  </tr>
 		 <% end %>
 

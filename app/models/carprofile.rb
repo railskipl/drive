@@ -7,9 +7,11 @@ class Carprofile < ActiveRecord::Base
   friendly_id :slug_candidates, use: [:slugged]
 
   def slug_candidates
-    [     
-      ["#{CarMake.find(car_make_id).name}", "#{CarModel.find(car_model_id).name}", "#{BodyIndex.find(body_index_id).bodyindex}","#{(manufacturing_year)}"]
-    ]
+    unless car_make_id.blank? && car_model_id.blank? && body_index_id.blank?
+      [     
+        ["#{CarMake.find(car_make_id).name}", "#{CarModel.find(car_model_id).name}", "#{BodyIndex.find(body_index_id).bodyindex}","#{(manufacturing_year)}"]
+      ]
+    end 
   end
 
 

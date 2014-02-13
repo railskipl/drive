@@ -108,6 +108,7 @@ class UsersController < ApplicationController
     
     @logged_in_user = current_user 
     @cars = @user.carprofiles
+    @user_blog = @user.user_blogs.where(:status => true).count rescue nil
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
     render :layout => "application"
   end
@@ -179,7 +180,8 @@ def user_friends
 end
 
 def user_blog
-  @user_blogs = current_user.user_blogs.where(:status => true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+  @user = User.find(params[:id])
+  @user_blogs = @user.user_blogs.where(:status => true).order("created_at DESC").paginate(page: params[:page], per_page: 5)
   @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   @blog_comments = BlogComment.order("created_at desc").limit(100)
   @blogs  = Blog.all

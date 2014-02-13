@@ -18,9 +18,11 @@ extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged]
 
   def slug_candidates
-    [     
-      ["#{CarMake.find(car_make_id).name}","#{CarModel.find(car_model_id).name}","#{BodyIndex.find(body_index_id).bodyindex}", "#{LogbookCategory.find(logbook_category_id).name}", "#{(title)}"]
-    ]
+    unless logbook_category_id.blank?
+      [     
+        ["#{CarMake.find(car_make_id).name}","#{CarModel.find(car_model_id).name}","#{BodyIndex.find(body_index_id).bodyindex}", "#{LogbookCategory.find(logbook_category_id).name}", "#{(title)}"]
+      ]
+    end
   end
   
 

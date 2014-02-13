@@ -115,13 +115,13 @@ end
       post :change_status
       get :addpoints
       post :addedpoints
-      get :user_blog
     end
    member do
       get :friend_request
       get :user_friends
       get :user_cars
       get :user_gifts
+      get :user_blog
    end
   end
   
