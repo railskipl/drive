@@ -26,8 +26,9 @@ class CarprofilesController < ApplicationController
   end
 
   def create
-      
+    
   	@carprofile = Carprofile.new(params[:carprofile])
+    #if @carprofile.car_make_id.nil? && @carprofile.car_model_id && @carprofile
     session[:car_make_id] = @carprofile.car_make_id
     session[:car_model_id] = @carprofile.car_model_id
     if session[:car_make_id]

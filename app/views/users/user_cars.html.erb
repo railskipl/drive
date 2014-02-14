@@ -3,8 +3,9 @@
     <div class="grid_10" style="margin:10px auto; float:none; display:block">
       <h1><b>MY CARS</b></h1>
       <div class ="box">
-        
-       
+      	<% if current_user.id == @user.id %>
+           <div style="width: 100%; text-align: right;"><a href="/carprofiles/new" style="margin:0 float:right;" class="compose">+Add A New Car</a></div>
+        <%end%>
    
         <table cellpadding=5>
 	      <tr>
@@ -15,19 +16,24 @@
 		  </tr>
 
 		 <% @carprofiles.each do |carprofile| %>
-		  <tr>
-		  	<td>
-			    <%unless carprofile.carprofile_photos.blank?%>
-	              <div class = "thumb"><%=link_to image_tag(carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 100, :height => 60), carprofile_path(carprofile) rescue nil%></div>
-	            <%else%>
-	              <div class = "thumb"><a href="<%= carprofile_path(carprofile)%>"><img src="/assets/index.jpeg" alt=""  width="100" height="60"></div>
-	            <%end%>
-            </td>
-			<td><a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a></td>
-			<td><%= carprofile.car_model.name  rescue nil %></td>
-		 	<td style="text-align: center !important;"><%= link_to (image_tag "image.jpg" ,:height => "22", :width => "20") , edit_carprofile_path(carprofile) %></td>
-    		<td style="text-align: center !important;"><%= link_to (image_tag "delete.png",:height => "20" ),carprofile_path(carprofile) ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
-			  </tr>
+		    <tr>
+			  	<td>
+				    <%unless carprofile.carprofile_photos.blank?%>
+		              <div class = "thumb"><%=link_to image_tag(carprofile.carprofile_photos.first.photo.url(:thumb) ,:width => 100, :height => 60), carprofile_path(carprofile) rescue nil%></div>
+		            <%else%>
+		              <div class = "thumb"><a href="<%= carprofile_path(carprofile)%>"><img src="/assets/index.jpeg" alt=""  width="100" height="60"></div>
+		            <%end%>
+	            </td>
+				<td>
+					<a class="bluelink" href="<%= carprofile_path(carprofile)%>"><%=carprofile.car_make.name rescue nil%></a>
+				</td>
+				<td><%= carprofile.car_model.name  rescue nil %></td>
+				<%if current_user.id == carprofile.user_id%>
+				 	<td style="text-align: center !important;"><%= link_to (image_tag "new-24.png" ,:height => "22", :width => "20") , edit_carprofile_path(carprofile), :title => "Edit Car" %></td>
+		    		<td style="text-align: center !important;"><%= link_to (image_tag "delete.png",:height => "20" ),carprofile_path(carprofile), :title => 'Delete Car' ,:method => :delete , :data=> { :confirm=> 'Are you sure?' } %>
+		    	    </td>
+		    	<%end%>
+			</tr>
 		 <% end %>
 
 		</table>

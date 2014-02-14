@@ -82,7 +82,7 @@
         <% if Block.status(@user,current_user) %>
         <%= link_to "UnBlock",unblock_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
         <% else %>
-        <%= link_to "Block",block_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
+        <%= link_to "Block User",block_user_users_path(:id=>@user.id),:method => "post",:remote => true,:id=>"user_block"%>
         <% end %>      	
 
       </li> 
@@ -107,14 +107,12 @@
 		</a>
 		</li>
 		<% end %>
-		<%if current_user == @user %>
-		<li><a href="<%= user_blog_users_path %>">My Blogs
-			<!-- <span class="light_gray">(<%= count.count %>)</span> -->
-		</a></li>
-		<%else%>
-		 <!-- <li><a href="<%= user_blog_users_path %>">My Blogs -->
-			<!-- <span class="light_gray">(<%= count.count %>)</span> -->
-		<%end%>
+		
+		<li><%= link_to  user_blog_user_path(@user) do %>Blogs
+          <span class="light_gray">(<%= @user_blog %>)</span>
+          <%end%>
+		</li>
+
 
        <% if current_user.id == @user.id %>
         <li><%= link_to "Blocked user" ,blocked_users_users_path %></a></li>
