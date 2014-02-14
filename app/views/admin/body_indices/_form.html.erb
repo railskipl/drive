@@ -35,11 +35,11 @@
   
   <div class="field">
     <%= f.label :manufacturing_year, "Manufacturing Year" %><br />
-<%= f.select :manufacturing_year, 1900..Time.now.year   ,:selected => Time.now.year %>  </div>
+    <%= f.select :manufacturing_year, 1900..Time.now.year   %>  </div>
   
   <div class="field">
     <%= f.label :end_manufacturing_year, "End Manufacturing Year" %><br />
-    <%= f.select :end_manufacturing_year, 1900..Time.now.year   ,:selected => Time.now.year %>  </div>
+    <%= f.select :end_manufacturing_year, 1900..Time.now.year  %>  </div>
 
   <div class="actions">
     <%if params[:type] == "body_index"%>

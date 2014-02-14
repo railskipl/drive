@@ -101,7 +101,7 @@ Drive::Application.routes.draw do
   unauthenticated :user do
     root :to => 'devise/registrations#new'
   end
-end
+ end
 
   devise_for :admins
 
