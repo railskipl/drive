@@ -13,6 +13,7 @@ class Admin::BodyIndicesController < ApplicationController
   def edit
    @body_index = BodyIndex.find(params[:id])
    @car_models = []
+   @car_models = []
    session[:car_model_id] = @body_index.car_model_id
    if session[:car_model_id]
      @car_models = CarModel.find_all_by_id(session[:car_model_id])
@@ -48,7 +49,6 @@ class Admin::BodyIndicesController < ApplicationController
   end
 
   def destroy
-    raise params.inspect
   	@body_index = BodyIndex.find(params[:id])
   	if @body_index.destroy
   		flash[:notice] = "Deleted Successfully"
