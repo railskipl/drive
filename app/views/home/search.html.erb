@@ -14,7 +14,7 @@
     <div class="mail_content" style="width:auto">
     <% status = Block.find_by_blockable_id_and_blocker_id(current_user.id,user.id).present? %>
     <% if status %>
-   <%= link_to user.first_name, "#",:id=>user.id,:class=>"bluelink bold",:onclick => "alert('You are being Blocked !!!');"%>&nbsp;&nbsp;<%= user.last_name %>
+   <%= link_to user.first_name, "#",:id=>user.id,:class=>"bluelink bold",:onclick => "alert('You cannot access the Profile !!!');"%>&nbsp;&nbsp;<%= user.last_name %>
     <% else %>
     <%= link_to user.first_name, user_path(user),:id=>user.id,:class=>"bluelink bold" %> &nbsp;&nbsp;<%= user.last_name %>
     <% end %></br>   
