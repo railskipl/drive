@@ -23,6 +23,7 @@ class Admin::CarMakesController < ApplicationController
   def edit
       #raise params.inspect
       @car_make = CarMake.find(params[:id])
+      
     end
 
     def update

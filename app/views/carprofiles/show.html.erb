@@ -77,9 +77,8 @@ a.morelink {
          <li><a href="#" class="topopup" val= "<%=@carprofile.id %>">Show Likes</a>
          </li> 
         <li><%= link_to "Send Gift",egifts_path(:carprofile_id => @carprofile.id) %></li>
-        <% unless current_user.id == @carprofile.user_id %>  
+          
           <li><%= link_to (@carprofile.spotlighted ? "Remove Spotlight -": "Add to Spotlight +"),spotlight_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote=>"true",:id=>"spotlight"%></li>
-        <% end %>
 
           <% unless current_user.id == @carprofile.user_id %> 
             <li><%= link_to "Favourite",{:controller => :favourites, :action => :mycarprofile, :user_id => current_user.id },:data => {:confirm=>"Are you sure want to Favourite this Car ?"} %></li>
@@ -88,7 +87,7 @@ a.morelink {
         <%if current_user.id == @carprofile.user_id%>
         <li><%= link_to "My Guest",guest_user_carprofiles_path(:id => params[:id])%></li>
         <li><%= link_to "Edit", edit_carprofile_path(@carprofile)%></li>
-        <li><%= link_to "Add Logbook", new_logbook_path %></li>
+        <li><%= link_to "Add Logbook", new_logbook_path(:id => @carprofile.id, :type => "carprofile") %></li>
         <%end%>
         <% unless current_user.id == @carprofile.user_id %>
           <li><%= link_to (Subscriber.subscribes?(current_user,@carprofile) ? "Unsubscribe": "Subscribe"),subscribe_car_carprofiles_path(:id=>@carprofile.id),:method => "post",:remote => true,:id=>"subscribe_car"%></li>

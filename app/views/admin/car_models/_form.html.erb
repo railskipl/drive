@@ -10,15 +10,24 @@
       </ul>
     </div>
   <% end %>
+  <%= javascript_include_tag "jquery-1.9.1.js", "select2.js"%>
+  <%= stylesheet_link_tag "select2.css"%>
 
-  
+  <script type='text/javascript'>//<![CDATA[ 
+    $(function(){
+    $("#car_model_car_make_id").select2({
+        allowClear: true,
+        placeholder: 'Select Car Make'
+    }).select2('val',$("#car_make_id_value").val())
+    });//]]>  
+  </script>
   <div class="field">
     <%= f.label :name ,"Car Model" %><br />
     <%= f.text_field :name %>
   </div>
    <div class="field">
     <%= f.label :car_make_id, "Car Make" %><br />
-    <%= f.collection_select :car_make_id, CarMake.all ,:id,:name %>
+    <%= f.collection_select :car_make_id, @car_makes ,:id,:name %>
   </div>
 
 

@@ -101,7 +101,7 @@ Drive::Application.routes.draw do
   unauthenticated :user do
     root :to => 'devise/registrations#new'
   end
-end
+ end
 
   devise_for :admins
 
@@ -115,13 +115,13 @@ end
       post :change_status
       get :addpoints
       post :addedpoints
-      get :user_blog
     end
    member do
       get :friend_request
       get :user_friends
       get :user_cars
       get :user_gifts
+      get :user_blog
    end
   end
   

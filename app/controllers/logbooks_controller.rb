@@ -41,7 +41,11 @@ class LogbooksController < ApplicationController
 
   def new
   	@logbook = Logbook.new
-    @carprofile = current_user.carprofiles
+    unless params[:type] == "carprofile"
+     @carprofile = current_user.carprofiles
+    else 
+     @carprofile = Carprofile.find_all_by_id(params[:id])
+    end
     @spotlighted_cars = Carprofile.where("spotlighted = ?",true)
   end
 

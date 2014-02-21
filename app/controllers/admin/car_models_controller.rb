@@ -8,6 +8,7 @@ class Admin::CarModelsController < ApplicationController
 
   def new
   	@car_model = CarModel.new
+    #@car_makes = CarMake.all
   end
 
   def create
@@ -22,12 +23,19 @@ class Admin::CarModelsController < ApplicationController
 
     def edit
       @car_model = CarModel.find(params[:id])
+      @car_makes = []
+      session[:car_make_id] = @car_model.car_make_id
+        if session[:car_make_id] 
+         @car_makes = CarMake.find_all_by_id(session[:car_make_id])
+        end
     end
 
     def update
       #raise params.inspect
       @car_model = CarModel.find(params[:id])
+      session.delete(:car_make_id)
       if @car_model.update_attributes(params[:car_model])
+         
         flash[:notice] = "Car Model Saved Successfully"
         if params[:type] == "Update Model"
           redirect_to manage_bodyindices_path

@@ -30,6 +30,6 @@
 
   <div class="field">
     <%= f.label :Link  %>(Example: This is the BuyNow URL link generated after product registration you can find this BuyNow URL link in contract general information, 
-    eg: you will see this type of URL => href='https://www.plimus.com/jsp/buynow.jsp?contractId=3222914, simply add it in text field )<br/>
-    <textarea id="credit_package_link" rows="20" name="credit_package[link]" cols="40" style="width: 682px; height: 38px;"></textarea>
+    eg: you will see this type of URL => href='https://www.plimus.com/jsp/buynow.jsp?contractId=3222914, simply add this in text field )<br/>
+    <%= f.text_area :link %>
   </div>

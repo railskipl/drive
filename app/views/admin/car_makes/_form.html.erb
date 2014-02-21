@@ -10,10 +10,27 @@
       </ul>
     </div>
   <% end %>
+  <%= javascript_include_tag "jquery-1.9.1.js", "select2.js"%>
+  <%= stylesheet_link_tag "select2.css"%>
 
+  <script type='text/javascript'>//<![CDATA[ 
+    $(function(){
+    $("#car_make_name").select2({
+        allowClear: true,
+        placeholder: 'Select Car Make'
+    }).select2('val',$("#name_value").val())
+    });//]]>  
+  </script>
+  <%unless params[:type] == "make"%>
+  <div class="field">
+    <%= f.label "Search for Car Make" %>
+    <%= f.collection_select :name ,CarMake.all ,:id,:name, :prompt => "Search Car Make" rescue nil%><br/>
+    (This search only for to cross check whether car make present or not. )
+  </div>
+  <%end%><br />
   
   <div class="field">
-    <%= f.label "Name" %><br />
+    <%= f.label "Name" %>
     <%= f.text_field :name %>
   </div>
   
